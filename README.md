@@ -9,6 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/whippr)](https://CRAN.R-project.org/package=whippr)
+[![R build
+status](https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg)](https://github.com/fmmattioni/whippr/actions)
 <!-- badges: end -->
 
 The goal of `whippr` is to provide a set of tools for manipulating gas

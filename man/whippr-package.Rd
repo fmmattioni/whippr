@@ -10,6 +10,14 @@
 
 'whippr' provides a set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/fmmattioni/whippr}
+  \item Report bugs at \url{https://github.com/fmattioni/whippr/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Felipe Mattioni Maturana \email{felipe.mattioni@med.uni-tuebingen.de} (\href{https://orcid.org/0000-0002-4221-6104}{ORCID})
 

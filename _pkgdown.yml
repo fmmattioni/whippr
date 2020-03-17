@@ -20,7 +20,7 @@ navbar:
   type: default
   right:
   - icon: fa-github fa-lg
-    href: https://github.com/fmmattioni/downloadthis
+    href: https://github.com/fmmattioni/whippr
   - icon: fa-twitter fa-lg
     href: https://twitter.com/felipe_mattioni
 

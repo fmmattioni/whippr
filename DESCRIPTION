@@ -9,6 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0002-4221-6104"))
 Description: 'whippr' provides a set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
 License: MIT + file LICENSE
+URL: https://github.com/fmmattioni/whippr
+BugReports: https://github.com/fmattioni/whippr/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
