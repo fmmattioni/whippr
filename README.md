@@ -34,7 +34,7 @@ remotes::install_github("fmmattioni/whippr")
 
 ## Use
 
-So far, the package has one function only: `read_data()`, which reads in
+So far, the package has only one function: `read_data()`, which reads
 the exported raw data from the metabolic cart. Currently, data from
 **COSMED** and **CORTEX** are supported. In case you have data from a
 different system, please contact me and I will be happy to add that to
