@@ -18,6 +18,7 @@ read_data <- function(path, metabolic_cart = c("cosmed", "cortex")) {
   UseMethod("read_data", path)
 }
 
+#' @export
 read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex")) {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
@@ -72,6 +73,7 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex")) {
   out
 }
 
+#' @export
 read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex")) {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
