@@ -2,7 +2,7 @@
 % Please edit documentation in R/interpolate.R
 \name{interpolate}
 \alias{interpolate}
-\title{Interpolate from breath-by-breath into second-by-second}
+\title{Interpolate data from breath-by-breath into second-by-second}
 \usage{
 interpolate(.data, time_column = "t")
 }
@@ -19,11 +19,12 @@ This function interpolates the data based on the time column. It takes the breat
 and transforms it into second-by-second.
 }
 \examples{
-\dontrun{
-## read data
-df <- read_data(path = "~/Documents/data.xlsx", metabolic_cart = "cosmed")
+## get file path from example data
+path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 
-df_interpolated <- df \%>\%
-   interpolate()
-}
+## read data
+df <- read_data(path = path_example, metabolic_cart = "cosmed")
+
+df \%>\%
+ interpolate()
 }

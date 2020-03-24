@@ -1,4 +1,4 @@
-#' Interpolate from breath-by-breath into second-by-second
+#' Interpolate data from breath-by-breath into second-by-second
 #'
 #' This function interpolates the data based on the time column. It takes the breath-by-breath data
 #' and transforms it into second-by-second.
@@ -12,13 +12,14 @@
 #' @importFrom stats approx
 #'
 #' @examples
-#' \dontrun{
-#' ## read data
-#' df <- read_data(path = "~/Documents/data.xlsx", metabolic_cart = "cosmed")
+#' ## get file path from example data
+#' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 #'
-#' df_interpolated <- df %>%
-#'    interpolate()
-#' }
+#' ## read data
+#' df <- read_data(path = path_example, metabolic_cart = "cosmed")
+#'
+#' df %>%
+#'  interpolate()
 interpolate <- function(.data, time_column = "t") {
   ## check that column name exists
   if(!time_column %in% colnames(.data))

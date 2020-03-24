@@ -18,6 +18,17 @@ development:
 navbar:
   title: ~
   type: default
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: Reference
+      icon: fa-balance-scale
+      href: reference/index.html
+    - text: News
+      icon: fa-newspaper
+      menu:
+      - text: "Change log"
+        href: news/index.html
   right:
   - icon: fa-github fa-lg
     href: https://github.com/fmmattioni/whippr
@@ -30,3 +41,13 @@ reference:
     Read raw data from metabolic cart.
   contents:
   - read_data
+- title: Interpoalte data
+  desc: >
+    Interpolate data from breath-by-breath into second-by-second
+  contents:
+  - interpolate
+- title: Perform averages
+  desc: >
+    Perform average on second-by-second data
+  contents:
+  - perform_average

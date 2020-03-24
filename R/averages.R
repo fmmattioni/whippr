@@ -13,9 +13,11 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' ## get file path from example data
+#' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
+#'
 #' ## read data
-#' df <- read_data(path = "~/Documents/data.xlsx", metabolic_cart = "cosmed")
+#' df <- read_data(path = path_example, metabolic_cart = "cosmed")
 #'
 #' ## interpolate and perform 30-s bin-average
 #' df %>%
@@ -26,7 +28,6 @@
 #' df %>%
 #'  interpolate() %>%
 #'  perform_average(type = "rolling", rolling_window = 30)
-#' }
 perform_average <- function(.data, time_column = "t", type = c("bin", "rolling"), bins = 30, rolling_window = 30) {
   if(missing(type))
     stop("You must specify the type of average you would like to perform.", call. = FALSE)
