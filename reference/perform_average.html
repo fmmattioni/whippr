@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • whippr</title>
+<title>Perform average on second-by-second data — perform_average • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Perform average on second-by-second data — perform_average" />
+<meta property="og:description" content="This function performs either a bin- or a rolling-average on the interpolated data.
+You must specify the type of the average before continuing." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -132,19 +133,68 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Perform average on second-by-second data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/averages.R'><code>R/averages.R</code></a></small>
+    <div class="hidden name"><code>perform_average.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>This function performs either a bin- or a rolling-average on the interpolated data.
+You must specify the <code>type</code> of the average before continuing.</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>perform_average</span>(
+  <span class='no'>.data</span>,
+  <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bin"</span>, <span class='st'>"rolling"</span>),
+  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>rolling_window</span> <span class='kw'>=</span> <span class='fl'>30</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data</th>
+      <td><p>The second-by-second data retrieved from <code><a href='interpolate.html'>interpolate()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>time_column</th>
+      <td><p>The name (quoted) of the column containing the time. Default to "t".</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>The type of the average to perform. Either <code>bin</code> or <code>rolling</code>.</p></td>
+    </tr>
+    <tr>
+      <th>bins</th>
+      <td><p>If bin-average is chosen, here you can specify the size of the bin-average, in seconds. Default to 30-s bin-average.</p></td>
+    </tr>
+    <tr>
+      <th>rolling_window</th>
+      <td><p>If rolling-average is chosen, here you can specify the rolling-average window, in seconds. Default to 30-s rolling-average.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>## read data</span>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"~/Documents/data.xlsx"</span>, <span class='kw'>metabolic_cart</span> <span class='kw'>=</span> <span class='st'>"cosmed"</span>)
+
+<span class='co'>## interpolate and perform 30-s bin-average</span>
+<span class='no'>df</span> <span class='kw'>%&gt;%</span>
+ <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='kw'>%&gt;%</span>
+ <span class='fu'>perform_average</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bin"</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='fl'>30</span>)
+
+<span class='co'>## interpolate and perform 30-s rolling-average</span>
+<span class='no'>df</span> <span class='kw'>%&gt;%</span>
+ <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='kw'>%&gt;%</span>
+ <span class='fu'>perform_average</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"rolling"</span>, <span class='kw'>rolling_window</span> <span class='kw'>=</span> <span class='fl'>30</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
