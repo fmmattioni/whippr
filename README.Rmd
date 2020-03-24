@@ -38,14 +38,50 @@ remotes::install_github("fmmattioni/whippr")
 
 ## Use
 
-So far, the package has only one function: `read_data()`, which reads the exported raw data from the metabolic cart. Currently, data from **COSMED** and **CORTEX** are supported. In case you have data from a different system, please contact me and I will be happy to add that to the function.
+### Read data
 
-The package is still in its [experimental](https://www.tidyverse.org/lifecycle/#experimental) phase, do do not hesitate to open any issues and/or suggest improvements.
+```{r}
+library(whippr)
 
-### Functions to be added
+## example file that comes with the package for demonstration purposes
+path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 
-- interpolation
-- bin- and rolling-averaging
+df <- read_data(path = path_example, metabolic_cart = "cosmed")
+
+df
+```
+
+### Interpolate
+
+```{r}
+df %>% 
+  interpolate()
+```
+
+### Perform averages
+
+#### Bin-average
+
+```{r}
+## example of performing 30-s bin-averages
+df %>% 
+  interpolate() %>% 
+  perform_average(type = "bin", bins = 30)
+```
+
+#### Rolling-average
+
+```{r}
+## example of performing 30-s rolling-averages
+df %>% 
+  interpolate() %>% 
+  perform_average(type = "rolling", rolling_window = 30)
+```
+
+## Functions to be added
+
+The package is still in its [experimental](https://www.tidyverse.org/lifecycle/#experimental) phase, so do not hesitate to open any issues and/or suggest improvements.
+
 - gas exchange threshold and respiratory compensation point detection
 - outliers ("bad breaths") detection
 
