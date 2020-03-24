@@ -41,7 +41,7 @@ reference:
     Read raw data from metabolic cart.
   contents:
   - read_data
-- title: Interpoalte data
+- title: Interpolate data
   desc: >
     Interpolate data from breath-by-breath into second-by-second
   contents:
