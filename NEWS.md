@@ -7,3 +7,5 @@
 * Added function `interpolate()` to interpolate breath-by-breath data into second-by-second.
 
 * Added function `perform_average()` to perform bin- and rolling-averages.
+
+* Improved error messages in case `read_data()` cannot find the name of the time column provided.
