@@ -159,7 +159,11 @@
     <p>It reads the raw data exported from the metabolic cart.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_data</span>(<span class='no'>path</span>, <span class='kw'>metabolic_cart</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cosmed"</span>, <span class='st'>"cortex"</span>))</pre>
+    <pre class="usage"><span class='fu'>read_data</span>(
+  <span class='no'>path</span>,
+  <span class='kw'>metabolic_cart</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cosmed"</span>, <span class='st'>"cortex"</span>, <span class='st'>"nspire"</span>),
+  <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,7 +174,11 @@
     </tr>
     <tr>
       <th>metabolic_cart</th>
-      <td><p>Metabolic cart that was used for data collection. Currently, only 'cosmed' and 'cortex' are supported.</p></td>
+      <td><p>Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', and 'nspire' are supported.</p></td>
+    </tr>
+    <tr>
+      <th>time_column</th>
+      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".</p></td>
     </tr>
     </table>
 
