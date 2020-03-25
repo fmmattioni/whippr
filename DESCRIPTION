@@ -22,5 +22,6 @@ Imports:
     lubridate,
     magrittr,
     tibble,
-    zoo
+    zoo,
+    purrr
 RoxygenNote: 7.1.0
