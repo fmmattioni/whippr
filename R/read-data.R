@@ -26,6 +26,9 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
   ## find column that starts the data (time column will always be the first one)
   start_col <- target_cosmed(data_raw, time_column)
 
+  if(purrr::is_empty(start_col))
+    stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
+
   ## retrieve column names
   names_file <- data_raw[start_col:ncol(data_raw)] %>%
     names()
@@ -86,6 +89,9 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
   ## find column that starts the data (time column will always be the first one)
   cells_cortex <- target_cortex(data_raw, time_column)
 
+  if(purrr::is_empty(cells_cortex))
+    stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
+
   ## retrieve column names
   names_file <- data_raw[cells_cortex[1],] %>%
     unlist(use.names = FALSE)
@@ -127,6 +133,9 @@ read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 
   ## find column that starts the data (time column will always be the first one)
   start_col <- target_nspire(data_raw, time_column)
+
+  if(purrr::is_empty(start_col))
+    stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
 
   ## retrieve column names
   names_file <- data_raw[start_col:ncol(data_raw)] %>%
