@@ -3,12 +3,12 @@
 #' It reads the raw data exported from the metabolic cart.
 #'
 #' @param path Path to read the file from.
-#' @param metabolic_cart Metabolic cart that was used for data collection. Currently, only 'cosmed' and 'cortex' are supported.
+#' @param metabolic_cart Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', and 'nspire' are supported.
 #' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
-read_data <- function(path, metabolic_cart = c("cosmed", "cortex"), time_column = "t") {
+read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
   if(missing(metabolic_cart))
     stop("You must specify the metabolic cart.", call. = FALSE)
 
@@ -20,7 +20,7 @@ read_data <- function(path, metabolic_cart = c("cosmed", "cortex"), time_column 
 }
 
 #' @export
-read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex"), time_column = "t") {
+read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -80,7 +80,7 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex"), time_
 }
 
 #' @export
-read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex"), time_column = "t") {
+read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -117,6 +117,27 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex"), time_
   out <- data_raw2 %>%
     janitor::remove_empty(which = "cols") %>%
     dplyr::rename_at(1, ~ {{ time_column }})
+
+  out
+}
+
+#' @export
+read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
+  data_raw <- suppressMessages(readxl::read_excel(path = path))
+
+  ## find column that starts the data (time column will always be the first one)
+  start_col <- target_nspire(data_raw, time_column)
+
+  ## retrieve column names
+  names_file <- data_raw[start_col:ncol(data_raw)] %>%
+    names()
+
+  out <- suppressWarnings(suppressMessages(readxl::read_excel(
+    path = path,
+    skip = 1))) %>%
+    dplyr::select(start_col:ncol(.)) %>%
+    dplyr::rename_all(~ names_file) %>%
+    janitor::remove_empty(which = "rows")
 
   out
 }
