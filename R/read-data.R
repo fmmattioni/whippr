@@ -4,10 +4,11 @@
 #'
 #' @param path Path to read the file from.
 #' @param metabolic_cart Metabolic cart that was used for data collection. Currently, only 'cosmed' and 'cortex' are supported.
+#' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
-read_data <- function(path, metabolic_cart = c("cosmed", "cortex")) {
+read_data <- function(path, metabolic_cart = c("cosmed", "cortex"), time_column = "t") {
   if(missing(metabolic_cart))
     stop("You must specify the metabolic cart.", call. = FALSE)
 
@@ -19,11 +20,11 @@ read_data <- function(path, metabolic_cart = c("cosmed", "cortex")) {
 }
 
 #' @export
-read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex")) {
+read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
-  start_col <- target_cosmed(data_raw)
+  start_col <- target_cosmed(data_raw, time_column)
 
   ## retrieve column names
   names_file <- data_raw[start_col:ncol(data_raw)] %>%
@@ -43,7 +44,9 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex")) {
   ))) %>%
     dplyr::select(start_col:ncol(.)) %>%
     dplyr::rename_all(~ names_file) %>%
-    janitor::remove_empty(which = "rows")
+    janitor::remove_empty(which = "rows") %>%
+    ## this is required to simplify the next step, in case the time column is not named "t"
+    dplyr::rename(t = {{ time_column }})
 
   ## if date parsing didnt't work, then let the read_excel function guess the type
   if(all(is.na(data_raw2$t))) {
@@ -51,7 +54,9 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex")) {
     data_raw2 <- suppressMessages(readxl::read_excel(path = path, skip = 1)) %>%
       dplyr::select(start_col:ncol(.)) %>%
       dplyr::rename_all(~ names_file) %>%
-      janitor::remove_empty(which = "rows")
+      janitor::remove_empty(which = "rows") %>%
+      ## this is required to simplify the next steps, in case the time column is not named "t"
+      dplyr::rename(t = {{ time_column }})
 
     ## this will make sure that different versions of the cosmed will work with this function
     ## newer versions will display differnt time formats (00:00 instead of 00:00:00)
@@ -62,23 +67,24 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex")) {
     out <- data_raw2 %>%
       dplyr::mutate(t = stringr::str_replace_all(t, ",", "."),
                     t = lubridate::hms(t),
-                    t = lubridate::period_to_seconds(t),
-                    t = as.integer(t))
+                    t = lubridate::period_to_seconds(t))
   } else {
     out <- data_raw2 %>%
-      dplyr::mutate(t = (lubridate::hour(t) * 3600) + (lubridate::minute(t) * 60) + lubridate::second(t),
-                    t = as.integer(t))
+      dplyr::mutate(t = (lubridate::hour(t) * 3600) + (lubridate::minute(t) * 60) + lubridate::second(t))
   }
+
+  out <- out %>%
+    dplyr::rename_at(1, ~ {{ time_column }})
 
   out
 }
 
 #' @export
-read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex")) {
+read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
-  cells_cortex <- target_cortex(data_raw)
+  cells_cortex <- target_cortex(data_raw, time_column)
 
   ## retrieve column names
   names_file <- data_raw[cells_cortex[1],] %>%
@@ -87,7 +93,9 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex")) {
   ## read data again specifying starting row
   data_raw2 <- suppressMessages(readxl::read_excel(path = path, skip = cells_cortex[1] + 3, col_names = FALSE)) %>%
     dplyr::rename_all(~ names_file) %>%
-    dplyr::mutate_if(is.character, ~ stringr::str_replace_all(., ",", "."))
+    dplyr::mutate_if(is.character, ~ stringr::str_replace_all(., ",", ".")) %>%
+    ## this is required to simplify the next step, in case the time column is not named "t"
+    dplyr::rename(t = {{ time_column }})
 
   ## if time column was parsed as a date
   if(all(class(data_raw2$t) %in% c("POSIXct", "POSIXt"))) {
@@ -107,7 +115,8 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex")) {
   }
 
   out <- data_raw2 %>%
-    janitor::remove_empty(which = "cols")
+    janitor::remove_empty(which = "cols") %>%
+    dplyr::rename_at(1, ~ {{ time_column }})
 
   out
 }

@@ -54,7 +54,7 @@ perform_average.bin <- function(.data, time_column = "t", type = c("bin", "rolli
     dplyr::rename(t = {{ time_column }}) %>%
     dplyr::group_by(t = round(t / bins) * bins) %>%
     dplyr::summarise_all(mean) %>%
-    dplyr::rename_at(1, {{ time_column }})
+    dplyr::rename_at(1, ~ {{ time_column }})
 
   out
 }
@@ -75,7 +75,7 @@ perform_average.rolling <- function(.data, time_column = "t", type = c("bin", "r
     dplyr::select(t, dplyr::everything()) %>%
     zoo::rollmean(x = ., k = rolling_window) %>%
     dplyr::as_tibble() %>%
-    dplyr::rename_at(1, {{ time_column }})
+    dplyr::rename_at(1, ~ {{ time_column }})
 
   out
 }

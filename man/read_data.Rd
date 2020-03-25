@@ -4,12 +4,14 @@
 \alias{read_data}
 \title{Read data from metabolic cart}
 \usage{
-read_data(path, metabolic_cart = c("cosmed", "cortex"))
+read_data(path, metabolic_cart = c("cosmed", "cortex"), time_column = "t")
 }
 \arguments{
 \item{path}{Path to read the file from.}
 
 \item{metabolic_cart}{Metabolic cart that was used for data collection. Currently, only 'cosmed' and 'cortex' are supported.}
+
+\item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".}
 }
 \value{
 a \link[tibble:tibble-package]{tibble}
