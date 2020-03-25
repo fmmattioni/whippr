@@ -47,7 +47,7 @@ df <- read_data(path = path_example, metabolic_cart = "cosmed")
 df
 #> # A tibble: 754 x 119
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
-#>    <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
+#>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
 #>  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
 #>  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 
 #>  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 
@@ -209,6 +209,12 @@ df %>%
 #> #   predVO2 <dbl>, BR <dbl>, `O2 Cost` <dbl>, EEtot <dbl>, IC <dbl>,
 #> #   Step <dbl>, LogVE <dbl>, `P(A-a)O2` <dbl>, …
 ```
+
+## Metabolic carts currently supported
+
+  - [COSMED](https://www.cosmed.com/en/)
+  - [CORTEX](https://cortex-medical.com/EN)
+  - [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
 
 ## Functions to be added
 

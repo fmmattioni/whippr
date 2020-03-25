@@ -78,6 +78,12 @@ df %>%
   perform_average(type = "rolling", rolling_window = 30)
 ```
 
+## Metabolic carts currently supported
+
+* [COSMED](https://www.cosmed.com/en/)
+* [CORTEX](https://cortex-medical.com/EN)
+* [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
+
 ## Functions to be added
 
 The package is still in its [experimental](https://www.tidyverse.org/lifecycle/#experimental) phase, so do not hesitate to open any issues and/or suggest improvements.
