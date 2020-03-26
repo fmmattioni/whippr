@@ -2,8 +2,8 @@
 
 * Added function `read_data()` to read data from metabolic cart (COSMED and CORTEX).
     * Now you can specify the name of the time column, in case your system is not in English. Default is set to "t".
-    * Added option to read data from NSpire system (thanks to [@peter__leo](https://twitter.com/peter__leo))
-    * Added option to read data from Parvo Medics system (thanks to [@EatsleepfitJeff](https://twitter.com/EatsleepfitJeff))
+    * Added option to read data from NSpire system (thanks to [@peter__leo](https://twitter.com/peter__leo)).
+    * Added option to read data from Parvo Medics system (thanks to [@EatsleepfitJeff](https://twitter.com/EatsleepfitJeff)).
     
 * Added function `interpolate()` to interpolate breath-by-breath data into second-by-second.
 
