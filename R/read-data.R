@@ -3,12 +3,12 @@
 #' It reads the raw data exported from the metabolic cart.
 #'
 #' @param path Path to read the file from.
-#' @param metabolic_cart Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', and 'nspire' are supported.
+#' @param metabolic_cart Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', and 'parvo' are supported.
 #' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
-read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
+read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
   if(missing(metabolic_cart))
     stop("You must specify the metabolic cart.", call. = FALSE)
 
@@ -20,7 +20,7 @@ read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), ti
 }
 
 #' @export
-read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
+read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -83,7 +83,7 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
+read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -128,7 +128,7 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire"), time_column = "t") {
+read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -147,6 +147,36 @@ read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
     dplyr::select(start_col:ncol(.)) %>%
     dplyr::rename_all(~ names_file) %>%
     janitor::remove_empty(which = "rows")
+
+  out
+}
+
+#' @export
+read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
+  data_raw <- suppressMessages(readxl::read_excel(path = path))
+
+  ## find column that starts the data (time column will always be the first one)
+  cells_parvo <- target_cortex(data_raw, time_column)
+
+  if(purrr::is_empty(cells_parvo))
+    stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
+
+  ## retrieve column names
+  names_file <- data_raw[cells_parvo[1]:(cells_parvo[1] + 1),] %>%
+    unlist(use.names = FALSE) %>%
+    matrix(., nrow = length(.) / 2, byrow = TRUE) %>%
+    dplyr::as_tibble() %>%
+    dplyr::mutate(V1 = ifelse(V2 %in% c(NA, "STPD", "BTPS"), V1, paste0(V1, V2))) %>%
+    .$V1
+
+  ## read data again specifying starting row
+  out <- suppressMessages(readxl::read_excel(path = path, skip = cells_parvo[1] + 4, col_names = FALSE)) %>%
+    dplyr::rename_all(~ names_file) %>%
+    ## this is a trick to drop NAs based on the last column
+    ## the reason is that Parvo sometimes export additional info after the exported data at the end of the spreadsheet
+    tidyr::drop_na(ncol(.)) %>%
+    dplyr::mutate_all(as.numeric) %>%
+    dplyr::mutate_at(1, function(x) x * 60)
 
   out
 }

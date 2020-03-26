@@ -24,3 +24,15 @@ target_nspire <- function(.data, time_column){
 
   target_cell
 }
+
+target_parvo <- function(.data, time_column) {
+  target_cell <- which(.data == time_column, arr.ind = TRUE)
+
+  ## usually cortex will not export the data at the top of the spreadsheet
+  ## meaning that the data we are looking for won't have column names recognized here
+  ## the following is just to make sure that, in case the user's export settings does export the data at the top of the spreadsheet, it will get recognized
+  if(purrr::is_empty(target_cell))
+    target_cell <- which(colnames(.data) == time_column, arr.ind = TRUE)
+
+  target_cell
+}
