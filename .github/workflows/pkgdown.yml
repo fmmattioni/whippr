@@ -15,8 +15,8 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@master
       - name: Install dependencies
         run: |
-          install.packages("remotes")
-          remotes::install_deps(dependencies = TRUE)
+          install.packages("remotes", repos = "https://ftp.fau.de/cran/")
+          remotes::install_deps(dependencies = TRUE, repos = "https://ftp.fau.de/cran/")
           remotes::install_github("r-lib/pkgdown")
         shell: Rscript {0}
       - name: Install package
