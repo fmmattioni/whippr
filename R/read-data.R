@@ -156,7 +156,7 @@ read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
-  cells_parvo <- target_cortex(data_raw, time_column)
+  cells_parvo <- target_parvo(data_raw, time_column)
 
   if(purrr::is_empty(cells_parvo))
     stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
