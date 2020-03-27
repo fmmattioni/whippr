@@ -47,37 +47,30 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
   ))) %>%
     dplyr::select(start_col:ncol(.)) %>%
     dplyr::rename_all(~ names_file) %>%
-    janitor::remove_empty(which = "rows") %>%
-    ## this is required to simplify the next step, in case the time column is not named "t"
-    dplyr::rename(t = {{ time_column }})
+    janitor::remove_empty(which = "rows")
 
   ## if date parsing didnt't work, then let the read_excel function guess the type
-  if(all(is.na(data_raw2$t))) {
+  if(all(is.na(data_raw2[[1]]))) {
     ## read data again, select only columns with data and apply column names
     data_raw2 <- suppressMessages(readxl::read_excel(path = path, skip = 1)) %>%
       dplyr::select(start_col:ncol(.)) %>%
       dplyr::rename_all(~ names_file) %>%
-      janitor::remove_empty(which = "rows") %>%
-      ## this is required to simplify the next steps, in case the time column is not named "t"
-      dplyr::rename(t = {{ time_column }})
+      janitor::remove_empty(which = "rows")
 
     ## this will make sure that different versions of the cosmed will work with this function
     ## newer versions will display differnt time formats (00:00 instead of 00:00:00)
-    if(all(nchar(data_raw2$t) == 5)){
-      data_raw2$t <- paste0("00:", data_raw2$t)
+    if(all(nchar(data_raw2[[1]]) == 5)){
+      data_raw2[[1]] <- paste0("00:", data_raw2[[1]])
     }
 
     out <- data_raw2 %>%
-      dplyr::mutate(t = stringr::str_replace_all(t, ",", "."),
-                    t = lubridate::hms(t),
-                    t = lubridate::period_to_seconds(t))
+      dplyr::mutate_at(1, function(x) stringr::str_replace_all(x, ",", ".") %>%
+                                      lubridate::hms(.) %>%
+                                      lubridate::period_to_seconds(.))
   } else {
     out <- data_raw2 %>%
-      dplyr::mutate(t = (lubridate::hour(t) * 3600) + (lubridate::minute(t) * 60) + lubridate::second(t))
+      dplyr::mutate_at(1, function(x) (lubridate::hour(x) * 3600) + (lubridate::minute(x) * 60) + lubridate::second(x))
   }
-
-  out <- out %>%
-    dplyr::rename_at(1, ~ {{ time_column }})
 
   out
 }
@@ -99,30 +92,27 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
   ## read data again specifying starting row
   data_raw2 <- suppressMessages(readxl::read_excel(path = path, skip = cells_cortex[1] + 3, col_names = FALSE)) %>%
     dplyr::rename_all(~ names_file) %>%
-    dplyr::mutate_if(is.character, ~ stringr::str_replace_all(., ",", ".")) %>%
-    ## this is required to simplify the next step, in case the time column is not named "t"
-    dplyr::rename(t = {{ time_column }})
+    dplyr::mutate_if(is.character, ~ stringr::str_replace_all(., ",", "."))
 
   ## if time column was parsed as a date
-  if(all(class(data_raw2$t) %in% c("POSIXct", "POSIXt"))) {
+  if(all(class(data_raw2[[1]]) %in% c("POSIXct", "POSIXt"))) {
     data_raw2 <- data_raw2 %>%
-      dplyr::mutate(t = (lubridate::hour(t) * 3600) + (lubridate::minute(t) * 60) + lubridate::second(t))
+      dplyr::mutate_at(1, function(x) (lubridate::hour(x) * 3600) + (lubridate::minute(x) * 60) + lubridate::second(x))
   } else {
     ## if time column was parsed as numeric
-    if(any(stringr::str_detect(data_raw2$t, ":"))){
+    if(any(stringr::str_detect(data_raw2[[1]], ":"))){
       data_raw2 <- data_raw2 %>%
-        dplyr::mutate(t = lubridate::hms(t),
-                      t = lubridate::period_to_seconds(t))
+        dplyr::mutate_at(1, function(x) lubridate::hms(x) %>%
+                                        lubridate::period_to_seconds(.))
     } else{
       data_raw2 <- data_raw2 %>%
-        dplyr::mutate(t = as.numeric(t),
-                      t = t * 60 * 60 * 24)
+        dplyr::mutate_at(1, function(x) as.numeric(x)) %>%
+        dplyr::mutate_at(1, function(x) x * 60 * 60 * 24)
     }
   }
 
   out <- data_raw2 %>%
-    janitor::remove_empty(which = "cols") %>%
-    dplyr::rename_at(1, ~ {{ time_column }})
+    janitor::remove_empty(which = "cols")
 
   out
 }
