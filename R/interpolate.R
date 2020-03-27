@@ -4,7 +4,6 @@
 #' and transforms it into second-by-second.
 #'
 #' @param .data Data retrieved from \code{read_data()}.
-#' @param time_column The name (quoted) of the column containing the time. Default to "t".
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
@@ -20,19 +19,15 @@
 #'
 #' df %>%
 #'  interpolate()
-interpolate <- function(.data, time_column = "t") {
-  ## check that column name exists
-  if(!time_column %in% colnames(.data))
-    stop("Column name does not exist in the data frame.", call. = FALSE)
-
+interpolate <- function(.data) {
   ## first make sure data only contains numeric columns
   data_num <- .data %>%
     dplyr::select_if(is.numeric)
 
   lapply(data_num, function (i) approx(
-    x = data_num[[ {{ time_column }} ]],
+    x = data_num[[1]],
     y = i,
-    xout = seq(min(data_num[[ {{ time_column }} ]]), max(data_num[[ {{ time_column }} ]], na.rm = TRUE), 1)
+    xout = seq(min(data_num[[1]]), max(data_num[[1]], na.rm = TRUE), 1)
   )$y
   ) %>%
     dplyr::as_tibble()

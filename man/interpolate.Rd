@@ -4,12 +4,10 @@
 \alias{interpolate}
 \title{Interpolate data from breath-by-breath into second-by-second}
 \usage{
-interpolate(.data, time_column = "t")
+interpolate(.data)
 }
 \arguments{
 \item{.data}{Data retrieved from \code{read_data()}.}
-
-\item{time_column}{The name (quoted) of the column containing the time. Default to "t".}
 }
 \value{
 a \link[tibble:tibble-package]{tibble}

@@ -6,7 +6,6 @@
 \usage{
 perform_average(
   .data,
-  time_column = "t",
   type = c("bin", "rolling"),
   bins = 30,
   rolling_window = 30
@@ -14,8 +13,6 @@ perform_average(
 }
 \arguments{
 \item{.data}{The second-by-second data retrieved from \code{interpolate()}.}
-
-\item{time_column}{The name (quoted) of the column containing the time. Default to "t".}
 
 \item{type}{The type of the average to perform. Either \code{bin} or \code{rolling}.}
 
