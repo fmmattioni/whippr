@@ -47,7 +47,11 @@
 
 
 <meta property="og:title" content="Changelog" />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="/reference/figures/logo.png" />
+<meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@felipe_mattioni" />
+<meta name="twitter:site" content="@felipe_mattioni" />
 
 
 
@@ -168,6 +172,7 @@
 <li><p>Added function <code><a href="../reference/interpolate.html">interpolate()</a></code> to interpolate breath-by-breath data into second-by-second.</p></li>
 <li><p>Added function <code><a href="../reference/perform_average.html">perform_average()</a></code> to perform bin- and rolling-averages.</p></li>
 <li><p>Improved error messages in case <code><a href="../reference/read_data.html">read_data()</a></code> cannot find the name of the time column provided.</p></li>
+<li><p>Removed the <code>time_column</code> argument from the <code><a href="../reference/interpolate.html">interpolate()</a></code> and <code><a href="../reference/perform_average.html">perform_average()</a></code> functions. This is only necessary in <code><a href="../reference/read_data.html">read_data()</a></code> now.</p></li>
 </ul>
 </div>
   </div>

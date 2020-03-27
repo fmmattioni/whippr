@@ -49,7 +49,11 @@
 <meta property="og:title" content="Interpolate data from breath-by-breath into second-by-second — interpolate" />
 <meta property="og:description" content="This function interpolates the data based on the time column. It takes the breath-by-breath data
 and transforms it into second-by-second." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="/reference/figures/logo.png" />
+<meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@felipe_mattioni" />
+<meta name="twitter:site" content="@felipe_mattioni" />
 
 
 
@@ -161,7 +165,7 @@ and transforms it into second-by-second." />
 and transforms it into second-by-second.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>interpolate</span>(<span class='no'>.data</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>)</pre>
+    <pre class="usage"><span class='fu'>interpolate</span>(<span class='no'>.data</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,10 +173,6 @@ and transforms it into second-by-second.</p>
     <tr>
       <th>.data</th>
       <td><p>Data retrieved from <code><a href='read_data.html'>read_data()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>time_column</th>
-      <td><p>The name (quoted) of the column containing the time. Default to "t".</p></td>
     </tr>
     </table>
 

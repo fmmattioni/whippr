@@ -49,7 +49,11 @@
 <meta property="og:title" content="Perform average on second-by-second data — perform_average" />
 <meta property="og:description" content="This function performs either a bin- or a rolling-average on the interpolated data.
 You must specify the type of the average before continuing." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="/reference/figures/logo.png" />
+<meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@felipe_mattioni" />
+<meta name="twitter:site" content="@felipe_mattioni" />
 
 
 
@@ -163,7 +167,6 @@ You must specify the <code>type</code> of the average before continuing.</p>
 
     <pre class="usage"><span class='fu'>perform_average</span>(
   <span class='no'>.data</span>,
-  <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bin"</span>, <span class='st'>"rolling"</span>),
   <span class='kw'>bins</span> <span class='kw'>=</span> <span class='fl'>30</span>,
   <span class='kw'>rolling_window</span> <span class='kw'>=</span> <span class='fl'>30</span>
@@ -175,10 +178,6 @@ You must specify the <code>type</code> of the average before continuing.</p>
     <tr>
       <th>.data</th>
       <td><p>The second-by-second data retrieved from <code><a href='interpolate.html'>interpolate()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>time_column</th>
-      <td><p>The name (quoted) of the column containing the time. Default to "t".</p></td>
     </tr>
     <tr>
       <th>type</th>
