@@ -4,6 +4,13 @@ template:
   params:
     bootswatch: sandstone
     ganalytics: UA-126092763-1
+  opengraph:
+    image:
+      src: man/figures/logo.png
+      alt: "Tools for Manipulating Gas Exchange Data"
+    twitter:
+      creator: "@felipe_mattioni"
+      card: summary_large_image
 
 authors:
   Felipe Mattioni Maturana:
