@@ -10,10 +10,9 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck"), repos = "https://ftp.fau.de/cran/")
-          install.packages("webshot")
-          remotes::install_deps(dependencies = TRUE, repos = "https://ftp.fau.de/cran/")
+          install.packages(c("remotes", "rcmdcheck"))
+          remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
       - name: Check
-        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        run: rcmdcheck::rcmdcheck(args = "--no-manual --no-build-vignettes --ignore-vignettes", error_on = "error")
         shell: Rscript {0}
