@@ -28,6 +28,11 @@ navbar:
   left:
     - icon: fa-home fa-lg
       href: index.html
+    - icon: fa-book fa-lg
+      text: "Articles"
+      menu:
+      - text: "VO2 kinetics analysis"
+        href: articles/vo2_kinetics.html
     - text: Reference
       icon: fa-balance-scale
       href: reference/index.html
@@ -58,3 +63,16 @@ reference:
     Perform average on second-by-second data
   contents:
   - perform_average
+- title: VO2 kinetics analysis
+  desc: >
+    Tools for performing VO2 kinetics analysis
+  contents:
+  - vo2_kinetics
+  - starts_with("normalize")
+  - detect_outliers
+  - plot_outliers
+  - starts_with("predict")
+  - process_data
+  - perform_kinetics
+  - get_residuals
+  - model_diagnostics
