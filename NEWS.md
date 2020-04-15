@@ -12,3 +12,7 @@
 * Improved error messages in case `read_data()` cannot find the name of the time column provided.
 
 * Removed the `time_column` argument from the `interpolate()` and `perform_average()` functions. This is only necessary in `read_data()` now.
+
+## VO2 kinetics analysis
+
+* Added set of tools for VO2 kinetics analysis
