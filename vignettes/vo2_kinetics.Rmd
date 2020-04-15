@@ -36,7 +36,7 @@ Functions for analysis in the heavy- and severe-intensity domains will be added 
 
 For making everyone's life easier, the general function `vo2_kinetics()` was created. This function calls smaller separate functions that **fully** automate the VO2 kinetics data analysis. The following interactive tree diagram shows how each function is called:
 
-```{r echo=FALSE}
+```{r echo=FALSE, screenshot.force=FALSE}
 library(dplyr, warn.conflicts = FALSE)
 library(collapsibleTree)
 
