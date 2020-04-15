@@ -11,6 +11,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"), repos = "https://ftp.fau.de/cran/")
+          install.packages("webshot")
           remotes::install_deps(dependencies = TRUE, repos = "https://ftp.fau.de/cran/")
         shell: Rscript {0}
       - name: Check
