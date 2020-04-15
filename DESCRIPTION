@@ -24,5 +24,20 @@ Imports:
     tibble,
     zoo,
     purrr,
-    tidyr
+    tidyr,
+    broom,
+    cli,
+    ggplot2,
+    glue,
+    minpack.lm,
+    patchwork,
+    rlang,
+    usethis,
+    nlstools
 RoxygenNote: 7.1.0
+Suggests: 
+    knitr,
+    rmarkdown,
+    fansi,
+    collapsibleTree
+VignetteBuilder: knitr
