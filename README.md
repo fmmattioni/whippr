@@ -212,21 +212,50 @@ df %>%
 #> #   Step <dbl>, LogVE <dbl>, `P(A-a)O2` <dbl>, …
 ```
 
+### Perform VO2 kinetics analysis
+
+``` r
+results_kinetics <- vo2_kinetics(
+  .data = df,
+  intensity_domain = "moderate",
+  time_column = "t",
+  vo2_column = "VO2",
+  protocol_n_transitions = 3,
+  protocol_baseline_length = 360,
+  protocol_transition_length = 360,
+  cleaning_level = 0.95,
+  cleaning_baseline_fit = c("linear", "exponential", "exponential"),
+  fit_level = 0.95,
+  fit_bin_average = 5,
+  fit_phase_1_length = 20,
+  fit_baseline_length = 120,
+  fit_transition_length = 240,
+  verbose = TRUE
+)
+#> ────────────────────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────────────────────────
+#> ✓ Detecting outliers
+#> ● 14 outlier(s) found in transition 1
+#> ● 15 outlier(s) found in transition 2
+#> ● 13 outlier(s) found in transition 3
+#> ✓ Processing data...
+#> ✓       └─ Removing outliers
+#> ✓       └─ Interpolating each transition
+#> ✓       └─ Ensemble-averaging transitions
+#> ✓       └─ Performing 5-s bin averages
+#> ✓ Fitting data...
+#> ✓       └─ Fitting baseline
+#> ✓       └─ Fitting transition
+#> ✓       └─ Calculating residuals
+#> ✓       └─ Preparing plots
+#> ────────────────────────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────────────────────────
+```
+
 ## Metabolic carts currently supported
 
   - [COSMED](https://www.cosmed.com/en/)
   - [CORTEX](https://cortex-medical.com/EN)
   - [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
   - [Parvo Medics](http://www.parvo.com/)
-
-## Functions to be added
-
-The package is still in its
-[experimental](https://www.tidyverse.org/lifecycle/#experimental) phase,
-so do not hesitate to open any issues and/or suggest improvements.
-
-  - gas exchange threshold and respiratory compensation point detection
-  - outliers (“bad breaths”) detection
 
 ## Code of Conduct
 
