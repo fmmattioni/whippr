@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • whippr</title>
+<title>Normalize transitions — normalize_transitions • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Normalize transitions — normalize_transitions" />
+<meta property="og:description" content="Recognizes and normalizes the time column of each transition. It will also label the transitions into: 'baseline' or 'transition'." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -170,18 +170,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Normalize transitions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/normalize.R'><code>R/normalize.R</code></a></small>
+    <div class="hidden name"><code>normalize_transitions.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>Recognizes and normalizes the time column of each transition. It will also label the transitions into: 'baseline' or 'transition'.</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>normalize_transitions</span>(
+  <span class='no'>.data</span>,
+  <span class='no'>protocol_n_transitions</span>,
+  <span class='no'>protocol_baseline_length</span>,
+  <span class='no'>protocol_transition_length</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data</th>
+      <td><p>Breath-by-breath data.</p></td>
+    </tr>
+    <tr>
+      <th>protocol_n_transitions</th>
+      <td><p>Number of transitions performed.</p></td>
+    </tr>
+    <tr>
+      <th>protocol_baseline_length</th>
+      <td><p>The length of the baseline (in seconds).</p></td>
+    </tr>
+    <tr>
+      <th>protocol_transition_length</th>
+      <td><p>The length of the transition (in seconds).</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -1,0 +1,27 @@
+/*
+Make only first letter upper case in TOC
+https://github.com/r-lib/pkgdown/issues/1302
+*/
+nav[data-toggle='toc'] .nav > li > a {
+  text-transform: none !important;
+}
+
+.rmdinfo {
+  padding: 2em 1em 1em 7em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  background-color: #e6f0ff;
+  position:relative;
+}
+
+.rmdinfo:before {
+  font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f129";
+   top: 50%;
+   transform: translateY(-50%);
+   left: 30px;
+   position:absolute;
+   font-size: 45px;
+ }

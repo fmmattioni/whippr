@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • whippr</title>
+<title>Process data for VO2 kinetics fitting — process_data • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Process data for VO2 kinetics fitting — process_data" />
+<meta property="og:description" content="It removes the outliers detected through detect_outliers(), interpolates each transition,
+ensemble-averages all the transitions into one, performs a bin-average, and normalizes the time column
+(time zero will indicate the end of baseline and the start of the transition phase)." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -170,18 +172,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Process data for VO2 kinetics fitting</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/kinetics.R'><code>R/kinetics.R</code></a></small>
+    <div class="hidden name"><code>process_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>It removes the outliers detected through <code><a href='detect_outliers.html'>detect_outliers()</a></code>, interpolates each transition,
+ensemble-averages all the transitions into one, performs a bin-average, and normalizes the time column
+(time zero will indicate the end of baseline and the start of the transition phase).</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>process_data</span>(<span class='no'>.data_outliers</span>, <span class='no'>protocol_baseline_length</span>, <span class='no'>fit_bin_average</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data_outliers</th>
+      <td><p>The data retrived from <code><a href='detect_outliers.html'>detect_outliers()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>protocol_baseline_length</th>
+      <td><p>The length of the baseline (in seconds).</p></td>
+    </tr>
+    <tr>
+      <th>fit_bin_average</th>
+      <td><p>The bin average to be performed for the final fit.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a> with the time-aligned, ensembled-averaged, and bin-averaged data.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>TODO</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

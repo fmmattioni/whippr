@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • whippr</title>
+<title>Extract confidence and prediction bands — predict_bands • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Extract confidence and prediction bands — predict_bands" />
+<meta property="og:description" content="It extracts confidence and prediction bands from the nls model. It is used only for data cleaning." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -170,17 +170,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Extract confidence and prediction bands</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/predict.R'><code>R/predict.R</code></a></small>
+    <div class="hidden name"><code>predict_bands.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>It extracts confidence and prediction bands from the <code>nls</code> model. It is used only for data cleaning.</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>predict_bands</span>(
+  <span class='no'>.data</span>,
+  <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>,
+  <span class='kw'>vo2_column</span> <span class='kw'>=</span> <span class='st'>"VO2"</span>,
+  <span class='kw'>cleaning_level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>cleaning_baseline_fit</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"linear"</span>, <span class='st'>"exponential"</span>)
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data</th>
+      <td><p>The nornalized data retrieved from <code><a href='normalize_transitions.html'>normalize_transitions()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>time_column</th>
+      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".</p></td>
+    </tr>
+    <tr>
+      <th>vo2_column</th>
+      <td><p>The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to 'VO2'.</p></td>
+    </tr>
+    <tr>
+      <th>cleaning_level</th>
+      <td><p>A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated.</p></td>
+    </tr>
+    <tr>
+      <th>cleaning_baseline_fit</th>
+      <td><p>A character indicating what kind of fit to perform for each baseline. Either 'linear' or 'exponential'.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a> containing the following columns:</p>
+<dt>x</dt><dd><p>The provided time data.</p></dd>
+<dt>y</dt><dd><p>The provided VO2 data.</p></dd>
+<dt>.fitted</dt><dd><p>The predicted response for that observation.</p></dd>
+<dt>.resid</dt><dd><p>The residual for a particular point.</p></dd>
+<dt>lwr_conf</dt><dd><p>Lower limit of the confidence band.</p></dd>
+<dt>upr_conf</dt><dd><p>Upper limit of the confidence band.</p></dd>
+<dt>lwr_pred</dt><dd><p>Lower limit of the prediction band.</p></dd>
+<dt>upr_pred</dt><dd><p>Upper limit of the prediction band.</p></dd>
 
 
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • whippr</title>
+<title>Get residuals — get_residuals • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Get residuals — get_residuals" />
+<meta property="og:description" content="Computes residuals from the VO2 kinetics model." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -170,17 +170,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/utils-pipe.R'><code>R/utils-pipe.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Get residuals</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/nlstools.R'><code>R/nlstools.R</code></a></small>
+    <div class="hidden name"><code>get_residuals.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>Computes residuals from the VO2 kinetics model.</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>get_residuals</span>(<span class='no'>.model</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.model</th>
+      <td><p>A model of class <code>nls</code>.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a> containing the data passed to augment, and additional columns:</p>
+<dt>.fitted</dt><dd><p>The predicted response for that observation.</p></dd>
+<dt>.resid</dt><dd><p>The residual for a particular point.</p></dd>
+<dt>standardized_residuals</dt><dd><p>Standardized residuals.</p></dd>
+<dt>sqrt_abs_standardized_residuals</dt><dd><p>The sqrt of absolute value of standardized residuals.</p></dd>
+<dt>lag_residuals</dt><dd><p>The lag of the <code>.resid</code> column for plotting auto-correlation.</p></dd>
 
 
   </div>
