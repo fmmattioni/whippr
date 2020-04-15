@@ -6,7 +6,7 @@
 \usage{
 perform_average(
   .data,
-  type = c("bin", "rolling"),
+  type = c("bin", "rolling", "ensemble"),
   bins = 30,
   rolling_window = 30
 )
@@ -14,7 +14,7 @@ perform_average(
 \arguments{
 \item{.data}{The second-by-second data retrieved from \code{interpolate()}.}
 
-\item{type}{The type of the average to perform. Either \code{bin} or \code{rolling}.}
+\item{type}{The type of the average to perform. Either \code{bin}, \code{rolling}, or \code{ensemble}.}
 
 \item{bins}{If bin-average is chosen, here you can specify the size of the bin-average, in seconds. Default to 30-s bin-average.}
 
@@ -26,6 +26,10 @@ a \link[tibble:tibble-package]{tibble}
 \description{
 This function performs either a bin- or a rolling-average on the interpolated data.
 You must specify the \code{type} of the average before continuing.
+}
+\details{
+Ensemble average is used in VO2 kinetics analysis, where a series of transitions from baseline to
+the moderate/heavy/severe intensity-domain is ensembled averaged into a single 'bout' for further data processing.
 }
 \examples{
 ## get file path from example data
