@@ -125,7 +125,7 @@ After reading the raw data, we can move directly to performing the VO2 kinetics 
 ```{block, type = 'rmdinfo'}
 For modeling VO2 kinetics analysis in the **moderate-intensity domain**, a mono-exponential model is used: 
 
-$$VO_2\left(t\right)=baseline+amplitude\cdot\left(-e^{^{-\frac{\left(t-TD\right)}{τ}}}\right)$$
+$$VO_2\left(t\right)=baseline+amplitude\cdot\left(1-e^{^{-\frac{\left(t-TD\right)}{τ}}}\right)$$
 
 where:
 
