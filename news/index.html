@@ -189,6 +189,7 @@
 <li><p>Added function <code><a href="../reference/perform_average.html">perform_average()</a></code> to perform bin- and rolling-averages.</p></li>
 <li><p>Improved error messages in case <code><a href="../reference/read_data.html">read_data()</a></code> cannot find the name of the time column provided.</p></li>
 <li><p>Removed the <code>time_column</code> argument from the <code><a href="../reference/interpolate.html">interpolate()</a></code> and <code><a href="../reference/perform_average.html">perform_average()</a></code> functions. This is only necessary in <code><a href="../reference/read_data.html">read_data()</a></code> now.</p></li>
+<li><p>Make sure that data does not contain rows and cols with only <code>NA</code> in <code>interpolation()</code> (thanks <a href='https://github.com/Scott-S-Hannah'>@Scott-S-Hannah</a>)</p></li>
 </ul>
 <div id="vo2-kinetics-analysis" class="section level2">
 <h2 class="hasAnchor">
