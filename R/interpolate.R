@@ -22,7 +22,8 @@
 interpolate <- function(.data) {
   ## first make sure data only contains numeric columns
   data_num <- .data %>%
-    dplyr::select_if(is.numeric)
+    dplyr::select_if(is.numeric) %>%
+    janitor::remove_empty(dat = ., which = c("rows", "cols"))
 
   lapply(data_num, function (i) approx(
     x = data_num[[1]],
