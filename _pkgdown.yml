@@ -76,3 +76,8 @@ reference:
   - perform_kinetics
   - get_residuals
   - model_diagnostics
+- title: Additional tools
+  desc: >
+    Collection of a few additional helpful tools
+  contents:
+  - run_manual_cleaner
