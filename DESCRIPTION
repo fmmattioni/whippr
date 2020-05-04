@@ -38,7 +38,7 @@ Imports:
     miniUI,
     datapasta,
     rstudioapi,
-    shinyThings
+    shinyThings (>= 0.4.0)
 RoxygenNote: 7.1.0
 Suggests: 
     knitr,
@@ -46,3 +46,5 @@ Suggests:
     fansi,
     collapsibleTree
 VignetteBuilder: knitr
+Remotes:  
+    gadenbuie/shinyThings
