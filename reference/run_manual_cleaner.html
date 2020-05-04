@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform VO2 kinetics fitting — perform_kinetics • whippr</title>
+<title>Manual data cleaner — run_manual_cleaner • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Perform VO2 kinetics fitting — perform_kinetics" />
-<meta property="og:description" content="Performs the fitting process for the VO2 kinetics analysis. At this point, the data should already have been cleaned (outliers removed) and processed
-(interpolated, time-aligned, ensembled-averaged, and bin-averaged)." />
+<meta property="og:title" content="Manual data cleaner — run_manual_cleaner" />
+<meta property="og:description" content="Usually manual data cleaning should be avoided. However, sometimes in gas exchange data
+there is the need to delete a few clear &quot;bad breaths&quot; (noise). In these situations you may use this function.
+Although it is encouraged that you use the detect_outliers() function, you may use this function at your own risk.
+This function can also be used to clean other kind of data, like heart rate data." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -171,90 +173,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform VO2 kinetics fitting</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/kinetics.R'><code>R/kinetics.R</code></a></small>
-    <div class="hidden name"><code>perform_kinetics.Rd</code></div>
+    <h1>Manual data cleaner</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/addin.R'><code>R/addin.R</code></a></small>
+    <div class="hidden name"><code>run_manual_cleaner.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Performs the fitting process for the VO2 kinetics analysis. At this point, the data should already have been cleaned (outliers removed) and processed
-(interpolated, time-aligned, ensembled-averaged, and bin-averaged).</p>
+    <p>Usually manual data cleaning should be avoided. However, sometimes in gas exchange data
+there is the need to delete a few clear "bad breaths" (noise). In these situations you may use this function.
+Although it is encouraged that you use the <code><a href='detect_outliers.html'>detect_outliers()</a></code> function, you may use this function at your own risk.
+This function can also be used to clean other kind of data, like heart rate data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>perform_kinetics</span>(
-  <span class='no'>.data_processed</span>,
-  <span class='kw'>intensity_domain</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"moderate"</span>, <span class='st'>"heavy"</span>, <span class='st'>"severe"</span>),
-  <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>,
-  <span class='kw'>vo2_column</span> <span class='kw'>=</span> <span class='st'>"VO2"</span>,
-  <span class='kw'>fit_level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='no'>fit_phase_1_length</span>,
-  <span class='no'>fit_baseline_length</span>,
-  <span class='no'>fit_transition_length</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>run_manual_cleaner</span>(<span class='no'>.data</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.data_processed</th>
-      <td><p>The data retrived from <code><a href='process_data.html'>process_data()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>intensity_domain</th>
-      <td><p>The exercise-intensity domain that the test was performed. Either <em>moderate</em>, <em>heavy</em>, or <em>severe</em>.</p></td>
-    </tr>
-    <tr>
-      <th>time_column</th>
-      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be <em>"t"</em>. Therefore, you may specify it here.  Default to <code>"t"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>vo2_column</th>
-      <td><p>The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to <code>"VO2"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>fit_level</th>
-      <td><p>A numeric scalar between 0 and 1 giving the confidence level for the parameter estimates in the final VO2 kinetics fit. Default to <code>0.95</code>.</p></td>
-    </tr>
-    <tr>
-      <th>fit_phase_1_length</th>
-      <td><p>The length of the phase I that you wish to exclude from the final exponential fit, in seconds. See  <code>VO2 kinetics</code> section in <code><a href='vo2_kinetics.html'>?vo2_kinetics</a></code> for more details.</p></td>
-    </tr>
-    <tr>
-      <th>fit_baseline_length</th>
-      <td><p>The length the baseline to perform the final linear fit, in seconds. See <code>VO2 kinetics</code> section <code><a href='vo2_kinetics.html'>?vo2_kinetics</a></code> for more details.</p></td>
-    </tr>
-    <tr>
-      <th>fit_transition_length</th>
-      <td><p>The length of the transition to perform the final exponential fit, in seconds. See <code>VO2 kinetics</code> section <code><a href='vo2_kinetics.html'>?vo2_kinetics</a></code> for more details.</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>A boolean indicating whether messages should be printed in the console. Default to <code>TRUE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments when fiting VO2 kinetics in the heavy- or severe-intensity domains. Arguments may be the following:</p><dl>
-<dt><code>TODO</code></dt><dd><p></p></dd>
-
-</dl></td>
+      <th>.data</th>
+      <td><p>The data to be manually cleaned. The first column will be always treated as the x-axis.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a> containing one row and the nested columns:</p>
-<dt>data_fitted</dt><dd><p>The data containing the time and VO2 columns, as well as the fitted data and its residuals for each data point.</p></dd>
-<dt>model</dt><dd><p>A <code>nls</code> object. The model used in the VO2 kinetics fitting.</p></dd>
-<dt>model_summary</dt><dd><p>The tidied summary of the <code>model</code>.</p></dd>
-<dt>model_residuals</dt><dd><p>The residuals of the <code>model</code>.</p></dd>
-<dt>plot_model</dt><dd><p>The final plot of the fitted <code>model</code>.</p></dd>
-<dt>plot_residuals</dt><dd><p>The residuals plot for the <code>model</code> diagnostics.</p></dd>
-
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>See <code><a href='vo2_kinetics.html'>?vo2_kinetics</a></code> for details.</p>
+    <p>The code to reproduce the manual data cleaning.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
