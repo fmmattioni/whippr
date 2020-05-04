@@ -148,7 +148,7 @@ run_manual_cleaner <- function(.data) {
       context <- rstudioapi::getActiveDocumentContext()
       context_row <- context$selection[[1]]$range$end["row"]
 
-      return_code <- glue::glue("\n\n\n## code from manual cleaning\n{input$output_df} <- {data_input} %>% \n\tdplyr::filter({time_column} %in% {points_to_filter})\n\n")
+      return_code <- glue::glue("\n\n\n## code from manual cleaning\n{input$output_df} <- {data_input} %>% \n\tdplyr::filter(!{time_column} %in% {points_to_filter})\n\n")
 
       rstudioapi::insertText(text = return_code, location = c(context_row + 1, 1))
       stopApp()
