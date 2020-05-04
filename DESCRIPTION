@@ -33,7 +33,12 @@ Imports:
     patchwork,
     rlang,
     usethis,
-    nlstools
+    nlstools,
+    shiny,
+    miniUI,
+    datapasta,
+    rstudioapi,
+    shinyThings
 RoxygenNote: 7.1.0
 Suggests: 
     knitr,
