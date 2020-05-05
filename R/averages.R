@@ -50,7 +50,7 @@ perform_average.bin <- function(.data, type = c("bin", "rolling", "ensemble"), b
 
   out <- data_num %>%
     dplyr::group_by_at(1, function(x) round(x / bins) * bins) %>%
-    dplyr::summarise_all(mean)
+    dplyr::summarise_all(mean, na.rm = TRUE)
 
   out
 }
@@ -76,7 +76,7 @@ perform_average.ensemble <- function(.data, type = c("bin", "rolling", "ensemble
 
   out <- data_num %>%
     dplyr::group_by_at(1) %>%
-    dplyr::summarise_all(mean)
+    dplyr::summarise_all(mean, na.rm = TRUE)
 
   out
 }
