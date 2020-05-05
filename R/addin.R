@@ -11,7 +11,7 @@
 #'
 #' @import shiny
 #' @export
-run_manual_cleaner <- function(.data) {
+run_manual_cleaner <- function(.data, width = 1200, height = 900) {
 
   ## check data
   if(missing(.data))
@@ -155,5 +155,5 @@ run_manual_cleaner <- function(.data) {
     })
   }
 
-  runGadget(app = ui, server = server, viewer = dialogViewer(dialogName = "Manual cleaner", width = 1200, height = 900), stopOnCancel = FALSE)
+  runGadget(app = ui, server = server, viewer = dialogViewer(dialogName = "Manual cleaner", width = width, height = height), stopOnCancel = FALSE)
 }

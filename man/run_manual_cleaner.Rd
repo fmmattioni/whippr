@@ -4,7 +4,7 @@
 \alias{run_manual_cleaner}
 \title{Manual data cleaner}
 \usage{
-run_manual_cleaner(.data)
+run_manual_cleaner(.data, width = 1200, height = 900)
 }
 \arguments{
 \item{.data}{The data to be manually cleaned. The first column will be always treated as the x-axis.}
