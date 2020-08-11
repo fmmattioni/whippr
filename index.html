@@ -138,8 +138,10 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version of <code>whippr</code> from <a href="https://github.com/fmmattioni/whippr">Github</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("remotes")</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"fmmattioni/whippr"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># install.packages("remotes")</span>
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"fmmattioni/whippr"</span>)
+</pre></div>
 </div>
 <div id="use" class="section level2">
 <h2 class="hasAnchor">
@@ -147,14 +149,15 @@
 <div id="read-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#read-data" class="anchor"></a>Read data</h3>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">whippr</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/fmmattioni/whippr">whippr</a></span>)
 
 <span class="co">## example file that comes with the package for demonstration purposes</span>
-<span class="no">path_example</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"example_cosmed.xlsx"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"whippr"</span>)
+<span class="kw">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"example_cosmed.xlsx"</span>, package = <span class="st">"whippr"</span>)
 
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="no">path_example</span>, <span class="kw">metabolic_cart</span> <span class="kw">=</span> <span class="st">"cosmed"</span>)
+<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span>(path = <span class="kw">path_example</span>, metabolic_cart = <span class="st">"cosmed"</span>)
 
-<span class="no">df</span>
+<span class="kw">df</span>
 <span class="co">#&gt; # A tibble: 754 x 119</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -188,12 +191,14 @@
 <span class="co">#&gt; #   V6` &lt;dbl&gt;, `P Syst` &lt;dbl&gt;, `P Diast` &lt;dbl&gt;, Symptom &lt;dbl&gt;, DP &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, `Phase time` &lt;chr&gt;, Qt &lt;dbl&gt;, SV &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `Vt/FVC` &lt;dbl&gt;, Long &lt;chr&gt;, Lat &lt;chr&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS</span>
-<span class="co">#&gt; #   Dist.` &lt;dbl&gt;, predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Dist.` &lt;dbl&gt;, predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, …</span>
+</pre></div>
 </div>
 <div id="interpolate" class="section level3">
 <h3 class="hasAnchor">
 <a href="#interpolate" class="anchor"></a>Interpolate</h3>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="no">df</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>()
 <span class="co">#&gt; # A tibble: 2,159 x 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
@@ -228,7 +233,8 @@
 <span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span>
+</pre></div>
 </div>
 <div id="perform-averages" class="section level3">
 <h3 class="hasAnchor">
@@ -236,10 +242,11 @@
 <div id="bin-average" class="section level4">
 <h4 class="hasAnchor">
 <a href="#bin-average" class="anchor"></a>Bin-average</h4>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="co">## example of performing 30-s bin-averages</span>
-<span class="no">df</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span>(<span class="kw">type</span> <span class="kw">=</span> <span class="st">"bin"</span>, <span class="kw">bins</span> <span class="kw">=</span> <span class="fl">30</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="co">## example of performing 30-s bin-averages</span>
+<span class="kw">df</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>() <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span>(type = <span class="st">"bin"</span>, bins = <span class="fl">30</span>)
 <span class="co">#&gt; # A tibble: 73 x 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -273,15 +280,17 @@
 <span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span>
+</pre></div>
 </div>
 <div id="rolling-average" class="section level4">
 <h4 class="hasAnchor">
 <a href="#rolling-average" class="anchor"></a>Rolling-average</h4>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="co">## example of performing 30-s rolling-averages</span>
-<span class="no">df</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span>(<span class="kw">type</span> <span class="kw">=</span> <span class="st">"rolling"</span>, <span class="kw">rolling_window</span> <span class="kw">=</span> <span class="fl">30</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="co">## example of performing 30-s rolling-averages</span>
+<span class="kw">df</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>() <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span>(type = <span class="st">"rolling"</span>, rolling_window = <span class="fl">30</span>)
 <span class="co">#&gt; # A tibble: 2,130 x 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -315,28 +324,30 @@
 <span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span>
+</pre></div>
 </div>
 </div>
 <div id="perform-vo2-kinetics-analysis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#perform-vo2-kinetics-analysis" class="anchor"></a>Perform VO2 kinetics analysis</h3>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="no">results_kinetics</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span>(
-  <span class="kw">.data</span> <span class="kw">=</span> <span class="no">df</span>,
-  <span class="kw">intensity_domain</span> <span class="kw">=</span> <span class="st">"moderate"</span>,
-  <span class="kw">time_column</span> <span class="kw">=</span> <span class="st">"t"</span>,
-  <span class="kw">vo2_column</span> <span class="kw">=</span> <span class="st">"VO2"</span>,
-  <span class="kw">protocol_n_transitions</span> <span class="kw">=</span> <span class="fl">3</span>,
-  <span class="kw">protocol_baseline_length</span> <span class="kw">=</span> <span class="fl">360</span>,
-  <span class="kw">protocol_transition_length</span> <span class="kw">=</span> <span class="fl">360</span>,
-  <span class="kw">cleaning_level</span> <span class="kw">=</span> <span class="fl">0.95</span>,
-  <span class="kw">cleaning_baseline_fit</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span>),
-  <span class="kw">fit_level</span> <span class="kw">=</span> <span class="fl">0.95</span>,
-  <span class="kw">fit_bin_average</span> <span class="kw">=</span> <span class="fl">5</span>,
-  <span class="kw">fit_phase_1_length</span> <span class="kw">=</span> <span class="fl">20</span>,
-  <span class="kw">fit_baseline_length</span> <span class="kw">=</span> <span class="fl">120</span>,
-  <span class="kw">fit_transition_length</span> <span class="kw">=</span> <span class="fl">240</span>,
-  <span class="kw">verbose</span> <span class="kw">=</span> <span class="fl">TRUE</span>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">results_kinetics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span>(
+  .data = <span class="kw">df</span>,
+  intensity_domain = <span class="st">"moderate"</span>,
+  time_column = <span class="st">"t"</span>,
+  vo2_column = <span class="st">"VO2"</span>,
+  protocol_n_transitions = <span class="fl">3</span>,
+  protocol_baseline_length = <span class="fl">360</span>,
+  protocol_transition_length = <span class="fl">360</span>,
+  cleaning_level = <span class="fl">0.95</span>,
+  cleaning_baseline_fit = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span>),
+  fit_level = <span class="fl">0.95</span>,
+  fit_bin_average = <span class="fl">5</span>,
+  fit_phase_1_length = <span class="fl">20</span>,
+  fit_baseline_length = <span class="fl">120</span>,
+  fit_transition_length = <span class="fl">240</span>,
+  verbose = <span class="fl">TRUE</span>
 )
 <span class="co">#&gt; ────────────────────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; ✓ Detecting outliers</span>
@@ -353,7 +364,8 @@
 <span class="co">#&gt; ✓       └─ Fitting transition</span>
 <span class="co">#&gt; ✓       └─ Calculating residuals</span>
 <span class="co">#&gt; ✓       └─ Preparing plots</span>
-<span class="co">#&gt; ────────────────────────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────────────────────────</span></pre></div>
+<span class="co">#&gt; ────────────────────────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────────────────────────</span>
+</pre></div>
 </div>
 </div>
 <div id="metabolic-carts-currently-supported" class="section level2">

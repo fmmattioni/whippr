@@ -182,10 +182,10 @@ You must specify the <code>type</code> of the average before continuing.</p>
     </div>
 
     <pre class="usage"><span class='fu'>perform_average</span>(
-  <span class='no'>.data</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bin"</span>, <span class='st'>"rolling"</span>, <span class='st'>"ensemble"</span>),
-  <span class='kw'>bins</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>rolling_window</span> <span class='kw'>=</span> <span class='fl'>30</span>
+  <span class='kw'>.data</span>,
+  type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bin"</span>, <span class='st'>"rolling"</span>, <span class='st'>"ensemble"</span>),
+  bins = <span class='fl'>30</span>,
+  rolling_window = <span class='fl'>30</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -219,15 +219,15 @@ the moderate/heavy/severe intensity-domain is ensembled averaged into a single '
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## get file path from example data</span>
-<span class='no'>path_example</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"example_cosmed.xlsx"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"whippr"</span>)
+<span class='kw'>path_example</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"example_cosmed.xlsx"</span>, package = <span class='st'>"whippr"</span>)
 
 <span class='co'>## read data</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>path_example</span>, <span class='kw'>metabolic_cart</span> <span class='kw'>=</span> <span class='st'>"cosmed"</span>)
+<span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(path = <span class='kw'>path_example</span>, metabolic_cart = <span class='st'>"cosmed"</span>)
 
 <span class='co'>## interpolate and perform 30-s bin-average</span>
-<span class='no'>df</span> <span class='kw'>%&gt;%</span>
- <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='kw'>%&gt;%</span>
- <span class='fu'>perform_average</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bin"</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 73 x 114</span><span>
+<span class='kw'>df</span> <span class='op'>%&gt;%</span>
+ <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='op'>%&gt;%</span>
+ <span class='fu'>perform_average</span>(type = <span class='st'>"bin"</span>, bins = <span class='fl'>30</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 73 x 114</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span>     0  19.0  1.33  24.0  932.  744.  207.   58.9     25.8      32.5     11.2
@@ -262,9 +262,9 @@ the moderate/heavy/severe intensity-domain is ensembled averaged into a single '
 #&gt; </span><span style='color: #555555;'>#   predVO2 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, BR </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, `O2 Cost` </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, EEtot </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, IC </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   Step </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, LogVE </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, `P(A-a)O2` </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, …</span><span></div><div class='input'>
 <span class='co'>## interpolate and perform 30-s rolling-average</span>
-<span class='no'>df</span> <span class='kw'>%&gt;%</span>
- <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='kw'>%&gt;%</span>
- <span class='fu'>perform_average</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"rolling"</span>, <span class='kw'>rolling_window</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2,130 x 114</span><span>
+<span class='kw'>df</span> <span class='op'>%&gt;%</span>
+ <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='op'>%&gt;%</span>
+ <span class='fu'>perform_average</span>(type = <span class='st'>"rolling"</span>, rolling_window = <span class='fl'>30</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2,130 x 114</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span>  16.5  16.4  1.75  26.5 </span><span style='text-decoration: underline;'>1</span><span>033.  852.  271.   80.1     25.7      31.3     12.4

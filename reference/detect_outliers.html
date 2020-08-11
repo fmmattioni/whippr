@@ -180,16 +180,16 @@
     </div>
 
     <pre class="usage"><span class='fu'>detect_outliers</span>(
-  <span class='no'>.data</span>,
-  <span class='kw'>test_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"incremental"</span>, <span class='st'>"kinetics"</span>),
-  <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>,
-  <span class='kw'>vo2_column</span> <span class='kw'>=</span> <span class='st'>"VO2"</span>,
-  <span class='kw'>cleaning_level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='no'>cleaning_baseline_fit</span>,
-  <span class='no'>protocol_n_transitions</span>,
-  <span class='no'>protocol_baseline_length</span>,
-  <span class='no'>protocol_transition_length</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>.data</span>,
+  test_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"incremental"</span>, <span class='st'>"kinetics"</span>),
+  time_column = <span class='st'>"t"</span>,
+  vo2_column = <span class='st'>"VO2"</span>,
+  cleaning_level = <span class='fl'>0.95</span>,
+  <span class='kw'>cleaning_baseline_fit</span>,
+  <span class='kw'>protocol_n_transitions</span>,
+  <span class='kw'>protocol_baseline_length</span>,
+  <span class='kw'>protocol_transition_length</span>,
+  verbose = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -246,23 +246,23 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## get file path from example data</span>
-<span class='no'>path_example</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"example_cosmed.xlsx"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"whippr"</span>)
+<span class='kw'>path_example</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"example_cosmed.xlsx"</span>, package = <span class='st'>"whippr"</span>)
 
 <span class='co'>## read data</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>path_example</span>, <span class='kw'>metabolic_cart</span> <span class='kw'>=</span> <span class='st'>"cosmed"</span>)
+<span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(path = <span class='kw'>path_example</span>, metabolic_cart = <span class='st'>"cosmed"</span>)
 
 <span class='co'>## detect outliers</span>
-<span class='no'>data_outliers</span> <span class='kw'>&lt;-</span> <span class='fu'>detect_outliers</span>(
-  <span class='kw'>.data</span> <span class='kw'>=</span> <span class='no'>df</span>,
-  <span class='kw'>test_type</span> <span class='kw'>=</span> <span class='st'>"kinetics"</span>,
-  <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>,
-  <span class='kw'>vo2_column</span> <span class='kw'>=</span> <span class='st'>"VO2"</span>,
-  <span class='kw'>cleaning_level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>cleaning_baseline_fit</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"linear"</span>, <span class='st'>"exponential"</span>, <span class='st'>"exponential"</span>),
-  <span class='kw'>protocol_n_transitions</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>protocol_baseline_length</span> <span class='kw'>=</span> <span class='fl'>360</span>,
-  <span class='kw'>protocol_transition_length</span> <span class='kw'>=</span> <span class='fl'>360</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+<span class='kw'>data_outliers</span> <span class='op'>&lt;-</span> <span class='fu'>detect_outliers</span>(
+  .data = <span class='kw'>df</span>,
+  test_type = <span class='st'>"kinetics"</span>,
+  time_column = <span class='st'>"t"</span>,
+  vo2_column = <span class='st'>"VO2"</span>,
+  cleaning_level = <span class='fl'>0.95</span>,
+  cleaning_baseline_fit = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"linear"</span>, <span class='st'>"exponential"</span>, <span class='st'>"exponential"</span>),
+  protocol_n_transitions = <span class='fl'>3</span>,
+  protocol_baseline_length = <span class='fl'>360</span>,
+  protocol_transition_length = <span class='fl'>360</span>,
+  verbose = <span class='fl'>TRUE</span>
  )</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Detecting outliers</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 14 outlier(s) found in transition 1</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 15 outlier(s) found in transition 2</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 13 outlier(s) found in transition 3</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

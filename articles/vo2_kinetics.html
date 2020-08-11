@@ -120,7 +120,7 @@
 
       
 
-      </header><script src="vo2_kinetics_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="vo2_kinetics_files/d3-4.10.2/d3.min.js"></script><link href="vo2_kinetics_files/collapsibleTree-0.1.6/collapsibleTree.css" rel="stylesheet">
+      </header><script src="vo2_kinetics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="vo2_kinetics_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="vo2_kinetics_files/d3-4.10.2/d3.min.js"></script><link href="vo2_kinetics_files/collapsibleTree-0.1.6/collapsibleTree.css" rel="stylesheet">
 <script src="vo2_kinetics_files/collapsibleTree-binding-0.1.7/collapsibleTree.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -146,16 +146,18 @@ Functions for analysis in the heavy- and severe-intensity domains will be added 
 </p>
 </div>
 <p>For making everyone’s life easier, the general function <code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code> was created. This function calls smaller separate functions that <strong>fully</strong> automate the VO2 kinetics data analysis. The following interactive tree diagram shows how each function is called:</p>
-<div id="htmlwidget-aec4b83d7114340c274c" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aec4b83d7114340c274c">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div id="read-the-data" class="section level2">
+<div id="htmlwidget-79d10fc45ad47b137125" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
+<script type="application/json" data-for="htmlwidget-79d10fc45ad47b137125">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div id="read-the-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#read-the-data" class="anchor"></a>Read the data</h2>
 <p>The first step is to read the raw data with the <code><a href="../reference/read_data.html">read_data()</a></code> function. Here we are going to use the example file that comes with <code>{whippr}</code>, which is a file exported from the COSMED metabolic cart.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">whippr</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/fmmattioni/whippr">whippr</a></span>)
 
-<span class="no">raw_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"example_cosmed.xlsx"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"whippr"</span>), <span class="kw">metabolic_cart</span> <span class="kw">=</span> <span class="st">"cosmed"</span>, <span class="kw">time_column</span> <span class="kw">=</span> <span class="st">"t"</span>)
+<span class="kw">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span>(path = <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"example_cosmed.xlsx"</span>, package = <span class="st">"whippr"</span>), metabolic_cart = <span class="st">"cosmed"</span>, time_column = <span class="st">"t"</span>)
 
-<span class="no">raw_data</span></pre></body></html></div>
+<span class="kw">raw_data</span>
+</pre></div>
 <pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 754 x 119</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
@@ -196,12 +198,14 @@ Functions for analysis in the heavy- and severe-intensity domains will be added 
 <li>3 x 6-min baseline periods at 20 W.</li>
 <li>3 x 6-min transition periods at the power output associated with 90% of the gas exchange threshold.</li>
 </ul>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 
-<span class="no">raw_data</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">t</span>, <span class="no">VO2</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw">shape</span> <span class="kw">=</span> <span class="fl">21</span>, <span class="kw">size</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="st">"white"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span>()</pre></body></html></div>
+<span class="kw">raw_data</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">t</span>, <span class="kw">VO2</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(shape = <span class="fl">21</span>, size = <span class="fl">3</span>, fill = <span class="st">"white"</span>) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span>()
+</pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-4-1.png" width="2100" style="display: block; margin: auto;"></p>
 </div>
 <div id="perform-the-analysis" class="section level2">
@@ -282,23 +286,25 @@ where:
 <code>fit_transition_length</code> = The length of the transition to perform the final exponential fit, in seconds.</li>
 </ul>
 <p>The analysis is performed like the following:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/vo2_kinetics.html">vo2_kinetics</a></span>(
-  <span class="kw">.data</span> <span class="kw">=</span> <span class="no">raw_data</span>,
-  <span class="kw">intensity_domain</span> <span class="kw">=</span> <span class="st">"moderate"</span>,
-  <span class="kw">time_column</span> <span class="kw">=</span> <span class="st">"t"</span>,
-  <span class="kw">vo2_column</span> <span class="kw">=</span> <span class="st">"VO2"</span>,
-  <span class="kw">protocol_n_transitions</span> <span class="kw">=</span> <span class="fl">3</span>,
-  <span class="kw">protocol_baseline_length</span> <span class="kw">=</span> <span class="fl">360</span>,
-  <span class="kw">protocol_transition_length</span> <span class="kw">=</span> <span class="fl">360</span>,
-  <span class="kw">cleaning_level</span> <span class="kw">=</span> <span class="fl">0.95</span>,
-  <span class="kw">cleaning_baseline_fit</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span>),
-  <span class="kw">fit_level</span> <span class="kw">=</span> <span class="fl">0.95</span>,
-  <span class="kw">fit_bin_average</span> <span class="kw">=</span> <span class="fl">5</span>,
-  <span class="kw">fit_phase_1_length</span> <span class="kw">=</span> <span class="fl">20</span>,
-  <span class="kw">fit_baseline_length</span> <span class="kw">=</span> <span class="fl">120</span>,
-  <span class="kw">fit_transition_length</span> <span class="kw">=</span> <span class="fl">240</span>,
-  <span class="kw">verbose</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vo2_kinetics.html">vo2_kinetics</a></span>(
+  .data = <span class="kw">raw_data</span>,
+  intensity_domain = <span class="st">"moderate"</span>,
+  time_column = <span class="st">"t"</span>,
+  vo2_column = <span class="st">"VO2"</span>,
+  protocol_n_transitions = <span class="fl">3</span>,
+  protocol_baseline_length = <span class="fl">360</span>,
+  protocol_transition_length = <span class="fl">360</span>,
+  cleaning_level = <span class="fl">0.95</span>,
+  cleaning_baseline_fit = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span>),
+  fit_level = <span class="fl">0.95</span>,
+  fit_bin_average = <span class="fl">5</span>,
+  fit_phase_1_length = <span class="fl">20</span>,
+  fit_baseline_length = <span class="fl">120</span>,
+  fit_transition_length = <span class="fl">240</span>,
+  verbose = <span class="fl">TRUE</span>
+)
+</pre></div>
 <pre class="fansi fansi-message"><code>#&gt; ────────────────────────── <span style="color: #BB0000;"> * V̇O₂ kinetics analysis * </span><span> ────────────────────────
 </span></code></pre>
 <pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> Detecting outliers
@@ -331,8 +337,10 @@ where:
 </span></code></pre>
 <pre class="fansi fansi-message"><code>#&gt; ────────────────────────────────── <span style="color: #0000BB;"> * DONE * </span><span> ──────────────────────────────────
 </span></code></pre>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">
-<span class="no">results</span></pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+
+<span class="kw">results</span>
+</pre></div>
 <pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 1 x 9</span><span>
 #&gt;   data_outliers plot_outliers data_processed data_fitted model model_summary
 #&gt;   </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>        </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>        </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>         </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;lis&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>       
@@ -346,7 +354,9 @@ where:
 <h2 class="hasAnchor">
 <a href="#fit-parameters" class="anchor"></a>Fit parameters</h2>
 <p>Fit parameters and confidence intervals may be accessed through the <strong>model_summary</strong> column.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">results</span>$<span class="no">model_summary</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">model_summary</span>[[<span class="fl">1</span>]]
+</pre></div>
 <pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 4 x 7</span><span>
 #&gt;   term     estimate std.error statistic  p.value conf.low conf.high
 #&gt;   </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span>       </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
@@ -360,24 +370,30 @@ where:
 <h2 class="hasAnchor">
 <a href="#fit-plot" class="anchor"></a>Fit plot</h2>
 <p>The fit plot may be accessed through the <strong>plot_model</strong> column.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">results</span>$<span class="no">plot_model</span><span class="kw">[[</span><span class="fl">1</span>]]
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">plot_model</span>[[<span class="fl">1</span>]]
 <span class="co">#&gt; Warning: Removed 24 row(s) containing missing values (geom_path).</span>
 
-<span class="co">#&gt; Warning: Removed 24 row(s) containing missing values (geom_path).</span></pre></body></html></div>
+<span class="co">#&gt; Warning: Removed 24 row(s) containing missing values (geom_path).</span>
+</pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-8-1.png" width="2100" style="display: block; margin: auto;"></p>
 </div>
 <div id="checking-what-was-done-during-data-cleaning" class="section level2">
 <h2 class="hasAnchor">
 <a href="#checking-what-was-done-during-data-cleaning" class="anchor"></a>Checking what was done during data cleaning</h2>
 <p>The data cleaning process may be accessed through the <strong>plot_outliers</strong> column.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">results</span>$<span class="no">plot_outliers</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">plot_outliers</span>[[<span class="fl">1</span>]]
+</pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-9-1.png" width="3000" style="display: block; margin: auto;"></p>
 </div>
 <div id="model-diagnostics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#model-diagnostics" class="anchor"></a>Model diagnostics</h2>
 <p>Model residuals plot may be accessed through the <strong>plot_residuals</strong> column.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">results</span>$<span class="no">plot_residuals</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">plot_residuals</span>[[<span class="fl">1</span>]]
+</pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-10-1.png" width="3000" style="display: block; margin: auto;"></p>
 </div>
 <div id="additional-columns" class="section level2">
@@ -387,7 +403,9 @@ where:
 <h3 class="hasAnchor">
 <a href="#raw-data-with-detected-outliers" class="anchor"></a>Raw data with detected outliers</h3>
 <p>The raw data with additional columns from the data cleaning process may be accessed through the <strong>data_outliers</strong> column.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">results</span>$<span class="no">data_outliers</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">data_outliers</span>[[<span class="fl">1</span>]]
+</pre></div>
 <pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 757 x 131</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
@@ -428,7 +446,9 @@ where:
 <h3 class="hasAnchor">
 <a href="#processed-data" class="anchor"></a>Processed data</h3>
 <p>The processed data (cleaned, interpolated, time-aligned, ensemble-averaged, and bin-averaged) may be accessed through the <strong>data_processed</strong> column.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">results</span>$<span class="no">data_processed</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">data_processed</span>[[<span class="fl">1</span>]]
+</pre></div>
 <pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 145 x 114</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
@@ -469,20 +489,22 @@ where:
 <h3 class="hasAnchor">
 <a href="#fitted-data" class="anchor"></a>Fitted data</h3>
 <p>The data from the baseline and transition fits may be accessed through the <strong>data_fitted</strong> column.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">results</span>$<span class="no">data_fitted</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 70 x 9</span><span>
-#&gt;        t   VO2 .fitted .se.fit .resid   .hat .sigma    .cooksd .std.resid
-#&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>   </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>   </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
-#&gt; </span><span style="color: #555555;"> 1</span><span>  -</span><span style="color: #BB0000;">120</span><span>  964.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4 -</span><span style="color: #BB0000;">64.0</span><span>  0.040</span><span style="text-decoration: underline;">0</span><span>   77.6 0.029</span><span style="text-decoration: underline;">8</span><span>        -</span><span style="color: #BB0000;">0.846</span><span> 
-#&gt; </span><span style="color: #555555;"> 2</span><span>  -</span><span style="color: #BB0000;">115</span><span> </span><span style="text-decoration: underline;">1</span><span>018.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4 -</span><span style="color: #BB0000;">10.4</span><span>  0.04     78.8 0.000</span><span style="text-decoration: underline;">791</span><span>      -</span><span style="color: #BB0000;">0.138</span><span> 
-#&gt; </span><span style="color: #555555;"> 3</span><span>  -</span><span style="color: #BB0000;">110</span><span> </span><span style="text-decoration: underline;">1</span><span>145.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4 116.   0.04     74.8 0.098</span><span style="text-decoration: underline;">9</span><span>         1.54  
-#&gt; </span><span style="color: #555555;"> 4</span><span>  -</span><span style="color: #BB0000;">105</span><span> </span><span style="text-decoration: underline;">1</span><span>018.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4 -</span><span style="color: #BB0000;">10.1</span><span>  0.04     78.8 0.000</span><span style="text-decoration: underline;">743</span><span>      -</span><span style="color: #BB0000;">0.134</span><span> 
-#&gt; </span><span style="color: #555555;"> 5</span><span>  -</span><span style="color: #BB0000;">100</span><span> </span><span style="text-decoration: underline;">1</span><span>062.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4  34.2  0.04     78.5 0.008</span><span style="text-decoration: underline;">52</span><span>        0.452 
-#&gt; </span><span style="color: #555555;"> 6</span><span>   -</span><span style="color: #BB0000;">95</span><span> </span><span style="text-decoration: underline;">1</span><span>046.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4  18.3  0.04     78.7 0.002</span><span style="text-decoration: underline;">44</span><span>        0.242 
-#&gt; </span><span style="color: #555555;"> 7</span><span>   -</span><span style="color: #BB0000;">90</span><span> </span><span style="text-decoration: underline;">1</span><span>050.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4  22.1  0.04     78.7 0.003</span><span style="text-decoration: underline;">54</span><span>        0.292 
-#&gt; </span><span style="color: #555555;"> 8</span><span>   -</span><span style="color: #BB0000;">85</span><span> </span><span style="text-decoration: underline;">1</span><span>068.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4  39.8  0.04     78.4 0.011</span><span style="text-decoration: underline;">5</span><span>         0.526 
-#&gt; </span><span style="color: #555555;"> 9</span><span>   -</span><span style="color: #BB0000;">80</span><span> </span><span style="text-decoration: underline;">1</span><span>029.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4   1.16 0.04     78.8 0.000</span><span style="text-decoration: underline;">009</span><span>78     0.015</span><span style="text-decoration: underline;">3</span><span>
-#&gt; </span><span style="color: #555555;">10</span><span>   -</span><span style="color: #BB0000;">75</span><span>  991.   </span><span style="text-decoration: underline;">1</span><span>028.    15.4 -</span><span style="color: #BB0000;">37.4</span><span>  0.04     78.4 0.010</span><span style="text-decoration: underline;">2</span><span>        -</span><span style="color: #BB0000;">0.495</span><span> 
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">data_fitted</span>[[<span class="fl">1</span>]]
+</pre></div>
+<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 70 x 8</span><span>
+#&gt;        t   VO2 .fitted .resid .std.resid   .hat .sigma    .cooksd
+#&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>   </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
+#&gt; </span><span style="color: #555555;"> 1</span><span>  -</span><span style="color: #BB0000;">120</span><span>  964.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">64.0</span><span>     -</span><span style="color: #BB0000;">0.846</span><span>  0.040</span><span style="text-decoration: underline;">0</span><span>   77.6 0.029</span><span style="text-decoration: underline;">8</span><span>    
+#&gt; </span><span style="color: #555555;"> 2</span><span>  -</span><span style="color: #BB0000;">115</span><span> </span><span style="text-decoration: underline;">1</span><span>018.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">10.4</span><span>     -</span><span style="color: #BB0000;">0.138</span><span>  0.04     78.8 0.000</span><span style="text-decoration: underline;">791</span><span>  
+#&gt; </span><span style="color: #555555;"> 3</span><span>  -</span><span style="color: #BB0000;">110</span><span> </span><span style="text-decoration: underline;">1</span><span>145.   </span><span style="text-decoration: underline;">1</span><span>028. 116.       1.54   0.04     74.8 0.098</span><span style="text-decoration: underline;">9</span><span>    
+#&gt; </span><span style="color: #555555;"> 4</span><span>  -</span><span style="color: #BB0000;">105</span><span> </span><span style="text-decoration: underline;">1</span><span>018.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">10.1</span><span>     -</span><span style="color: #BB0000;">0.134</span><span>  0.04     78.8 0.000</span><span style="text-decoration: underline;">743</span><span>  
+#&gt; </span><span style="color: #555555;"> 5</span><span>  -</span><span style="color: #BB0000;">100</span><span> </span><span style="text-decoration: underline;">1</span><span>062.   </span><span style="text-decoration: underline;">1</span><span>028.  34.2      0.452  0.04     78.5 0.008</span><span style="text-decoration: underline;">52</span><span>   
+#&gt; </span><span style="color: #555555;"> 6</span><span>   -</span><span style="color: #BB0000;">95</span><span> </span><span style="text-decoration: underline;">1</span><span>046.   </span><span style="text-decoration: underline;">1</span><span>028.  18.3      0.242  0.04     78.7 0.002</span><span style="text-decoration: underline;">44</span><span>   
+#&gt; </span><span style="color: #555555;"> 7</span><span>   -</span><span style="color: #BB0000;">90</span><span> </span><span style="text-decoration: underline;">1</span><span>050.   </span><span style="text-decoration: underline;">1</span><span>028.  22.1      0.292  0.04     78.7 0.003</span><span style="text-decoration: underline;">54</span><span>   
+#&gt; </span><span style="color: #555555;"> 8</span><span>   -</span><span style="color: #BB0000;">85</span><span> </span><span style="text-decoration: underline;">1</span><span>068.   </span><span style="text-decoration: underline;">1</span><span>028.  39.8      0.526  0.04     78.4 0.011</span><span style="text-decoration: underline;">5</span><span>    
+#&gt; </span><span style="color: #555555;"> 9</span><span>   -</span><span style="color: #BB0000;">80</span><span> </span><span style="text-decoration: underline;">1</span><span>029.   </span><span style="text-decoration: underline;">1</span><span>028.   1.16     0.015</span><span style="text-decoration: underline;">3</span><span> 0.04     78.8 0.000</span><span style="text-decoration: underline;">009</span><span>78
+#&gt; </span><span style="color: #555555;">10</span><span>   -</span><span style="color: #BB0000;">75</span><span>  991.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">37.4</span><span>     -</span><span style="color: #BB0000;">0.495</span><span>  0.04     78.4 0.010</span><span style="text-decoration: underline;">2</span><span>    
 #&gt; </span><span style="color: #555555;"># … with 60 more rows</span><span>
 </span></code></pre>
 </div>
@@ -490,7 +512,8 @@ where:
 <h3 class="hasAnchor">
 <a href="#model" class="anchor"></a>Model</h3>
 <p>The model used for fitting the mono-exponential model may be accessed through the <strong>model</strong> column.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">results</span>$<span class="no">model</span><span class="kw">[[</span><span class="fl">1</span>]]
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">model</span>[[<span class="fl">1</span>]]
 <span class="co">#&gt; Nonlinear regression model</span>
 <span class="co">#&gt;   model: VO2 ~ 1028.0768176047 + Amp * (1 - exp(-(t - TD)/tau))</span>
 <span class="co">#&gt;    data: data_transition</span>
@@ -501,7 +524,7 @@ where:
 <span class="co">#&gt; Number of iterations to convergence: 6 </span>
 <span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">results</span>$<span class="no">model</span><span class="kw">[[</span><span class="fl">1</span>]])
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">results</span><span class="op">$</span><span class="kw">model</span>[[<span class="fl">1</span>]])
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Formula: VO2 ~ 1028.0768176047 + Amp * (1 - exp(-(t - TD)/tau))</span>
 <span class="co">#&gt; </span>
@@ -516,13 +539,16 @@ where:
 <span class="co">#&gt; Residual standard error: 57.35 on 42 degrees of freedom</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Number of iterations to convergence: 6 </span>
-<span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span></pre></body></html></div>
+<span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span>
+</pre></div>
 </div>
 <div id="residuals-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#residuals-data" class="anchor"></a>Residuals data</h3>
 <p>The model residuals data may be accessed through the <strong>model_residuals</strong> column.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">results</span>$<span class="no">model_residuals</span><span class="kw">[[</span><span class="fl">1</span>]]</pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="kw">results</span><span class="op">$</span><span class="kw">model_residuals</span>[[<span class="fl">1</span>]]
+</pre></div>
 <pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 45 x 7</span><span>
 #&gt;        t   VO2 .fitted .resid standardized_res… sqrt_abs_standard… lag_residuals
 #&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>   </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>             </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>              </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>         </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>

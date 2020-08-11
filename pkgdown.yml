@@ -1,7 +1,6 @@
 pandoc: 2.7.3
 pkgdown: 1.5.1.9000
-pkgdown_sha: c181e5c9ac09b28974a97f5e32deddc36690fcf2
-articles:
-  vo2_kinetics: vo2_kinetics.html
-last_built: 2020-05-05T15:47Z
+pkgdown_sha: eae56f08694abebf93cdfc0dd8e9ede06d8c815f
+articles: []
+last_built: 2020-08-11T10:32Z
 
