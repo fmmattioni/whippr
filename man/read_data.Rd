@@ -6,14 +6,14 @@
 \usage{
 read_data(
   path,
-  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"),
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
   time_column = "t"
 )
 }
 \arguments{
 \item{path}{Path to read the file from.}
 
-\item{metabolic_cart}{Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', and 'parvo' are supported.}
+\item{metabolic_cart}{Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', 'parvo', and 'geratherm' are supported.}
 
 \item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".}
 }

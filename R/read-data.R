@@ -3,12 +3,12 @@
 #' It reads the raw data exported from the metabolic cart.
 #'
 #' @param path Path to read the file from.
-#' @param metabolic_cart Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', and 'parvo' are supported.
+#' @param metabolic_cart Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', 'parvo', and 'geratherm' are supported.
 #' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
-read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
+read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
   if(missing(metabolic_cart))
     stop("You must specify the metabolic cart.", call. = FALSE)
 
@@ -20,7 +20,7 @@ read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "pa
 }
 
 #' @export
-read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
+read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -65,8 +65,8 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 
     out <- data_raw2 %>%
       dplyr::mutate_at(1, function(x) stringr::str_replace_all(x, ",", ".") %>%
-                                      lubridate::hms(.) %>%
-                                      lubridate::period_to_seconds(.))
+                         lubridate::hms(.) %>%
+                         lubridate::period_to_seconds(.))
   } else {
     out <- data_raw2 %>%
       dplyr::mutate_at(1, function(x) (lubridate::hour(x) * 3600) + (lubridate::minute(x) * 60) + lubridate::second(x))
@@ -76,7 +76,7 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
+read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -103,7 +103,7 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
     if(any(stringr::str_detect(data_raw2[[1]], ":"))){
       data_raw2 <- data_raw2 %>%
         dplyr::mutate_at(1, function(x) lubridate::hms(x) %>%
-                                        lubridate::period_to_seconds(.))
+                           lubridate::period_to_seconds(.))
     } else{
       data_raw2 <- data_raw2 %>%
         dplyr::mutate_at(1, function(x) as.numeric(x)) %>%
@@ -118,7 +118,7 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
+read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -142,7 +142,7 @@ read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo"), time_column = "t") {
+read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -167,6 +167,43 @@ read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire
     tidyr::drop_na(ncol(.)) %>%
     dplyr::mutate_all(as.numeric) %>%
     dplyr::mutate_at(1, function(x) x * 60)
+
+  out
+}
+
+#' @export
+read_data.geratherm <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
+
+  # if(purrr::is_empty(cells_parvo))
+  #   stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
+
+  ## retrieve column names
+  names_file <- suppressMessages(readxl::read_excel(path = path, n_max = 1, col_names = TRUE)) %>%
+    tidyr::pivot_longer(cols = dplyr::everything()) %>%
+    dplyr::mutate(
+      name = stringr::str_remove(string = name, pattern = "\\..*"),
+      name = ifelse(is.na(value), name, paste(name, value))
+    ) %>%
+    dplyr::pull(name)
+
+  ## it looks like this system starts with a column indicating additional info like warmup, etc.
+  ## I will call it 'info' for now
+  names_file <- c("info", names_file)
+
+  ## read data again and adjust time column
+  out <- suppressMessages(readxl::read_excel(path = path, skip = 4, col_names = FALSE)) %>%
+    dplyr::rename_with(~ names_file) %>%
+    dplyr::mutate(info = zoo::na.locf(info)) %>%
+    dplyr::mutate(!!time_column := lubridate::hour(!!rlang::sym(time_column)) * 60 + lubridate::minute(!!rlang::sym(time_column)))
+
+  ## it looks like this system restarts the time column depending on the 'info' column
+  ## in this case we create an extra time column to try to fix that for the user
+  out <- out %>%
+    dplyr::group_by(info) %>%
+    dplyr::mutate(time = !!rlang::sym(time_column) - dplyr::lag(!!rlang::sym(time_column), default = 0)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(time = cumsum(time)) %>%
+    dplyr::select(!!rlang::sym(time_column), time, dplyr::everything())
 
   out
 }
