@@ -11,8 +11,6 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/whippr)](https://CRAN.R-project.org/package=whippr)
 [![R build
 status](https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg)](https://github.com/fmmattioni/whippr/actions)
-<br>
-<a href="https://www.buymeacoffee.com/XQauwUWGm" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 <!-- badges: end -->
 
 The goal of `whippr` is to provide a set of tools for manipulating gas
@@ -232,7 +230,7 @@ results_kinetics <- vo2_kinetics(
   fit_transition_length = 240,
   verbose = TRUE
 )
-#> ────────────────────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────────────────────────
+#> ───────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────────────────────────────
 #> ✓ Detecting outliers
 #> ● 14 outlier(s) found in transition 1
 #> ● 15 outlier(s) found in transition 2
@@ -247,7 +245,7 @@ results_kinetics <- vo2_kinetics(
 #> ✓       └─ Fitting transition
 #> ✓       └─ Calculating residuals
 #> ✓       └─ Preparing plots
-#> ────────────────────────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────────────────────────
+#> ───────────────────────────────────────────────────────────  * DONE *  ───────────────────────────────────────────────────────────
 ```
 
 ## Metabolic carts currently supported
@@ -261,12 +259,7 @@ results_kinetics <- vo2_kinetics(
 
 Please note that this project is released with a [Contributor Code of
 Conduct](https://www.contributor-covenant.org/version/1/0/0/code-of-conduct.html).
-By participating in this project you agree to abide by its
-terms.
-
-## Support
-
-<a href="https://www.buymeacoffee.com/XQauwUWGm" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+By participating in this project you agree to abide by its terms.
 
 <div>
 
