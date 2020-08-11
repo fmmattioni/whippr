@@ -4,6 +4,7 @@
     * Now you can specify the name of the time column, in case your system is not in English. Default is set to "t".
     * Added option to read data from NSpire system (thanks to [@peter__leo](https://twitter.com/peter__leo)).
     * Added option to read data from Parvo Medics system (thanks to [@EatsleepfitJeff](https://twitter.com/EatsleepfitJeff)).
+    * Added option to read data from Geratherm Respiratory system (thanks to [@marcorsini61](https://twitter.com/marcorsini61))
     
 * Added function `interpolate()` to interpolate breath-by-breath data into second-by-second.
 
