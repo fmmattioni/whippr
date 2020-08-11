@@ -15,22 +15,22 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports: 
-    readxl,
-    dplyr,
-    janitor,
-    stringr,
-    lubridate,
+    readxl (>= 1.3.1),
+    dplyr (>= 1.0.1),
+    janitor (>= 2.0.1),
+    stringr (>= 1.4.0),
+    lubridate (>= 1.7.9),
     magrittr,
     tibble,
     zoo,
     purrr,
-    tidyr,
-    broom,
+    tidyr (>= 1.1.1),
+    broom (>= 0.7.0),
     cli,
-    ggplot2,
+    ggplot2 (>= 3.3.2),
     glue,
     minpack.lm,
-    patchwork,
+    patchwork (>= 1.0.1),
     rlang,
     usethis,
     nlstools,
@@ -39,12 +39,12 @@ Imports:
     datapasta,
     rstudioapi,
     shinyThings (>= 0.4.0)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
     fansi,
     collapsibleTree
 VignetteBuilder: knitr
-Remotes:  
+Remotes: 
     gadenbuie/shinyThings
