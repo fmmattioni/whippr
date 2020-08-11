@@ -254,6 +254,8 @@ results_kinetics <- vo2_kinetics(
   - [CORTEX](https://cortex-medical.com/EN)
   - [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
   - [Parvo Medics](http://www.parvo.com/)
+  - [Geratherm
+    Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
 
 ## Code of Conduct
 
