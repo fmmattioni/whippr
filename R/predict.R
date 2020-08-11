@@ -123,7 +123,7 @@ predict_bands_baseline <- function(
       dplyr::select(1) %>%
       dplyr::bind_cols(broom::augment(model_bsln)) %>%
       dplyr::rename_at(1:2, ~ c("x", "y")) %>%
-      dplyr::select(x:.resid, -.se.fit) %>%
+      dplyr::select(x:.resid) %>%
       dplyr::bind_cols(dplyr::as_tibble(predict.lm(model_bsln, interval = "confidence", level = cleaning_level))) %>%
       dplyr::rename(
         lwr_conf = lwr,

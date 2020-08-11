@@ -374,7 +374,7 @@ perform_kinetics.moderate <- function(
   res_bsln <- data_bsln %>%
     dplyr::select(1) %>%
     dplyr::bind_cols(broom::augment(model_bsln)) %>%
-    dplyr::select(1:.resid, -.se.fit)
+    dplyr::select(1:.resid)
 
   # define bsln value -------------------------------------------------------
   baseline_value <- unique(res_bsln$.fitted)
