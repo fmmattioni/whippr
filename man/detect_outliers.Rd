@@ -14,19 +14,21 @@ detect_outliers(
   protocol_n_transitions,
   protocol_baseline_length,
   protocol_transition_length,
+  method_incremental = c("linear", "anomaly"),
   verbose = TRUE
 )
 }
 \arguments{
-\item{.data}{Data retrieved from \code{read_data()}.}
+\item{.data}{Data retrieved from \code{read_data()} for a \strong{kinetics} test, or
+the data retrieved from \code{incremental_normalize()} for a \strong{incremental} test.}
 
 \item{test_type}{The test to be analyzed. Either 'incremental' or 'kinetics'.}
 
-\item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".}
+\item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to \code{t}.}
 
-\item{vo2_column}{The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to 'VO2'.}
+\item{vo2_column}{The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to \code{VO2}.}
 
-\item{cleaning_level}{A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated.}
+\item{cleaning_level}{A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated. Default to \code{0.95}.}
 
 \item{cleaning_baseline_fit}{A vector of the same length as the number in \code{protocol_n_transitions}, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.}
 
@@ -42,7 +44,7 @@ detect_outliers(
 a \link[tibble:tibble-package]{tibble}
 }
 \description{
-It detects outliers based on prediction bands for the given level of confidence provided (Default to 0.95).
+It detects outliers based on prediction bands for the given level of confidence provided.
 }
 \details{
 TODO

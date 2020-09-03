@@ -1,17 +1,18 @@
 #' Detect outliers
 #'
-#' It detects outliers based on prediction bands for the given level of confidence provided (Default to 0.95).
+#' It detects outliers based on prediction bands for the given level of confidence provided.
 #'
-#' @param .data Data retrieved from \code{read_data()}.
+#' @param .data Data retrieved from `read_data()` for a **kinetics** test, or
+#' the data retrieved from `incremental_normalize()` for a **incremental** test.
 #' @param test_type The test to be analyzed. Either 'incremental' or 'kinetics'.
-#' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".
-#' @param vo2_column The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to 'VO2'.
-#' @param cleaning_level A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated.
-#' @param cleaning_baseline_fit A vector of the same length as the number in \code{protocol_n_transitions}, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.
+#' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to `t`.
+#' @param vo2_column The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to `VO2`.
+#' @param cleaning_level A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated. Default to `0.95`.
+#' @param cleaning_baseline_fit A vector of the same length as the number in `protocol_n_transitions`, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.
 #' @param protocol_n_transitions Number of transitions performed.
 #' @param protocol_baseline_length The length of the baseline (in seconds).
 #' @param protocol_transition_length The length of the transition (in seconds).
-#' @param verbose A boolean indicating whether messages should be printed in the console. Default to \code{TRUE}.
+#' @param verbose A boolean indicating whether messages should be printed in the console. Default to `TRUE`.
 #'
 #' @details
 #' TODO
@@ -49,6 +50,7 @@ detect_outliers <- function(
   protocol_n_transitions,
   protocol_baseline_length,
   protocol_transition_length,
+  method_incremental = c("linear", "anomaly"),
   verbose = TRUE
 ) {
 
@@ -80,6 +82,7 @@ detect_outliers.kinetics <- function(
   protocol_n_transitions,
   protocol_baseline_length,
   protocol_transition_length,
+  method_incremental = c("linear", "anomaly"),
   verbose = TRUE
 ) {
 
@@ -125,13 +128,19 @@ detect_outliers.kinetics <- function(
       protocol_baseline_length = protocol_baseline_length,
       protocol_transition_length = protocol_transition_length
     ) %>%
-    tidyr::nest_legacy(-transition) %>%
+    tidyr::nest(data = -transition) %>%
     dplyr::mutate(
       cleaning_baseline_fit = cleaning_baseline_fit,
       bands_data = purrr::map2(
         .x = data,
         .y = cleaning_baseline_fit,
-        .f = ~ predict_bands(.data = .x, cleaning_baseline_fit = .y, cleaning_level = cleaning_level, time_column = time_column, vo2_column = vo2_column))
+        .f = ~ predict_bands(
+          .data = .x,
+          cleaning_baseline_fit = .y,
+          cleaning_level = cleaning_level,
+          time_column = time_column,
+          vo2_column = vo2_column)
+      )
     ) %>%
     tidyr::unnest(cols = c(data, bands_data)) %>%
     dplyr::select(2:ncol(.), transition)
@@ -167,9 +176,35 @@ detect_outliers.incremental <- function(
   protocol_n_transitions,
   protocol_baseline_length,
   protocol_transition_length,
+  method_incremental = c("linear", "anomaly"),
   verbose = TRUE
 ) {
-  stop("I am sorry, this is not implemented yet.", call. = FALSE)
+
+  if(!"protocol_phase" %in% colnames(.data))
+    stop("It looks like the data passed to this function did not come from the 'incremental_normalize()' function.
+         Please, make sure you use this function before.", call. = FALSE)
+
+  if(missing(method_incremental))
+    stop("You must specify the 'method_incremental' argument. See ?detect_outliers for more details.", call. = FALSE)
+
+  method_incremental <- match.arg(method_incremental)
+
+  out <- switch (method_incremental,
+                 "linear" = outliers_linear(
+                   .data = .data,
+                   time_column = time_column,
+                   vo2_column = vo2_column,
+                   cleaning_level = cleaning_level
+                 ),
+                 "anomaly" = outliers_anomaly(
+                   .data = .data,
+                   time_column = time_column,
+                   vo2_column = vo2_column,
+                   cleaning_level = cleaning_level
+                 )
+  )
+
+  out
 }
 
 #' Plot outliers
@@ -241,5 +276,12 @@ plot_outliers.kinetics <- function(.data, test_type = c("incremental", "kinetics
 
 #' @export
 plot_outliers.incremental <- function(.data, test_type = c("incremental", "kinetics")) {
-  stop("I am sorry, this is not implemented yet.", call. = FALSE)
+  out <- .data %>%
+    ggplot2::ggplot(ggplot2::aes(x, y)) +
+    ggplot2::geom_point(ggplot2::aes(fill = outlier), shape = 21, size = 4, color = "black") +
+    ggplot2::geom_ribbon(ggplot2::aes(x = x, ymin = lwr_pred, ymax = upr_pred), fill = "red", alpha = 0.1) +
+    ggplot2::scale_fill_manual(values = c("white", "red")) +
+    ggplot2::theme_light()
+
+  out
 }
