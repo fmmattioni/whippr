@@ -38,6 +38,9 @@ the data retrieved from \code{incremental_normalize()} for a \strong{incremental
 
 \item{protocol_transition_length}{The length of the transition (in seconds).}
 
+\item{method_incremental}{The method to be used in detecting outliers from the
+incremental test. Either 'linear' or 'anomaly'. See \code{Details}.}
+
 \item{verbose}{A boolean indicating whether messages should be printed in the console. Default to \code{TRUE}.}
 }
 \value{

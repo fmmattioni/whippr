@@ -8,6 +8,10 @@ run_manual_cleaner(.data, width = 1200, height = 900)
 }
 \arguments{
 \item{.data}{The data to be manually cleaned. The first column will be always treated as the x-axis.}
+
+\item{width}{The width, in pixels, of the window.}
+
+\item{height}{the height, in pixels, of the window.}
 }
 \value{
 The code to reproduce the manual data cleaning.
