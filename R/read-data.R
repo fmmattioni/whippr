@@ -7,6 +7,7 @@
 #' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".
 #'
 #' @return a [tibble][tibble::tibble-package]
+#' @importFrom rlang :=
 #' @export
 read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
   if(missing(metabolic_cart))
