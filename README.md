@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/whippr)](https://CRAN.R-project.org/package=whippr)
 [![R build
@@ -230,7 +230,7 @@ results_kinetics <- vo2_kinetics(
   fit_transition_length = 240,
   verbose = TRUE
 )
-#> ───────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────────────────────────────
+#> ────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────
 #> ✓ Detecting outliers
 #> ● 14 outlier(s) found in transition 1
 #> ● 15 outlier(s) found in transition 2
@@ -245,7 +245,7 @@ results_kinetics <- vo2_kinetics(
 #> ✓       └─ Fitting transition
 #> ✓       └─ Calculating residuals
 #> ✓       └─ Preparing plots
-#> ───────────────────────────────────────────────────────────  * DONE *  ───────────────────────────────────────────────────────────
+#> ────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────
 ```
 
 ## Metabolic carts currently supported
