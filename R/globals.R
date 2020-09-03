@@ -23,7 +23,11 @@ utils::globalVariables(
     "fit",
     "lwr",
     "upr",
-    "cleaning_baseline_fit"),
+    "cleaning_baseline_fit",
+    "name",
+    "value",
+    "info",
+    "time"),
   package = "whippr",
   add = FALSE
 )
