@@ -6,6 +6,8 @@
 #' This function can also be used to clean other kind of data, like heart rate data.
 #'
 #' @param .data The data to be manually cleaned. The first column will be always treated as the x-axis.
+#' @param width The width, in pixels, of the window.
+#' @param height the height, in pixels, of the window.
 #'
 #' @return The code to reproduce the manual data cleaning.
 #'
