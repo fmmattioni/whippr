@@ -12,6 +12,8 @@
 #' @param protocol_n_transitions Number of transitions performed.
 #' @param protocol_baseline_length The length of the baseline (in seconds).
 #' @param protocol_transition_length The length of the transition (in seconds).
+#' @param method_incremental The method to be used in detecting outliers from the
+#' incremental test. Either 'linear' or 'anomaly'. See `Details`.
 #' @param verbose A boolean indicating whether messages should be printed in the console. Default to `TRUE`.
 #'
 #' @details
@@ -180,31 +182,7 @@ detect_outliers.incremental <- function(
   verbose = TRUE
 ) {
 
-  if(!"protocol_phase" %in% colnames(.data))
-    stop("It looks like the data passed to this function did not come from the 'incremental_normalize()' function.
-         Please, make sure you use this function before.", call. = FALSE)
-
-  if(missing(method_incremental))
-    stop("You must specify the 'method_incremental' argument. See ?detect_outliers for more details.", call. = FALSE)
-
-  method_incremental <- match.arg(method_incremental)
-
-  out <- switch (method_incremental,
-                 "linear" = outliers_linear(
-                   .data = .data,
-                   time_column = time_column,
-                   vo2_column = vo2_column,
-                   cleaning_level = cleaning_level
-                 ),
-                 "anomaly" = outliers_anomaly(
-                   .data = .data,
-                   time_column = time_column,
-                   vo2_column = vo2_column,
-                   cleaning_level = cleaning_level
-                 )
-  )
-
-  out
+  stop("I am sorry, this is not implemented yet.", call. = FALSE)
 }
 
 #' Plot outliers
@@ -276,12 +254,5 @@ plot_outliers.kinetics <- function(.data, test_type = c("incremental", "kinetics
 
 #' @export
 plot_outliers.incremental <- function(.data, test_type = c("incremental", "kinetics")) {
-  out <- .data %>%
-    ggplot2::ggplot(ggplot2::aes(x, y)) +
-    ggplot2::geom_point(ggplot2::aes(fill = outlier), shape = 21, size = 4, color = "black") +
-    ggplot2::geom_ribbon(ggplot2::aes(x = x, ymin = lwr_pred, ymax = upr_pred), fill = "red", alpha = 0.1) +
-    ggplot2::scale_fill_manual(values = c("white", "red")) +
-    ggplot2::theme_light()
-
-  out
+  stop("I am sorry, this is not implemented yet.", call. = FALSE)
 }
