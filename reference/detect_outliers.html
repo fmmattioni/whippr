@@ -49,7 +49,7 @@
   
 
 <meta property="og:title" content="Detect outliers — detect_outliers" />
-<meta property="og:description" content="It detects outliers based on prediction bands for the given level of confidence provided (Default to 0.95)." />
+<meta property="og:description" content="It detects outliers based on prediction bands for the given level of confidence provided." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -176,7 +176,7 @@
     </div>
 
     <div class="ref-description">
-    <p>It detects outliers based on prediction bands for the given level of confidence provided (Default to 0.95).</p>
+    <p>It detects outliers based on prediction bands for the given level of confidence provided.</p>
     </div>
 
     <pre class="usage"><span class='fu'>detect_outliers</span>(
@@ -189,6 +189,7 @@
   <span class='kw'>protocol_n_transitions</span>,
   <span class='kw'>protocol_baseline_length</span>,
   <span class='kw'>protocol_transition_length</span>,
+  method_incremental = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"linear"</span>, <span class='st'>"anomaly"</span>),
   verbose = <span class='fl'>TRUE</span>
 )</pre>
 
@@ -197,7 +198,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>Data retrieved from <code><a href='read_data.html'>read_data()</a></code>.</p></td>
+      <td><p>Data retrieved from <code><a href='read_data.html'>read_data()</a></code> for a <strong>kinetics</strong> test, or
+the data retrieved from <code>incremental_normalize()</code> for a <strong>incremental</strong> test.</p></td>
     </tr>
     <tr>
       <th>test_type</th>
@@ -205,15 +207,15 @@
     </tr>
     <tr>
       <th>time_column</th>
-      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".</p></td>
+      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to <code>t</code>.</p></td>
     </tr>
     <tr>
       <th>vo2_column</th>
-      <td><p>The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to 'VO2'.</p></td>
+      <td><p>The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to <code>VO2</code>.</p></td>
     </tr>
     <tr>
       <th>cleaning_level</th>
-      <td><p>A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated.</p></td>
+      <td><p>A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated. Default to <code>0.95</code>.</p></td>
     </tr>
     <tr>
       <th>cleaning_baseline_fit</th>
@@ -263,7 +265,8 @@
   protocol_baseline_length = <span class='fl'>360</span>,
   protocol_transition_length = <span class='fl'>360</span>,
   verbose = <span class='fl'>TRUE</span>
- )</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Detecting outliers</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 14 outlier(s) found in transition 1</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 15 outlier(s) found in transition 2</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 13 outlier(s) found in transition 3</span></div></span></pre>
+ )
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Detecting outliers</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 14 outlier(s) found in transition 1</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 15 outlier(s) found in transition 2</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #BB0000;'>●</span><span> 13 outlier(s) found in transition 3</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

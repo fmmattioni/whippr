@@ -204,7 +204,8 @@ and transforms it into second-by-second.</p>
 <span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(path = <span class='kw'>path_example</span>, metabolic_cart = <span class='st'>"cosmed"</span>)
 
 <span class='kw'>df</span> <span class='op'>%&gt;%</span>
- <span class='fu'>interpolate</span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2,159 x 114</span><span>
+ <span class='fu'>interpolate</span>()
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2,159 x 114</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span>     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
