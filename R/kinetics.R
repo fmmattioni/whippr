@@ -7,7 +7,6 @@
 #'
 #' @param .data Data retrieved from `read_data()`.
 #' @param intensity_domain The exercise-intensity domain that the test was performed. Either *moderate*, *heavy*, or *severe*.
-#' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be *"t"*. Therefore, you may specify it here.  Default to `"t"`.
 #' @param vo2_column The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to `"VO2"`.
 #' @param protocol_n_transitions Number of transitions performed.
 #' @param protocol_baseline_length The length of the baseline (in seconds).
@@ -148,13 +147,12 @@
 #' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 #'
 #' ## read data
-#' df <- read_data(path = path_example, metabolic_cart = "cosmed")
+#' df <- read_data(path = path_example, metabolic_cart = "cosmed", time_column = "t")
 #'
 #' ## VO2 kinetics analysis
 #' results_kinetics <- vo2_kinetics(
 #'   .data = df,
 #'   intensity_domain = "moderate",
-#'   time_column = "t",
 #'   vo2_column = "VO2",
 #'   protocol_n_transitions = 3,
 #'   protocol_baseline_length = 360,
@@ -171,7 +169,6 @@
 vo2_kinetics <- function(
   .data,
   intensity_domain = c("moderate", "heavy", "severe"),
-  time_column = "t",
   vo2_column = "VO2",
   protocol_n_transitions,
   protocol_baseline_length,
@@ -190,6 +187,9 @@ vo2_kinetics <- function(
   if(missing(.data) | "rlang_fake_data_pronoun" %in% class(.data))
     stop("Did you forget to pass the raw data to the `.data` argument?", call. = FALSE)
 
+  if(is.null(attributes(.data)$read_data))
+    stop("It looks like you did not read your data with the `read_data()` function. Make sure you use it before continuing.", call. = FALSE)
+
   intensity_domain <- match.arg(intensity_domain)
 
   if(intensity_domain != "moderate")
@@ -200,6 +200,9 @@ vo2_kinetics <- function(
 
   # first, rename time and VO2 columns --------------------------------------
   ## this is for simplicity since this function wraps many other functions
+  time_column <- attributes(.data)$time_column
+  attributes(.data)$time_column <- "t"
+
   .data <- .data %>%
     dplyr::rename(
       "t" = {{ time_column }},
@@ -210,7 +213,6 @@ vo2_kinetics <- function(
   data_outliers <- detect_outliers(
     .data = .data,
     test_type = "kinetics",
-    time_column = "t",
     vo2_column = "VO2",
     protocol_n_transitions = protocol_n_transitions,
     protocol_baseline_length = protocol_baseline_length,
@@ -221,7 +223,7 @@ vo2_kinetics <- function(
   )
 
   ## get outliers plot
-  outliers_plot <- plot_outliers(.data = data_outliers, test_type = "kinetics")
+  outliers_plot <- plot_outliers(.data = data_outliers)
 
   if(verbose) {
     usethis::ui_done("Processing data...")
@@ -249,8 +251,6 @@ vo2_kinetics <- function(
   data_kinetics <- perform_kinetics(
     .data_processed = data_processed,
     intensity_domain = intensity_domain,
-    time_column = "t",
-    vo2_column = "VO2",
     fit_level = fit_level,
     fit_phase_1_length = fit_phase_1_length,
     fit_baseline_length = fit_baseline_length,
@@ -279,8 +279,6 @@ vo2_kinetics <- function(
 #'
 #' @param .data_processed The data retrived from `process_data()`.
 #' @param intensity_domain The exercise-intensity domain that the test was performed. Either *moderate*, *heavy*, or *severe*.
-#' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be *"t"*. Therefore, you may specify it here.  Default to `"t"`.
-#' @param vo2_column The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to `"VO2"`.
 #' @param fit_level A numeric scalar between 0 and 1 giving the confidence level for the parameter estimates in the final VO2 kinetics fit. Default to `0.95`.
 #' @param fit_phase_1_length The length of the phase I that you wish to exclude from the final exponential fit, in seconds. See  `VO2 kinetics` section in `?vo2_kinetics` for more details.
 #' @param fit_baseline_length The length the baseline to perform the final linear fit, in seconds. See `VO2 kinetics` section `?vo2_kinetics` for more details.
@@ -306,8 +304,6 @@ vo2_kinetics <- function(
 perform_kinetics <- function(
   .data_processed,
   intensity_domain = c("moderate", "heavy", "severe"),
-  time_column = "t",
-  vo2_column = "VO2",
   fit_level = 0.95,
   fit_phase_1_length,
   fit_baseline_length,
@@ -347,8 +343,6 @@ perform_kinetics <- function(
 perform_kinetics.moderate <- function(
   .data_processed,
   intensity_domain = c("moderate", "heavy", "severe"),
-  time_column = "t",
-  vo2_column = "VO2",
   fit_level = 0.95,
   fit_phase_1_length,
   fit_baseline_length,
@@ -356,6 +350,15 @@ perform_kinetics.moderate <- function(
   verbose = TRUE,
   ...
 ) {
+
+
+  # check data --------------------------------------------------------------
+  if(is.null(attributes(.data_processed)$processed_data))
+    stop("It looks like you did not process your data with `process_data()`", call. = FALSE)
+
+  # set time and VO2 columns ------------------------------------------------
+  time_column <- attributes(.data_processed)$time_column ## defined in read_data()
+  vo2_column <- attributes(.data_processed)$vo2_column ## defined in detect_outliers()
 
   # prepare data ------------------------------------------------------------
   data_bsln <- .data_processed %>%
@@ -469,8 +472,6 @@ perform_kinetics.moderate <- function(
 perform_kinetics.heavy <- function(
   .data_processed,
   intensity_domain = c("moderate", "heavy", "severe"),
-  time_column = "t",
-  vo2_column = "VO2",
   fit_level = 0.95,
   fit_phase_1_length,
   fit_baseline_length,
@@ -531,6 +532,10 @@ process_data <- function(
       perform_average(.data = ., type = "bin", bins = fit_bin_average) %>%
       normalize_time(.data = ., protocol_baseline_length = protocol_baseline_length)
   }
+
+  attributes(out)$time_column <- attributes(.data_outliers)$time_column
+  attributes(out)$vo2_column <- attributes(.data_outliers)$vo2_column
+  attributes(out)$processed_data <- TRUE
 
   out
 }

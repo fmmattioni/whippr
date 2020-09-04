@@ -162,6 +162,8 @@ detect_outliers.kinetics <- function(
     }
   }
 
+  attributes(out)$time_column <- time_column
+  attributes(out)$vo2_column <- vo2_column
   attributes(out)$test_type <- "kinetics"
 
   out
