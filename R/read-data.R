@@ -74,6 +74,7 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
   }
 
   attributes(out)$time_column <- time_column
+  attributes(out)$read_data <- TRUE
 
   out
 }
@@ -118,6 +119,7 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
     janitor::remove_empty(which = "cols")
 
   attributes(out)$time_column <- time_column
+  attributes(out)$read_data <- TRUE
 
   out
 }
@@ -144,6 +146,7 @@ read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
     janitor::remove_empty(which = "rows")
 
   attributes(out)$time_column <- time_column
+  attributes(out)$read_data <- TRUE
 
   out
 }
@@ -176,6 +179,7 @@ read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire
     dplyr::mutate_at(1, function(x) x * 60)
 
   attributes(out)$time_column <- time_column
+  attributes(out)$read_data <- TRUE
 
   out
 }
@@ -215,6 +219,7 @@ read_data.geratherm <- function(path, metabolic_cart = c("cosmed", "cortex", "ns
     dplyr::select(!!rlang::sym(time_column), time, dplyr::everything())
 
   attributes(out)$time_column <- time_column
+  attributes(out)$read_data <- TRUE
 
   out
 }
