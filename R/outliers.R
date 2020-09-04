@@ -5,7 +5,6 @@
 #' @param .data Data retrieved from `read_data()` for a **kinetics** test, or
 #' the data retrieved from `incremental_normalize()` for a **incremental** test.
 #' @param test_type The test to be analyzed. Either 'incremental' or 'kinetics'.
-#' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to `t`.
 #' @param vo2_column The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to `VO2`.
 #' @param cleaning_level A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated. Default to `0.95`.
 #' @param cleaning_baseline_fit A vector of the same length as the number in `protocol_n_transitions`, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.
@@ -33,7 +32,6 @@
 #' data_outliers <- detect_outliers(
 #'   .data = df,
 #'   test_type = "kinetics",
-#'   time_column = "t",
 #'   vo2_column = "VO2",
 #'   cleaning_level = 0.95,
 #'   cleaning_baseline_fit = c("linear", "exponential", "exponential"),
@@ -45,7 +43,6 @@
 detect_outliers <- function(
   .data,
   test_type = c("incremental", "kinetics"),
-  time_column = "t",
   vo2_column = "VO2",
   cleaning_level = 0.95,
   cleaning_baseline_fit,
@@ -59,11 +56,11 @@ detect_outliers <- function(
   if(missing(.data))
     stop("No data, no fun. Please, pass the data retrieved from 'read_data()' to the function.", call. = FALSE)
 
+  if(is.null(attributes(.data)$read_data))
+    stop("It looks like you did not read your data with the `read_data()` function. Make sure you use it before continuing.", call. = FALSE)
+
   if(missing(test_type))
     stop("You must specify the type of test these data are related to. See ?detect_outliers for more information.", call. = FALSE)
-
-  if(!time_column %in% colnames(.data))
-    stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
 
   if(!vo2_column %in% colnames(.data))
     stop("It looks like the name of the VO2 column you chose does not exist.", call. = FALSE)
@@ -77,7 +74,6 @@ detect_outliers <- function(
 detect_outliers.kinetics <- function(
   .data,
   test_type = c("incremental", "kinetics"),
-  time_column = "t",
   vo2_column = "VO2",
   cleaning_level = 0.95,
   cleaning_baseline_fit,
@@ -123,6 +119,9 @@ detect_outliers.kinetics <- function(
       call. = FALSE
     )
 
+  ## get time column from attributes
+  time_column <- attributes(.data)$time_column
+
   out <- .data %>%
     normalize_transitions(
       .data = .,
@@ -163,6 +162,8 @@ detect_outliers.kinetics <- function(
     }
   }
 
+  attributes(out)$test_type <- "kinetics"
+
   out
 
 }
@@ -171,7 +172,6 @@ detect_outliers.kinetics <- function(
 detect_outliers.incremental <- function(
   .data,
   test_type = c("incremental", "kinetics"),
-  time_column = "t",
   vo2_column = "VO2",
   cleaning_level = 0.95,
   cleaning_baseline_fit,
@@ -187,23 +187,19 @@ detect_outliers.incremental <- function(
 
 #' Plot outliers
 #'
-#' @param .data The data retrieved from \code{detect_outliers()}.
-#' @param test_type The test to be analyzed. Either 'incremental' or 'kinetics'.
+#' @param .data The data retrieved from `detect_outliers()`.
 #'
 #' @return a patchwork object
 #' @export
-plot_outliers <- function(.data, test_type = c("incremental", "kinetics")) {
+plot_outliers <- function(.data) {
 
   if(missing(.data))
     stop("No data, no fun. Please, pass the data retrieved from 'detect_outliers()' to the function.", call. = FALSE)
 
-  if(missing(test_type))
-    stop("You must specify the type of test these data are related to. See ?detect_outliers for more information.", call. = FALSE)
-
   if(!"outlier" %in% colnames(.data))
     stop("Are you sure you passed the data retrieved from 'detect_outliers()'?", call. = FALSE)
 
-  test_type <- match.arg(test_type)
+  test_type <- attributes(.data)$test_type
 
   class(.data) <- test_type
 
@@ -211,7 +207,7 @@ plot_outliers <- function(.data, test_type = c("incremental", "kinetics")) {
 }
 
 #' @export
-plot_outliers.kinetics <- function(.data, test_type = c("incremental", "kinetics")) {
+plot_outliers.kinetics <- function(.data) {
 
   n_transitions <- .data %>%
     dplyr::pull(transition) %>%
@@ -253,6 +249,6 @@ plot_outliers.kinetics <- function(.data, test_type = c("incremental", "kinetics
 }
 
 #' @export
-plot_outliers.incremental <- function(.data, test_type = c("incremental", "kinetics")) {
+plot_outliers.incremental <- function(.data) {
   stop("I am sorry, this is not implemented yet.", call. = FALSE)
 }
