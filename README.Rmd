@@ -85,7 +85,6 @@ df %>%
 results_kinetics <- vo2_kinetics(
   .data = df,
   intensity_domain = "moderate",
-  time_column = "t",
   vo2_column = "VO2",
   protocol_n_transitions = 3,
   protocol_baseline_length = 360,

@@ -47,7 +47,7 @@ df <- read_data(path = path_example, metabolic_cart = "cosmed")
 df
 #> # A tibble: 754 x 119
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
-#>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
+#>  * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
 #>  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
 #>  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 
 #>  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 
@@ -216,7 +216,6 @@ df %>%
 results_kinetics <- vo2_kinetics(
   .data = df,
   intensity_domain = "moderate",
-  time_column = "t",
   vo2_column = "VO2",
   protocol_n_transitions = 3,
   protocol_baseline_length = 360,
@@ -230,7 +229,7 @@ results_kinetics <- vo2_kinetics(
   fit_transition_length = 240,
   verbose = TRUE
 )
-#> ────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────
+#> ────────────────────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────────────────────────
 #> ✓ Detecting outliers
 #> ● 14 outlier(s) found in transition 1
 #> ● 15 outlier(s) found in transition 2
@@ -245,7 +244,7 @@ results_kinetics <- vo2_kinetics(
 #> ✓       └─ Fitting transition
 #> ✓       └─ Calculating residuals
 #> ✓       └─ Preparing plots
-#> ────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────
+#> ────────────────────────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────────────────────────
 ```
 
 ## Metabolic carts currently supported
