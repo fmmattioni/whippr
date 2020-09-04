@@ -7,8 +7,6 @@
 perform_kinetics(
   .data_processed,
   intensity_domain = c("moderate", "heavy", "severe"),
-  time_column = "t",
-  vo2_column = "VO2",
   fit_level = 0.95,
   fit_phase_1_length,
   fit_baseline_length,
@@ -21,10 +19,6 @@ perform_kinetics(
 \item{.data_processed}{The data retrived from \code{process_data()}.}
 
 \item{intensity_domain}{The exercise-intensity domain that the test was performed. Either \emph{moderate}, \emph{heavy}, or \emph{severe}.}
-
-\item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be \emph{"t"}. Therefore, you may specify it here.  Default to \code{"t"}.}
-
-\item{vo2_column}{The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to \code{"VO2"}.}
 
 \item{fit_level}{A numeric scalar between 0 and 1 giving the confidence level for the parameter estimates in the final VO2 kinetics fit. Default to \code{0.95}.}
 

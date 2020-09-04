@@ -4,12 +4,10 @@
 \alias{plot_outliers}
 \title{Plot outliers}
 \usage{
-plot_outliers(.data, test_type = c("incremental", "kinetics"))
+plot_outliers(.data)
 }
 \arguments{
 \item{.data}{The data retrieved from \code{detect_outliers()}.}
-
-\item{test_type}{The test to be analyzed. Either 'incremental' or 'kinetics'.}
 }
 \value{
 a patchwork object

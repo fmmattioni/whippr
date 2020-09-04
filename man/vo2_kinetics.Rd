@@ -7,7 +7,6 @@
 vo2_kinetics(
   .data,
   intensity_domain = c("moderate", "heavy", "severe"),
-  time_column = "t",
   vo2_column = "VO2",
   protocol_n_transitions,
   protocol_baseline_length,
@@ -27,8 +26,6 @@ vo2_kinetics(
 \item{.data}{Data retrieved from \code{read_data()}.}
 
 \item{intensity_domain}{The exercise-intensity domain that the test was performed. Either \emph{moderate}, \emph{heavy}, or \emph{severe}.}
-
-\item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be \emph{"t"}. Therefore, you may specify it here.  Default to \code{"t"}.}
 
 \item{vo2_column}{The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to \code{"VO2"}.}
 
@@ -189,7 +186,6 @@ df <- read_data(path = path_example, metabolic_cart = "cosmed")
 results_kinetics <- vo2_kinetics(
   .data = df,
   intensity_domain = "moderate",
-  time_column = "t",
   vo2_column = "VO2",
   protocol_n_transitions = 3,
   protocol_baseline_length = 360,

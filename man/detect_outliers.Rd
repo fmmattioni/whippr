@@ -7,7 +7,6 @@
 detect_outliers(
   .data,
   test_type = c("incremental", "kinetics"),
-  time_column = "t",
   vo2_column = "VO2",
   cleaning_level = 0.95,
   cleaning_baseline_fit,
@@ -23,8 +22,6 @@ detect_outliers(
 the data retrieved from \code{incremental_normalize()} for a \strong{incremental} test.}
 
 \item{test_type}{The test to be analyzed. Either 'incremental' or 'kinetics'.}
-
-\item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to \code{t}.}
 
 \item{vo2_column}{The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to \code{VO2}.}
 
@@ -63,7 +60,6 @@ df <- read_data(path = path_example, metabolic_cart = "cosmed")
 data_outliers <- detect_outliers(
   .data = df,
   test_type = "kinetics",
-  time_column = "t",
   vo2_column = "VO2",
   cleaning_level = 0.95,
   cleaning_baseline_fit = c("linear", "exponential", "exponential"),
