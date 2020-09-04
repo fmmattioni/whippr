@@ -165,7 +165,6 @@ The analysis is performed like the following:
 results <- vo2_kinetics(
   .data = raw_data,
   intensity_domain = "moderate",
-  time_column = "t",
   vo2_column = "VO2",
   protocol_n_transitions = 3,
   protocol_baseline_length = 360,
