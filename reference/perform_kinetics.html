@@ -184,8 +184,6 @@
     <pre class="usage"><span class='fu'>perform_kinetics</span>(
   <span class='kw'>.data_processed</span>,
   intensity_domain = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"moderate"</span>, <span class='st'>"heavy"</span>, <span class='st'>"severe"</span>),
-  time_column = <span class='st'>"t"</span>,
-  vo2_column = <span class='st'>"VO2"</span>,
   fit_level = <span class='fl'>0.95</span>,
   <span class='kw'>fit_phase_1_length</span>,
   <span class='kw'>fit_baseline_length</span>,
@@ -204,14 +202,6 @@
     <tr>
       <th>intensity_domain</th>
       <td><p>The exercise-intensity domain that the test was performed. Either <em>moderate</em>, <em>heavy</em>, or <em>severe</em>.</p></td>
-    </tr>
-    <tr>
-      <th>time_column</th>
-      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be <em>"t"</em>. Therefore, you may specify it here.  Default to <code>"t"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>vo2_column</th>
-      <td><p>The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to <code>"VO2"</code>.</p></td>
     </tr>
     <tr>
       <th>fit_level</th>

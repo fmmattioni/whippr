@@ -182,7 +182,6 @@
     <pre class="usage"><span class='fu'>detect_outliers</span>(
   <span class='kw'>.data</span>,
   test_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"incremental"</span>, <span class='st'>"kinetics"</span>),
-  time_column = <span class='st'>"t"</span>,
   vo2_column = <span class='st'>"VO2"</span>,
   cleaning_level = <span class='fl'>0.95</span>,
   <span class='kw'>cleaning_baseline_fit</span>,
@@ -204,10 +203,6 @@ the data retrieved from <code>incremental_normalize()</code> for a <strong>incre
     <tr>
       <th>test_type</th>
       <td><p>The test to be analyzed. Either 'incremental' or 'kinetics'.</p></td>
-    </tr>
-    <tr>
-      <th>time_column</th>
-      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to <code>t</code>.</p></td>
     </tr>
     <tr>
       <th>vo2_column</th>
@@ -262,7 +257,6 @@ incremental test. Either 'linear' or 'anomaly'. See <code>Details</code>.</p></t
 <span class='kw'>data_outliers</span> <span class='op'>&lt;-</span> <span class='fu'>detect_outliers</span>(
   .data = <span class='kw'>df</span>,
   test_type = <span class='st'>"kinetics"</span>,
-  time_column = <span class='st'>"t"</span>,
   vo2_column = <span class='st'>"VO2"</span>,
   cleaning_level = <span class='fl'>0.95</span>,
   cleaning_baseline_fit = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"linear"</span>, <span class='st'>"exponential"</span>, <span class='st'>"exponential"</span>),

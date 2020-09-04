@@ -188,7 +188,6 @@ You can also call each one of them separately if you want.</p>
     <pre class="usage"><span class='fu'>vo2_kinetics</span>(
   <span class='kw'>.data</span>,
   intensity_domain = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"moderate"</span>, <span class='st'>"heavy"</span>, <span class='st'>"severe"</span>),
-  time_column = <span class='st'>"t"</span>,
   vo2_column = <span class='st'>"VO2"</span>,
   <span class='kw'>protocol_n_transitions</span>,
   <span class='kw'>protocol_baseline_length</span>,
@@ -214,10 +213,6 @@ You can also call each one of them separately if you want.</p>
     <tr>
       <th>intensity_domain</th>
       <td><p>The exercise-intensity domain that the test was performed. Either <em>moderate</em>, <em>heavy</em>, or <em>severe</em>.</p></td>
-    </tr>
-    <tr>
-      <th>time_column</th>
-      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be <em>"t"</em>. Therefore, you may specify it here.  Default to <code>"t"</code>.</p></td>
     </tr>
     <tr>
       <th>vo2_column</th>
@@ -386,13 +381,12 @@ This may be specified through the <strong><code>fit_bin_average</code></strong> 
 <span class='kw'>path_example</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"example_cosmed.xlsx"</span>, package = <span class='st'>"whippr"</span>)
 
 <span class='co'>## read data</span>
-<span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(path = <span class='kw'>path_example</span>, metabolic_cart = <span class='st'>"cosmed"</span>)
+<span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data.html'>read_data</a></span>(path = <span class='kw'>path_example</span>, metabolic_cart = <span class='st'>"cosmed"</span>, time_column = <span class='st'>"t"</span>)
 
 <span class='co'>## VO2 kinetics analysis</span>
 <span class='kw'>results_kinetics</span> <span class='op'>&lt;-</span> <span class='fu'>vo2_kinetics</span>(
   .data = <span class='kw'>df</span>,
   intensity_domain = <span class='st'>"moderate"</span>,
-  time_column = <span class='st'>"t"</span>,
   vo2_column = <span class='st'>"VO2"</span>,
   protocol_n_transitions = <span class='fl'>3</span>,
   protocol_baseline_length = <span class='fl'>360</span>,

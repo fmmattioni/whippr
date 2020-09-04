@@ -176,6 +176,26 @@
     <div id="whippr-0009000" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.0.9000">
 <a href="#whippr-0009000" class="anchor"></a>whippr 0.0.0.9000</h1>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
+<ul>
+<li>
+<p>The following function calls were simplified:</p>
+<ul>
+<li>
+<code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code> and <code><a href="../reference/detect_outliers.html">detect_outliers()</a></code> = <code>time_column</code> argument not needed anymore (this is automatically taken from <code><a href="../reference/read_data.html">read_data()</a></code> now).</li>
+<li>
+<code><a href="../reference/plot_outliers.html">plot_outliers()</a></code> = <code>test_type</code> argument not needed anymore (this is automatically taken from <code><a href="../reference/detect_outliers.html">detect_outliers()</a></code> now).</li>
+<li>
+<code><a href="../reference/perform_kinetics.html">perform_kinetics()</a></code> = <code>time_column</code> and <code>vo2_column</code> arguments not needed anymore (this is automatically taken from <code><a href="../reference/read_data.html">read_data()</a></code> and <code><a href="../reference/detect_outliers.html">detect_outliers()</a></code>).</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="new-functionsmethods" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functionsmethods" class="anchor"></a>New functions/methods</h2>
 <ul>
 <li>
 <p>Added function <code><a href="../reference/read_data.html">read_data()</a></code> to read data from metabolic cart (COSMED and CORTEX).</p>
@@ -188,11 +208,19 @@
 </li>
 <li><p>Added function <code><a href="../reference/interpolate.html">interpolate()</a></code> to interpolate breath-by-breath data into second-by-second.</p></li>
 <li><p>Added function <code><a href="../reference/perform_average.html">perform_average()</a></code> to perform bin- and rolling-averages.</p></li>
+<li><p>Added <code><a href="../reference/run_manual_cleaner.html">run_manual_cleaner()</a></code>.</p></li>
+<li><p>Added testing of functions (internal modification only, not visible to the user).</p></li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
 <li><p>Improved error messages in case <code><a href="../reference/read_data.html">read_data()</a></code> cannot find the name of the time column provided.</p></li>
 <li><p>Removed the <code>time_column</code> argument from the <code><a href="../reference/interpolate.html">interpolate()</a></code> and <code><a href="../reference/perform_average.html">perform_average()</a></code> functions. This is only necessary in <code><a href="../reference/read_data.html">read_data()</a></code> now.</p></li>
 <li><p>Make sure that data does not contain rows and cols with only <code>NA</code> in <code><a href="../reference/interpolate.html">interpolate()</a></code> (thanks <a href='https://github.com/Scott-S-Hannah'>@Scott-S-Hannah</a>).</p></li>
-<li><p>Added <code><a href="../reference/run_manual_cleaner.html">run_manual_cleaner()</a></code>.</p></li>
 </ul>
+</div>
 <div id="vo2-kinetics-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#vo2-kinetics-analysis" class="anchor"></a>VO2 kinetics analysis</h2>
