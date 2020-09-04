@@ -180,7 +180,7 @@ TODO
 path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 
 ## read data
-df <- read_data(path = path_example, metabolic_cart = "cosmed")
+df <- read_data(path = path_example, metabolic_cart = "cosmed", time_column = "t")
 
 ## VO2 kinetics analysis
 results_kinetics <- vo2_kinetics(
