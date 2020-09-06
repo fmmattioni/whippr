@@ -38,7 +38,8 @@ Imports:
     miniUI,
     datapasta,
     rstudioapi,
-    shinyThings (>= 0.4.0)
+    shinyThings (>= 0.4.0),
+    pillar
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
