@@ -241,7 +241,7 @@ results_kinetics <- vo2_kinetics(
   fit_transition_length = 240,
   verbose = TRUE
 )
-#> ────────────────────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────────────────────────
+#> ───────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────
 #> ✓ Detecting outliers
 #> ● 14 outlier(s) found in transition 1
 #> ● 15 outlier(s) found in transition 2
@@ -256,7 +256,7 @@ results_kinetics <- vo2_kinetics(
 #> ✓       └─ Fitting transition
 #> ✓       └─ Calculating residuals
 #> ✓       └─ Preparing plots
-#> ────────────────────────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────────────────────────
+#> ────────────────────────────────────────────────────  * DONE *  ───────────────────────────────────────────────────
 ```
 
 ## Metabolic carts currently supported
@@ -267,6 +267,12 @@ results_kinetics <- vo2_kinetics(
   - [Parvo Medics](http://www.parvo.com/)
   - [Geratherm
     Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
+
+## Shiny app
+
+Would you like to perform VO2 kinetics analyses but don’t know R? No
+problem\! You can use our shiny app: [VO2 Kinetics
+Dashboard](https://shiny.fmattioni.me/vo2kinetics/)
 
 ## Code of Conduct
 

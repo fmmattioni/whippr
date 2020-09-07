@@ -108,11 +108,13 @@ results_kinetics <- vo2_kinetics(
 * [Parvo Medics](http://www.parvo.com/)
 * [Geratherm Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
 
+## Shiny app
+
+Would you like to perform VO2 kinetics analyses but don't know R? No problem! You can use our shiny app: [VO2 Kinetics Dashboard](https://shiny.fmattioni.me/vo2kinetics/)
 
 ## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/1/0/0/code-of-conduct.html).
 By participating in this project you agree to abide by its terms.
-
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
