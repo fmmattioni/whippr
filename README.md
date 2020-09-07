@@ -45,9 +45,12 @@ path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 df <- read_data(path = path_example, metabolic_cart = "cosmed")
 
 df
+#> # Metabolic cart: COSMED 
+#> # Data status: raw data
+#> # Time column: t
 #> # A tibble: 754 x 119
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
-#>  * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
+#>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
 #>  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
 #>  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 
 #>  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 
@@ -86,6 +89,9 @@ df
 ``` r
 df %>% 
   interpolate()
+#> # Metabolic cart: COSMED 
+#> # Data status: interpolated data
+#> # Time column: t
 #> # A tibble: 2,159 x 114
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
@@ -131,6 +137,9 @@ df %>%
 df %>% 
   interpolate() %>% 
   perform_average(type = "bin", bins = 30)
+#> # Metabolic cart: COSMED 
+#> # Data status: averaged data - 30-s bins
+#> # Time column: t
 #> # A tibble: 73 x 114
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
@@ -174,6 +183,9 @@ df %>%
 df %>% 
   interpolate() %>% 
   perform_average(type = "rolling", rolling_window = 30)
+#> # Metabolic cart: COSMED 
+#> # Data status: averaged data - 30-s rolling average
+#> # Time column: t
 #> # A tibble: 2,130 x 114
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
