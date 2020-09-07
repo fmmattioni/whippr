@@ -158,6 +158,9 @@
 <span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span>(path = <span class="kw">path_example</span>, metabolic_cart = <span class="st">"cosmed"</span>)
 
 <span class="kw">df</span>
+<span class="co">#&gt; # Metabolic cart: COSMED </span>
+<span class="co">#&gt; # Data status: raw data</span>
+<span class="co">#&gt; # Time column: t</span>
 <span class="co">#&gt; # A tibble: 754 x 119</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -200,6 +203,9 @@
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="kw">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>()
+<span class="co">#&gt; # Metabolic cart: COSMED </span>
+<span class="co">#&gt; # Data status: interpolated data</span>
+<span class="co">#&gt; # Time column: t</span>
 <span class="co">#&gt; # A tibble: 2,159 x 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -247,6 +253,9 @@
 <span class="kw">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>() <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/perform_average.html">perform_average</a></span>(type = <span class="st">"bin"</span>, bins = <span class="fl">30</span>)
+<span class="co">#&gt; # Metabolic cart: COSMED </span>
+<span class="co">#&gt; # Data status: averaged data - 30-s bins</span>
+<span class="co">#&gt; # Time column: t</span>
 <span class="co">#&gt; # A tibble: 73 x 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -291,6 +300,9 @@
 <span class="kw">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span>() <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/perform_average.html">perform_average</a></span>(type = <span class="st">"rolling"</span>, rolling_window = <span class="fl">30</span>)
+<span class="co">#&gt; # Metabolic cart: COSMED </span>
+<span class="co">#&gt; # Data status: averaged data - 30-s rolling average</span>
+<span class="co">#&gt; # Time column: t</span>
 <span class="co">#&gt; # A tibble: 2,130 x 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
@@ -335,7 +347,6 @@
 <span class="kw">results_kinetics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span>(
   .data = <span class="kw">df</span>,
   intensity_domain = <span class="st">"moderate"</span>,
-  time_column = <span class="st">"t"</span>,
   vo2_column = <span class="st">"VO2"</span>,
   protocol_n_transitions = <span class="fl">3</span>,
   protocol_baseline_length = <span class="fl">360</span>,
@@ -349,7 +360,7 @@
   fit_transition_length = <span class="fl">240</span>,
   verbose = <span class="fl">TRUE</span>
 )
-<span class="co">#&gt; ────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────</span>
+<span class="co">#&gt; ────────────────────────────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; ✓ Detecting outliers</span>
 <span class="co">#&gt; ● 14 outlier(s) found in transition 1</span>
 <span class="co">#&gt; ● 15 outlier(s) found in transition 2</span>
@@ -364,7 +375,7 @@
 <span class="co">#&gt; ✓       └─ Fitting transition</span>
 <span class="co">#&gt; ✓       └─ Calculating residuals</span>
 <span class="co">#&gt; ✓       └─ Preparing plots</span>
-<span class="co">#&gt; ────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────</span>
+<span class="co">#&gt; ────────────────────────────────────────────────────────────────────────  * DONE *  ────────────────────────────────────────────────────────────────────────</span>
 </pre></div>
 </div>
 </div>

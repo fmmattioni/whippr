@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • whippr</title>
+<title>Construct a new tibble with metadata — new_whippr_tibble • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Construct a new tibble with metadata — new_whippr_tibble" />
+<meta property="og:description" content="Construct a new tibble with metadata" />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -82,7 +83,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -169,75 +170,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/fmattioni/whippr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Construct a new tibble with metadata</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/tbl.R'><code>R/tbl.R</code></a></small>
+    <div class="hidden name"><code>new_whippr_tibble.Rd</code></div>
     </div>
 
-    <div id="whippr-0009000" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.0.9000">
-<a href="#whippr-0009000" class="anchor"></a>whippr 0.0.0.9000</h1>
-<div id="breaking-changes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
-<ul>
-<li>
-<p>The following function calls were simplified:</p>
-<ul>
-<li>
-<code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code> and <code><a href="../reference/detect_outliers.html">detect_outliers()</a></code> = <code>time_column</code> argument not needed anymore (this is automatically taken from <code><a href="../reference/read_data.html">read_data()</a></code> now).</li>
-<li>
-<code><a href="../reference/plot_outliers.html">plot_outliers()</a></code> = <code>test_type</code> argument not needed anymore (this is automatically taken from <code><a href="../reference/detect_outliers.html">detect_outliers()</a></code> now).</li>
-<li>
-<code><a href="../reference/perform_kinetics.html">perform_kinetics()</a></code> = <code>time_column</code> and <code>vo2_column</code> arguments not needed anymore (this is automatically taken from <code><a href="../reference/read_data.html">read_data()</a></code> and <code><a href="../reference/detect_outliers.html">detect_outliers()</a></code>).</li>
-</ul>
-</li>
-</ul>
-</div>
-<div id="new-functionsmethods" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-functionsmethods" class="anchor"></a>New functions/methods</h2>
-<ul>
-<li>
-<p>Added function <code><a href="../reference/read_data.html">read_data()</a></code> to read data from metabolic cart (COSMED and CORTEX).</p>
-<ul>
-<li>Now you can specify the name of the time column, in case your system is not in English. Default is set to “t”.</li>
-<li>Added option to read data from NSpire system (thanks to <a href="https://twitter.com/peter__leo">@peter__leo</a>).</li>
-<li>Added option to read data from Parvo Medics system (thanks to <a href="https://twitter.com/EatsleepfitJeff">@EatsleepfitJeff</a>).</li>
-<li>Added option to read data from Geratherm Respiratory system (thanks to <a href="https://twitter.com/marcorsini61">@marcorsini61</a>)</li>
-</ul>
-</li>
-<li><p>Added function <code><a href="../reference/interpolate.html">interpolate()</a></code> to interpolate breath-by-breath data into second-by-second.</p></li>
-<li><p>Added function <code><a href="../reference/perform_average.html">perform_average()</a></code> to perform bin- and rolling-averages.</p></li>
-<li><p>Added <code><a href="../reference/run_manual_cleaner.html">run_manual_cleaner()</a></code>.</p></li>
-<li><p>Added testing of functions (internal modification only, not visible to the user).</p></li>
-<li><p>Added new print method.</p></li>
-</ul>
-</div>
-<div id="bug-fixes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
-<ul>
-<li><p>Improved error messages in case <code><a href="../reference/read_data.html">read_data()</a></code> cannot find the name of the time column provided.</p></li>
-<li><p>Removed the <code>time_column</code> argument from the <code><a href="../reference/interpolate.html">interpolate()</a></code> and <code><a href="../reference/perform_average.html">perform_average()</a></code> functions. This is only necessary in <code><a href="../reference/read_data.html">read_data()</a></code> now.</p></li>
-<li><p>Make sure that data does not contain rows and cols with only <code>NA</code> in <code><a href="../reference/interpolate.html">interpolate()</a></code> (thanks <a href='https://github.com/Scott-S-Hannah'>@Scott-S-Hannah</a>).</p></li>
-</ul>
-</div>
-<div id="vo2-kinetics-analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vo2-kinetics-analysis" class="anchor"></a>VO2 kinetics analysis</h2>
-<ul>
-<li>Added set of tools for VO2 kinetics analysis.</li>
-</ul>
-</div>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Construct a new tibble with metadata</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>new_whippr_tibble</span>(<span class='kw'>.data</span>, <span class='kw'>metadata</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data</th>
+      <td><p>A data frame</p></td>
+    </tr>
+    <tr>
+      <th>metadata</th>
+      <td><p>Metadata to be passed along with the data</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a></p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

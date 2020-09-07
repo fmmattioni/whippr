@@ -228,7 +228,10 @@ the moderate/heavy/severe intensity-domain is ensembled averaged into a single '
 <span class='kw'>df</span> <span class='op'>%&gt;%</span>
  <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='op'>%&gt;%</span>
  <span class='fu'>perform_average</span>(type = <span class='st'>"bin"</span>, bins = <span class='fl'>30</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 73 x 114</span><span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># Metabolic cart: COSMED 
+#&gt; # Data status: averaged data - 30-s bins
+#&gt; # Time column: t
+#&gt; # A tibble: 73 x 114</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span>     0  19.0  1.33  24.0  932.  744.  207.   58.9     25.8      32.5     11.2
@@ -266,7 +269,10 @@ the moderate/heavy/severe intensity-domain is ensembled averaged into a single '
 <span class='kw'>df</span> <span class='op'>%&gt;%</span>
  <span class='fu'><a href='interpolate.html'>interpolate</a></span>() <span class='op'>%&gt;%</span>
  <span class='fu'>perform_average</span>(type = <span class='st'>"rolling"</span>, rolling_window = <span class='fl'>30</span>)
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2,130 x 114</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># Metabolic cart: COSMED 
+#&gt; # Data status: averaged data - 30-s rolling average
+#&gt; # Time column: t
+#&gt; # A tibble: 2,130 x 114</span><span>
 #&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span>  16.5  16.4  1.75  26.5 </span><span style='text-decoration: underline;'>1</span><span>033.  852.  271.   80.1     25.7      31.3     12.4
