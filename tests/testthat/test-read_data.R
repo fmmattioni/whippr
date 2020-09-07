@@ -5,6 +5,6 @@ test_that("read data works", {
 
   expect_s3_class(
     object = df,
-    class = "tbl"
+    class = "whippr"
   )
 })

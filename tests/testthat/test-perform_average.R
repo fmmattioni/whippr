@@ -9,7 +9,7 @@ test_that("bin-averaging works", {
 
   expect_s3_class(
     object = df_averaged,
-    class = "tbl"
+    class = "whippr"
   )
 })
 
@@ -24,6 +24,6 @@ test_that("rolling-averaging works", {
 
   expect_s3_class(
     object = df_averaged,
-    class = "tbl"
+    class = "whippr"
   )
 })

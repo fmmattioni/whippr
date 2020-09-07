@@ -25,6 +25,6 @@ test_that("process data works", {
 
   expect_s3_class(
     object = data_processed,
-    class = "tbl"
+    class = "whippr"
   )
 })

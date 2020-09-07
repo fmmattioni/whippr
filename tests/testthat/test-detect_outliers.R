@@ -18,6 +18,6 @@ test_that("detection of outliers works", {
 
   expect_s3_class(
     object = data_outliers,
-    class = "tbl"
+    class = "whippr"
   )
 })

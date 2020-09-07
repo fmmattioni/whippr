@@ -8,6 +8,6 @@ test_that("interpolation works", {
 
   expect_s3_class(
     object = df_interpolated,
-    class = "tbl"
+    class = "whippr"
   )
 })

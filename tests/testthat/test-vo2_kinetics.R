@@ -21,4 +21,9 @@ test_that("general vo2 kinetics function works", {
     fit_transition_length = 240,
     verbose = TRUE
   )
+
+  expect_s3_class(
+    object = results_kinetics,
+    class = "tbl"
+  )
 })
