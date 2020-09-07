@@ -162,9 +162,12 @@ detect_outliers.kinetics <- function(
     }
   }
 
-  attributes(out)$time_column <- time_column
-  attributes(out)$vo2_column <- vo2_column
-  attributes(out)$test_type <- "kinetics"
+  metadata <- attributes(.data)
+  metadata$vo2_column <- vo2_column
+  metadata$data_status <- "raw data - outliers detected"
+  metadata$test_type <- "kinetics"
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 

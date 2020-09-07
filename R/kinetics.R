@@ -533,9 +533,11 @@ process_data <- function(
       normalize_time(.data = ., protocol_baseline_length = protocol_baseline_length)
   }
 
-  attributes(out)$time_column <- attributes(.data_outliers)$time_column
-  attributes(out)$vo2_column <- attributes(.data_outliers)$vo2_column
-  attributes(out)$processed_data <- TRUE
+  metadata <- attributes(.data_outliers)
+  metadata$data_status <- glue::glue("processed data - {fit_bin_average}-s bin averaged")
+  metadata$processed_data <- TRUE
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 }

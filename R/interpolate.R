@@ -25,11 +25,18 @@ interpolate <- function(.data) {
     dplyr::select_if(is.numeric) %>%
     janitor::remove_empty(dat = ., which = c("rows", "cols"))
 
-  lapply(data_num, function (i) approx(
+  out <- lapply(data_num, function (i) approx(
     x = data_num[[1]],
     y = i,
     xout = seq(min(data_num[[1]]), max(data_num[[1]], na.rm = TRUE), 1)
   )$y
   ) %>%
     dplyr::as_tibble()
+
+  metadata <- attributes(.data)
+  metadata$data_status <- "interpolated data"
+
+  out <- new_whippr_tibble(out, metadata)
+
+  out
 }

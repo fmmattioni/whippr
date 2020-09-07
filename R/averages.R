@@ -52,6 +52,11 @@ perform_average.bin <- function(.data, type = c("bin", "rolling", "ensemble"), b
     dplyr::group_by_at(1, function(x) round(x / bins) * bins) %>%
     dplyr::summarise_all(mean, na.rm = TRUE)
 
+  metadata <- attributes(.data)
+  metadata$data_status <- glue::glue("averaged data - {bins}-s bins")
+
+  out <- new_whippr_tibble(out, metadata)
+
   out
 }
 
@@ -65,6 +70,11 @@ perform_average.rolling <- function(.data, type = c("bin", "rolling", "ensemble"
     zoo::rollmean(x = ., k = rolling_window) %>%
     dplyr::as_tibble()
 
+  metadata <- attributes(.data)
+  metadata$data_status <- glue::glue("averaged data - {rolling_window}-s rolling average")
+
+  out <- new_whippr_tibble(out, metadata)
+
   out
 }
 
@@ -77,6 +87,11 @@ perform_average.ensemble <- function(.data, type = c("bin", "rolling", "ensemble
   out <- data_num %>%
     dplyr::group_by_at(1) %>%
     dplyr::summarise_all(mean, na.rm = TRUE)
+
+  metadata <- attributes(.data)
+  metadata$data_status <- "ensemble-averaged data"
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 }

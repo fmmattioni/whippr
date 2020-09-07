@@ -73,8 +73,13 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
       dplyr::mutate_at(1, function(x) (lubridate::hour(x) * 3600) + (lubridate::minute(x) * 60) + lubridate::second(x))
   }
 
-  attributes(out)$time_column <- time_column
-  attributes(out)$read_data <- TRUE
+  metadata <- NULL
+  metadata$read_data <- TRUE
+  metadata$metabolic_cart <- "COSMED"
+  metadata$data_status <- "raw data"
+  metadata$time_column <- time_column
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 }
@@ -118,8 +123,13 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
   out <- data_raw2 %>%
     janitor::remove_empty(which = "cols")
 
-  attributes(out)$time_column <- time_column
-  attributes(out)$read_data <- TRUE
+  metadata <- NULL
+  metadata$read_data <- TRUE
+  metadata$metabolic_cart <- "CORTEX"
+  metadata$data_status <- "raw data"
+  metadata$time_column <- time_column
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 }
@@ -145,8 +155,13 @@ read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
     dplyr::rename_all(~ names_file) %>%
     janitor::remove_empty(which = "rows")
 
-  attributes(out)$time_column <- time_column
-  attributes(out)$read_data <- TRUE
+  metadata <- NULL
+  metadata$read_data <- TRUE
+  metadata$metabolic_cart <- "NSpire"
+  metadata$data_status <- "raw data"
+  metadata$time_column <- time_column
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 }
@@ -178,8 +193,13 @@ read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire
     dplyr::mutate_all(as.numeric) %>%
     dplyr::mutate_at(1, function(x) x * 60)
 
-  attributes(out)$time_column <- time_column
-  attributes(out)$read_data <- TRUE
+  metadata <- NULL
+  metadata$read_data <- TRUE
+  metadata$metabolic_cart <- "Parvo Medics"
+  metadata$data_status <- "raw data"
+  metadata$time_column <- time_column
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 }
@@ -218,8 +238,13 @@ read_data.geratherm <- function(path, metabolic_cart = c("cosmed", "cortex", "ns
     dplyr::mutate(time = cumsum(time)) %>%
     dplyr::select(!!rlang::sym(time_column), time, dplyr::everything())
 
-  attributes(out)$time_column <- time_column
-  attributes(out)$read_data <- TRUE
+  metadata <- NULL
+  metadata$read_data <- TRUE
+  metadata$metabolic_cart <- "Geratherm"
+  metadata$data_status <- "raw data"
+  metadata$time_column <- time_column
+
+  out <- new_whippr_tibble(out, metadata)
 
   out
 }
