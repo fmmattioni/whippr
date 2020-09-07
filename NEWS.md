@@ -24,6 +24,8 @@
 
 * Added testing of functions (internal modification only, not visible to the user).
 
+* Added new print method.
+
 ## Bug fixes
 
 * Improved error messages in case `read_data()` cannot find the name of the time column provided.
