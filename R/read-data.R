@@ -5,11 +5,20 @@
 #' @param path Path to read the file from.
 #' @param metabolic_cart Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', 'parvo', and 'geratherm' are supported.
 #' @param time_column The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".
+#' @param work_rate_column Default is `NULL`. In case your work rate column is coerced as a character column
+#' you can define here the name of this column in your data file. This happens because at the very beginning of the test
+#' the system may input a character like "-" to indicate no work rate. Therefore this is not going to get recognized as a numeric column.
+#' If your work rate column is called `WR`, for example, just pass `"WR"` to this argument.
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @importFrom rlang :=
 #' @export
-read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
+read_data <- function(
+  path,
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
+  time_column = "t",
+  work_rate_column = NULL
+) {
   if(missing(metabolic_cart))
     stop("You must specify the metabolic cart.", call. = FALSE)
 
@@ -21,7 +30,12 @@ read_data <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "pa
 }
 
 #' @export
-read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
+read_data.cosmed <- function(
+  path,
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
+  time_column = "t",
+  work_rate_column = NULL
+) {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -73,6 +87,12 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
       dplyr::mutate_at(1, function(x) (lubridate::hour(x) * 3600) + (lubridate::minute(x) * 60) + lubridate::second(x))
   }
 
+  ## the following will try to coerce the work rate column to numeric
+  if(!is.null(work_rate_column))
+    if(!work_rate_column %in% colnames(out))
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
+        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+
   metadata <- NULL
   metadata$read_data <- TRUE
   metadata$metabolic_cart <- "COSMED"
@@ -85,7 +105,12 @@ read_data.cosmed <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
+read_data.cortex <- function(
+  path,
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
+  time_column = "t",
+  work_rate_column = NULL
+) {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -123,6 +148,12 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
   out <- data_raw2 %>%
     janitor::remove_empty(which = "cols")
 
+  ## the following will try to coerce the work rate column to numeric
+  if(!is.null(work_rate_column))
+    if(!work_rate_column %in% colnames(out))
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
+        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+
   metadata <- NULL
   metadata$read_data <- TRUE
   metadata$metabolic_cart <- "CORTEX"
@@ -135,7 +166,12 @@ read_data.cortex <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
+read_data.nspire <- function(
+  path,
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
+  time_column = "t",
+  work_rate_column = NULL
+) {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -155,6 +191,12 @@ read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
     dplyr::rename_all(~ names_file) %>%
     janitor::remove_empty(which = "rows")
 
+  ## the following will try to coerce the work rate column to numeric
+  if(!is.null(work_rate_column))
+    if(!work_rate_column %in% colnames(out))
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
+        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+
   metadata <- NULL
   metadata$read_data <- TRUE
   metadata$metabolic_cart <- "NSpire"
@@ -167,7 +209,12 @@ read_data.nspire <- function(path, metabolic_cart = c("cosmed", "cortex", "nspir
 }
 
 #' @export
-read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
+read_data.parvo <- function(
+  path,
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
+  time_column = "t",
+  work_rate_column = NULL
+) {
   data_raw <- suppressMessages(readxl::read_excel(path = path))
 
   ## find column that starts the data (time column will always be the first one)
@@ -193,6 +240,12 @@ read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire
     dplyr::mutate_all(as.numeric) %>%
     dplyr::mutate_at(1, function(x) x * 60)
 
+  ## the following will try to coerce the work rate column to numeric
+  if(!is.null(work_rate_column))
+    if(!work_rate_column %in% colnames(out))
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
+        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+
   metadata <- NULL
   metadata$read_data <- TRUE
   metadata$metabolic_cart <- "Parvo Medics"
@@ -205,7 +258,12 @@ read_data.parvo <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire
 }
 
 #' @export
-read_data.geratherm <- function(path, metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"), time_column = "t") {
+read_data.geratherm <- function(
+  path,
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
+  time_column = "t",
+  work_rate_column = NULL
+) {
 
   # if(purrr::is_empty(cells_parvo))
   #   stop("It looks like the name of the time column you chose does not exist.", call. = FALSE)
@@ -237,6 +295,12 @@ read_data.geratherm <- function(path, metabolic_cart = c("cosmed", "cortex", "ns
     dplyr::ungroup() %>%
     dplyr::mutate(time = cumsum(time)) %>%
     dplyr::select(!!rlang::sym(time_column), time, dplyr::everything())
+
+  ## the following will try to coerce the work rate column to numeric
+  if(!is.null(work_rate_column))
+    if(!work_rate_column %in% colnames(out))
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
+        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
 
   metadata <- NULL
   metadata$read_data <- TRUE
