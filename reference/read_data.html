@@ -182,7 +182,8 @@
     <pre class="usage"><span class='fu'>read_data</span>(
   <span class='kw'>path</span>,
   metabolic_cart = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cosmed"</span>, <span class='st'>"cortex"</span>, <span class='st'>"nspire"</span>, <span class='st'>"parvo"</span>, <span class='st'>"geratherm"</span>),
-  time_column = <span class='st'>"t"</span>
+  time_column = <span class='st'>"t"</span>,
+  work_rate_column = <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -199,6 +200,13 @@
     <tr>
       <th>time_column</th>
       <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".</p></td>
+    </tr>
+    <tr>
+      <th>work_rate_column</th>
+      <td><p>Default is <code>NULL</code>. In case your work rate column is coerced as a character column
+you can define here the name of this column in your data file. This happens because at the very beginning of the test
+the system may input a character like "-" to indicate no work rate. Therefore this is not going to get recognized as a numeric column.
+If your work rate column is called <code>WR</code>, for example, just pass <code>"WR"</code> to this argument.</p></td>
     </tr>
     </table>
 
