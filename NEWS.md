@@ -28,6 +28,8 @@
 
 ## Bug fixes
 
+* Added extra argument to `read_data()` to automatically fix the issue when the work rate column is coerced as a character column (thanks to [@ThibauxV](https://twitter.com/ThibauxV)).
+
 * Improved error messages in case `read_data()` cannot find the name of the time column provided.
 
 * Removed the `time_column` argument from the `interpolate()` and `perform_average()` functions. This is only necessary in `read_data()` now.

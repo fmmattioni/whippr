@@ -7,7 +7,8 @@
 read_data(
   path,
   metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm"),
-  time_column = "t"
+  time_column = "t",
+  work_rate_column = NULL
 )
 }
 \arguments{
@@ -16,6 +17,11 @@ read_data(
 \item{metabolic_cart}{Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', 'parvo', and 'geratherm' are supported.}
 
 \item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".}
+
+\item{work_rate_column}{Default is \code{NULL}. In case your work rate column is coerced as a character column
+you can define here the name of this column in your data file. This happens because at the very beginning of the test
+the system may input a character like "-" to indicate no work rate. Therefore this is not going to get recognized as a numeric column.
+If your work rate column is called \code{WR}, for example, just pass \code{"WR"} to this argument.}
 }
 \value{
 a \link[tibble:tibble-package]{tibble}
