@@ -4,7 +4,12 @@
 \alias{theme_whippr}
 \title{Whippr ggplot2 theme}
 \usage{
-theme_whippr()
+theme_whippr(base_size = 14, base_family = "Arial")
+}
+\arguments{
+\item{base_size}{base font size, given in pts. Default is \code{14}.}
+
+\item{base_family}{base font family. Default is \code{Arial}.}
 }
 \value{
 a ggplot2 object
