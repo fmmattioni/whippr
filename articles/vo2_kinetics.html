@@ -146,8 +146,8 @@ Functions for analysis in the heavy- and severe-intensity domains will be added 
 </p>
 </div>
 <p>For making everyone’s life easier, the general function <code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code> was created. This function calls smaller separate functions that <strong>fully</strong> automate the VO2 kinetics data analysis. The following interactive tree diagram shows how each function is called:</p>
-<div id="htmlwidget-c5d8ffa3ccdf11d474d9" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c5d8ffa3ccdf11d474d9">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div id="read-the-data" class="section level2">
+<div id="htmlwidget-e41b1b3eef6887586a89" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e41b1b3eef6887586a89">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div id="read-the-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#read-the-data" class="anchor"></a>Read the data</h2>
 <p>The first step is to read the raw data with the <code><a href="../reference/read_data.html">read_data()</a></code> function. Here we are going to use the example file that comes with <code>{whippr}</code>, which is a file exported from the COSMED metabolic cart.</p>
@@ -595,7 +595,7 @@ where:
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
