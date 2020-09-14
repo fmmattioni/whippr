@@ -129,7 +129,7 @@ run_manual_cleaner <- function(.data, width = 1200, height = 900) {
 
       ggplot2::ggplot(r$data_keep, ggplot2::aes_string(time_column, input$select_y_axis)) +
         ggplot2::geom_point() +
-        ggplot2::theme_light()
+        theme_whippr()
 
     }, res = 96)
 

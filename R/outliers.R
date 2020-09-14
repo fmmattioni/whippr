@@ -231,14 +231,14 @@ plot_outliers.kinetics <- function(.data) {
         ggplot2::geom_line(ggplot2::aes(x, .fitted), color = "red") +
         ggplot2::geom_ribbon(ggplot2::aes(x = x, ymin = lwr_pred, ymax = upr_pred), fill = "red", alpha = 0.1) +
         ggplot2::scale_fill_manual(values = c("white", "red")) +
-        ggplot2::theme_light() +
+        theme_whippr() +
         ggplot2::facet_wrap(~ transition)
 
       p2 <- .data %>%
         dplyr::filter(transition == .x) %>%
         ggplot2::ggplot(ggplot2::aes(x, .resid)) +
         ggplot2::geom_line(alpha = 0.4) +
-        ggplot2::theme_light()
+        theme_whippr()
 
       patchwork::wrap_plots(p1, p2, ncol = 1, heights = c(8, 1))
     })

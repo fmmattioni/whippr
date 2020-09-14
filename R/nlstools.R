@@ -51,7 +51,7 @@ model_diagnostics <- function(.residuals_tbl) {
       x = "Residuals",
       y = "Density"
     ) +
-    ggplot2::theme_light()
+    theme_whippr()
 
   ## P2
   p2 <- .residuals_tbl %>%
@@ -64,7 +64,7 @@ model_diagnostics <- function(.residuals_tbl) {
       y = "Standardized Residuals",
       x = "Theoretical Quantiles"
     ) +
-    ggplot2::theme_light()
+    theme_whippr()
 
   ## P3
   p3 <- .residuals_tbl %>%
@@ -77,7 +77,7 @@ model_diagnostics <- function(.residuals_tbl) {
       x = "Fitted values",
       y = "Residuals"
     ) +
-    ggplot2::theme_light()
+    theme_whippr()
 
   p4 <- .residuals_tbl %>%
     tidyr::drop_na(lag_residuals) %>%
@@ -90,7 +90,7 @@ model_diagnostics <- function(.residuals_tbl) {
       x = "Residuals",
       y = "Residuals - i"
     ) +
-    ggplot2::theme_light()
+    theme_whippr()
 
   out <- patchwork::wrap_plots(p1, p2, p3, p4, ncol = 2)
 

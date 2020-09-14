@@ -444,12 +444,12 @@ perform_kinetics.moderate <- function(
     ggplot2::ggplot(ggplot2::aes(!!rlang::sym(time_column), !!rlang::sym(vo2_column))) +
     ggplot2::geom_point(shape = 21, size = 4, fill = "white") +
     ggplot2::geom_line(ggplot2::aes(!!rlang::sym(time_column), .fitted), color = "red") +
-    ggplot2::theme_light()
+    theme_whippr()
 
   p2 <- data_for_plot %>%
     ggplot2::ggplot(ggplot2::aes(!!rlang::sym(time_column), .resid)) +
     ggplot2::geom_line(alpha = 0.4) +
-    ggplot2::theme_light()
+    theme_whippr()
 
   out_plot <- patchwork::wrap_plots(p1, p2, ncol = 1, heights = c(8, 1))
 
