@@ -104,7 +104,7 @@ library(ggplot2)
 raw_data %>% 
   ggplot(aes(t, VO2)) +
   geom_point(shape = 21, size = 3, fill = "white") +
-  theme_light()
+  theme_whippr()
 ```
 
 ## Perform the analysis
