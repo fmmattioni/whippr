@@ -17,3 +17,4 @@ a \link[tibble:tibble-package]{tibble}
 \description{
 Construct a new tibble with metadata
 }
+\keyword{internal}

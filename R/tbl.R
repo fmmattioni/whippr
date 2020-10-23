@@ -4,7 +4,7 @@
 #' @param metadata Metadata to be passed along with the data
 #'
 #' @return a [tibble][tibble::tibble-package]
-#' @export
+#' @keywords internal
 new_whippr_tibble <- function(.data, metadata) {
   if(!is.data.frame(.data))
     stop("You can only pass a data frame to this function.", call. = FALSE)
