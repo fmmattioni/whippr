@@ -58,7 +58,7 @@ read_data.cosmed <- function(
   data_raw2 <- suppressWarnings(suppressMessages(readxl::read_excel(
     path = path,
     skip = 1,
-    col_types = c(rep("guess", num_cols_pre), "date", rep("numeric", num_cols_post))
+    col_types = c(rep("guess", num_cols_pre), "date", rep("guess", num_cols_post))
   ))) %>%
     dplyr::select(start_col:ncol(.)) %>%
     dplyr::rename_all(~ names_file) %>%
