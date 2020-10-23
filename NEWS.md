@@ -28,6 +28,8 @@
 
 ## Bug fixes
 
+* Fixed issue with `read_data()` when using the COSMED metabolic cart: previously, character columns were being coerced into `NA`(thanks @Scott-S-Hannah #4).
+
 * Added extra argument to `read_data()` to automatically fix the issue when the work rate column is coerced as a character column (thanks to [@ThibauxV](https://twitter.com/ThibauxV)).
 
 * Improved error messages in case `read_data()` cannot find the name of the time column provided.
