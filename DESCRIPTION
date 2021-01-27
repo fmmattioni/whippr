@@ -39,7 +39,12 @@ Imports:
     datapasta,
     rstudioapi,
     shinyThings (>= 0.4.0),
-    pillar
+    pillar,
+    anomalize,
+    forcats,
+    ggforce,
+    ggtext,
+    segmented
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
