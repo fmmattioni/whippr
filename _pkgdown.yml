@@ -33,6 +33,8 @@ navbar:
       menu:
       - text: "VO2 kinetics analysis"
         href: articles/vo2_kinetics.html
+      - text: "Incremental test analyses"
+        href: articles/incremental.html
     - text: Reference
       icon: fa-balance-scale
       href: reference/index.html
@@ -76,6 +78,15 @@ reference:
   - perform_kinetics
   - get_residuals
   - model_diagnostics
+- title: VO2 kinetics analysis
+  desc: >
+    Tools for performing incremental test analysis
+  contents:
+  - incremental_normalize
+  - plot_incremental
+  - detect_outliers
+  - perform_max
+  - vo2max
 - title: Additional tools
   desc: >
     Collection of a few additional helpful tools
