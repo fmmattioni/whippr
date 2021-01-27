@@ -86,7 +86,7 @@ reference:
   - plot_incremental
   - detect_outliers
   - perform_max
-  - vo2max
+  - vo2_max
 - title: Additional tools
   desc: >
     Collection of a few additional helpful tools
