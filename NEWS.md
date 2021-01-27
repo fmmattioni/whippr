@@ -26,6 +26,10 @@
 
 * Added new print method.
 
+* Added new functionality for analyzing data from incremental exercise.
+
+* Added `perform_max()` and `vo2_max()`.
+
 ## Bug fixes
 
 * Fixed issue with `read_data()` when using the COSMED metabolic cart: previously, character columns were being coerced into `NA`(thanks @Scott-S-Hannah #4).
@@ -38,6 +42,10 @@
 
 * Make sure that data does not contain rows and cols with only `NA` in `interpolate()` (thanks @Scott-S-Hannah).
 
-## VO2 kinetics analysis
+## VO2 kinetics analyses
 
-* Added set of tools for VO2 kinetics analysis.
+* Added a set of tools for VO2 kinetics analyses.
+
+## Incremental test analyses
+
+* Added a set of tools for incremental test analyses: data standardization and normalization, detection of 'bad breaths', mean response time, maximal values (i.e., VO2max, HRmax, maximal RER, etc), and ventilatory thresholds.
