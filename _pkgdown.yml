@@ -78,7 +78,7 @@ reference:
   - perform_kinetics
   - get_residuals
   - model_diagnostics
-- title: VO2 kinetics analysis
+- title: VO2 max analysis
   desc: >
     Tools for performing incremental test analysis
   contents:
