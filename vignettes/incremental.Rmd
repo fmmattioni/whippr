@@ -298,7 +298,7 @@ vo2_max(
   ## arguments for `incremental_normalize()`
   incremental_type = "ramp",
   has_baseline = TRUE,
-  baseline_length = 250, ## 4-min baseline
+  baseline_length = 240, ## 4-min baseline
   work_rate_magic = TRUE, ## produce a work rate column
   baseline_intensity = 20, ## baseline was performed at 20 W
   ramp_increase = 25, ## 25 W/min ramp
