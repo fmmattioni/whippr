@@ -7,13 +7,14 @@
 #' @param test_type The test to be analyzed. Either 'incremental' or 'kinetics'.
 #' @param vo2_column The name (quoted) of the column containing the absolute oxygen uptake (VO2) data. Default to `VO2`.
 #' @param cleaning_level A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated. Default to `0.95`.
-#' @param cleaning_baseline_fit A vector of the same length as the number in `protocol_n_transitions`, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.
-#' @param protocol_n_transitions Number of transitions performed.
-#' @param protocol_baseline_length The length of the baseline (in seconds).
-#' @param protocol_transition_length The length of the transition (in seconds).
+#' @param cleaning_baseline_fit For **kinetics** test only. A vector of the same length as the number in `protocol_n_transitions`, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.
+#' @param protocol_n_transitions For **kinetics** test only. Number of transitions performed.
+#' @param protocol_baseline_length For **kinetics** test only. The length of the baseline (in seconds).
+#' @param protocol_transition_length For **kinetics** test only. The length of the transition (in seconds).
 #' @param method_incremental The method to be used in detecting outliers from the
 #' incremental test. Either 'linear' or 'anomaly'. See `Details`.
 #' @param verbose A boolean indicating whether messages should be printed in the console. Default to `TRUE`.
+#' @param ... Additional arguments. Currently ignored.
 #'
 #' @details
 #' TODO
@@ -40,6 +41,34 @@
 #'   protocol_transition_length = 360,
 #'   verbose = TRUE
 #'  )
+#'
+#' ## get file path from example data
+#' path_example_ramp <- system.file("ramp_cosmed.xlsx", package = "whippr")
+#'
+#' ## read data from ramp test
+#' df_ramp <- read_data(path = path_example_ramp, metabolic_cart = "cosmed")
+#'
+#' ## normalize incremental test data
+#' ramp_normalized <- df_ramp %>%
+#'  incremental_normalize(
+#'    .data = .,
+#'    incremental_type = "ramp",
+#'    has_baseline = TRUE,
+#'    baseline_length = 240,
+#'    work_rate_magic = TRUE,
+#'    baseline_intensity = 20,
+#'    ramp_increase = 25
+#'  )
+#'
+#' ## detect ramp outliers
+#' data_ramp_outliers <- detect_outliers(
+#'   .data = ramp_normalized,
+#'   test_type = "incremental",
+#'   vo2_column = "VO2",
+#'   cleaning_level = 0.95,
+#'   method_incremental = "linear",
+#'   verbose = TRUE
+#'  )
 detect_outliers <- function(
   .data,
   test_type = c("incremental", "kinetics"),
@@ -50,7 +79,8 @@ detect_outliers <- function(
   protocol_baseline_length,
   protocol_transition_length,
   method_incremental = c("linear", "anomaly"),
-  verbose = TRUE
+  verbose = TRUE,
+  ...
 ) {
 
   if(missing(.data))
@@ -81,7 +111,8 @@ detect_outliers.kinetics <- function(
   protocol_baseline_length,
   protocol_transition_length,
   method_incremental = c("linear", "anomaly"),
-  verbose = TRUE
+  verbose = TRUE,
+  ...
 ) {
 
   if(missing(protocol_n_transitions))
@@ -184,10 +215,65 @@ detect_outliers.incremental <- function(
   protocol_baseline_length,
   protocol_transition_length,
   method_incremental = c("linear", "anomaly"),
-  verbose = TRUE
+  verbose = TRUE,
+  ...
 ) {
 
-  stop("I am sorry, this is not implemented yet.", call. = FALSE)
+  if(is.null(attributes(.data)$normalized))
+    stop("It looks like the data passed to this function did not come from the `incremental_normalize()` function.
+         Please, make sure you use this function before.", call. = FALSE)
+
+  if(missing(method_incremental))
+    stop("You must specify the 'method_incremental' argument. See ?detect_outliers for more details.", call. = FALSE)
+
+  method_incremental <- match.arg(method_incremental)
+  time_column <- attributes(.data)$time_column
+
+  if(verbose)
+    usethis::ui_done("Detecting outliers")
+
+  out <- switch (method_incremental,
+                 "linear" = outliers_linear(
+                   .data = .data,
+                   time_column = time_column,
+                   vo2_column = vo2_column,
+                   cleaning_level = cleaning_level
+                 ),
+                 "anomaly" = outliers_anomaly(
+                   .data = .data,
+                   time_column = time_column,
+                   vo2_column = vo2_column,
+                   cleaning_level = cleaning_level
+                 )
+  )
+
+  if(verbose) {
+    verbose_vector <- out %>%
+      dplyr::group_by(protocol_phase) %>%
+      dplyr::count(outlier) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(outlier == "yes")
+
+    if(nrow(verbose_vector) == 0) {
+      usethis::ui_done(x = "No outliers found.")
+    } else {
+      verbose_vector <- verbose_vector %>%
+        dplyr::mutate(verbose = purrr::map2_chr(.x = n, .y = protocol_phase, .f = ~ glue::glue("{.x} outlier(s) found in {.y}"))) %>%
+        dplyr::pull(verbose)
+
+      purrr::walk(.x = verbose_vector, .f = usethis::ui_todo)
+    }
+  }
+
+  metadata <- attributes(.data)
+  metadata$vo2_column <- vo2_column
+  metadata$data_status <- "raw data - outliers detected"
+  metadata$test_type <- "incremental"
+  metadata$outliers_detected <- TRUE
+
+  out <- new_whippr_tibble(out, metadata)
+
+  out
 }
 
 #' Plot outliers
@@ -255,5 +341,18 @@ plot_outliers.kinetics <- function(.data) {
 
 #' @export
 plot_outliers.incremental <- function(.data) {
-  stop("I am sorry, this is not implemented yet.", call. = FALSE)
+  out <- .data %>%
+    ggplot2::ggplot(ggplot2::aes(x, y)) +
+    ggplot2::geom_point(ggplot2::aes(fill = outlier), shape = 21, size = 4, color = "black") +
+    ggplot2::geom_ribbon(ggplot2::aes(x = x, ymin = lwr_pred, ymax = upr_pred), fill = "red", alpha = 0.1) +
+    ggplot2::scale_fill_manual(values = c("white", "red")) +
+    ggplot2::labs(
+      x = "time (s)",
+      y = "VO2",
+      title = "Detected outliers",
+      subtitle = "In the incremental test"
+    ) +
+    theme_whippr()
+
+  out
 }
