@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Whippr print method — print.whippr • whippr</title>
+<title>Plot incremental test work rate — plot_incremental • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Whippr print method — print.whippr" />
-<meta property="og:description" content="Whippr print method" />
+<meta property="og:title" content="Plot incremental test work rate — plot_incremental" />
+<meta property="og:description" content="Visualize what was done during the process of deriving the work rate from the incremental test protocol" />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -175,30 +175,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Whippr print method</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/tbl.R'><code>R/tbl.R</code></a></small>
-    <div class="hidden name"><code>print.whippr.Rd</code></div>
+    <h1>Plot incremental test work rate</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/incremental.R'><code>R/incremental.R</code></a></small>
+    <div class="hidden name"><code>plot_incremental.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Whippr print method</p>
+    <p>Visualize what was done during the process of deriving the work rate from the incremental test protocol</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for whippr</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>plot_incremental</span><span class='op'>(</span><span class='va'>.data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A tibble with class 'whippr'</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Extra arguments, not used.</p></td>
+      <th>.data</th>
+      <td><p>data retrieved from <code><a href='incremental_normalize.html'>incremental_normalize()</a></code>.</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    
+
 
 
   </div>

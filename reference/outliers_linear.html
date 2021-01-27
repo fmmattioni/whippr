@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Whippr print method — print.whippr • whippr</title>
+<title>Linear method for detecting outliers from an incremental test — outliers_linear • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Whippr print method — print.whippr" />
-<meta property="og:description" content="Whippr print method" />
+<meta property="og:title" content="Linear method for detecting outliers from an incremental test — outliers_linear" />
+<meta property="og:description" content="Function for internal use only. It will not be exported." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -175,31 +175,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Whippr print method</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/tbl.R'><code>R/tbl.R</code></a></small>
-    <div class="hidden name"><code>print.whippr.Rd</code></div>
+    <h1>Linear method for detecting outliers from an incremental test</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/helpers-outliers.R'><code>R/helpers-outliers.R</code></a></small>
+    <div class="hidden name"><code>outliers_linear.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Whippr print method</p>
+    <p>Function for internal use only. It will not be exported.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for whippr</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>outliers_linear</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>time_column</span>, <span class='va'>vo2_column</span>, <span class='va'>cleaning_level</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A tibble with class 'whippr'</p></td>
+      <th>.data</th>
+      <td><p>The data retrieved from <code><a href='incremental_normalize.html'>incremental_normalize()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Extra arguments, not used.</p></td>
+      <th>time_column</th>
+      <td><p>The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.</p></td>
+    </tr>
+    <tr>
+      <th>vo2_column</th>
+      <td><p>The name (quoted) of the column containing the absolute oxygen uptake (VO2) data.</p></td>
+    </tr>
+    <tr>
+      <th>cleaning_level</th>
+      <td><p>A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

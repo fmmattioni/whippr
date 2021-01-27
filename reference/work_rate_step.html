@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Whippr print method — print.whippr • whippr</title>
+<title>Work rate for a step-incremental test — work_rate_step • whippr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Whippr print method — print.whippr" />
-<meta property="og:description" content="Whippr print method" />
+<meta property="og:title" content="Work rate for a step-incremental test — work_rate_step" />
+<meta property="og:description" content="This function produces the work rate throughout a step-incremental test given the protocol
+This will retrieve both the 'original' work rates, and also will perform a 'linearization' of the steps." />
 <meta property="og:image" content="/reference/figures/logo.png" />
 <meta property="og:image:alt" content="Tools for Manipulating Gas Exchange Data" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -175,31 +176,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Whippr print method</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/tbl.R'><code>R/tbl.R</code></a></small>
-    <div class="hidden name"><code>print.whippr.Rd</code></div>
+    <h1>Work rate for a step-incremental test</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fmattioni/whippr/blob/master/R/helpers-incremental.R'><code>R/helpers-incremental.R</code></a></small>
+    <div class="hidden name"><code>work_rate_step.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Whippr print method</p>
+    <p>This function produces the work rate throughout a step-incremental test given the protocol
+This will retrieve both the 'original' work rates, and also will perform a 'linearization' of the steps.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for whippr</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>work_rate_step</span><span class='op'>(</span>
+  <span class='va'>.data</span>,
+  <span class='va'>baseline_intensity</span>,
+  <span class='va'>step_start</span>,
+  <span class='va'>step_increase</span>,
+  <span class='va'>step_length</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A tibble with class 'whippr'</p></td>
+      <th>.data</th>
+      <td><p>The data with recognized protocol phases</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Extra arguments, not used.</p></td>
+      <th>baseline_intensity</th>
+      <td><p>The baseline intensity</p></td>
+    </tr>
+    <tr>
+      <th>step_start</th>
+      <td><p>In case the step test started in a different work rate than baseline</p></td>
+    </tr>
+    <tr>
+      <th>step_increase</th>
+      <td><p>The step in increase, in watts per step</p></td>
+    </tr>
+    <tr>
+      <th>step_length</th>
+      <td><p>The length, in seconds, of each step</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a <a href='https://tibble.tidyverse.org/reference/tibble-package.html'>tibble</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

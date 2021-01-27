@@ -58,6 +58,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -103,13 +105,13 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-book fa-lg"></span>
+    <span class="fas fa-book fa-lg"></span>
      
     Articles
      
@@ -119,18 +121,21 @@
     <li>
       <a href="../articles/vo2_kinetics.html">VO2 kinetics analysis</a>
     </li>
+    <li>
+      <a href="../articles/incremental.html">Incremental test analyses</a>
+    </li>
   </ul>
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fa fa-balance-scale"></span>
+    <span class="fas fa-balance-scale"></span>
      
     Reference
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-newspaper"></span>
+    <span class="fas fa-newspaper"></span>
      
     News
      
@@ -146,13 +151,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fmmattioni/whippr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://twitter.com/felipe_mattioni">
-    <span class="fa fa-twitter fa-lg"></span>
+    <span class="fas fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -211,6 +216,8 @@
 <li><p>Added <code><a href="../reference/run_manual_cleaner.html">run_manual_cleaner()</a></code>.</p></li>
 <li><p>Added testing of functions (internal modification only, not visible to the user).</p></li>
 <li><p>Added new print method.</p></li>
+<li><p>Added new functionality for analyzing data from incremental exercise.</p></li>
+<li><p>Added <code><a href="../reference/perform_max.html">perform_max()</a></code> and <code><a href="../reference/vo2_max.html">vo2_max()</a></code>.</p></li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -224,11 +231,18 @@
 <li><p>Make sure that data does not contain rows and cols with only <code>NA</code> in <code><a href="../reference/interpolate.html">interpolate()</a></code> (thanks <a href='https://github.com/Scott-S-Hannah'>@Scott-S-Hannah</a>).</p></li>
 </ul>
 </div>
-<div id="vo2-kinetics-analysis" class="section level2">
+<div id="vo2-kinetics-analyses" class="section level2">
 <h2 class="hasAnchor">
-<a href="#vo2-kinetics-analysis" class="anchor"></a>VO2 kinetics analysis</h2>
+<a href="#vo2-kinetics-analyses" class="anchor"></a>VO2 kinetics analyses</h2>
 <ul>
-<li>Added set of tools for VO2 kinetics analysis.</li>
+<li>Added a set of tools for VO2 kinetics analyses.</li>
+</ul>
+</div>
+<div id="incremental-test-analyses" class="section level2">
+<h2 class="hasAnchor">
+<a href="#incremental-test-analyses" class="anchor"></a>Incremental test analyses</h2>
+<ul>
+<li>Added a set of tools for incremental test analyses: data standardization and normalization, detection of ‘bad breaths’, mean response time, maximal values (i.e., VO2max, HRmax, maximal RER, etc), and ventilatory thresholds.</li>
 </ul>
 </div>
 </div>

@@ -57,13 +57,13 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-book fa-lg"></span>
+    <span class="fas fa-book fa-lg"></span>
      
     Articles
      
@@ -73,18 +73,21 @@
 <li>
       <a href="articles/vo2_kinetics.html">VO2 kinetics analysis</a>
     </li>
+    <li>
+      <a href="articles/incremental.html">Incremental test analyses</a>
+    </li>
   </ul>
 </li>
 <li>
   <a href="reference/index.html">
-    <span class="fa fa-balance-scale"></span>
+    <span class="fas fa-balance-scale"></span>
      
     Reference
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-newspaper"></span>
+    <span class="fas fa-newspaper"></span>
      
     News
      
@@ -100,13 +103,13 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/fmmattioni/whippr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://twitter.com/felipe_mattioni">
-    <span class="fa fa-twitter fa-lg"></span>
+    <span class="fas fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -138,9 +141,9 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version of <code>whippr</code> from <a href="https://github.com/fmmattioni/whippr">Github</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"fmmattioni/whippr"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"fmmattioni/whippr"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="use" class="section level2">
 <h2 class="hasAnchor">
@@ -148,8 +151,8 @@
 <div id="read-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#read-data" class="anchor"></a>Read data</h3>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr">whippr</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr">whippr</a></span><span class="op">)</span>
 
 <span class="co">## example file that comes with the package for demonstration purposes</span>
 <span class="va">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>
@@ -193,13 +196,13 @@
 <span class="co">#&gt; #   V6` &lt;dbl&gt;, `P Syst` &lt;dbl&gt;, `P Diast` &lt;dbl&gt;, Symptom &lt;dbl&gt;, DP &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, `Phase time` &lt;chr&gt;, Qt &lt;dbl&gt;, SV &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `Vt/FVC` &lt;dbl&gt;, Long &lt;chr&gt;, Lat &lt;chr&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS</span>
-<span class="co">#&gt; #   Dist.` &lt;dbl&gt;, predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Dist.` &lt;dbl&gt;, predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, …</span></code></pre></div>
 </div>
 <div id="interpolate" class="section level3">
 <h3 class="hasAnchor">
 <a href="#interpolate" class="anchor"></a>Interpolate</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">df</span> <span class="op">%&gt;%</span> 
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # Metabolic cart: COSMED </span>
 <span class="co">#&gt; # Data status: interpolated data</span>
@@ -237,7 +240,7 @@
 <span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></code></pre></div>
 </div>
 <div id="perform-averages" class="section level3">
 <h3 class="hasAnchor">
@@ -245,8 +248,8 @@
 <div id="bin-average" class="section level4">
 <h4 class="hasAnchor">
 <a href="#bin-average" class="anchor"></a>Bin-average</h4>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co">## example of performing 30-s bin-averages</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## example of performing 30-s bin-averages</span>
 <span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"bin"</span>, bins <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
@@ -286,13 +289,13 @@
 <span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></code></pre></div>
 </div>
 <div id="rolling-average" class="section level4">
 <h4 class="hasAnchor">
 <a href="#rolling-average" class="anchor"></a>Rolling-average</h4>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="co">## example of performing 30-s rolling-averages</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## example of performing 30-s rolling-averages</span>
 <span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"rolling"</span>, rolling_window <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
@@ -332,14 +335,14 @@
 <span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></pre></div>
+<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></code></pre></div>
 </div>
 </div>
 <div id="perform-vo2-kinetics-analysis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#perform-vo2-kinetics-analysis" class="anchor"></a>Perform VO2 kinetics analysis</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">results_kinetics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">results_kinetics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span><span class="op">(</span>
   .data <span class="op">=</span> <span class="va">df</span>,
   intensity_domain <span class="op">=</span> <span class="st">"moderate"</span>,
   vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
@@ -355,7 +358,7 @@
   fit_transition_length <span class="op">=</span> <span class="fl">240</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
-<span class="co">#&gt; ───────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────</span>
+<span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ────────────────────────</span>
 <span class="co">#&gt; ✓ Detecting outliers</span>
 <span class="co">#&gt; ● 14 outlier(s) found in transition 1</span>
 <span class="co">#&gt; ● 15 outlier(s) found in transition 2</span>
@@ -370,7 +373,49 @@
 <span class="co">#&gt; ✓       └─ Fitting transition</span>
 <span class="co">#&gt; ✓       └─ Calculating residuals</span>
 <span class="co">#&gt; ✓       └─ Preparing plots</span>
-<span class="co">#&gt; ────────────────────────────────────────────────────  * DONE *  ───────────────────────────────────────────────────</span></pre></div>
+<span class="co">#&gt; ──────────────────────────────────  * DONE *  ──────────────────────────────────</span></code></pre></div>
+</div>
+<div id="perform-vo2-max-analysis" class="section level3">
+<h3 class="hasAnchor">
+<a href="#perform-vo2-max-analysis" class="anchor"></a>Perform VO2 max analysis</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_incremental</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"ramp_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span>
+
+<span class="fu"><a href="reference/vo2_max.html">vo2_max</a></span><span class="op">(</span>
+  .data <span class="op">=</span> <span class="va">df_incremental</span>, <span class="co">## data from `read_data()`</span>
+  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
+  vo2_relative_column <span class="op">=</span> <span class="st">"VO2/Kg"</span>,
+  heart_rate_column <span class="op">=</span> <span class="st">"HR"</span>,
+  rer_column <span class="op">=</span> <span class="st">"R"</span>,
+  detect_outliers <span class="op">=</span> <span class="cn">TRUE</span>,
+  average_method <span class="op">=</span> <span class="st">"bin"</span>,
+  average_length <span class="op">=</span> <span class="fl">30</span>,
+  plot <span class="op">=</span> <span class="cn">TRUE</span>,
+  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
+  <span class="co">## arguments for `incremental_normalize()`</span>
+  incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,
+  has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,
+  baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span>
+  work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co">## produce a work rate column</span>
+  baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span>
+  ramp_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## 25 W/min ramp</span>
+  <span class="co">## arguments for `detect_outliers()`</span>
+  test_type <span class="op">=</span> <span class="st">"incremental"</span>,
+  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>, 
+  method_incremental <span class="op">=</span> <span class="st">"linear"</span>
+<span class="op">)</span>
+<span class="co">#&gt; ────────────────────────────  * V̇O₂ max analysis *  ───────────────────────────</span>
+<span class="co">#&gt; ✓ Normalizing incremental data...</span>
+<span class="co">#&gt; ✓ Detecting outliers</span>
+<span class="co">#&gt; ● 2 outlier(s) found in baseline</span>
+<span class="co">#&gt; ● 15 outlier(s) found in ramp</span>
+<span class="co">#&gt; ✓ Filtering out outliers...</span>
+<span class="co">#&gt; ✓ Interpolating from breath-by-breath into second-by-second...</span>
+<span class="co">#&gt; ✓ Performing averages...</span>
+<span class="co">#&gt; # A tibble: 1 x 6</span>
+<span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span>
+<span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;list&gt;</span>
+<span class="co">#&gt; 1           3524.            46.0    301   193   1.13 &lt;gg&gt;</span></code></pre></div>
 </div>
 </div>
 <div id="metabolic-carts-currently-supported" class="section level2">
