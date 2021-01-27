@@ -25,7 +25,7 @@ test_that("incremental_normalize step works", {
   ## get file path from example data
   path_example <- system.file("step_cortex.xlsx", package = "whippr")
   ## read data from ramp test
-  df <- read_data(path = path_example, metabolic_cart = "cosmed")
+  df <- read_data(path = path_example, metabolic_cart = "cortex")
   ## normalize incremental test data
   ramp_normalized <- df %>%
     incremental_normalize(
@@ -70,11 +70,11 @@ test_that("plot_incremental ramp works", {
   )
 })
 
-test_that("plot_incremental ramp works", {
+test_that("plot_incremental step works", {
   ## get file path from example data
   path_example <- system.file("step_cortex.xlsx", package = "whippr")
   ## read data from ramp test
-  df <- read_data(path = path_example, metabolic_cart = "cosmed")
+  df <- read_data(path = path_example, metabolic_cart = "cortex")
   ## normalize incremental test data
   ramp_normalized <- df %>%
     incremental_normalize(
