@@ -238,7 +238,7 @@ perform_max <- function(
     if(verbose)
       usethis::ui_done("Filtering out outliers...")
 
-    data_normalized <- dplyr::filter(data_normalized, outlier == "no")
+    data_normalized_filtered <- dplyr::filter(data_normalized, outlier == "no")
   }
 
   if(verbose) {
@@ -247,7 +247,7 @@ perform_max <- function(
   }
 
   ## interpolate and average data
-  data_averaged <- data_normalized %>%
+  data_averaged <- data_normalized_filtered %>%
     ## interpolate data from breath-by-breath to second-by-second
     interpolate() %>%
     ## perform the chosen average method
