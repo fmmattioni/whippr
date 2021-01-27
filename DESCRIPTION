@@ -43,8 +43,7 @@ Imports:
     anomalize,
     forcats,
     ggforce,
-    ggtext,
-    segmented
+    ggtext
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
