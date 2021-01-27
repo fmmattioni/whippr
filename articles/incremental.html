@@ -658,7 +658,7 @@
 <span class="co">#&gt; # A tibble: 1 x 6</span>
 <span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span>
 <span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;list&gt;</span>
-<span class="co">#&gt; 1           3524.            46.0    301   193   1.13 &lt;gg&gt;</span></code></pre></div>
+<span class="co">#&gt; 1           3524.            46.0    303   193   1.13 &lt;gg&gt;</span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results_vo2max</span><span class="op">$</span><span class="va">plot</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-21-1.png" width="768" style="display: block; margin: auto;"></p>
@@ -682,7 +682,7 @@
   <span class="co">## arguments for `incremental_normalize()`</span>
   incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,
   has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,
-  baseline_length <span class="op">=</span> <span class="fl">250</span>, <span class="co">## 4-min baseline</span>
+  baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span>
   work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co">## produce a work rate column</span>
   baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span>
   ramp_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## 25 W/min ramp</span>
@@ -695,14 +695,14 @@
 <span class="co">#&gt; ✔ Normalizing incremental data...</span>
 <span class="co">#&gt; ✔ Detecting outliers</span>
 <span class="co">#&gt; ● 2 outlier(s) found in baseline</span>
-<span class="co">#&gt; ● 13 outlier(s) found in ramp</span>
+<span class="co">#&gt; ● 15 outlier(s) found in ramp</span>
 <span class="co">#&gt; ✔ Filtering out outliers...</span>
 <span class="co">#&gt; ✔ Interpolating from breath-by-breath into second-by-second...</span>
 <span class="co">#&gt; ✔ Performing averages...</span>
 <span class="co">#&gt; # A tibble: 1 x 6</span>
 <span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span>
 <span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;list&gt;</span>
-<span class="co">#&gt; 1           3525.            46.0    297   193   1.13 &lt;gg&gt;</span></code></pre></div>
+<span class="co">#&gt; 1           3524.            46.0    303   193   1.13 &lt;gg&gt;</span></code></pre></div>
 </div>
 </div>
 <div id="ventilatory-thresholds" class="section level2">
