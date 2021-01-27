@@ -298,7 +298,7 @@ vo2_max(
 #> # A tibble: 1 x 6
 #>   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  
 #>             <dbl>           <dbl>  <int> <dbl>  <dbl> <list>
-#> 1           3524.            46.0    301   193   1.13 <gg>
+#> 1           3524.            46.0    303   193   1.13 <gg>
 ```
 
 ## Metabolic carts currently supported
