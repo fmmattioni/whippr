@@ -14,7 +14,8 @@ detect_outliers(
   protocol_baseline_length,
   protocol_transition_length,
   method_incremental = c("linear", "anomaly"),
-  verbose = TRUE
+  verbose = TRUE,
+  ...
 )
 }
 \arguments{
@@ -27,18 +28,20 @@ the data retrieved from \code{incremental_normalize()} for a \strong{incremental
 
 \item{cleaning_level}{A numeric scalar between 0 and 1 giving the confidence level for the intervals to be calculated. Default to \code{0.95}.}
 
-\item{cleaning_baseline_fit}{A vector of the same length as the number in \code{protocol_n_transitions}, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.}
+\item{cleaning_baseline_fit}{For \strong{kinetics} test only. A vector of the same length as the number in \code{protocol_n_transitions}, indicating what kind of fit to perform for each baseline. Vector accepts characters either 'linear' or 'exponential'.}
 
-\item{protocol_n_transitions}{Number of transitions performed.}
+\item{protocol_n_transitions}{For \strong{kinetics} test only. Number of transitions performed.}
 
-\item{protocol_baseline_length}{The length of the baseline (in seconds).}
+\item{protocol_baseline_length}{For \strong{kinetics} test only. The length of the baseline (in seconds).}
 
-\item{protocol_transition_length}{The length of the transition (in seconds).}
+\item{protocol_transition_length}{For \strong{kinetics} test only. The length of the transition (in seconds).}
 
 \item{method_incremental}{The method to be used in detecting outliers from the
 incremental test. Either 'linear' or 'anomaly'. See \code{Details}.}
 
 \item{verbose}{A boolean indicating whether messages should be printed in the console. Default to \code{TRUE}.}
+
+\item{...}{Additional arguments. Currently ignored.}
 }
 \value{
 a \link[tibble:tibble-package]{tibble}
@@ -66,6 +69,34 @@ data_outliers <- detect_outliers(
   protocol_n_transitions = 3,
   protocol_baseline_length = 360,
   protocol_transition_length = 360,
+  verbose = TRUE
+ )
+
+## get file path from example data
+path_example_ramp <- system.file("ramp_cosmed.xlsx", package = "whippr")
+
+## read data from ramp test
+df_ramp <- read_data(path = path_example_ramp, metabolic_cart = "cosmed")
+
+## normalize incremental test data
+ramp_normalized <- df_ramp \%>\%
+ incremental_normalize(
+   .data = .,
+   incremental_type = "ramp",
+   has_baseline = TRUE,
+   baseline_length = 240,
+   work_rate_magic = TRUE,
+   baseline_intensity = 20,
+   ramp_increase = 25
+ )
+
+## detect ramp outliers
+data_ramp_outliers <- detect_outliers(
+  .data = ramp_normalized,
+  test_type = "incremental",
+  vo2_column = "VO2",
+  cleaning_level = 0.95,
+  method_incremental = "linear",
   verbose = TRUE
  )
 }
