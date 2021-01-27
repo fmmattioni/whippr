@@ -3,12 +3,12 @@
 #' This theme was inspired by the plots from the Acta Physiologica Journal
 #'
 #' @param base_size base font size, given in pts. Default is `14`.
-#' @param base_family base font family. Default is `Arial`.
+#' @param base_family base font family. Default is `sans`.
 #'
 #' @return a ggplot2 object
 #' @export
 #' @importFrom ggplot2 theme_light theme element_rect element_line element_text
-theme_whippr <- function(base_size = 14, base_family = "Arial") {
+theme_whippr <- function(base_size = 14, base_family = "sans") {
   theme_light(base_size = base_size, base_family = base_family) +
     theme(
       panel.background = element_rect(fill = "#fefeda"),
