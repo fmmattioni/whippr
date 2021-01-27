@@ -241,7 +241,7 @@ results_kinetics <- vo2_kinetics(
   fit_transition_length = 240,
   verbose = TRUE
 )
-#> ───────────────────────────────────────────  * V̇O₂ kinetics analysis *  ──────────────────────────────────────────
+#> ──────────────────────────  * V̇O₂ kinetics analysis *  ────────────────────────
 #> ✓ Detecting outliers
 #> ● 14 outlier(s) found in transition 1
 #> ● 15 outlier(s) found in transition 2
@@ -256,22 +256,64 @@ results_kinetics <- vo2_kinetics(
 #> ✓       └─ Fitting transition
 #> ✓       └─ Calculating residuals
 #> ✓       └─ Preparing plots
-#> ────────────────────────────────────────────────────  * DONE *  ───────────────────────────────────────────────────
+#> ──────────────────────────────────  * DONE *  ──────────────────────────────────
+```
+
+### Perform VO2 max analysis
+
+``` r
+df_incremental <- read_data(path = system.file("ramp_cosmed.xlsx", package = "whippr"), metabolic_cart = "cosmed")
+
+vo2_max(
+  .data = df_incremental, ## data from `read_data()`
+  vo2_column = "VO2",
+  vo2_relative_column = "VO2/Kg",
+  heart_rate_column = "HR",
+  rer_column = "R",
+  detect_outliers = TRUE,
+  average_method = "bin",
+  average_length = 30,
+  plot = TRUE,
+  verbose = TRUE,
+  ## arguments for `incremental_normalize()`
+  incremental_type = "ramp",
+  has_baseline = TRUE,
+  baseline_length = 240, ## 4-min baseline
+  work_rate_magic = TRUE, ## produce a work rate column
+  baseline_intensity = 20, ## baseline was performed at 20 W
+  ramp_increase = 25, ## 25 W/min ramp
+  ## arguments for `detect_outliers()`
+  test_type = "incremental",
+  cleaning_level = 0.95, 
+  method_incremental = "linear"
+)
+#> ────────────────────────────  * V̇O₂ max analysis *  ───────────────────────────
+#> ✓ Normalizing incremental data...
+#> ✓ Detecting outliers
+#> ● 2 outlier(s) found in baseline
+#> ● 15 outlier(s) found in ramp
+#> ✓ Filtering out outliers...
+#> ✓ Interpolating from breath-by-breath into second-by-second...
+#> ✓ Performing averages...
+#> # A tibble: 1 x 6
+#>   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  
+#>             <dbl>           <dbl>  <int> <dbl>  <dbl> <list>
+#> 1           3524.            46.0    301   193   1.13 <gg>
 ```
 
 ## Metabolic carts currently supported
 
-  - [COSMED](https://www.cosmed.com/en/)
-  - [CORTEX](https://cortex-medical.com/EN)
-  - [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
-  - [Parvo Medics](http://www.parvo.com/)
-  - [Geratherm
+-   [COSMED](https://www.cosmed.com/en/)
+-   [CORTEX](https://cortex-medical.com/EN)
+-   [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
+-   [Parvo Medics](http://www.parvo.com/)
+-   [Geratherm
     Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
 
 ## Shiny app
 
 Would you like to perform VO2 kinetics analyses but don’t know R? No
-problem\! You can use our shiny app: [VO2 Kinetics
+problem! You can use our shiny app: [VO2 Kinetics
 Dashboard](https://shiny.fmattioni.me/vo2kinetics/)
 
 ## Code of Conduct

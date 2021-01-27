@@ -100,6 +100,36 @@ results_kinetics <- vo2_kinetics(
 )
 ```
 
+### Perform VO2 max analysis
+
+```{r}
+df_incremental <- read_data(path = system.file("ramp_cosmed.xlsx", package = "whippr"), metabolic_cart = "cosmed")
+
+vo2_max(
+  .data = df_incremental, ## data from `read_data()`
+  vo2_column = "VO2",
+  vo2_relative_column = "VO2/Kg",
+  heart_rate_column = "HR",
+  rer_column = "R",
+  detect_outliers = TRUE,
+  average_method = "bin",
+  average_length = 30,
+  plot = TRUE,
+  verbose = TRUE,
+  ## arguments for `incremental_normalize()`
+  incremental_type = "ramp",
+  has_baseline = TRUE,
+  baseline_length = 240, ## 4-min baseline
+  work_rate_magic = TRUE, ## produce a work rate column
+  baseline_intensity = 20, ## baseline was performed at 20 W
+  ramp_increase = 25, ## 25 W/min ramp
+  ## arguments for `detect_outliers()`
+  test_type = "incremental",
+  cleaning_level = 0.95, 
+  method_incremental = "linear"
+)
+```
+
 ## Metabolic carts currently supported
 
 * [COSMED](https://www.cosmed.com/en/)
