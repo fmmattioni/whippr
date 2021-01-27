@@ -225,18 +225,20 @@ perform_max <- function(
     if(!rer_column %in% colnames(.data))
       stop(glue::glue("It looks like the column {rer_column} does not exist."), call. = FALSE)
 
+  data_normalized <- .data
+
   ## check if outliers were identified
   ## if not, throw a warning
-  if(is.null(attr(.data, "outliers_detected")))
+  if(is.null(attr(data_normalized, "outliers_detected")))
     warning("You did not identify any outliers prior to using this function. You should consider using `detect_outliers()` before.", call. = FALSE)
 
   ## make sure no outliers exist
-  if(attr(.data, "outliers_detected")) {
+  if(attr(data_normalized, "outliers_detected")) {
 
     if(verbose)
       usethis::ui_done("Filtering out outliers...")
 
-    .data <- dplyr::filter(.data, outlier == "no")
+    data_normalized <- dplyr::filter(data_normalized, outlier == "no")
   }
 
   if(verbose) {
@@ -245,7 +247,7 @@ perform_max <- function(
   }
 
   ## interpolate and average data
-  data_averaged <- .data %>%
+  data_averaged <- data_normalized %>%
     ## interpolate data from breath-by-breath to second-by-second
     interpolate() %>%
     ## perform the chosen average method
@@ -261,9 +263,9 @@ perform_max <- function(
   out <- dplyr::tibble(
     VO2max_absolute = max(data_averaged[[vo2_column]]),
     VO2max_relative = ifelse(is.null(vo2_relative_column), NA, max(data_averaged[[vo2_relative_column]])),
-    POpeak = as.integer(max(data_averaged$work_rate)),
-    HRmax = ifelse(is.null(heart_rate_column), NA, max(data_ramp_outliers[[heart_rate_column]])),
-    RERmax = ifelse(is.null(rer_column), NA, max(data_ramp_outliers[[rer_column]]))
+    POpeak = as.integer(max(data_normalized[["work_rate"]])),
+    HRmax = ifelse(is.null(heart_rate_column), NA, max(data_normalized[[heart_rate_column]])),
+    RERmax = ifelse(is.null(rer_column), NA, max(data_averaged[[rer_column]]))
   )
 
   if(plot) {
