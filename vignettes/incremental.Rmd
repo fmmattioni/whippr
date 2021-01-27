@@ -36,7 +36,8 @@ To get started, let's read in the example data from a ramp incremental test that
 
 ```{r setup}
 library(whippr)
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
 
 path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
 
