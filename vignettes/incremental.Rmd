@@ -1,0 +1,314 @@
+---
+title: "Incremental test analyses"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Incremental test analyses}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.align = "center",
+  fig.width = 8,
+  fig.height = 6
+)
+```
+
+If you have an incremental test, `whippr` can also help you out! In this vignette you will learn how to:
+
+* Normalize your data (i.e., recognize baseline period, adjust work rates, and adjust time column);
+* Recognize "bad breaths" and remove them;
+* Calculate mean response time through various methods (*work in progress*);
+* Calculate maximal oxygen uptake (and analyze whether a plateau existed in your data);
+* Estimate ventilatory thresholds (*work in progress*).
+
+All of the above work both in a **ramp** and in a **step** incremental test.
+
+## Normalize your data
+
+To get started, let's read in the example data from a ramp incremental test that comes with the package. This is a test that had the following protocol:
+
+- 4-min baseline period at 20 W;
+- ramp increase of 25 W/min.
+
+```{r setup}
+library(whippr)
+library(tidyverse)
+
+path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
+
+df <- read_data(path = path_example, metabolic_cart = "cosmed")
+
+df
+```
+
+```{r}
+df %>%
+  ggplot(aes(t, VO2)) +
+  geom_point(shape = 21, size = 4, fill = "white") +
+  theme_whippr()
+```
+
+A few things to note:
+
+- Our time column is not normalized. That is, we do not know explicitly what is baseline, and what is ramp;
+- We do not have a work rate column.
+
+All of the above will be fixed with the `incremental_normalize()` function. Since we do not have a work rate column, we will set the argument `work_rate_magic = TRUE`. This argument will allow us to calculate the work rates throughout the test.
+
+```{r}
+ramp_normalized <- df %>%
+ incremental_normalize(
+   .data = .,
+   incremental_type = "ramp",
+   has_baseline = TRUE,
+   baseline_length = 240, ## 4-min baseline
+   work_rate_magic = TRUE,
+   baseline_intensity = 20, ## baseline was performed at 20 W
+   ramp_increase = 25 ## 25 W/min ramp
+ )
+
+ramp_normalized
+```
+
+We can see that now our data is aware of the two different phases in the test: baseline and ramp period:
+
+```{r}
+ramp_normalized %>% 
+  distinct(protocol_phase)
+```
+
+Additionally, a new column was created: `work_rate`:
+
+```{r}
+ramp_normalized %>% 
+  select(t, work_rate)
+```
+
+And we can also plot it to check what was done. Note that there is a constant-load during baseline (20 W), and then a constant increase in power output (25 W/min) during the ramp phase:
+
+```{r}
+ramp_normalized %>% 
+  plot_incremental()
+```
+
+We can therefore quickly analyze our peak power output as:
+
+```{r}
+ramp_normalized %>% 
+  slice_max(work_rate) %>% 
+  select(work_rate)
+```
+
+### Step test
+
+But what if we had a step-incremental test? How does the work rate transformation work? In a step test is important to have both the actual power output from each step, and also a linearization of the power output. To illustrate what I mean, let's take a look at an example:
+
+```{r}
+## get file path from example data
+path_example_step <- system.file("step_cortex.xlsx", package = "whippr")
+
+## read data from step test
+df_step <- read_data(path = path_example_step, metabolic_cart = "cortex")
+
+df_step
+```
+
+Note that our data contains weird column names. So, for simplicity, let's rename the VO2 column.
+
+```{r}
+df_step_renamed <- df_step %>% 
+  rename(VO2 = `V'O2 (STPD)`)
+```
+
+That is a test that had the following protocol:
+
+- resting period (i.e, 0 W) for 2 minutes;
+- step protocol starting at 50 W and increasing 25 W every 3 minutes.
+
+```{r}
+df_step_renamed %>% 
+  ggplot(aes(t, VO2)) +
+  geom_point(shape = 21, size = 4, fill = "white") +
+  theme_whippr()
+```
+
+So, let's first normalize our data:
+
+```{r}
+step_normalized <- df_step %>%
+ incremental_normalize(
+   .data = .,
+   incremental_type = "step",
+   has_baseline = TRUE,
+   baseline_length = 120, ## 2 min baseline
+   work_rate_magic = TRUE, 
+   baseline_intensity = 0, ## baseline was resting on the bike, so intensity is 0 W
+   step_start = 50, ## step protocol started at 50 W
+   step_increase = 25, ## step increase was 25 W
+   step_length = 180 ## the intensity increased every 3 minutes
+ )
+
+step_normalized
+```
+
+And then we can visualize what was done with the work rate with the `plot_incremental()` function:
+
+```{r fig.width=10, fig.height=10}
+step_normalized %>% 
+  plot_incremental()
+```
+
+As you can note, two working rates were created: one with the actual power output, and another one with the linearization of the power output.
+
+```{r}
+step_normalized %>% 
+  select(t, protocol_phase:step)
+```
+
+This is useful, for example, to calculate the peak power output:
+
+```{r}
+step_normalized %>% 
+  slice_max(work_rate) %>% 
+  select(work_rate)
+```
+
+## Recognize bad breaths
+
+As you might have noticed, these two incremental test examples had a few bad breaths (outliers) that should be deleted prior to any data analysis. This can be easily achieved with the `detect_outliers()` function.
+
+Two methods for detecting outliers are available: **linear** and **anomaly** detection. The **linear** method is going to fit two linear models: one for the baseline period, and another one for the ramp (or step) period. The **anomaly** detection, however, uses the [anomalize](https://business-science.github.io/anomalize/) package, which decompose time series, and then perform the anomaly detection. Let's see it in action:
+
+### Linear
+
+```{r}
+## detect ramp outliers
+data_ramp_outliers <- detect_outliers(
+  .data = ramp_normalized,
+  test_type = "incremental",
+  vo2_column = "VO2",
+  cleaning_level = 0.95,
+  method_incremental = "linear",
+  verbose = TRUE
+ )
+
+data_ramp_outliers
+```
+
+```{r}
+data_ramp_outliers %>% 
+  plot_outliers()
+```
+
+Thereafter, you can easily remove the detected outliers like this:
+
+```{r}
+data_ramp_outliers %>% 
+  filter(outlier == "no")
+```
+
+Note that we set **95%** of confidence level when detecting the outliers. You can easily change that, for example, to **99%**:
+
+```{r}
+detect_outliers(
+  .data = ramp_normalized,
+  test_type = "incremental",
+  vo2_column = "VO2",
+  cleaning_level = 0.99, ## changed to 99%
+  method_incremental = "linear",
+  verbose = TRUE
+ ) %>% 
+  plot_outliers()
+```
+
+### Anomaly
+
+Now let's see how the anomaly detection performs:
+
+```{r}
+detect_outliers(
+  .data = ramp_normalized,
+  test_type = "incremental",
+  vo2_column = "VO2",
+  cleaning_level = 0.95,
+  method_incremental = "anomaly", ## changed to anomaly detection
+  verbose = TRUE
+ ) %>% 
+  plot_outliers()
+```
+
+## Mean response time
+
+> Work in progress.
+
+## VO2max (maximal oxygen uptake)
+
+There are two functions that you can use to analyze **VO2max**:
+
+- `vo2_max()`: it performs all the necessary steps, which include:
+    - `incremental_normalize()`: normalize incremental test data
+    - `detect_outliers()`: detect outliers
+    - `interpolate()`: interpolate data from breath-by-breath into second-by-second
+    - `perform_average()`: perform average on second-by-second data
+    
+- `perform_max()`: it only performs the final steps (`interpolate()` and `perform_average()`).
+
+### `perform_max()`
+
+```{r}
+results_vo2max <- data_ramp_outliers %>% ## data was already normalized and outliers were detected
+  perform_max(
+    .data = .,
+    vo2_column = "VO2",
+    vo2_relative_column = "VO2/Kg",
+    heart_rate_column = "HR",
+    rer_column = "R",
+    average_method = "bin",
+    average_length = 30,
+    plot = TRUE,
+    verbose = FALSE
+  )
+
+results_vo2max
+```
+
+```{r}
+results_vo2max$plot[[1]]
+```
+
+### `vo2_max()`
+
+```{r}
+vo2_max(
+  .data = df, ## data from `read_data()`
+  vo2_column = "VO2",
+  vo2_relative_column = "VO2/Kg",
+  heart_rate_column = "HR",
+  rer_column = "R",
+  detect_outliers = TRUE,
+  average_method = "bin",
+  average_length = 30,
+  plot = TRUE,
+  verbose = TRUE,
+  ## arguments for `incremental_normalize()`
+  incremental_type = "ramp",
+  has_baseline = TRUE,
+  baseline_length = 240, ## 4-min baseline
+  work_rate_magic = TRUE, ## produce a work rate column
+  baseline_intensity = 20, ## baseline was performed at 20 W
+  ramp_increase = 25, ## 25 W/min ramp
+  ## arguments for `detect_outliers()`
+  test_type = "incremental",
+  cleaning_level = 0.95, 
+  method_incremental = "linear"
+)
+```
+
+
+## Ventilatory thresholds
+
+> Work in progress.
