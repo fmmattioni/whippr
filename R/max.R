@@ -294,7 +294,7 @@ perform_max <- function(
       dplyr::filter(t > 0) %>%
       ggplot2::ggplot(ggplot2::aes(work_rate, VO2)) +
       ggplot2::geom_point(shape = 21, size = 4, color = "black", fill = "white") +
-      ggforce::geom_mark_rect(ggplot2::aes(filter = work_rate > out$POpeak * 0.9, label = "Maximal values", description = label_graph), label.minwidth = unit(100, "mm")) +
+      ggforce::geom_mark_rect(ggplot2::aes(filter = work_rate > out$POpeak * 0.9, label = "Maximal values", description = label_graph), label.minwidth = ggplot2::unit(100, "mm")) +
       ggplot2::labs(
         title = "Incremental test",
         subtitle = "Summary results",
