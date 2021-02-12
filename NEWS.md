@@ -42,6 +42,8 @@
 
 * Make sure that data does not contain rows and cols with only `NA` in `interpolate()` (thanks @Scott-S-Hannah).
 
+* Fixed issue renaming work rate column in `read_data()` (thanks @Scott-S-Hannah #6).
+
 ## VO2 kinetics analyses
 
 * Added a set of tools for VO2 kinetics analyses.
