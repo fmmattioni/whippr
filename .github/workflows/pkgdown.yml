@@ -17,7 +17,7 @@ jobs:
         run: |
           install.packages("remotes", repos = "https://ftp.fau.de/cran/")
           remotes::install_deps(dependencies = TRUE, repos = "https://ftp.fau.de/cran/")
-          remotes::install_github("r-lib/pkgdown", repos = "https://ftp.fau.de/cran/")
+          remotes::install_github("r-lib/pkgdown")
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
