@@ -88,10 +88,15 @@ read_data.cosmed <- function(
   }
 
   ## the following will try to coerce the work rate column to numeric
-  if(!is.null(work_rate_column))
-    if(!work_rate_column %in% colnames(out))
-      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
-        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+  ## and it renames the given work rate column into 'work_rate'
+  if(!is.null(work_rate_column)) {
+    if(!work_rate_column %in% colnames(out)) {
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE)
+    } else {
+      out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+      out <- dplyr::rename(out, work_rate = !!rlang::sym(work_rate_column))
+    }
+  }
 
   metadata <- NULL
   metadata$read_data <- TRUE
@@ -149,10 +154,15 @@ read_data.cortex <- function(
     janitor::remove_empty(which = "cols")
 
   ## the following will try to coerce the work rate column to numeric
-  if(!is.null(work_rate_column))
-    if(!work_rate_column %in% colnames(out))
-      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
-        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+  ## and it renames the given work rate column into 'work_rate'
+  if(!is.null(work_rate_column)) {
+    if(!work_rate_column %in% colnames(out)) {
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE)
+    } else {
+      out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+      out <- dplyr::rename(out, work_rate = !!rlang::sym(work_rate_column))
+    }
+  }
 
   metadata <- NULL
   metadata$read_data <- TRUE
@@ -192,10 +202,15 @@ read_data.nspire <- function(
     janitor::remove_empty(which = "rows")
 
   ## the following will try to coerce the work rate column to numeric
-  if(!is.null(work_rate_column))
-    if(!work_rate_column %in% colnames(out))
-      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
-        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+  ## and it renames the given work rate column into 'work_rate'
+  if(!is.null(work_rate_column)) {
+    if(!work_rate_column %in% colnames(out)) {
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE)
+    } else {
+      out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+      out <- dplyr::rename(out, work_rate = !!rlang::sym(work_rate_column))
+    }
+  }
 
   metadata <- NULL
   metadata$read_data <- TRUE
@@ -241,10 +256,15 @@ read_data.parvo <- function(
     dplyr::mutate_at(1, function(x) x * 60)
 
   ## the following will try to coerce the work rate column to numeric
-  if(!is.null(work_rate_column))
-    if(!work_rate_column %in% colnames(out))
-      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
-        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+  ## and it renames the given work rate column into 'work_rate'
+  if(!is.null(work_rate_column)) {
+    if(!work_rate_column %in% colnames(out)) {
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE)
+    } else {
+      out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+      out <- dplyr::rename(out, work_rate = !!rlang::sym(work_rate_column))
+    }
+  }
 
   metadata <- NULL
   metadata$read_data <- TRUE
@@ -297,10 +317,15 @@ read_data.geratherm <- function(
     dplyr::select(!!rlang::sym(time_column), time, dplyr::everything())
 
   ## the following will try to coerce the work rate column to numeric
-  if(!is.null(work_rate_column))
-    if(!work_rate_column %in% colnames(out))
-      stop("It looks like the work rate column you chose does not exist.", call. = FALSE) else
-        out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+  ## and it renames the given work rate column into 'work_rate'
+  if(!is.null(work_rate_column)) {
+    if(!work_rate_column %in% colnames(out)) {
+      stop("It looks like the work rate column you chose does not exist.", call. = FALSE)
+    } else {
+      out <- dplyr::mutate(out, !!work_rate_column := as.numeric(!!rlang::sym(work_rate_column)))
+      out <- dplyr::rename(out, work_rate = !!rlang::sym(work_rate_column))
+    }
+  }
 
   metadata <- NULL
   metadata$read_data <- TRUE
