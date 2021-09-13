@@ -30,6 +30,8 @@
 
 * Added `perform_max()` and `vo2_max()`.
 
+* Added support for the `CardioCoach` metabolic cart.
+
 ## Bug fixes
 
 * Fixed issue with `read_data()` when using the COSMED metabolic cart: previously, character columns were being coerced into `NA`(thanks @Scott-S-Hannah #4).
