@@ -349,7 +349,7 @@ read_data.cardiocoach <- function(
   ## retrieve column names
   names_file <- suppressMessages(readr::read_tsv(file = path, n_max = 2, col_names = FALSE))
   ## retrieve data
-  readings <- suppressMessages(readr::read_tsv(file = path, col_names = FALSE, skip = 2))
+  readings <- suppressMessages(readr::read_tsv(file = path, col_names = FALSE, skip = 2, col_types = paste(c("c", replicate(ncol(names_file) - 1, "?")), collapse = "")))
 
   column_names <- dplyr::tibble(
     X1 = unlist(c(names_file[1,])),
