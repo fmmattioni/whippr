@@ -71,32 +71,4 @@ data_outliers <- detect_outliers(
   protocol_transition_length = 360,
   verbose = TRUE
  )
-
-## get file path from example data
-path_example_ramp <- system.file("ramp_cosmed.xlsx", package = "whippr")
-
-## read data from ramp test
-df_ramp <- read_data(path = path_example_ramp, metabolic_cart = "cosmed")
-
-## normalize incremental test data
-ramp_normalized <- df_ramp \%>\%
- incremental_normalize(
-   .data = .,
-   incremental_type = "ramp",
-   has_baseline = TRUE,
-   baseline_length = 240,
-   work_rate_magic = TRUE,
-   baseline_intensity = 20,
-   ramp_increase = 25
- )
-
-## detect ramp outliers
-data_ramp_outliers <- detect_outliers(
-  .data = ramp_normalized,
-  test_type = "incremental",
-  vo2_column = "VO2",
-  cleaning_level = 0.95,
-  method_incremental = "linear",
-  verbose = TRUE
- )
 }

@@ -22,28 +22,17 @@ Imports:
     lubridate (>= 1.7.9),
     magrittr,
     tibble,
-    zoo,
-    purrr,
-    tidyr (>= 1.1.1),
-    broom (>= 0.7.0),
-    cli,
-    ggplot2 (>= 3.3.2),
+    rlang,
+    broom,
     glue,
     minpack.lm,
-    patchwork (>= 1.0.1),
-    rlang,
-    usethis,
     nlstools,
-    shiny,
-    miniUI,
-    datapasta,
-    rstudioapi,
-    shinyThings (>= 0.4.0),
     pillar,
-    anomalize,
-    forcats,
-    ggforce,
-    ggtext
+    purrr,
+    readr,
+    tidyr,
+    usethis,
+    zoo
 RoxygenNote: 7.1.2
 Suggests: 
     knitr,
@@ -52,5 +41,3 @@ Suggests:
     collapsibleTree,
     testthat
 VignetteBuilder: knitr
-Remotes: 
-    gadenbuie/shinyThings
