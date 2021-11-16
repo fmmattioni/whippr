@@ -6,7 +6,7 @@
 \usage{
 predict_bands(
   .data,
-  time_column = "t",
+  time_column = "time",
   vo2_column = "VO2",
   cleaning_level = 0.95,
   cleaning_baseline_fit = c("linear", "exponential")

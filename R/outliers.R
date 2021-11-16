@@ -21,26 +21,6 @@
 #'
 #' @return a [tibble][tibble::tibble-package]
 #' @export
-#'
-#' @examples
-#' ## get file path from example data
-#' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
-#'
-#' ## read data
-#' df <- read_data(path = path_example, metabolic_cart = "cosmed")
-#'
-#' ## detect outliers
-#' data_outliers <- detect_outliers(
-#'   .data = df,
-#'   test_type = "kinetics",
-#'   vo2_column = "VO2",
-#'   cleaning_level = 0.95,
-#'   cleaning_baseline_fit = c("linear", "exponential", "exponential"),
-#'   protocol_n_transitions = 3,
-#'   protocol_baseline_length = 360,
-#'   protocol_transition_length = 360,
-#'   verbose = TRUE
-#'  )
 detect_outliers <- function(
   .data,
   test_type = c("incremental", "kinetics"),
@@ -109,9 +89,6 @@ detect_outliers.kinetics <- function(
       call. = FALSE
     )
 
-  if(verbose)
-    usethis::ui_done("Detecting outliers")
-
   ## check if data passed to the function contains more data points than it should
   max_length <- protocol_n_transitions * (protocol_baseline_length + protocol_transition_length)
 
@@ -123,7 +100,7 @@ detect_outliers.kinetics <- function(
     )
 
   ## get time column from attributes
-  time_column <- attributes(.data)$time_column
+  time_column <- "time"
 
   out <- .data %>%
     normalize_transitions(
@@ -134,44 +111,23 @@ detect_outliers.kinetics <- function(
     ) %>%
     tidyr::nest(data = -transition) %>%
     dplyr::mutate(
-      cleaning_baseline_fit = cleaning_baseline_fit,
-      bands_data = purrr::map2(
-        .x = data,
-        .y = cleaning_baseline_fit,
-        .f = ~ predict_bands(
-          .data = .x,
-          cleaning_baseline_fit = .y,
+      cleaning_baseline_fit = cleaning_baseline_fit
+    ) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(
+      bands_data = list(
+        predict_bands(
+          .data = data,
+          cleaning_baseline_fit = cleaning_baseline_fit,
           cleaning_level = cleaning_level,
           time_column = time_column,
-          vo2_column = vo2_column)
+          vo2_column = vo2_column
+        )
       )
     ) %>%
+    dplyr::ungroup() %>%
     tidyr::unnest(cols = c(data, bands_data)) %>%
     dplyr::select(2:ncol(.), transition)
 
-  if(verbose) {
-    verbose_vector <- out %>%
-      dplyr::count(transition, outlier) %>%
-      dplyr::filter(outlier == "yes")
-
-    if(nrow(verbose_vector) == 0) {
-      usethis::ui_done(x = "No outliers found.")
-    } else {
-      verbose_vector <- verbose_vector %>%
-        dplyr::mutate(verbose = purrr::map2_chr(.x = n, .y = transition, .f = ~ glue::glue("{.x} outlier(s) found in {.y}"))) %>%
-        dplyr::pull(verbose)
-
-      purrr::walk(.x = verbose_vector, .f = usethis::ui_todo)
-    }
-  }
-
-  metadata <- attributes(.data)
-  metadata$vo2_column <- vo2_column
-  metadata$data_status <- "raw data - outliers detected"
-  metadata$test_type <- "kinetics"
-
-  out <- new_whippr_tibble(out, metadata)
-
   out
-
 }

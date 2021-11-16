@@ -10,28 +10,19 @@ Authors@R:
 Description: 'whippr' provides a set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
 License: MIT + file LICENSE
 URL: https://github.com/fmmattioni/whippr
-BugReports: https://github.com/fmattioni/whippr/issues
+BugReports: https://github.com/fmmattioni/whippr/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports: 
-    readxl (>= 1.3.1),
-    dplyr (>= 1.0.1),
-    janitor (>= 2.0.1),
-    stringr (>= 1.4.0),
-    lubridate (>= 1.7.9),
     magrittr,
-    tibble,
-    rlang,
     broom,
+    dplyr,
     glue,
     minpack.lm,
     nlstools,
-    pillar,
-    purrr,
-    readr,
+    rlang,
     tidyr,
-    usethis,
     zoo
 RoxygenNote: 7.1.2
 Suggests: 

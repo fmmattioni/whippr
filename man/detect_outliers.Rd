@@ -52,23 +52,3 @@ It detects outliers based on prediction bands for the given level of confidence 
 \details{
 TODO
 }
-\examples{
-## get file path from example data
-path_example <- system.file("example_cosmed.xlsx", package = "whippr")
-
-## read data
-df <- read_data(path = path_example, metabolic_cart = "cosmed")
-
-## detect outliers
-data_outliers <- detect_outliers(
-  .data = df,
-  test_type = "kinetics",
-  vo2_column = "VO2",
-  cleaning_level = 0.95,
-  cleaning_baseline_fit = c("linear", "exponential", "exponential"),
-  protocol_n_transitions = 3,
-  protocol_baseline_length = 360,
-  protocol_transition_length = 360,
-  verbose = TRUE
- )
-}

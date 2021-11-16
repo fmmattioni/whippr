@@ -16,13 +16,3 @@ a \link[tibble:tibble-package]{tibble}
 This function interpolates the data based on the time column. It takes the breath-by-breath data
 and transforms it into second-by-second.
 }
-\examples{
-## get file path from example data
-path_example <- system.file("example_cosmed.xlsx", package = "whippr")
-
-## read data
-df <- read_data(path = path_example, metabolic_cart = "cosmed")
-
-df \%>\%
- interpolate()
-}

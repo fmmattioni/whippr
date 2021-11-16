@@ -31,20 +31,3 @@ You must specify the \code{type} of the average before continuing.
 Ensemble average is used in VO2 kinetics analysis, where a series of transitions from baseline to
 the moderate/heavy/severe intensity-domain is ensembled averaged into a single 'bout' for further data processing.
 }
-\examples{
-## get file path from example data
-path_example <- system.file("example_cosmed.xlsx", package = "whippr")
-
-## read data
-df <- read_data(path = path_example, metabolic_cart = "cosmed")
-
-## interpolate and perform 30-s bin-average
-df \%>\%
- interpolate() \%>\%
- perform_average(type = "bin", bins = 30)
-
-## interpolate and perform 30-s rolling-average
-df \%>\%
- interpolate() \%>\%
- perform_average(type = "rolling", rolling_window = 30)
-}

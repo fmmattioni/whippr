@@ -70,7 +70,9 @@ normalize_transitions <- function(
     ## now we normalize the first breath for each transition
     ## for more information see ?normalize_first_breath()
     tidyr::nest_legacy(-transition) %>%
-    dplyr::mutate(data = purrr::map(.x = data, .f = normalize_first_breath)) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(data = list(normalize_first_breath(data))) %>%
+    dplyr::ungroup() %>%
     tidyr::unnest_legacy() %>%
     dplyr::select(2:ncol(.), transition) %>%
     dplyr::group_by(transition) %>%

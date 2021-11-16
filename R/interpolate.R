@@ -9,37 +9,25 @@
 #' @export
 #'
 #' @importFrom stats approx
-#'
-#' @examples
-#' ## get file path from example data
-#' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
-#'
-#' ## read data
-#' df <- read_data(path = path_example, metabolic_cart = "cosmed")
-#'
-#' df %>%
-#'  interpolate()
 interpolate <- function(.data) {
   ## first make sure data only contains numeric columns
-  data_num <- .data %>%
-    dplyr::select_if(is.numeric) %>%
-    janitor::remove_empty(dat = ., which = c("rows", "cols"))
+  data_num <- dplyr::select(.data, where(is.numeric))
+
+  keep_rows <- rowSums(is.na(data_num)) != ncol(data_num)
+  df_numeric_rows <- data_num[keep_rows, , drop = FALSE]
+
+  keep_columns <- colSums(!is.na(df_numeric_rows)) > 0
+  df_ready <- df_numeric_rows[, keep_columns, drop = FALSE]
 
   suppressWarnings({
-    out <- lapply(data_num, function (i) approx(
-      x = data_num[[1]],
+    out <- lapply(df_ready, function (i) approx(
+      x = df_ready[[1]],
       y = i,
-      xout = seq(min(data_num[[1]]), max(data_num[[1]], na.rm = TRUE), 1)
+      xout = seq(min(df_ready[[1]]), max(df_ready[[1]], na.rm = TRUE), 1)
     )$y
     ) %>%
       dplyr::as_tibble()
   })
-
-
-  metadata <- attributes(.data)
-  metadata$data_status <- "interpolated data"
-
-  out <- new_whippr_tibble(out, metadata)
 
   out
 }

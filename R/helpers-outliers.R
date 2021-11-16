@@ -28,48 +28,39 @@ outliers_linear <- function(
         dplyr::case_when(
           protocol_phase == "baseline" ~ bsln_formula,
           TRUE ~ incremental_formula
-        ),
-      ## set the model
-      model = purrr::map2(
-        .x = formula_model,
-        .y = data,
-        .f = ~ lm(formula = .x, data = .y)
-      ),
-      model_augmented = purrr::map(
-        .x = model,
-        .f = ~ broom::augment(.x)
-      )
+        )
     ) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(
+      ## set the model
+      model = list(lm(formula = formula_model, data = data)),
+      model_augmented = list(broom::augment(model))
+    ) %>%
+    dplyr::ungroup() %>%
     ## column not needed anymore
     dplyr::select(-formula_model) %>%
+    dplyr::rowwise() %>%
     ## delete additional columns to needed in augmented data
     dplyr::mutate(
-      model_augmented = purrr::map(
-        .x = model_augmented,
-        .f = ~ dplyr::select(.x, -dplyr::any_of(c(time_column, vo2_column)))
-      ),
-      model_augmented = purrr::map2(
-        .x = data,
-        .y = model_augmented,
-        .f = ~ dplyr::mutate(.y, x = .x[[time_column]], y = .x[[vo2_column]]) %>% dplyr::select(x, y, dplyr::everything())
-      ),
-      ## get confidence bands
-      conf = purrr::map(
-        .x = model,
-        .f = ~ predict.lm(object = .x, interval = "confidence", level = cleaning_level) %>%
-          dplyr::as_tibble() %>%
-          dplyr::select(-1) %>%
-          dplyr::rename_all(~ c("lwr_conf", "upr_conf"))
-      ),
-      ## get prediction bands
-      pred = purrr::map(
-        .x = model,
-        .f = ~ suppressWarnings(predict.lm(object = .x, interval = "prediction", level = cleaning_level)) %>%
-          dplyr::as_tibble() %>%
-          dplyr::select(-1) %>%
-          dplyr::rename_all(~ c("lwr_pred", "upr_pred"))
-      )
+      model_augmented = dplyr::select(model_augmented, -dplyr::any_of(c(time_column, vo2_column))) %>%
+        dplyr::mutate(
+          x = data[[time_column]],
+          y = data[[vo2_column]]
+        ) %>%
+        dplyr::select(x, y, dplyr::everything()) %>%
+        list(),
+      conf = predict.lm(object = model, interval = "confidence", level = cleaning_level) %>%
+        dplyr::as_tibble() %>%
+        dplyr::select(-1) %>%
+        dplyr::rename_all(~ c("lwr_conf", "upr_conf")) %>%
+        list(),
+      pred = ~ suppressWarnings(predict.lm(object = model, interval = "prediction", level = cleaning_level)) %>%
+        dplyr::as_tibble() %>%
+        dplyr::select(-1) %>%
+        dplyr::rename_all(~ c("lwr_pred", "upr_pred")) %>%
+        list()
     ) %>%
+    dplyr::ungroup() %>%
     dplyr::select(-model) %>%
     tidyr::unnest(cols = c(data:pred)) %>%
     dplyr::select(2:ncol(.), protocol_phase) %>%

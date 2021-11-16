@@ -76,15 +76,9 @@ perform_kinetics.moderate <- function(
   verbose = TRUE,
   ...
 ) {
-
-
-  # check data --------------------------------------------------------------
-  if(is.null(attributes(.data_processed)$processed_data))
-    stop("It looks like you did not process your data with `process_data()`", call. = FALSE)
-
   # set time and VO2 columns ------------------------------------------------
-  time_column <- attributes(.data_processed)$time_column ## defined in read_data()
-  vo2_column <- attributes(.data_processed)$vo2_column ## defined in detect_outliers()
+  time_column <- "time"
+  vo2_column <- "VO2"
 
   # prepare data ------------------------------------------------------------
   data_bsln <- .data_processed %>%
@@ -124,7 +118,6 @@ perform_kinetics.moderate <- function(
     start = list(Amp = start_Amp, TD = start_TD, tau = start_tau)
   )
 
-
   # summaries ---------------------------------------------------------------
 
   ## model summary tidied
@@ -137,7 +130,7 @@ perform_kinetics.moderate <- function(
   res_transition_tidy <- broom::tidy(model_transition)
   res_transition_conf <- nlstools::confint2(model_transition, level = fit_level) %>%
     dplyr::as_tibble(rownames = NA) %>%
-    tibble::rownames_to_column() %>%
+    dplyr::add_rownames() %>%
     dplyr::rename_all(~ c("term", "conf.low", "conf.high"))
 
   res_transition <- dplyr::left_join(res_transition_tidy, res_transition_conf, by = "term")
@@ -147,8 +140,6 @@ perform_kinetics.moderate <- function(
 
   ## model residuals
   model_residuals <- get_residuals(model_transition)
-  ## plot model residuals
-  plot_residuals <- model_diagnostics(model_residuals)
 
   ## model augmented
   aug_baseline <- broom::augment(model_bsln) %>%
@@ -160,10 +151,6 @@ perform_kinetics.moderate <- function(
 
   ## final df with fitted values for both bsln and transition
   res_total <- dplyr::bind_rows(aug_baseline, aug_transition)
-
-  data_for_plot <- res_total %>%
-    dplyr::left_join(.data_processed, ., by = c({{time_column}}, {{vo2_column}})) %>%
-    dplyr::filter_at(1, function(x) x >= -fit_baseline_length)
 
   out <- dplyr::tibble(
     data_fitted = list(res_total),
@@ -224,7 +211,9 @@ process_data <- function(
 
   if(n_transitions > 1) {
     out <- pre_process %>%
-      dplyr::mutate(data = purrr::map(data, interpolate)) %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(data = list(interpolate(data))) %>%
+      dplyr::ungroup() %>%
       tidyr::unnest(cols = data) %>%
       dplyr::select(2:ncol(.)) %>%
       ## ensemble-average transitions
@@ -234,19 +223,15 @@ process_data <- function(
       normalize_time(.data = ., protocol_baseline_length = protocol_baseline_length)
   } else {
     out <- pre_process %>%
-      dplyr::mutate(data = purrr::map(data, interpolate)) %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(data = list(interpolate(data))) %>%
+      dplyr::ungroup() %>%
       tidyr::unnest(cols = data) %>%
       dplyr::select(2:ncol(.)) %>%
       ## perform bin-average for fitting
       perform_average(.data = ., type = "bin", bins = fit_bin_average) %>%
       normalize_time(.data = ., protocol_baseline_length = protocol_baseline_length)
   }
-
-  metadata <- attributes(.data_outliers)
-  metadata$data_status <- glue::glue("processed data - {fit_bin_average}-s bin averaged")
-  metadata$processed_data <- TRUE
-
-  out <- new_whippr_tibble(out, metadata)
 
   out
 }

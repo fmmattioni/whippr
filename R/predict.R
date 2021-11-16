@@ -23,7 +23,7 @@
 #' @importFrom utils tail
 predict_bands <- function(
   .data,
-  time_column = "t",
+  time_column = "time",
   vo2_column = "VO2",
   cleaning_level = 0.95,
   cleaning_baseline_fit = c("linear", "exponential")
@@ -79,7 +79,6 @@ predict_bands <- function(
   out <- dplyr::bind_rows(bands_bsln, bands_transition)
 
   out
-
 }
 
 #' Extract confidence and prediction bands for the baseline phase
@@ -164,7 +163,6 @@ predict_bands_baseline <- function(
   }
 
   out
-
 }
 
 #' Extract confidence and prediction bands for the transition phase
