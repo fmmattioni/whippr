@@ -10,7 +10,7 @@ Authors@R:
 Description: 'whippr' provides a set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
 License: MIT + file LICENSE
 URL: https://github.com/fmmattioni/whippr
-BugReports: https://github.com/fmattioni/whippr/issues
+BugReports: https://github.com/fmmattioni/whippr/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
