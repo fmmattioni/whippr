@@ -18,9 +18,12 @@ Imports:
     magrittr,
     broom,
     dplyr,
+    ggplot2,
     glue,
     minpack.lm,
     nlstools,
+    patchwork,
+    purrr,
     rlang,
     tidyr,
     zoo

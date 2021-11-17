@@ -131,3 +131,67 @@ detect_outliers.kinetics <- function(
 
   out
 }
+
+#' Plot outliers
+#'
+#' @param .data The data retrieved from `detect_outliers()`.
+#'
+#' @return a patchwork object
+#' @export
+plot_outliers <- function(.data) {
+
+  if(missing(.data))
+    stop("No data, no fun. Please, pass the data retrieved from 'detect_outliers()' to the function.", call. = FALSE)
+
+  if(!"outlier" %in% colnames(.data))
+    stop("Are you sure you passed the data retrieved from 'detect_outliers()'?", call. = FALSE)
+
+  test_type <- attributes(.data)$test_type
+
+  class(.data) <- test_type
+
+  UseMethod("plot_outliers", .data)
+}
+
+#' @export
+plot_outliers.kinetics <- function(.data) {
+
+  n_transitions <- .data %>%
+    dplyr::pull(transition) %>%
+    unique() %>%
+    length()
+
+  plots_ready <- .data %>%
+    dplyr::pull(transition) %>%
+    unique() %>%
+    purrr::map(~{
+
+      p1 <- .data %>%
+        dplyr::filter(transition == .x) %>%
+        ggplot2::ggplot() +
+        ggplot2::geom_point(ggplot2::aes(x, y, fill = outlier), shape = 21, size = 4, color = "black") +
+        ggplot2::geom_line(ggplot2::aes(x, .fitted), color = "red") +
+        ggplot2::geom_ribbon(ggplot2::aes(x = x, ymin = lwr_pred, ymax = upr_pred), fill = "red", alpha = 0.1) +
+        ggplot2::scale_fill_manual(values = c("white", "red")) +
+        theme_whippr() +
+        ggplot2::facet_wrap(~ transition)
+
+      p2 <- .data %>%
+        dplyr::filter(transition == .x) %>%
+        ggplot2::ggplot(ggplot2::aes(x, .resid)) +
+        ggplot2::geom_line(alpha = 0.4) +
+        theme_whippr()
+
+      patchwork::wrap_plots(p1, p2, ncol = 1, heights = c(8, 1))
+    })
+
+  if(n_transitions %in% c(1, 2)) {
+    out <- patchwork::wrap_plots(plots_ready, nrow = 1, guides = "collect")
+  } else {
+    out <- patchwork::wrap_plots(plots_ready, nrow = 2, guides = "collect")
+  }
+
+  out
+
+}
+
