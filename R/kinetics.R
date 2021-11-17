@@ -77,7 +77,7 @@ perform_kinetics.moderate <- function(
   ...
 ) {
   # set time and VO2 columns ------------------------------------------------
-  time_column <- "time"
+  time_column <- "t"
   vo2_column <- "VO2"
 
   # prepare data ------------------------------------------------------------
@@ -139,7 +139,8 @@ perform_kinetics.moderate <- function(
   res_summary <- dplyr::bind_rows(res_bsln, res_transition)
 
   ## model residuals
-  model_residuals <- get_residuals(model_transition)
+  model_residuals <- get_residuals(model_transition) %>%
+    dplyr::rename(time = t)
 
   ## model augmented
   aug_baseline <- broom::augment(model_bsln) %>%
@@ -150,13 +151,23 @@ perform_kinetics.moderate <- function(
   aug_transition <- broom::augment(model_transition)
 
   ## final df with fitted values for both bsln and transition
-  res_total <- dplyr::bind_rows(aug_baseline, aug_transition)
+  res_total <- dplyr::bind_rows(aug_baseline, aug_transition) %>%
+    dplyr::rename(time = t)
+
+  ## data for curve fitting
+  new_data_curve <- dplyr::tibble(
+    t = seq(fit_phase_1_length, fit_transition_length, 1)
+  )
+
+  data_curve_fit <- broom::augment(x = model_transition, newdata = new_data_curve) %>%
+    dplyr::rename(time = t)
 
   out <- dplyr::tibble(
     data_fitted = list(res_total),
     model = list(model_transition),
     model_summary = list(res_summary),
-    model_residuals = list(model_residuals)
+    model_residuals = list(model_residuals),
+    data_curve_fit = list(data_curve_fit)
   )
 
   out

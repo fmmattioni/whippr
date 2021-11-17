@@ -100,7 +100,7 @@ detect_outliers.kinetics <- function(
     )
 
   ## get time column from attributes
-  time_column <- "time"
+  time_column <- "t"
 
   out <- .data %>%
     normalize_transitions(
