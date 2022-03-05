@@ -37,6 +37,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -49,7 +51,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">whippr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.0</span>
       </span>
     </div>
 
@@ -57,13 +59,13 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-book fa-lg"></span>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-book fa-lg"></span>
      
     Articles
      
@@ -80,14 +82,14 @@
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fas fa-balance-scale"></span>
+    <span class="fa fa-balance-scale"></span>
      
     Reference
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-newspaper"></span>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-newspaper"></span>
      
     News
      
@@ -102,14 +104,14 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/fmmattioni/whippr">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/fmmattioni/whippr" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/felipe_mattioni">
-    <span class="fas fa-twitter fa-lg"></span>
+  <a href="https://twitter.com/felipe_mattioni" class="external-link">
+    <span class="fa fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -123,14 +125,14 @@
 
       
 
-      </header><script src="vo2_kinetics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="vo2_kinetics_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="vo2_kinetics_files/d3-4.10.2/d3.min.js"></script><link href="vo2_kinetics_files/collapsibleTree-0.1.6/collapsibleTree.css" rel="stylesheet">
+      </header><script src="vo2_kinetics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="vo2_kinetics_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="vo2_kinetics_files/d3-4.10.2/d3.min.js"></script><link href="vo2_kinetics_files/collapsibleTree-0.1.6/collapsibleTree.css" rel="stylesheet">
 <script src="vo2_kinetics_files/collapsibleTree-binding-0.1.7/collapsibleTree.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>VO2 Kinetics Analysis</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/fmattioni/whippr/blob/master/vignettes/vo2_kinetics.Rmd"><code>vignettes/vo2_kinetics.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/fmmattioni/whippr/blob/HEAD/vignettes/vo2_kinetics.Rmd" class="external-link"><code>vignettes/vo2_kinetics.Rmd</code></a></small>
       <div class="hidden name"><code>vo2_kinetics.Rmd</code></div>
 
     </div>
@@ -149,72 +151,57 @@ Functions for analysis in the heavy- and severe-intensity domains will be added 
 </p>
 </div>
 <p>For making everyone’s life easier, the general function <code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code> was created. This function calls smaller separate functions that <strong>fully</strong> automate the VO2 kinetics data analysis. The following interactive tree diagram shows how each function is called:</p>
-<div id="htmlwidget-624f47e97b9ac3a9d983" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
-<script type="application/json" data-for="htmlwidget-624f47e97b9ac3a9d983">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div id="read-the-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#read-the-data" class="anchor"></a>Read the data</h2>
-<p>The first step is to read the raw data with the <code><a href="../reference/read_data.html">read_data()</a></code> function. Here we are going to use the example file that comes with <a href="https://github.com/fmmattioni/whippr">whippr</a>, which is a file exported from the COSMED metabolic cart.</p>
+<div id="htmlwidget-cbcbf62c021f5e31bb44" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cbcbf62c021f5e31bb44">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div class="section level2">
+<h2 id="read-the-data">Read the data<a class="anchor" aria-label="anchor" href="#read-the-data"></a>
+</h2>
+<p>The first step is to read the raw data with the <code><a href="../reference/read_data.html">read_data()</a></code> function. Here we are going to use the example file that comes with <a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a>, which is a file exported from the COSMED metabolic cart.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr">whippr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span>
 
-<span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span>, time_column <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span>
+<span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span>, time_column <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span>
 
 <span class="va">raw_data</span></code></pre></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># Metabolic cart: COSMED 
-#&gt; # Data status: raw data
-#&gt; # Time column: t
-#&gt; # A tibble: 754 x 119</span><span>
-#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
-#&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
-#&gt; </span><span style="color: #555555;"> 1</span><span>     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
-#&gt; </span><span style="color: #555555;"> 2</span><span>     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 
-#&gt; </span><span style="color: #555555;"> 3</span><span>     8 15.6  2.11  32.9  </span><span style="text-decoration: underline;">1</span><span>317. </span><span style="text-decoration: underline;">1</span><span>075.  325.   97.2     25.0      30.6    15.9 
-#&gt; </span><span style="color: #555555;"> 4</span><span>    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 
-#&gt; </span><span style="color: #555555;"> 5</span><span>    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90
-#&gt; </span><span style="color: #555555;"> 6</span><span>    18 14.7  2.28  33.6  </span><span style="text-decoration: underline;">1</span><span>347. </span><span style="text-decoration: underline;">1</span><span>126.  351.  108.      24.9      29.8    16.2 
-#&gt; </span><span style="color: #555555;"> 7</span><span>    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 
-#&gt; </span><span style="color: #555555;"> 8</span><span>    28 13.2  2.18  28.8  </span><span style="text-decoration: underline;">1</span><span>147.  981.  336.  105.      25.2      29.4    13.8 
-#&gt; </span><span style="color: #555555;"> 9</span><span>    31 17.7  1.51  26.7  </span><span style="text-decoration: underline;">1</span><span>048.  860.  234.   68.8     25.5      31.0    12.6 
-#&gt; </span><span style="color: #555555;">10</span><span>    35 14.2  1.68  23.8   973.  794.  257.   79.3     24.5      30.0    11.7 
-#&gt; </span><span style="color: #555555;"># … with 744 more rows, and 108 more variables: R </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FeO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FeCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, HR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `VO2/HR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Load1 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Load2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   Load3 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Phase </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Marker </span><span style="color: #555555;font-style: italic;">&lt;lgl&gt;</span><span style="color: #555555;">, FetO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FetCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FiO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FiCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Ti </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Te </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Ttot </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Ti/Ttot` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   IV </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PetO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PetCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P(a-et)CO2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SpO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `VD(phys)` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `VD/VT` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Env. Temp.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Analyz. Temp.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `Analyz. Press.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Env. Press.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Batteries </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PaCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   PaO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PH </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SaO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `HCO3-` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Bias Flow` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `La-` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Hb </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Steady State` </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, EEm </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEh </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   EEkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEbsa </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEkg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PROg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PROkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FATg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FATkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, CHOg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, CHOkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `PRO%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `FAT%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `CHO%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, npRQ </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `t Rel` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `mark Speed` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `mark</span><span>
-#&gt; </span><span style="color: #555555;">#   Dist.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST I` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST II` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST III` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST aVR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `ST aVL` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST aVF` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V1` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST</span><span>
-#&gt; </span><span style="color: #555555;">#   V3` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V4` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V5` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V6` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S I` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   II` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S III` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVL` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVF` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   V1` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V3` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V4` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V5` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   V6` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P Syst` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P Diast` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Symptom </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, DP </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   Stage </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, RR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, METS </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Phase time` </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, Qt </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SV </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `Vt/FVC` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Long </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, Lat </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, Alt </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `GPS Speed` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `GPS</span><span>
-#&gt; </span><span style="color: #555555;">#   Dist.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, predVO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, BR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `O2 Cost` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, …</span><span>
-</span></code></pre>
+<pre class="fansi fansi-output"><code><span class="co">#&gt; # Metabolic cart: COSMED </span>
+<span class="co">#&gt; # Data status: raw data</span>
+<span class="co">#&gt; # Time column: t</span>
+<span class="co">#&gt; # A tibble: 754 × 119</span>
+<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
+<span class="co">#&gt;  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span>
+<span class="co">#&gt;  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span>
+<span class="co">#&gt;  4    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span>
+<span class="co">#&gt;  5    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span>
+<span class="co">#&gt;  6    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span>
+<span class="co">#&gt;  7    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span>
+<span class="co">#&gt;  8    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span>
+<span class="co">#&gt;  9    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span>
+<span class="co">#&gt; 10    35 14.2  1.68  23.8   973.  794.  257.   79.3     24.5      30.0    11.7 </span>
+<span class="co">#&gt; # … with 744 more rows, and 108 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre>
 <p>As you can see in the following graph, this is a protocol where <strong>3 transitions</strong> from a baseline exercise intensity to to an exercise intensity below the gas exchange threshold. Therefore, this is a VO2 kinetics test in the <strong>moderate-intensity domain</strong>. In this specific case, the following was done:</p>
 <ul>
 <li>3 x 6-min baseline periods at 20 W.</li>
 <li>3 x 6-min transition periods at the power output associated with 90% of the gas exchange threshold.</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
-<span class="va">raw_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">3</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
+<span class="va">raw_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">3</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/theme_whippr.html">theme_whippr</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-4-1.png" width="2100" style="display: block; margin: auto;"></p>
 </div>
-<div id="perform-the-analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#perform-the-analysis" class="anchor"></a>Perform the analysis</h2>
+<div class="section level2">
+<h2 id="perform-the-analysis">Perform the analysis<a class="anchor" aria-label="anchor" href="#perform-the-analysis"></a>
+</h2>
 <p>After reading the raw data, we can move directly to performing the VO2 kinetics analysis with <code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code>. This function will:</p>
 <ul>
 <li>Recognize each baseline and transition phase</li>
@@ -256,9 +243,9 @@ where:
 </li>
 </ul>
 </div>
-<div id="important-options" class="section level3">
-<h3 class="hasAnchor">
-<a href="#important-options" class="anchor"></a>Important options</h3>
+<div class="section level3">
+<h3 id="important-options">Important options<a class="anchor" aria-label="anchor" href="#important-options"></a>
+</h3>
 <p>In <code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code> you must set important options before continuing.</p>
 <p><strong>Protocol-related options:</strong></p>
 <ul>
@@ -299,7 +286,7 @@ where:
   protocol_baseline_length <span class="op">=</span> <span class="fl">360</span>,
   protocol_transition_length <span class="op">=</span> <span class="fl">360</span>,
   cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,
-  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,
+  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,
   fit_level <span class="op">=</span> <span class="fl">0.95</span>,
   fit_bin_average <span class="op">=</span> <span class="fl">5</span>,
   fit_phase_1_length <span class="op">=</span> <span class="fl">20</span>,
@@ -307,214 +294,164 @@ where:
   fit_transition_length <span class="op">=</span> <span class="fl">240</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
-<pre class="fansi fansi-message"><code>#&gt; ────────────────────────── <span style="color: #BB0000;"> * V̇O₂ kinetics analysis * </span><span> ────────────────────────
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> Detecting outliers
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #BB0000;">●</span><span> 14 outlier(s) found in transition 1
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #BB0000;">●</span><span> 15 outlier(s) found in transition 2
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #BB0000;">●</span><span> 13 outlier(s) found in transition 3
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> Processing data...
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Removing outliers</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Interpolating each transition</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Ensemble-averaging transitions</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Performing 5-s bin averages</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> Fitting data...
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Fitting baseline</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Fitting transition</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Calculating residuals</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; <span style="color: #00BB00;">✔</span><span> </span><span style="color: #00BB00;">      └─ Preparing plots</span><span>
-</span></code></pre>
-<pre class="fansi fansi-message"><code>#&gt; ────────────────────────────────── <span style="color: #0000BB;"> * DONE * </span><span> ──────────────────────────────────
-</span></code></pre>
+<pre class="fansi fansi-message"><code><span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────</span></code></pre>
+<pre class="fansi fansi-message"><code><span class="co">#&gt; ✔ Detecting outliers</span>
+<span class="co">#&gt; • 14 outlier(s) found in transition 1</span>
+<span class="co">#&gt; • 15 outlier(s) found in transition 2</span>
+<span class="co">#&gt; • 13 outlier(s) found in transition 3</span>
+<span class="co">#&gt; ✔ Processing data...</span>
+<span class="co">#&gt; ✔       └─ Removing outliers</span>
+<span class="co">#&gt; ✔       └─ Interpolating each transition</span>
+<span class="co">#&gt; ✔       └─ Ensemble-averaging transitions</span>
+<span class="co">#&gt; ✔       └─ Performing 5-s bin averages</span>
+<span class="co">#&gt; ✔ Fitting data...</span>
+<span class="co">#&gt; ✔       └─ Fitting baseline</span>
+<span class="co">#&gt; ✔       └─ Fitting transition</span>
+<span class="co">#&gt; ✔       └─ Calculating residuals</span>
+<span class="co">#&gt; ✔       └─ Preparing plots</span>
+<span class="co">#&gt; ──────────────────────────────────  * DONE *  ──────────────────────────────────</span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">results</span></code></pre></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 1 x 9</span><span>
-#&gt;   data_outliers plot_outliers data_processed data_fitted model model_summary
-#&gt;   </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>        </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>        </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>         </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;lis&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>       
-#&gt; </span><span style="color: #555555;">1</span><span> </span><span style="color: #555555;">&lt;tibble [757</span><span>… </span><span style="color: #555555;">&lt;patchwrk&gt;</span><span>    </span><span style="color: #555555;">&lt;tibble [145 </span><span>… </span><span style="color: #555555;">&lt;tibble [7</span><span>… </span><span style="color: #555555;">&lt;nls&gt;</span><span> </span><span style="color: #555555;">&lt;tibble [4 ×</span><span>…
-#&gt; </span><span style="color: #555555;"># … with 3 more variables: model_residuals </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span style="color: #555555;">, plot_model </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   plot_residuals </span><span style="color: #555555;font-style: italic;">&lt;list&gt;</span><span>
-</span></code></pre>
+<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 1 × 9</span>
+<span class="co">#&gt;   data_outliers plot_outliers data_processed data_fitted model  model_summary   </span>
+<span class="co">#&gt;   &lt;list&gt;        &lt;list&gt;        &lt;list&gt;         &lt;list&gt;      &lt;list&gt; &lt;list&gt;          </span>
+<span class="co">#&gt; 1 &lt;whippr&gt;      &lt;patchwrk&gt;    &lt;whippr&gt;       &lt;tibble&gt;    &lt;nls&gt;  &lt;tibble [4 × 7]&gt;</span>
+<span class="co">#&gt; # … with 3 more variables: model_residuals &lt;list&gt;, plot_model &lt;list&gt;,</span>
+<span class="co">#&gt; #   plot_residuals &lt;list&gt;</span></code></pre>
 </div>
 </div>
-<div id="fit-parameters" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fit-parameters" class="anchor"></a>Fit parameters</h2>
+<div class="section level2">
+<h2 id="fit-parameters">Fit parameters<a class="anchor" aria-label="anchor" href="#fit-parameters"></a>
+</h2>
 <p>Fit parameters and confidence intervals may be accessed through the <strong>model_summary</strong> column.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">model_summary</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 4 x 7</span><span>
-#&gt;   term     estimate std.error statistic  p.value conf.low conf.high
-#&gt;   </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span>       </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
-#&gt; </span><span style="color: #555555;">1</span><span> baseline   </span><span style="text-decoration: underline;">1</span><span>028.      15.4      66.6  9.49</span><span style="color: #555555;">e</span><span style="color: #BB0000;">-29</span><span>   996.      </span><span style="text-decoration: underline;">1</span><span>060. 
-#&gt; </span><span style="color: #555555;">2</span><span> Amp        </span><span style="text-decoration: underline;">2</span><span>059.      11.0     188.   4.66</span><span style="color: #555555;">e</span><span style="color: #BB0000;">-63</span><span>  </span><span style="text-decoration: underline;">2</span><span>037.      </span><span style="text-decoration: underline;">2</span><span>081. 
-#&gt; </span><span style="color: #555555;">3</span><span> TD           11.0      1.11      9.93 1.39</span><span style="color: #555555;">e</span><span style="color: #BB0000;">-12</span><span>     8.76      13.2
-#&gt; </span><span style="color: #555555;">4</span><span> tau          22.0      1.29     17.0  2.00</span><span style="color: #555555;">e</span><span style="color: #BB0000;">-20</span><span>    19.3       24.6
-</span></code></pre>
+<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 4 × 7</span>
+<span class="co">#&gt;   term     estimate std.error statistic  p.value conf.low conf.high</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 baseline   1028.      15.4      66.6  9.49e-29   996.      1060. </span>
+<span class="co">#&gt; 2 Amp        2059.      11.0     188.   4.66e-63  2037.      2081. </span>
+<span class="co">#&gt; 3 TD           11.0      1.11      9.93 1.39e-12     8.76      13.2</span>
+<span class="co">#&gt; 4 tau          22.0      1.29     17.0  2.00e-20    19.3       24.6</span></code></pre>
 </div>
-<div id="fit-plot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fit-plot" class="anchor"></a>Fit plot</h2>
+<div class="section level2">
+<h2 id="fit-plot">Fit plot<a class="anchor" aria-label="anchor" href="#fit-plot"></a>
+</h2>
 <p>The fit plot may be accessed through the <strong>plot_model</strong> column.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">plot_model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; Warning: Removed 24 row(s) containing missing values (geom_path).</span>
-
-<span class="co">#&gt; Warning: Removed 24 row(s) containing missing values (geom_path).</span></code></pre></div>
+<span class="co">#&gt; Removed 24 row(s) containing missing values (geom_path).</span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-8-1.png" width="2100" style="display: block; margin: auto;"></p>
 </div>
-<div id="checking-what-was-done-during-data-cleaning" class="section level2">
-<h2 class="hasAnchor">
-<a href="#checking-what-was-done-during-data-cleaning" class="anchor"></a>Checking what was done during data cleaning</h2>
+<div class="section level2">
+<h2 id="checking-what-was-done-during-data-cleaning">Checking what was done during data cleaning<a class="anchor" aria-label="anchor" href="#checking-what-was-done-during-data-cleaning"></a>
+</h2>
 <p>The data cleaning process may be accessed through the <strong>plot_outliers</strong> column.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">plot_outliers</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-9-1.png" width="3600" style="display: block; margin: auto;"></p>
 </div>
-<div id="model-diagnostics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#model-diagnostics" class="anchor"></a>Model diagnostics</h2>
+<div class="section level2">
+<h2 id="model-diagnostics">Model diagnostics<a class="anchor" aria-label="anchor" href="#model-diagnostics"></a>
+</h2>
 <p>Model residuals plot may be accessed through the <strong>plot_residuals</strong> column.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">plot_residuals</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-10-1.png" width="3600" style="display: block; margin: auto;"></p>
 </div>
-<div id="additional-columns" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additional-columns" class="anchor"></a>Additional columns</h2>
-<div id="raw-data-with-detected-outliers" class="section level3">
-<h3 class="hasAnchor">
-<a href="#raw-data-with-detected-outliers" class="anchor"></a>Raw data with detected outliers</h3>
+<div class="section level2">
+<h2 id="additional-columns">Additional columns<a class="anchor" aria-label="anchor" href="#additional-columns"></a>
+</h2>
+<div class="section level3">
+<h3 id="raw-data-with-detected-outliers">Raw data with detected outliers<a class="anchor" aria-label="anchor" href="#raw-data-with-detected-outliers"></a>
+</h3>
 <p>The raw data with additional columns from the data cleaning process may be accessed through the <strong>data_outliers</strong> column.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">data_outliers</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># Metabolic cart: COSMED 
-#&gt; # Data status: raw data - outliers detected
-#&gt; # Time column: t
-#&gt; # VO2 column: VO2
-#&gt; # Test type: kinetics
-#&gt; # A tibble: 757 x 131</span><span>
-#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
-#&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
-#&gt; </span><span style="color: #555555;"> 1</span><span>     0  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
-#&gt; </span><span style="color: #555555;"> 2</span><span>     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
-#&gt; </span><span style="color: #555555;"> 3</span><span>     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 
-#&gt; </span><span style="color: #555555;"> 4</span><span>     8 15.6  2.11  32.9  </span><span style="text-decoration: underline;">1</span><span>317. </span><span style="text-decoration: underline;">1</span><span>075.  325.   97.2     25.0      30.6    15.9 
-#&gt; </span><span style="color: #555555;"> 5</span><span>    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 
-#&gt; </span><span style="color: #555555;"> 6</span><span>    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90
-#&gt; </span><span style="color: #555555;"> 7</span><span>    18 14.7  2.28  33.6  </span><span style="text-decoration: underline;">1</span><span>347. </span><span style="text-decoration: underline;">1</span><span>126.  351.  108.      24.9      29.8    16.2 
-#&gt; </span><span style="color: #555555;"> 8</span><span>    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 
-#&gt; </span><span style="color: #555555;"> 9</span><span>    28 13.2  2.18  28.8  </span><span style="text-decoration: underline;">1</span><span>147.  981.  336.  105.      25.2      29.4    13.8 
-#&gt; </span><span style="color: #555555;">10</span><span>    31 17.7  1.51  26.7  </span><span style="text-decoration: underline;">1</span><span>048.  860.  234.   68.8     25.5      31.0    12.6 
-#&gt; </span><span style="color: #555555;"># … with 747 more rows, and 120 more variables: R </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FeO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FeCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, HR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `VO2/HR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Load1 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Load2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   Load3 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Phase </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Marker </span><span style="color: #555555;font-style: italic;">&lt;lgl&gt;</span><span style="color: #555555;">, FetO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FetCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FiO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FiCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Ti </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Te </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Ttot </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Ti/Ttot` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   IV </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PetO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PetCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P(a-et)CO2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SpO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `VD(phys)` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `VD/VT` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Env. Temp.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Analyz. Temp.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `Analyz. Press.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Env. Press.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Batteries </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PaCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   PaO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PH </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SaO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `HCO3-` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Bias Flow` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `La-` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Hb </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Steady State` </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, EEm </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEh </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   EEkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEbsa </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEkg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PROg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PROkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FATg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FATkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, CHOg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, CHOkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `PRO%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `FAT%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `CHO%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, npRQ </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `t Rel` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `mark Speed` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `mark</span><span>
-#&gt; </span><span style="color: #555555;">#   Dist.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST I` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST II` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST III` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST aVR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `ST aVL` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST aVF` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V1` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST</span><span>
-#&gt; </span><span style="color: #555555;">#   V3` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V4` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V5` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V6` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S I` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   II` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S III` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVL` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVF` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   V1` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V3` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V4` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V5` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   V6` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P Syst` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P Diast` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Symptom </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, DP </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   Stage </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, RR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, METS </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Phase time` </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, Qt </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SV </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `Vt/FVC` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Long </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, Lat </span><span style="color: #555555;font-style: italic;">&lt;chr&gt;</span><span style="color: #555555;">, Alt </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `GPS Speed` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `GPS</span><span>
-#&gt; </span><span style="color: #555555;">#   Dist.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, predVO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, BR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `O2 Cost` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, …</span><span>
-</span></code></pre>
+<pre class="fansi fansi-output"><code><span class="co">#&gt; # Metabolic cart: COSMED </span>
+<span class="co">#&gt; # Data status: raw data - outliers detected</span>
+<span class="co">#&gt; # Time column: t</span>
+<span class="co">#&gt; # VO2 column: VO2</span>
+<span class="co">#&gt; # Test type: kinetics</span>
+<span class="co">#&gt; # A tibble: 757 × 131</span>
+<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     0  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
+<span class="co">#&gt;  2     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
+<span class="co">#&gt;  3     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span>
+<span class="co">#&gt;  4     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span>
+<span class="co">#&gt;  5    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span>
+<span class="co">#&gt;  6    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span>
+<span class="co">#&gt;  7    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span>
+<span class="co">#&gt;  8    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span>
+<span class="co">#&gt;  9    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span>
+<span class="co">#&gt; 10    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span>
+<span class="co">#&gt; # … with 747 more rows, and 120 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre>
 </div>
-<div id="processed-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#processed-data" class="anchor"></a>Processed data</h3>
+<div class="section level3">
+<h3 id="processed-data">Processed data<a class="anchor" aria-label="anchor" href="#processed-data"></a>
+</h3>
 <p>The processed data (cleaned, interpolated, time-aligned, ensemble-averaged, and bin-averaged) may be accessed through the <strong>data_processed</strong> column.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">data_processed</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># Metabolic cart: COSMED 
-#&gt; # Data status: processed data - 5-s bin averaged
-#&gt; # Time column: t
-#&gt; # VO2 column: VO2
-#&gt; # Test type: kinetics
-#&gt; # A tibble: 145 x 114</span><span>
-#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
-#&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>     </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
-#&gt; </span><span style="color: #555555;"> 1</span><span>  -</span><span style="color: #BB0000;">360</span><span>  27.2  2.80  76.1 </span><span style="text-decoration: underline;">3</span><span>140. </span><span style="text-decoration: underline;">2</span><span>825.  424.   147.     24.4      27.0     37.8
-#&gt; </span><span style="color: #555555;"> 2</span><span>  -</span><span style="color: #BB0000;">355</span><span>  24.1  2.51  61.3 </span><span style="text-decoration: underline;">2</span><span>452. </span><span style="text-decoration: underline;">2</span><span>202.  386.   128.     25.0      28.5     29.5
-#&gt; </span><span style="color: #555555;"> 3</span><span>  -</span><span style="color: #BB0000;">350</span><span>  24.9  2.11  53.7 </span><span style="text-decoration: underline;">2</span><span>218. </span><span style="text-decoration: underline;">1</span><span>922.  323.   107.     24.7      29.0     26.7
-#&gt; </span><span style="color: #555555;"> 4</span><span>  -</span><span style="color: #BB0000;">345</span><span>  23.1  2.09  48.3 </span><span style="text-decoration: underline;">2</span><span>020. </span><span style="text-decoration: underline;">1</span><span>792.  315.   109.     24.4      28.3     24.3
-#&gt; </span><span style="color: #555555;"> 5</span><span>  -</span><span style="color: #BB0000;">340</span><span>  21.2  2.33  49.3 </span><span style="text-decoration: underline;">2</span><span>027. </span><span style="text-decoration: underline;">1</span><span>833.  354.   121.     24.6      27.5     24.4
-#&gt; </span><span style="color: #555555;"> 6</span><span>  -</span><span style="color: #BB0000;">335</span><span>  20.2  2.24  44.1 </span><span style="text-decoration: underline;">1</span><span>790. </span><span style="text-decoration: underline;">1</span><span>624.  342.   116.     24.9      27.7     21.6
-#&gt; </span><span style="color: #555555;"> 7</span><span>  -</span><span style="color: #BB0000;">330</span><span>  18.5  2.50  47.1 </span><span style="text-decoration: underline;">1</span><span>863. </span><span style="text-decoration: underline;">1</span><span>751.  383.   131.     25.2      27.5     22.4
-#&gt; </span><span style="color: #555555;"> 8</span><span>  -</span><span style="color: #BB0000;">325</span><span>  19.6  2.23  44.8 </span><span style="text-decoration: underline;">1</span><span>689. </span><span style="text-decoration: underline;">1</span><span>625.  346.   114.     26.2      28.1     20.3
-#&gt; </span><span style="color: #555555;"> 9</span><span>  -</span><span style="color: #BB0000;">320</span><span>  20.0  1.98  40.1 </span><span style="text-decoration: underline;">1</span><span>526. </span><span style="text-decoration: underline;">1</span><span>457.  306.   102.     25.8      27.7     18.4
-#&gt; </span><span style="color: #555555;">10</span><span>  -</span><span style="color: #BB0000;">315</span><span>  20.9  2.06  42.4 </span><span style="text-decoration: underline;">1</span><span>567. </span><span style="text-decoration: underline;">1</span><span>506.  322.   104.     26.7      28.6     18.9
-#&gt; </span><span style="color: #555555;"># … with 135 more rows, and 103 more variables: R </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FeO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FeCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, HR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `VO2/HR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Load1 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Load2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   Load3 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Phase </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FetO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FetCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FiO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   FiCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Ti </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Te </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Ttot </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Ti/Ttot` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, IV </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   PetO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PetCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P(a-et)CO2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SpO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `VD(phys)` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `VD/VT` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Env. Temp.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Analyz. Temp.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `Analyz. Press.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Env. Press.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Batteries </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PaCO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   PaO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PH </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, SaO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `HCO3-` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Bias Flow` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `La-` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Hb </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEm </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEh </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEbsa </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   EEkg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PROg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, PROkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FATg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, FATkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, CHOg </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   CHOkc </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `PRO%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `FAT%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `CHO%` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, npRQ </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `t</span><span>
-#&gt; </span><span style="color: #555555;">#   Rel` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `mark Speed` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `mark Dist.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST I` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST</span><span>
-#&gt; </span><span style="color: #555555;">#   II` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST III` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST aVR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST aVL` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST aVF` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `ST V1` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V3` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V4` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `ST V5` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   `ST V6` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S I` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S II` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S III` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVR` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   aVL` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S aVF` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V1` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V3` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S</span><span>
-#&gt; </span><span style="color: #555555;">#   V4` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V5` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `S V6` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P Syst` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P Diast` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   Symptom </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, DP </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Stage </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, RR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, METS </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Qt </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   SV </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `Vt/FVC` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, Alt </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `GPS Speed` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `GPS Dist.` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   predVO2 </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, BR </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `O2 Cost` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, EEtot </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, IC </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">,</span><span>
-#&gt; </span><span style="color: #555555;">#   Step </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, LogVE </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, `P(A-a)O2` </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span style="color: #555555;">, …</span><span>
-</span></code></pre>
+<pre class="fansi fansi-output"><code><span class="co">#&gt; # Metabolic cart: COSMED </span>
+<span class="co">#&gt; # Data status: processed data - 5-s bin averaged</span>
+<span class="co">#&gt; # Time column: t</span>
+<span class="co">#&gt; # VO2 column: VO2</span>
+<span class="co">#&gt; # Test type: kinetics</span>
+<span class="co">#&gt; # A tibble: 145 × 114</span>
+<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  -360  27.2  2.80  76.1 3140. 2825.  424.   147.     24.4      27.0     37.8</span>
+<span class="co">#&gt;  2  -355  24.1  2.51  61.3 2452. 2202.  386.   128.     25.0      28.5     29.5</span>
+<span class="co">#&gt;  3  -350  24.9  2.11  53.7 2218. 1922.  323.   107.     24.7      29.0     26.7</span>
+<span class="co">#&gt;  4  -345  23.1  2.09  48.3 2020. 1792.  315.   109.     24.4      28.3     24.3</span>
+<span class="co">#&gt;  5  -340  21.2  2.33  49.3 2027. 1833.  354.   121.     24.6      27.5     24.4</span>
+<span class="co">#&gt;  6  -335  20.2  2.24  44.1 1790. 1624.  342.   116.     24.9      27.7     21.6</span>
+<span class="co">#&gt;  7  -330  18.5  2.50  47.1 1863. 1751.  383.   131.     25.2      27.5     22.4</span>
+<span class="co">#&gt;  8  -325  19.6  2.23  44.8 1689. 1625.  346.   114.     26.2      28.1     20.3</span>
+<span class="co">#&gt;  9  -320  20.0  1.98  40.1 1526. 1457.  306.   102.     25.8      27.7     18.4</span>
+<span class="co">#&gt; 10  -315  20.9  2.06  42.4 1567. 1506.  322.   104.     26.7      28.6     18.9</span>
+<span class="co">#&gt; # … with 135 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre>
 </div>
-<div id="fitted-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#fitted-data" class="anchor"></a>Fitted data</h3>
+<div class="section level3">
+<h3 id="fitted-data">Fitted data<a class="anchor" aria-label="anchor" href="#fitted-data"></a>
+</h3>
 <p>The data from the baseline and transition fits may be accessed through the <strong>data_fitted</strong> column.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">data_fitted</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 70 x 8</span><span>
-#&gt;        t   VO2 .fitted .resid .std.resid   .hat .sigma    .cooksd
-#&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>   </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>      </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
-#&gt; </span><span style="color: #555555;"> 1</span><span>  -</span><span style="color: #BB0000;">120</span><span>  964.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">64.0</span><span>     -</span><span style="color: #BB0000;">0.846</span><span>  0.040</span><span style="text-decoration: underline;">0</span><span>   77.6 0.029</span><span style="text-decoration: underline;">8</span><span>    
-#&gt; </span><span style="color: #555555;"> 2</span><span>  -</span><span style="color: #BB0000;">115</span><span> </span><span style="text-decoration: underline;">1</span><span>018.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">10.4</span><span>     -</span><span style="color: #BB0000;">0.138</span><span>  0.04     78.8 0.000</span><span style="text-decoration: underline;">791</span><span>  
-#&gt; </span><span style="color: #555555;"> 3</span><span>  -</span><span style="color: #BB0000;">110</span><span> </span><span style="text-decoration: underline;">1</span><span>145.   </span><span style="text-decoration: underline;">1</span><span>028. 116.       1.54   0.04     74.8 0.098</span><span style="text-decoration: underline;">9</span><span>    
-#&gt; </span><span style="color: #555555;"> 4</span><span>  -</span><span style="color: #BB0000;">105</span><span> </span><span style="text-decoration: underline;">1</span><span>018.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">10.1</span><span>     -</span><span style="color: #BB0000;">0.134</span><span>  0.04     78.8 0.000</span><span style="text-decoration: underline;">743</span><span>  
-#&gt; </span><span style="color: #555555;"> 5</span><span>  -</span><span style="color: #BB0000;">100</span><span> </span><span style="text-decoration: underline;">1</span><span>062.   </span><span style="text-decoration: underline;">1</span><span>028.  34.2      0.452  0.04     78.5 0.008</span><span style="text-decoration: underline;">52</span><span>   
-#&gt; </span><span style="color: #555555;"> 6</span><span>   -</span><span style="color: #BB0000;">95</span><span> </span><span style="text-decoration: underline;">1</span><span>046.   </span><span style="text-decoration: underline;">1</span><span>028.  18.3      0.242  0.04     78.7 0.002</span><span style="text-decoration: underline;">44</span><span>   
-#&gt; </span><span style="color: #555555;"> 7</span><span>   -</span><span style="color: #BB0000;">90</span><span> </span><span style="text-decoration: underline;">1</span><span>050.   </span><span style="text-decoration: underline;">1</span><span>028.  22.1      0.292  0.04     78.7 0.003</span><span style="text-decoration: underline;">54</span><span>   
-#&gt; </span><span style="color: #555555;"> 8</span><span>   -</span><span style="color: #BB0000;">85</span><span> </span><span style="text-decoration: underline;">1</span><span>068.   </span><span style="text-decoration: underline;">1</span><span>028.  39.8      0.526  0.04     78.4 0.011</span><span style="text-decoration: underline;">5</span><span>    
-#&gt; </span><span style="color: #555555;"> 9</span><span>   -</span><span style="color: #BB0000;">80</span><span> </span><span style="text-decoration: underline;">1</span><span>029.   </span><span style="text-decoration: underline;">1</span><span>028.   1.16     0.015</span><span style="text-decoration: underline;">3</span><span> 0.04     78.8 0.000</span><span style="text-decoration: underline;">009</span><span>78
-#&gt; </span><span style="color: #555555;">10</span><span>   -</span><span style="color: #BB0000;">75</span><span>  991.   </span><span style="text-decoration: underline;">1</span><span>028. -</span><span style="color: #BB0000;">37.4</span><span>     -</span><span style="color: #BB0000;">0.495</span><span>  0.04     78.4 0.010</span><span style="text-decoration: underline;">2</span><span>    
-#&gt; </span><span style="color: #555555;"># … with 60 more rows</span><span>
-</span></code></pre>
+<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 70 × 8</span>
+<span class="co">#&gt;        t   VO2 .fitted .resid   .hat .sigma    .cooksd .std.resid</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  -120  964.   1028. -64.0  0.0400   77.6 0.0298        -0.846 </span>
+<span class="co">#&gt;  2  -115 1018.   1028. -10.4  0.04     78.8 0.000791      -0.138 </span>
+<span class="co">#&gt;  3  -110 1145.   1028. 116.   0.04     74.8 0.0989         1.54  </span>
+<span class="co">#&gt;  4  -105 1018.   1028. -10.1  0.04     78.8 0.000743      -0.134 </span>
+<span class="co">#&gt;  5  -100 1062.   1028.  34.2  0.04     78.5 0.00852        0.452 </span>
+<span class="co">#&gt;  6   -95 1046.   1028.  18.3  0.04     78.7 0.00244        0.242 </span>
+<span class="co">#&gt;  7   -90 1050.   1028.  22.1  0.04     78.7 0.00354        0.292 </span>
+<span class="co">#&gt;  8   -85 1068.   1028.  39.8  0.04     78.4 0.0115         0.526 </span>
+<span class="co">#&gt;  9   -80 1029.   1028.   1.16 0.04     78.8 0.00000978     0.0153</span>
+<span class="co">#&gt; 10   -75  991.   1028. -37.4  0.04     78.4 0.0102        -0.495 </span>
+<span class="co">#&gt; # … with 60 more rows</span></code></pre>
 </div>
-<div id="model" class="section level3">
-<h3 class="hasAnchor">
-<a href="#model" class="anchor"></a>Model</h3>
+<div class="section level3">
+<h3 id="model">Model<a class="anchor" aria-label="anchor" href="#model"></a>
+</h3>
 <p>The model used for fitting the mono-exponential model may be accessed through the <strong>model</strong> column.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
@@ -528,7 +465,7 @@ where:
 <span class="co">#&gt; Number of iterations to convergence: 6 </span>
 <span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Formula: VO2 ~ 1028.0768176047 + Amp * (1 - exp(-(t - TD)/tau))</span>
 <span class="co">#&gt; </span>
@@ -545,27 +482,26 @@ where:
 <span class="co">#&gt; Number of iterations to convergence: 6 </span>
 <span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span></code></pre></div>
 </div>
-<div id="residuals-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#residuals-data" class="anchor"></a>Residuals data</h3>
+<div class="section level3">
+<h3 id="residuals-data">Residuals data<a class="anchor" aria-label="anchor" href="#residuals-data"></a>
+</h3>
 <p>The model residuals data may be accessed through the <strong>model_residuals</strong> column.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">model_residuals</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code>#&gt; <span style="color: #555555;"># A tibble: 45 x 7</span><span>
-#&gt;        t   VO2 .fitted .resid standardized_res… sqrt_abs_standard… lag_residuals
-#&gt;    </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>   </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>  </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>             </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>              </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>         </span><span style="color: #555555;font-style: italic;">&lt;dbl&gt;</span><span>
-#&gt; </span><span style="color: #555555;"> 1</span><span>    20 </span><span style="text-decoration: underline;">1</span><span>799.   </span><span style="text-decoration: underline;">1</span><span>720.  78.5              1.37               1.17          </span><span style="color: #BB0000;">NA</span><span>   
-#&gt; </span><span style="color: #555555;"> 2</span><span>    25 </span><span style="text-decoration: underline;">1</span><span>960.   </span><span style="text-decoration: underline;">1</span><span>999. -</span><span style="color: #BB0000;">38.5</span><span>             -</span><span style="color: #BB0000;">0.672</span><span>              0.820         78.5 
-#&gt; </span><span style="color: #555555;"> 3</span><span>    30 </span><span style="text-decoration: underline;">2</span><span>127.   </span><span style="text-decoration: underline;">2</span><span>220. -</span><span style="color: #BB0000;">93.3</span><span>             -</span><span style="color: #BB0000;">1.63</span><span>               1.28         -</span><span style="color: #BB0000;">38.5</span><span> 
-#&gt; </span><span style="color: #555555;"> 4</span><span>    35 </span><span style="text-decoration: underline;">2</span><span>384.   </span><span style="text-decoration: underline;">2</span><span>397. -</span><span style="color: #BB0000;">12.5</span><span>             -</span><span style="color: #BB0000;">0.218</span><span>              0.467        -</span><span style="color: #BB0000;">93.3</span><span> 
-#&gt; </span><span style="color: #555555;"> 5</span><span>    40 </span><span style="text-decoration: underline;">2</span><span>522.   </span><span style="text-decoration: underline;">2</span><span>537. -</span><span style="color: #BB0000;">15.7</span><span>             -</span><span style="color: #BB0000;">0.274</span><span>              0.523        -</span><span style="color: #BB0000;">12.5</span><span> 
-#&gt; </span><span style="color: #555555;"> 6</span><span>    45 </span><span style="text-decoration: underline;">2</span><span>659.   </span><span style="text-decoration: underline;">2</span><span>649.   9.61             0.167              0.409        -</span><span style="color: #BB0000;">15.7</span><span> 
-#&gt; </span><span style="color: #555555;"> 7</span><span>    50 </span><span style="text-decoration: underline;">2</span><span>755.   </span><span style="text-decoration: underline;">2</span><span>738.  16.3              0.285              0.534          9.61
-#&gt; </span><span style="color: #555555;"> 8</span><span>    55 </span><span style="text-decoration: underline;">2</span><span>851.   </span><span style="text-decoration: underline;">2</span><span>809.  41.6              0.726              0.852         16.3 
-#&gt; </span><span style="color: #555555;"> 9</span><span>    60 </span><span style="text-decoration: underline;">2</span><span>936.   </span><span style="text-decoration: underline;">2</span><span>866.  69.7              1.22               1.10          41.6 
-#&gt; </span><span style="color: #555555;">10</span><span>    65 </span><span style="text-decoration: underline;">2</span><span>885.   </span><span style="text-decoration: underline;">2</span><span>911. -</span><span style="color: #BB0000;">25.5</span><span>             -</span><span style="color: #BB0000;">0.444</span><span>              0.667         69.7 
-#&gt; </span><span style="color: #555555;"># … with 35 more rows</span><span>
-</span></code></pre>
+<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 45 × 7</span>
+<span class="co">#&gt;        t   VO2 .fitted .resid standardized_resid… sqrt_abs_standa… lag_residuals</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt;  1    20 1799.   1720.  78.5                1.37             1.17          NA   </span>
+<span class="co">#&gt;  2    25 1960.   1999. -38.5               -0.672            0.820         78.5 </span>
+<span class="co">#&gt;  3    30 2127.   2220. -93.3               -1.63             1.28         -38.5 </span>
+<span class="co">#&gt;  4    35 2384.   2397. -12.5               -0.218            0.467        -93.3 </span>
+<span class="co">#&gt;  5    40 2522.   2537. -15.7               -0.274            0.523        -12.5 </span>
+<span class="co">#&gt;  6    45 2659.   2649.   9.61               0.167            0.409        -15.7 </span>
+<span class="co">#&gt;  7    50 2755.   2738.  16.3                0.285            0.534          9.61</span>
+<span class="co">#&gt;  8    55 2851.   2809.  41.6                0.726            0.852         16.3 </span>
+<span class="co">#&gt;  9    60 2936.   2866.  69.7                1.22             1.10          41.6 </span>
+<span class="co">#&gt; 10    65 2885.   2911. -25.5               -0.444            0.667         69.7 </span>
+<span class="co">#&gt; # … with 35 more rows</span></code></pre>
 </div>
 </div>
   </div>
@@ -581,11 +517,13 @@ where:
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://fmattioni.me">Felipe Mattioni Maturana</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://fmattioni.me" class="external-link">Felipe Mattioni Maturana</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -593,6 +531,8 @@ where:
 
   
 
+
+  
 
   </body>
 </html>

@@ -37,6 +37,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -49,7 +51,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">whippr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.0</span>
       </span>
     </div>
 
@@ -57,13 +59,13 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-book fa-lg"></span>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-book fa-lg"></span>
      
     Articles
      
@@ -80,14 +82,14 @@
 </li>
 <li>
   <a href="reference/index.html">
-    <span class="fas fa-balance-scale"></span>
+    <span class="fa fa-balance-scale"></span>
      
     Reference
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-newspaper"></span>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-newspaper"></span>
      
     News
      
@@ -102,14 +104,14 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/fmmattioni/whippr">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/fmmattioni/whippr" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/felipe_mattioni">
-    <span class="fas fa-twitter fa-lg"></span>
+  <a href="https://twitter.com/felipe_mattioni" class="external-link">
+    <span class="fa fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -125,37 +127,36 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="whippr-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#whippr-" class="anchor"></a>whippr <img src="reference/figures/logo.png" align="right" height="240">
+<div class="section level1">
+<div class="page-header"><h1 id="whippr-">whippr <img src="reference/figures/logo.png" align="right" height="240"><a class="anchor" aria-label="anchor" href="#whippr-"></a>
 </h1></div>
 <!-- badges: start -->
 
 <p>The goal of <code>whippr</code> is to provide a set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.</p>
-<div id="why-whippr" class="section level2">
-<h2 class="hasAnchor">
-<a href="#why-whippr" class="anchor"></a>Why <code>whippr</code>?</h2>
-<p>The name of the package is in honor of <a href="https://erj.ersjournals.com/content/39/1/1">Prof. Brian J Whipp</a> and his invaluable contribution to the field of exercise physiology.</p>
+<div class="section level2">
+<h2 id="why-whippr">Why <code>whippr</code>?<a class="anchor" aria-label="anchor" href="#why-whippr"></a>
+</h2>
+<p>The name of the package is in honor of <a href="https://erj.ersjournals.com/content/39/1/1" class="external-link">Prof. Brian J Whipp</a> and his invaluable contribution to the field of exercise physiology.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the development version of <code>whippr</code> from <a href="https://github.com/fmmattioni/whippr">Github</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of <code>whippr</code> from <a href="https://github.com/fmmattioni/whippr" class="external-link">Github</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"fmmattioni/whippr"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"fmmattioni/whippr"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="use" class="section level2">
-<h2 class="hasAnchor">
-<a href="#use" class="anchor"></a>Use</h2>
-<div id="read-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#read-data" class="anchor"></a>Read data</h3>
+<div class="section level2">
+<h2 id="use">Use<a class="anchor" aria-label="anchor" href="#use"></a>
+</h2>
+<div class="section level3">
+<h3 id="read-data">Read data<a class="anchor" aria-label="anchor" href="#read-data"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr">whippr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span>
 
 <span class="co">## example file that comes with the package for demonstration purposes</span>
-<span class="va">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>
+<span class="va">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>
 
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path_example</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span>
 
@@ -163,7 +164,7 @@
 <span class="co">#&gt; # Metabolic cart: COSMED </span>
 <span class="co">#&gt; # Data status: raw data</span>
 <span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 754 x 119</span>
+<span class="co">#&gt; # A tibble: 754 × 119</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
@@ -182,32 +183,18 @@
 <span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, PaCO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PaO2 &lt;dbl&gt;, PH &lt;dbl&gt;, SaO2 &lt;dbl&gt;, `HCO3-` &lt;dbl&gt;, `Bias Flow` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `La-` &lt;dbl&gt;, Hb &lt;dbl&gt;, `Steady State` &lt;chr&gt;, EEm &lt;dbl&gt;, EEh &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   EEkc &lt;dbl&gt;, EEbsa &lt;dbl&gt;, EEkg &lt;dbl&gt;, PROg &lt;dbl&gt;, PROkc &lt;dbl&gt;, FATg &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FATkc &lt;dbl&gt;, CHOg &lt;dbl&gt;, CHOkc &lt;dbl&gt;, `PRO%` &lt;dbl&gt;, `FAT%` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `CHO%` &lt;dbl&gt;, npRQ &lt;dbl&gt;, `t Rel` &lt;dbl&gt;, `mark Speed` &lt;dbl&gt;, `mark</span>
-<span class="co">#&gt; #   Dist.` &lt;dbl&gt;, `ST I` &lt;dbl&gt;, `ST II` &lt;dbl&gt;, `ST III` &lt;dbl&gt;, `ST aVR` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `ST aVL` &lt;dbl&gt;, `ST aVF` &lt;dbl&gt;, `ST V1` &lt;dbl&gt;, `ST V2` &lt;dbl&gt;, `ST</span>
-<span class="co">#&gt; #   V3` &lt;dbl&gt;, `ST V4` &lt;dbl&gt;, `ST V5` &lt;dbl&gt;, `ST V6` &lt;dbl&gt;, `S I` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   II` &lt;dbl&gt;, `S III` &lt;dbl&gt;, `S aVR` &lt;dbl&gt;, `S aVL` &lt;dbl&gt;, `S aVF` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   V1` &lt;dbl&gt;, `S V2` &lt;dbl&gt;, `S V3` &lt;dbl&gt;, `S V4` &lt;dbl&gt;, `S V5` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   V6` &lt;dbl&gt;, `P Syst` &lt;dbl&gt;, `P Diast` &lt;dbl&gt;, Symptom &lt;dbl&gt;, DP &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, `Phase time` &lt;chr&gt;, Qt &lt;dbl&gt;, SV &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Vt/FVC` &lt;dbl&gt;, Long &lt;chr&gt;, Lat &lt;chr&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS</span>
-<span class="co">#&gt; #   Dist.` &lt;dbl&gt;, predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, …</span></code></pre></div>
+<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
 </div>
-<div id="interpolate" class="section level3">
-<h3 class="hasAnchor">
-<a href="#interpolate" class="anchor"></a>Interpolate</h3>
+<div class="section level3">
+<h3 id="interpolate">Interpolate<a class="anchor" aria-label="anchor" href="#interpolate"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # Metabolic cart: COSMED </span>
 <span class="co">#&gt; # Data status: interpolated data</span>
 <span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 2,159 x 114</span>
+<span class="co">#&gt; # A tibble: 2,159 × 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
@@ -226,37 +213,23 @@
 <span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, PaCO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PaO2 &lt;dbl&gt;, PH &lt;dbl&gt;, SaO2 &lt;dbl&gt;, `HCO3-` &lt;dbl&gt;, `Bias Flow` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `La-` &lt;dbl&gt;, Hb &lt;dbl&gt;, EEm &lt;dbl&gt;, EEh &lt;dbl&gt;, EEkc &lt;dbl&gt;, EEbsa &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   EEkg &lt;dbl&gt;, PROg &lt;dbl&gt;, PROkc &lt;dbl&gt;, FATg &lt;dbl&gt;, FATkc &lt;dbl&gt;, CHOg &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   CHOkc &lt;dbl&gt;, `PRO%` &lt;dbl&gt;, `FAT%` &lt;dbl&gt;, `CHO%` &lt;dbl&gt;, npRQ &lt;dbl&gt;, `t</span>
-<span class="co">#&gt; #   Rel` &lt;dbl&gt;, `mark Speed` &lt;dbl&gt;, `mark Dist.` &lt;dbl&gt;, `ST I` &lt;dbl&gt;, `ST</span>
-<span class="co">#&gt; #   II` &lt;dbl&gt;, `ST III` &lt;dbl&gt;, `ST aVR` &lt;dbl&gt;, `ST aVL` &lt;dbl&gt;, `ST aVF` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `ST V1` &lt;dbl&gt;, `ST V2` &lt;dbl&gt;, `ST V3` &lt;dbl&gt;, `ST V4` &lt;dbl&gt;, `ST V5` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `ST V6` &lt;dbl&gt;, `S I` &lt;dbl&gt;, `S II` &lt;dbl&gt;, `S III` &lt;dbl&gt;, `S aVR` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   aVL` &lt;dbl&gt;, `S aVF` &lt;dbl&gt;, `S V1` &lt;dbl&gt;, `S V2` &lt;dbl&gt;, `S V3` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   V4` &lt;dbl&gt;, `S V5` &lt;dbl&gt;, `S V6` &lt;dbl&gt;, `P Syst` &lt;dbl&gt;, `P Diast` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></code></pre></div>
+<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
 </div>
-<div id="perform-averages" class="section level3">
-<h3 class="hasAnchor">
-<a href="#perform-averages" class="anchor"></a>Perform averages</h3>
-<div id="bin-average" class="section level4">
-<h4 class="hasAnchor">
-<a href="#bin-average" class="anchor"></a>Bin-average</h4>
+<div class="section level3">
+<h3 id="perform-averages">Perform averages<a class="anchor" aria-label="anchor" href="#perform-averages"></a>
+</h3>
+<div class="section level4">
+<h4 id="bin-average">Bin-average<a class="anchor" aria-label="anchor" href="#bin-average"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## example of performing 30-s bin-averages</span>
-<span class="va">df</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"bin"</span>, bins <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
 <span class="co">#&gt; # Metabolic cart: COSMED </span>
 <span class="co">#&gt; # Data status: averaged data - 30-s bins</span>
 <span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 73 x 114</span>
+<span class="co">#&gt; # A tibble: 73 × 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     0  19.0  1.33  24.0  932.  744.  207.   58.9     25.8      32.5     11.2</span>
@@ -275,34 +248,20 @@
 <span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, PaCO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PaO2 &lt;dbl&gt;, PH &lt;dbl&gt;, SaO2 &lt;dbl&gt;, `HCO3-` &lt;dbl&gt;, `Bias Flow` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `La-` &lt;dbl&gt;, Hb &lt;dbl&gt;, EEm &lt;dbl&gt;, EEh &lt;dbl&gt;, EEkc &lt;dbl&gt;, EEbsa &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   EEkg &lt;dbl&gt;, PROg &lt;dbl&gt;, PROkc &lt;dbl&gt;, FATg &lt;dbl&gt;, FATkc &lt;dbl&gt;, CHOg &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   CHOkc &lt;dbl&gt;, `PRO%` &lt;dbl&gt;, `FAT%` &lt;dbl&gt;, `CHO%` &lt;dbl&gt;, npRQ &lt;dbl&gt;, `t</span>
-<span class="co">#&gt; #   Rel` &lt;dbl&gt;, `mark Speed` &lt;dbl&gt;, `mark Dist.` &lt;dbl&gt;, `ST I` &lt;dbl&gt;, `ST</span>
-<span class="co">#&gt; #   II` &lt;dbl&gt;, `ST III` &lt;dbl&gt;, `ST aVR` &lt;dbl&gt;, `ST aVL` &lt;dbl&gt;, `ST aVF` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `ST V1` &lt;dbl&gt;, `ST V2` &lt;dbl&gt;, `ST V3` &lt;dbl&gt;, `ST V4` &lt;dbl&gt;, `ST V5` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `ST V6` &lt;dbl&gt;, `S I` &lt;dbl&gt;, `S II` &lt;dbl&gt;, `S III` &lt;dbl&gt;, `S aVR` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   aVL` &lt;dbl&gt;, `S aVF` &lt;dbl&gt;, `S V1` &lt;dbl&gt;, `S V2` &lt;dbl&gt;, `S V3` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   V4` &lt;dbl&gt;, `S V5` &lt;dbl&gt;, `S V6` &lt;dbl&gt;, `P Syst` &lt;dbl&gt;, `P Diast` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></code></pre></div>
+<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
 </div>
-<div id="rolling-average" class="section level4">
-<h4 class="hasAnchor">
-<a href="#rolling-average" class="anchor"></a>Rolling-average</h4>
+<div class="section level4">
+<h4 id="rolling-average">Rolling-average<a class="anchor" aria-label="anchor" href="#rolling-average"></a>
+</h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## example of performing 30-s rolling-averages</span>
-<span class="va">df</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"rolling"</span>, rolling_window <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
 <span class="co">#&gt; # Metabolic cart: COSMED </span>
 <span class="co">#&gt; # Data status: averaged data - 30-s rolling average</span>
 <span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 2,130 x 114</span>
+<span class="co">#&gt; # A tibble: 2,130 × 114</span>
 <span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1  16.5  16.4  1.75  26.5 1033.  852.  271.   80.1     25.7      31.3     12.4</span>
@@ -321,26 +280,12 @@
 <span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, PaCO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PaO2 &lt;dbl&gt;, PH &lt;dbl&gt;, SaO2 &lt;dbl&gt;, `HCO3-` &lt;dbl&gt;, `Bias Flow` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `La-` &lt;dbl&gt;, Hb &lt;dbl&gt;, EEm &lt;dbl&gt;, EEh &lt;dbl&gt;, EEkc &lt;dbl&gt;, EEbsa &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   EEkg &lt;dbl&gt;, PROg &lt;dbl&gt;, PROkc &lt;dbl&gt;, FATg &lt;dbl&gt;, FATkc &lt;dbl&gt;, CHOg &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   CHOkc &lt;dbl&gt;, `PRO%` &lt;dbl&gt;, `FAT%` &lt;dbl&gt;, `CHO%` &lt;dbl&gt;, npRQ &lt;dbl&gt;, `t</span>
-<span class="co">#&gt; #   Rel` &lt;dbl&gt;, `mark Speed` &lt;dbl&gt;, `mark Dist.` &lt;dbl&gt;, `ST I` &lt;dbl&gt;, `ST</span>
-<span class="co">#&gt; #   II` &lt;dbl&gt;, `ST III` &lt;dbl&gt;, `ST aVR` &lt;dbl&gt;, `ST aVL` &lt;dbl&gt;, `ST aVF` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `ST V1` &lt;dbl&gt;, `ST V2` &lt;dbl&gt;, `ST V3` &lt;dbl&gt;, `ST V4` &lt;dbl&gt;, `ST V5` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `ST V6` &lt;dbl&gt;, `S I` &lt;dbl&gt;, `S II` &lt;dbl&gt;, `S III` &lt;dbl&gt;, `S aVR` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   aVL` &lt;dbl&gt;, `S aVF` &lt;dbl&gt;, `S V1` &lt;dbl&gt;, `S V2` &lt;dbl&gt;, `S V3` &lt;dbl&gt;, `S</span>
-<span class="co">#&gt; #   V4` &lt;dbl&gt;, `S V5` &lt;dbl&gt;, `S V6` &lt;dbl&gt;, `P Syst` &lt;dbl&gt;, `P Diast` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Symptom &lt;dbl&gt;, DP &lt;dbl&gt;, Stage &lt;dbl&gt;, RR &lt;dbl&gt;, METS &lt;dbl&gt;, Qt &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   SV &lt;dbl&gt;, `Vt/FVC` &lt;dbl&gt;, Alt &lt;dbl&gt;, `GPS Speed` &lt;dbl&gt;, `GPS Dist.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   predVO2 &lt;dbl&gt;, BR &lt;dbl&gt;, `O2 Cost` &lt;dbl&gt;, EEtot &lt;dbl&gt;, IC &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Step &lt;dbl&gt;, LogVE &lt;dbl&gt;, `P(A-a)O2` &lt;dbl&gt;, …</span></code></pre></div>
+<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
 </div>
 </div>
-<div id="perform-vo2-kinetics-analysis" class="section level3">
-<h3 class="hasAnchor">
-<a href="#perform-vo2-kinetics-analysis" class="anchor"></a>Perform VO2 kinetics analysis</h3>
+<div class="section level3">
+<h3 id="perform-vo2-kinetics-analysis">Perform VO<sub>2</sub> kinetics analysis<a class="anchor" aria-label="anchor" href="#perform-vo2-kinetics-analysis"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">results_kinetics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span><span class="op">(</span>
   .data <span class="op">=</span> <span class="va">df</span>,
@@ -350,7 +295,7 @@
   protocol_baseline_length <span class="op">=</span> <span class="fl">360</span>,
   protocol_transition_length <span class="op">=</span> <span class="fl">360</span>,
   cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,
-  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,
+  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,
   fit_level <span class="op">=</span> <span class="fl">0.95</span>,
   fit_bin_average <span class="op">=</span> <span class="fl">5</span>,
   fit_phase_1_length <span class="op">=</span> <span class="fl">20</span>,
@@ -358,11 +303,13 @@
   fit_transition_length <span class="op">=</span> <span class="fl">240</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
-<span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ────────────────────────</span>
+<span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────</span>
 <span class="co">#&gt; ✓ Detecting outliers</span>
-<span class="co">#&gt; ● 14 outlier(s) found in transition 1</span>
-<span class="co">#&gt; ● 15 outlier(s) found in transition 2</span>
-<span class="co">#&gt; ● 13 outlier(s) found in transition 3</span>
+<span class="co">#&gt; ✓ fitting transition</span>
+<span class="co">#&gt; ✓ fitting transition</span>
+<span class="co">#&gt; • 14 outlier(s) found in transition 1</span>
+<span class="co">#&gt; • 15 outlier(s) found in transition 2</span>
+<span class="co">#&gt; • 13 outlier(s) found in transition 3</span>
 <span class="co">#&gt; ✓ Processing data...</span>
 <span class="co">#&gt; ✓       └─ Removing outliers</span>
 <span class="co">#&gt; ✓       └─ Interpolating each transition</span>
@@ -375,11 +322,11 @@
 <span class="co">#&gt; ✓       └─ Preparing plots</span>
 <span class="co">#&gt; ──────────────────────────────────  * DONE *  ──────────────────────────────────</span></code></pre></div>
 </div>
-<div id="perform-vo2-max-analysis" class="section level3">
-<h3 class="hasAnchor">
-<a href="#perform-vo2-max-analysis" class="anchor"></a>Perform VO2 max analysis</h3>
+<div class="section level3">
+<h3 id="perform-vo2max-analysis">Perform VO<sub>2max</sub> analysis<a class="anchor" aria-label="anchor" href="#perform-vo2max-analysis"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_incremental</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"ramp_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">df_incremental</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ramp_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span>
 
 <span class="fu"><a href="reference/vo2_max.html">vo2_max</a></span><span class="op">(</span>
   .data <span class="op">=</span> <span class="va">df_incremental</span>, <span class="co">## data from `read_data()`</span>
@@ -404,42 +351,43 @@
   cleaning_level <span class="op">=</span> <span class="fl">0.95</span>, 
   method_incremental <span class="op">=</span> <span class="st">"linear"</span>
 <span class="op">)</span>
-<span class="co">#&gt; ────────────────────────────  * V̇O₂ max analysis *  ───────────────────────────</span>
+<span class="co">#&gt; ────────────────────────────  * V̇O₂ max analysis *  ────────────────────────────</span>
 <span class="co">#&gt; ✓ Normalizing incremental data...</span>
 <span class="co">#&gt; ✓ Detecting outliers</span>
-<span class="co">#&gt; ● 2 outlier(s) found in baseline</span>
-<span class="co">#&gt; ● 15 outlier(s) found in ramp</span>
+<span class="co">#&gt; • 2 outlier(s) found in baseline</span>
+<span class="co">#&gt; • 15 outlier(s) found in ramp</span>
 <span class="co">#&gt; ✓ Filtering out outliers...</span>
 <span class="co">#&gt; ✓ Interpolating from breath-by-breath into second-by-second...</span>
 <span class="co">#&gt; ✓ Performing averages...</span>
-<span class="co">#&gt; # A tibble: 1 x 6</span>
+<span class="co">#&gt; # A tibble: 1 × 6</span>
 <span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span>
 <span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;list&gt;</span>
 <span class="co">#&gt; 1           3524.            46.0    303   193   1.13 &lt;gg&gt;</span></code></pre></div>
 </div>
 </div>
-<div id="metabolic-carts-currently-supported" class="section level2">
-<h2 class="hasAnchor">
-<a href="#metabolic-carts-currently-supported" class="anchor"></a>Metabolic carts currently supported</h2>
+<div class="section level2">
+<h2 id="metabolic-carts-currently-supported">Metabolic carts currently supported<a class="anchor" aria-label="anchor" href="#metabolic-carts-currently-supported"></a>
+</h2>
 <ul>
-<li><a href="https://www.cosmed.com/en/">COSMED</a></li>
-<li><a href="https://cortex-medical.com/EN">CORTEX</a></li>
-<li><a href="https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555">NSpire</a></li>
-<li><a href="http://www.parvo.com/">Parvo Medics</a></li>
-<li><a href="https://www.geratherm-respiratory.com/product-groups/cpet/">Geratherm Respiratory</a></li>
+<li><a href="https://korr.com/cardiocoach/" class="external-link">CardioCoach</a></li>
+<li><a href="https://www.cosmed.com/en/" class="external-link">COSMED</a></li>
+<li><a href="https://cortex-medical.com/EN" class="external-link">CORTEX</a></li>
+<li><a href="https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555" class="external-link">NSpire</a></li>
+<li><a href="http://www.parvo.com/" class="external-link">Parvo Medics</a></li>
+<li><a href="https://www.geratherm-respiratory.com/product-groups/cpet/" class="external-link">Geratherm Respiratory</a></li>
 </ul>
 </div>
-<div id="shiny-app" class="section level2">
-<h2 class="hasAnchor">
-<a href="#shiny-app" class="anchor"></a>Shiny app</h2>
-<p>Would you like to perform VO2 kinetics analyses but don’t know R? No problem! You can use our shiny app: <a href="https://shiny.fmattioni.me/vo2kinetics/">VO2 Kinetics Dashboard</a></p>
+<div class="section level2">
+<h2 id="online-app">Online app<a class="anchor" aria-label="anchor" href="#online-app"></a>
+</h2>
+<p>Would you like to perform VO<sub>2</sub> kinetics analyses but don’t know R? No problem! You can use our online app: <a href="https://exphyslab.com/kinetics/" class="external-link">VO2 Kinetics App</a></p>
 </div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that this project is released with a <a href="https://www.contributor-covenant.org/version/1/0/0/code-of-conduct.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
+<p>Please note that this project is released with a <a href="https://www.contributor-covenant.org/version/1/0/0/code-of-conduct.html" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 <div>
-<p>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+<p>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik" class="external-link">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon" class="external-link">www.flaticon.com</a></p>
 </div>
 </div>
 </div>
@@ -447,47 +395,59 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/fmattioni/whippr/">https://​github.com/​fmattioni/​whippr/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/fmattioni/whippr/issues">https://​github.com/​fmattioni/​whippr/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://fmattioni.me">Felipe Mattioni Maturana</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4221-6104" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://github.com/fmmattioni/whippr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/fmmattioni/whippr/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://CRAN.R-project.org/package=whippr"><img src="https://www.r-pkg.org/badges/version/whippr" alt="CRAN status"></a></li>
-<li><a href="https://github.com/fmmattioni/whippr/actions"><img src="https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing whippr</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://fmattioni.me" class="external-link">Felipe Mattioni Maturana</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4221-6104" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://CRAN.R-project.org/package=whippr" class="external-link"><img src="https://www.r-pkg.org/badges/version/whippr" alt="CRAN status"></a></li>
+<li><a href="https://app.codecov.io/gh/fmmattioni/whippr?branch=master" class="external-link"><img src="https://codecov.io/gh/fmmattioni/whippr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/fmmattioni/whippr/actions" class="external-link"><img src="https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://fmattioni.me">Felipe Mattioni Maturana</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://fmattioni.me" class="external-link">Felipe Mattioni Maturana</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -495,6 +455,8 @@
 
   
 
+
+  
 
   </body>
 </html>
