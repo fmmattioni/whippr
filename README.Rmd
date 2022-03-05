@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # whippr <img src='man/figures/logo.png' align="right" height="240" />
 
 <!-- badges: start -->
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN status](https://www.r-pkg.org/badges/version/whippr)](https://CRAN.R-project.org/package=whippr)
 [![R build status](https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg)](https://github.com/fmmattioni/whippr/actions)
 <!-- badges: end -->
@@ -79,7 +79,7 @@ df %>%
 ```
 
 
-### Perform VO2 kinetics analysis
+### Perform VO<sub>2</sub> kinetics analysis
 
 ```{r}
 results_kinetics <- vo2_kinetics(
@@ -100,7 +100,7 @@ results_kinetics <- vo2_kinetics(
 )
 ```
 
-### Perform VO2 max analysis
+### Perform VO<sub>2max</sub> analysis
 
 ```{r}
 df_incremental <- read_data(path = system.file("ramp_cosmed.xlsx", package = "whippr"), metabolic_cart = "cosmed")
@@ -132,15 +132,16 @@ vo2_max(
 
 ## Metabolic carts currently supported
 
+* [CardioCoach](https://korr.com/cardiocoach/)
 * [COSMED](https://www.cosmed.com/en/)
 * [CORTEX](https://cortex-medical.com/EN)
 * [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
 * [Parvo Medics](http://www.parvo.com/)
 * [Geratherm Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
 
-## Shiny app
+## Online app
 
-Would you like to perform VO2 kinetics analyses but don't know R? No problem! You can use our shiny app: [VO2 Kinetics Dashboard](https://shiny.fmattioni.me/vo2kinetics/)
+Would you like to perform VO<sub>2</sub> kinetics analyses but don't know R? No problem! You can use our online app: [VO2 Kinetics App](https://exphyslab.com/kinetics/)
 
 ## Code of Conduct
 

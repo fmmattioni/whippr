@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/whippr)](https://CRAN.R-project.org/package=whippr)
 [![R build
@@ -48,7 +48,7 @@ df
 #> # Metabolic cart: COSMED 
 #> # Data status: raw data
 #> # Time column: t
-#> # A tibble: 754 x 119
+#> # A tibble: 754 × 119
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
 #>  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
@@ -67,21 +67,7 @@ df
 #> #   FiO2 <dbl>, FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>,
 #> #   IV <dbl>, PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
 #> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, PaCO2 <dbl>,
-#> #   PaO2 <dbl>, PH <dbl>, SaO2 <dbl>, `HCO3-` <dbl>, `Bias Flow` <dbl>,
-#> #   `La-` <dbl>, Hb <dbl>, `Steady State` <chr>, EEm <dbl>, EEh <dbl>,
-#> #   EEkc <dbl>, EEbsa <dbl>, EEkg <dbl>, PROg <dbl>, PROkc <dbl>, FATg <dbl>,
-#> #   FATkc <dbl>, CHOg <dbl>, CHOkc <dbl>, `PRO%` <dbl>, `FAT%` <dbl>,
-#> #   `CHO%` <dbl>, npRQ <dbl>, `t Rel` <dbl>, `mark Speed` <dbl>, `mark
-#> #   Dist.` <dbl>, `ST I` <dbl>, `ST II` <dbl>, `ST III` <dbl>, `ST aVR` <dbl>,
-#> #   `ST aVL` <dbl>, `ST aVF` <dbl>, `ST V1` <dbl>, `ST V2` <dbl>, `ST
-#> #   V3` <dbl>, `ST V4` <dbl>, `ST V5` <dbl>, `ST V6` <dbl>, `S I` <dbl>, `S
-#> #   II` <dbl>, `S III` <dbl>, `S aVR` <dbl>, `S aVL` <dbl>, `S aVF` <dbl>, `S
-#> #   V1` <dbl>, `S V2` <dbl>, `S V3` <dbl>, `S V4` <dbl>, `S V5` <dbl>, `S
-#> #   V6` <dbl>, `P Syst` <dbl>, `P Diast` <dbl>, Symptom <dbl>, DP <dbl>,
-#> #   Stage <dbl>, RR <dbl>, METS <dbl>, `Phase time` <chr>, Qt <dbl>, SV <dbl>,
-#> #   `Vt/FVC` <dbl>, Long <chr>, Lat <chr>, Alt <dbl>, `GPS Speed` <dbl>, `GPS
-#> #   Dist.` <dbl>, predVO2 <dbl>, BR <dbl>, `O2 Cost` <dbl>, …
+#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
 ```
 
 ### Interpolate
@@ -92,7 +78,7 @@ df %>%
 #> # Metabolic cart: COSMED 
 #> # Data status: interpolated data
 #> # Time column: t
-#> # A tibble: 2,159 x 114
+#> # A tibble: 2,159 × 114
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
 #>  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58
@@ -111,21 +97,7 @@ df %>%
 #> #   FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>,
 #> #   PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
 #> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, PaCO2 <dbl>,
-#> #   PaO2 <dbl>, PH <dbl>, SaO2 <dbl>, `HCO3-` <dbl>, `Bias Flow` <dbl>,
-#> #   `La-` <dbl>, Hb <dbl>, EEm <dbl>, EEh <dbl>, EEkc <dbl>, EEbsa <dbl>,
-#> #   EEkg <dbl>, PROg <dbl>, PROkc <dbl>, FATg <dbl>, FATkc <dbl>, CHOg <dbl>,
-#> #   CHOkc <dbl>, `PRO%` <dbl>, `FAT%` <dbl>, `CHO%` <dbl>, npRQ <dbl>, `t
-#> #   Rel` <dbl>, `mark Speed` <dbl>, `mark Dist.` <dbl>, `ST I` <dbl>, `ST
-#> #   II` <dbl>, `ST III` <dbl>, `ST aVR` <dbl>, `ST aVL` <dbl>, `ST aVF` <dbl>,
-#> #   `ST V1` <dbl>, `ST V2` <dbl>, `ST V3` <dbl>, `ST V4` <dbl>, `ST V5` <dbl>,
-#> #   `ST V6` <dbl>, `S I` <dbl>, `S II` <dbl>, `S III` <dbl>, `S aVR` <dbl>, `S
-#> #   aVL` <dbl>, `S aVF` <dbl>, `S V1` <dbl>, `S V2` <dbl>, `S V3` <dbl>, `S
-#> #   V4` <dbl>, `S V5` <dbl>, `S V6` <dbl>, `P Syst` <dbl>, `P Diast` <dbl>,
-#> #   Symptom <dbl>, DP <dbl>, Stage <dbl>, RR <dbl>, METS <dbl>, Qt <dbl>,
-#> #   SV <dbl>, `Vt/FVC` <dbl>, Alt <dbl>, `GPS Speed` <dbl>, `GPS Dist.` <dbl>,
-#> #   predVO2 <dbl>, BR <dbl>, `O2 Cost` <dbl>, EEtot <dbl>, IC <dbl>,
-#> #   Step <dbl>, LogVE <dbl>, `P(A-a)O2` <dbl>, …
+#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
 ```
 
 ### Perform averages
@@ -140,7 +112,7 @@ df %>%
 #> # Metabolic cart: COSMED 
 #> # Data status: averaged data - 30-s bins
 #> # Time column: t
-#> # A tibble: 73 x 114
+#> # A tibble: 73 × 114
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
 #>  1     0  19.0  1.33  24.0  932.  744.  207.   58.9     25.8      32.5     11.2
@@ -159,21 +131,7 @@ df %>%
 #> #   FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>,
 #> #   PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
 #> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, PaCO2 <dbl>,
-#> #   PaO2 <dbl>, PH <dbl>, SaO2 <dbl>, `HCO3-` <dbl>, `Bias Flow` <dbl>,
-#> #   `La-` <dbl>, Hb <dbl>, EEm <dbl>, EEh <dbl>, EEkc <dbl>, EEbsa <dbl>,
-#> #   EEkg <dbl>, PROg <dbl>, PROkc <dbl>, FATg <dbl>, FATkc <dbl>, CHOg <dbl>,
-#> #   CHOkc <dbl>, `PRO%` <dbl>, `FAT%` <dbl>, `CHO%` <dbl>, npRQ <dbl>, `t
-#> #   Rel` <dbl>, `mark Speed` <dbl>, `mark Dist.` <dbl>, `ST I` <dbl>, `ST
-#> #   II` <dbl>, `ST III` <dbl>, `ST aVR` <dbl>, `ST aVL` <dbl>, `ST aVF` <dbl>,
-#> #   `ST V1` <dbl>, `ST V2` <dbl>, `ST V3` <dbl>, `ST V4` <dbl>, `ST V5` <dbl>,
-#> #   `ST V6` <dbl>, `S I` <dbl>, `S II` <dbl>, `S III` <dbl>, `S aVR` <dbl>, `S
-#> #   aVL` <dbl>, `S aVF` <dbl>, `S V1` <dbl>, `S V2` <dbl>, `S V3` <dbl>, `S
-#> #   V4` <dbl>, `S V5` <dbl>, `S V6` <dbl>, `P Syst` <dbl>, `P Diast` <dbl>,
-#> #   Symptom <dbl>, DP <dbl>, Stage <dbl>, RR <dbl>, METS <dbl>, Qt <dbl>,
-#> #   SV <dbl>, `Vt/FVC` <dbl>, Alt <dbl>, `GPS Speed` <dbl>, `GPS Dist.` <dbl>,
-#> #   predVO2 <dbl>, BR <dbl>, `O2 Cost` <dbl>, EEtot <dbl>, IC <dbl>,
-#> #   Step <dbl>, LogVE <dbl>, `P(A-a)O2` <dbl>, …
+#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
 ```
 
 #### Rolling-average
@@ -186,7 +144,7 @@ df %>%
 #> # Metabolic cart: COSMED 
 #> # Data status: averaged data - 30-s rolling average
 #> # Time column: t
-#> # A tibble: 2,130 x 114
+#> # A tibble: 2,130 × 114
 #>        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`
 #>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>    <dbl>     <dbl>    <dbl>
 #>  1  16.5  16.4  1.75  26.5 1033.  852.  271.   80.1     25.7      31.3     12.4
@@ -205,24 +163,10 @@ df %>%
 #> #   FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>,
 #> #   PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
 #> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, PaCO2 <dbl>,
-#> #   PaO2 <dbl>, PH <dbl>, SaO2 <dbl>, `HCO3-` <dbl>, `Bias Flow` <dbl>,
-#> #   `La-` <dbl>, Hb <dbl>, EEm <dbl>, EEh <dbl>, EEkc <dbl>, EEbsa <dbl>,
-#> #   EEkg <dbl>, PROg <dbl>, PROkc <dbl>, FATg <dbl>, FATkc <dbl>, CHOg <dbl>,
-#> #   CHOkc <dbl>, `PRO%` <dbl>, `FAT%` <dbl>, `CHO%` <dbl>, npRQ <dbl>, `t
-#> #   Rel` <dbl>, `mark Speed` <dbl>, `mark Dist.` <dbl>, `ST I` <dbl>, `ST
-#> #   II` <dbl>, `ST III` <dbl>, `ST aVR` <dbl>, `ST aVL` <dbl>, `ST aVF` <dbl>,
-#> #   `ST V1` <dbl>, `ST V2` <dbl>, `ST V3` <dbl>, `ST V4` <dbl>, `ST V5` <dbl>,
-#> #   `ST V6` <dbl>, `S I` <dbl>, `S II` <dbl>, `S III` <dbl>, `S aVR` <dbl>, `S
-#> #   aVL` <dbl>, `S aVF` <dbl>, `S V1` <dbl>, `S V2` <dbl>, `S V3` <dbl>, `S
-#> #   V4` <dbl>, `S V5` <dbl>, `S V6` <dbl>, `P Syst` <dbl>, `P Diast` <dbl>,
-#> #   Symptom <dbl>, DP <dbl>, Stage <dbl>, RR <dbl>, METS <dbl>, Qt <dbl>,
-#> #   SV <dbl>, `Vt/FVC` <dbl>, Alt <dbl>, `GPS Speed` <dbl>, `GPS Dist.` <dbl>,
-#> #   predVO2 <dbl>, BR <dbl>, `O2 Cost` <dbl>, EEtot <dbl>, IC <dbl>,
-#> #   Step <dbl>, LogVE <dbl>, `P(A-a)O2` <dbl>, …
+#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
 ```
 
-### Perform VO2 kinetics analysis
+### Perform VO<sub>2</sub> kinetics analysis
 
 ``` r
 results_kinetics <- vo2_kinetics(
@@ -241,11 +185,13 @@ results_kinetics <- vo2_kinetics(
   fit_transition_length = 240,
   verbose = TRUE
 )
-#> ──────────────────────────  * V̇O₂ kinetics analysis *  ────────────────────────
+#> ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────
 #> ✓ Detecting outliers
-#> ● 14 outlier(s) found in transition 1
-#> ● 15 outlier(s) found in transition 2
-#> ● 13 outlier(s) found in transition 3
+#> ✓ fitting transition
+#> ✓ fitting transition
+#> • 14 outlier(s) found in transition 1
+#> • 15 outlier(s) found in transition 2
+#> • 13 outlier(s) found in transition 3
 #> ✓ Processing data...
 #> ✓       └─ Removing outliers
 #> ✓       └─ Interpolating each transition
@@ -259,7 +205,7 @@ results_kinetics <- vo2_kinetics(
 #> ──────────────────────────────────  * DONE *  ──────────────────────────────────
 ```
 
-### Perform VO2 max analysis
+### Perform VO<sub>2max</sub> analysis
 
 ``` r
 df_incremental <- read_data(path = system.file("ramp_cosmed.xlsx", package = "whippr"), metabolic_cart = "cosmed")
@@ -287,15 +233,15 @@ vo2_max(
   cleaning_level = 0.95, 
   method_incremental = "linear"
 )
-#> ────────────────────────────  * V̇O₂ max analysis *  ───────────────────────────
+#> ────────────────────────────  * V̇O₂ max analysis *  ────────────────────────────
 #> ✓ Normalizing incremental data...
 #> ✓ Detecting outliers
-#> ● 2 outlier(s) found in baseline
-#> ● 15 outlier(s) found in ramp
+#> • 2 outlier(s) found in baseline
+#> • 15 outlier(s) found in ramp
 #> ✓ Filtering out outliers...
 #> ✓ Interpolating from breath-by-breath into second-by-second...
 #> ✓ Performing averages...
-#> # A tibble: 1 x 6
+#> # A tibble: 1 × 6
 #>   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  
 #>             <dbl>           <dbl>  <int> <dbl>  <dbl> <list>
 #> 1           3524.            46.0    303   193   1.13 <gg>
@@ -303,6 +249,7 @@ vo2_max(
 
 ## Metabolic carts currently supported
 
+-   [CardioCoach](https://korr.com/cardiocoach/)
 -   [COSMED](https://www.cosmed.com/en/)
 -   [CORTEX](https://cortex-medical.com/EN)
 -   [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
@@ -310,11 +257,11 @@ vo2_max(
 -   [Geratherm
     Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
 
-## Shiny app
+## Online app
 
-Would you like to perform VO2 kinetics analyses but don’t know R? No
-problem! You can use our shiny app: [VO2 Kinetics
-Dashboard](https://shiny.fmattioni.me/vo2kinetics/)
+Would you like to perform VO<sub>2</sub> kinetics analyses but don’t
+know R? No problem! You can use our online app: [VO2 Kinetics
+App](https://exphyslab.com/kinetics/)
 
 ## Code of Conduct
 
