@@ -50,4 +50,5 @@ Suggests:
     anomalize,
     ggforce,
     ggtext,
-    forcats
+    forcats,
+    covr

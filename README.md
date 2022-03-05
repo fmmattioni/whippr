@@ -9,8 +9,9 @@
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/whippr)](https://CRAN.R-project.org/package=whippr)
-[![R build
-status](https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg)](https://github.com/fmmattioni/whippr/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/fmmattioni/whippr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/fmmattioni/whippr?branch=master)
+[![R-CMD-check](https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg)](https://github.com/fmmattioni/whippr/actions)
 <!-- badges: end -->
 
 The goal of `whippr` is to provide a set of tools for manipulating gas
