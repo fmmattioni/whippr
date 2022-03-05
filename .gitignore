@@ -6,6 +6,7 @@ docs/
 demo.Rmd
 dev.R
 dev/
+CRAN-SUBMISSION
 
 # Created by https://www.gitignore.io/api/macos,r
 # Edit at https://www.gitignore.io/?templates=macos,r
