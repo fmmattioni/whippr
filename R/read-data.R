@@ -62,7 +62,7 @@ read_data.cosmed <- function(
   ))) %>%
     dplyr::select(start_col:ncol(.)) %>%
     dplyr::rename_all(~ names_file) %>%
-    janitor::remove_empty(which = "rows")
+    remove_empty(which = "rows")
 
   ## if date parsing didnt't work, then let the read_excel function guess the type
   if(all(is.na(data_raw2[[1]]))) {
@@ -70,7 +70,7 @@ read_data.cosmed <- function(
     data_raw2 <- suppressMessages(readxl::read_excel(path = path, skip = 1)) %>%
       dplyr::select(start_col:ncol(.)) %>%
       dplyr::rename_all(~ names_file) %>%
-      janitor::remove_empty(which = "rows")
+      remove_empty(which = "rows")
 
     ## this will make sure that different versions of the cosmed will work with this function
     ## newer versions will display differnt time formats (00:00 instead of 00:00:00)
@@ -151,7 +151,7 @@ read_data.cortex <- function(
   }
 
   out <- data_raw2 %>%
-    janitor::remove_empty(which = "cols")
+    remove_empty(which = "cols")
 
   ## the following will try to coerce the work rate column to numeric
   ## and it renames the given work rate column into 'work_rate'
@@ -199,7 +199,7 @@ read_data.nspire <- function(
     skip = 1))) %>%
     dplyr::select(start_col:ncol(.)) %>%
     dplyr::rename_all(~ names_file) %>%
-    janitor::remove_empty(which = "rows")
+    remove_empty(which = "rows")
 
   ## the following will try to coerce the work rate column to numeric
   ## and it renames the given work rate column into 'work_rate'
@@ -345,7 +345,10 @@ read_data.cardiocoach <- function(
   time_column = "t",
   work_rate_column = NULL
 ) {
-
+  ## check if readr is installed
+  if(length(find.package(package = "readr", quiet = TRUE)) == 0) {
+    stop("You need to install the readr package to use this function.", call. = FALSE)
+  }
   ## retrieve column names
   names_file <- suppressMessages(readr::read_tsv(file = path, n_max = 2, col_names = FALSE))
   ## retrieve data

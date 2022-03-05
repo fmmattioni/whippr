@@ -36,7 +36,7 @@ perform_max(
 \item{verbose}{A boolean indicating whether messages should be printed in the console. Default to \code{TRUE}.}
 }
 \value{
-
+a tibble
 }
 \description{
 It performs the calculation of VO2max, HRmax, and maximal RER. Additionally, it detects whether a plateau can be identified from your data.

@@ -141,7 +141,7 @@ vo2_max <- function(
 #' @param plot A boolean indicating whether to produce a plot with the summary results. Default to `TRUE`.
 #' @param verbose A boolean indicating whether messages should be printed in the console. Default to `TRUE`.
 #'
-#' @return
+#' @return a tibble
 #' @export
 #'
 #' @examples
@@ -269,6 +269,10 @@ perform_max <- function(
   )
 
   if(plot) {
+    ## check if ggforce and ggtext are installed
+    if(length(find.package(package = c("ggforce", "ggtext"), quiet = TRUE)) == 0) {
+      stop("You need to install the ggforce and ggtext packages to use this function.", call. = FALSE)
+    }
     label_graph <- out %>%
       tidyr::pivot_longer(cols = dplyr::everything()) %>%
       tidyr::drop_na() %>%

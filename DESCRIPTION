@@ -17,7 +17,6 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     readxl (>= 1.3.1),
     dplyr (>= 1.0.1),
-    janitor (>= 2.0.1),
     stringr (>= 1.4.0),
     lubridate (>= 1.7.9),
     magrittr,
@@ -34,11 +33,7 @@ Imports:
     rlang,
     usethis,
     nlstools,
-    pillar,
-    anomalize,
-    forcats,
-    ggforce,
-    ggtext
+    pillar
 RoxygenNote: 7.1.2
 Suggests: 
     knitr,
@@ -50,5 +45,9 @@ Suggests:
     miniUI,
     datapasta,
     rstudioapi,
-    htmltools
-VignetteBuilder: knitr
+    htmltools,
+    readr,
+    anomalize,
+    ggforce,
+    ggtext,
+    forcats

@@ -160,7 +160,7 @@ undoHistoryModule <- function(
 
   btn_state_lag <- c(FALSE, FALSE)
 
-  observe({
+  shiny::observe({
     btn_state <- c(has_history(), has_future())
     if (identical(btn_state, btn_state_lag)) return()
 
