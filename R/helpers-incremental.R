@@ -49,6 +49,10 @@ work_rate_step <- function(
   step_increase,
   step_length
 ) {
+  ## check if forcats is installed
+  if(length(find.package(package = "forcats", quiet = TRUE)) == 0) {
+    stop("You need to install the forcats package to use this function.", call. = FALSE)
+  }
 
   if(!is.null(step_start)) {
     begin_intensity <- step_start

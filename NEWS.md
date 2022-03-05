@@ -1,3 +1,7 @@
+# whippr 0.1.0
+
+* General cleanup has been performed to reduce dependencies.
+
 # whippr 0.0.0.9000
 
 ## Breaking changes

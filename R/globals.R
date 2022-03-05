@@ -45,7 +45,9 @@ utils::globalVariables(
     "t_step",
     "unit",
     "work_rate",
-    "desc"),
+    "desc",
+    "X1",
+    "X2"),
   package = "whippr",
   add = FALSE
 )

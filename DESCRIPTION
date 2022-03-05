@@ -1,6 +1,6 @@
 Package: whippr
 Title: Tools for Manipulating Gas Exchange Data
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person(given = "Felipe",
            family = "Mattioni Maturana",
@@ -17,7 +17,6 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     readxl (>= 1.3.1),
     dplyr (>= 1.0.1),
-    janitor (>= 2.0.1),
     stringr (>= 1.4.0),
     lubridate (>= 1.7.9),
     magrittr,
@@ -34,23 +33,21 @@ Imports:
     rlang,
     usethis,
     nlstools,
-    shiny,
-    miniUI,
-    datapasta,
-    rstudioapi,
-    shinyThings (>= 0.4.0),
-    pillar,
-    anomalize,
-    forcats,
-    ggforce,
-    ggtext
+    pillar
 RoxygenNote: 7.1.2
 Suggests: 
     knitr,
     rmarkdown,
     fansi,
     collapsibleTree,
-    testthat
-VignetteBuilder: knitr
-Remotes: 
-    gadenbuie/shinyThings
+    testthat,
+    shiny,
+    miniUI,
+    datapasta,
+    rstudioapi,
+    htmltools,
+    readr,
+    anomalize,
+    ggforce,
+    ggtext,
+    forcats

@@ -235,7 +235,7 @@ incremental_normalize.step <- function(
 #'
 #' @param .data data retrieved from `incremental_normalize()`.
 #'
-#' @return
+#' @return a ggplot object
 #' @export
 plot_incremental <- function(.data) {
 
@@ -251,6 +251,10 @@ plot_incremental <- function(.data) {
 
 #' @export
 plot_incremental.ramp <- function(.data) {
+  ## check if ggforce is installed
+  if(length(find.package(package = "ggforce", quiet = TRUE)) == 0) {
+    stop("You need to install the ggforce package to use this function.", call. = FALSE)
+  }
 
   ## get time column
   time_column <- attr(.data, "time_column")

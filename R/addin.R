@@ -11,9 +11,19 @@
 #'
 #' @return The code to reproduce the manual data cleaning.
 #'
-#' @import shiny
 #' @export
 run_manual_cleaner <- function(.data, width = 1200, height = 900) {
+
+  # check additional needed packages
+  if(!check_addin_deps())
+    stop(
+      "
+      It looks like you don't have all the packages needed for this function to run. Either install all of them with:
+      install.packages(c('miniUI', 'shiny', 'rstudioapi', 'datapasta', 'htmltools'))
+      or install the ones you know you do not have.
+      ",
+      call. = FALSE
+    )
 
   ## check data
   if(missing(.data))
@@ -28,66 +38,66 @@ run_manual_cleaner <- function(.data, width = 1200, height = 900) {
     miniUI::gadgetTitleBar("Manual data cleaning"),
     miniUI::miniContentPanel(
 
-      fluidRow(
-        column(width = 4,
-               selectInput(
+      shiny::fluidRow(
+        shiny::column(width = 4,
+                      shiny::selectInput(
                  inputId = "select_y_axis",
                  label = "Select y axis",
                  choices = NULL)
         ),
-        column(width = 4,
-               textInput(
+        shiny::column(width = 4,
+                      shiny::textInput(
                  inputId = "output_df",
                  label = "Enter the name of the new data frame:"
                )
         )
       ),
 
-      plotOutput(
+      shiny::plotOutput(
         outputId = "plot",
         height = 400,
-        brush = brushOpts(
+        brush = shiny::brushOpts(
           id = "plot_brush"
         )
       ),
 
-      actionButton(inputId = "exclude_toggle", label = "Exclude points"),
-      actionButton(inputId = "exclude_reset", label = "Reset"),
-      shinyThings::undoHistoryUI(id = "history", back_text = "Step backward", fwd_text = "Step forward"),
+      shiny::actionButton(inputId = "exclude_toggle", label = "Exclude points"),
+      shiny::actionButton(inputId = "exclude_reset", label = "Reset"),
+      undoHistoryUI(id = "history", back_text = "Step backward", fwd_text = "Step forward"),
       # Show which data points are being excluded
-      tags$h4("Data points being excluded (x-axis value):"),
-      verbatimTextOutput("v")
+      shiny::tags$h4("Data points being excluded (x-axis value):"),
+      shiny::verbatimTextOutput("v")
     )
   )
 
   server <- function(input, output, session) {
 
-    r <- reactiveValues(
+    r <- shiny::reactiveValues(
       data = .data,
       data_keep = NULL,
       exclude_rows = NULL
     )
 
     ## keep history of points to exclude
-    undo_app_state <- shinyThings::undoHistory(
+    undo_app_state <- undoHistory(
       id = "history",
-      value = reactive({
+      value = shiny::reactive({
         r$exclude_rows
       })
     )
 
     ## receive updates from undoHistory() and update the app
-    observe({
-      req(!is.null(undo_app_state()))
+    shiny::observe({
+      shiny::req(!is.null(undo_app_state()))
 
       r$exclude_rows <- undo_app_state()
     })
 
     # Just for debugging
-    output$v <- renderPrint(r$exclude_rows)
+    output$v <- shiny::renderPrint(r$exclude_rows)
 
-    observe({
-      updateSelectInput(
+    shiny::observe({
+      shiny::updateSelectInput(
         session,
         inputId = "select_y_axis",
         choices = colnames(r$data),
@@ -95,35 +105,35 @@ run_manual_cleaner <- function(.data, width = 1200, height = 900) {
       )
     })
 
-    observe({
-      req(is.null(r$exclude_rows))
+    shiny::observe({
+      shiny::req(is.null(r$exclude_rows))
 
       r$data_keep <- r$data
     })
 
-    observe({
-      req(r$exclude_rows)
+    shiny::observe({
+      shiny::req(r$exclude_rows)
 
       r$data_keep <- r$data %>%
         dplyr::filter_at(1, function(x) !x %in% r$exclude_rows)
     })
 
     # Toggle points that are brushed, when button is clicked
-    observeEvent(input$exclude_toggle, {
+    shiny::observeEvent(input$exclude_toggle, {
       time_column <- colnames(r$data_keep)[1]
 
-      res <- brushedPoints(r$data_keep, input$plot_brush, xvar = time_column, yvar = input$select_y_axis)
+      res <- shiny::brushedPoints(r$data_keep, input$plot_brush, xvar = time_column, yvar = input$select_y_axis)
 
       r$exclude_rows <- c(r$exclude_rows, res[[1]])
     })
 
     # Reset all points
-    observeEvent(input$exclude_reset, {
+    shiny::observeEvent(input$exclude_reset, {
       r$exclude_rows <- NULL
     })
 
-    output$plot <- renderPlot({
-      req(input$select_y_axis)
+    output$plot <- shiny::renderPlot({
+      shiny::req(input$select_y_axis)
 
       time_column <- colnames(r$data_keep)[1]
 
@@ -134,12 +144,12 @@ run_manual_cleaner <- function(.data, width = 1200, height = 900) {
     }, res = 96)
 
     ## cancel button
-    observeEvent(input$cancel, {
-      stopApp()
+    shiny::observeEvent(input$cancel, {
+      shiny::stopApp()
     })
 
     ## done button
-    observeEvent(input$done, {
+    shiny::observeEvent(input$done, {
       ## prepare return code
       points_to_filter <- sort(unique(r$exclude_rows)) %>%
         datapasta::vector_construct() %>%
@@ -153,9 +163,23 @@ run_manual_cleaner <- function(.data, width = 1200, height = 900) {
       return_code <- glue::glue("\n\n\n## code from manual cleaning\n{input$output_df} <- {data_input} %>% \n\tdplyr::filter(!{time_column} %in% {points_to_filter})\n\n")
 
       rstudioapi::insertText(text = return_code, location = c(context_row + 1, 1))
-      stopApp()
+      shiny::stopApp()
     })
   }
 
-  runGadget(app = ui, server = server, viewer = dialogViewer(dialogName = "Manual cleaner", width = width, height = height), stopOnCancel = FALSE)
+  shiny::runGadget(app = ui, server = server, viewer = shiny::dialogViewer(dialogName = "Manual cleaner", width = width, height = height), stopOnCancel = FALSE)
+}
+
+#' Check if needed packages are installed
+#'
+#' @return a boolean
+#' @keywords internal
+check_addin_deps <- function() {
+  extra_packages <- c("miniUI", "shiny", "rstudioapi", "datapasta", "htmltools")
+  length(
+    find.package(
+      package = extra_packages,
+      quiet = TRUE
+    )
+  ) == length(extra_packages)
 }

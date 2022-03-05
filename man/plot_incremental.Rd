@@ -10,7 +10,7 @@ plot_incremental(.data)
 \item{.data}{data retrieved from \code{incremental_normalize()}.}
 }
 \value{
-
+a ggplot object
 }
 \description{
 Visualize what was done during the process of deriving the work rate from the incremental test protocol
