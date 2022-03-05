@@ -14,7 +14,7 @@
 Useful links:
 \itemize{
   \item \url{https://github.com/fmmattioni/whippr}
-  \item Report bugs at \url{https://github.com/fmattioni/whippr/issues}
+  \item Report bugs at \url{https://github.com/fmmattioni/whippr/issues}
 }
 
 }

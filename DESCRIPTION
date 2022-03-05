@@ -34,11 +34,6 @@ Imports:
     rlang,
     usethis,
     nlstools,
-    shiny,
-    miniUI,
-    datapasta,
-    rstudioapi,
-    shinyThings (>= 0.4.0),
     pillar,
     anomalize,
     forcats,
@@ -50,7 +45,10 @@ Suggests:
     rmarkdown,
     fansi,
     collapsibleTree,
-    testthat
+    testthat,
+    shiny,
+    miniUI,
+    datapasta,
+    rstudioapi,
+    htmltools
 VignetteBuilder: knitr
-Remotes: 
-    gadenbuie/shinyThings
