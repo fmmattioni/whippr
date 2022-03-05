@@ -1,16 +1,21 @@
 destination: docs
 
 template:
-  params:
-    bootswatch: sandstone
-    ganalytics: UA-126092763-1
+  bootstrap: 5
+  bootswatch: sandstone
+  bslib:
+    primary: "#0054AD"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
   opengraph:
     image:
-      src: man/figures/logo.png
+      src: man/figures/header.png
       alt: "Tools for Manipulating Gas Exchange Data"
     twitter:
       creator: "@felipe_mattioni"
       card: summary_large_image
+  params:
+    ganalytics: UA-126092763-1
 
 authors:
   Felipe Mattioni Maturana:
