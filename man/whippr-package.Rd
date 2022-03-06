@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-'whippr' provides a set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
+Set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
 }
 \seealso{
 Useful links:
