@@ -1,3 +1,7 @@
+# whippr 0.1.1
+
+* Updated docs with `roxygen 7.2.1`.
+
 # whippr 0.1.0
 
 * General cleanup has been performed to reduce dependencies.

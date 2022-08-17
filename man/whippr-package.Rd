@@ -6,7 +6,7 @@
 \alias{whippr-package}
 \title{whippr: Tools for Manipulating Gas Exchange Data}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
 }

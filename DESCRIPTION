@@ -1,6 +1,6 @@
 Package: whippr
 Title: Tools for Manipulating Gas Exchange Data
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person(given = "Felipe",
            family = "Mattioni Maturana",
@@ -33,7 +33,7 @@ Imports:
     usethis,
     nlstools,
     pillar
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     rmarkdown,
