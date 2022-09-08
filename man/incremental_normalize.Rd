@@ -55,6 +55,7 @@ Detect protocol phases (baseline, ramp, steps), normalize work rate, and
 time-align baseline phase (baseline time becomes negative).
 }
 \examples{
+\dontrun{
 ## get file path from example data
 path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
 
@@ -92,4 +93,5 @@ step_normalized <- df_step \%>\%
    step_increase = 25,
    step_length = 180
  )
+}
 }

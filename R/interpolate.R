@@ -11,6 +11,7 @@
 #' @importFrom stats approx
 #'
 #' @examples
+#' \dontrun{
 #' ## get file path from example data
 #' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 #'
@@ -19,6 +20,7 @@
 #'
 #' df %>%
 #'  interpolate()
+#' }
 interpolate <- function(.data) {
   ## first make sure data only contains numeric columns
   data_num <- .data %>%

@@ -25,6 +25,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' ## get file path from example data
 #' path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
 #'
@@ -62,6 +63,7 @@
 #'    step_increase = 25,
 #'    step_length = 180
 #'  )
+#' }
 incremental_normalize <- function(
   .data,
   incremental_type = c("ramp", "step"),

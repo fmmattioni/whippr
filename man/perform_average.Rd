@@ -32,6 +32,7 @@ Ensemble average is used in VO2 kinetics analysis, where a series of transitions
 the moderate/heavy/severe intensity-domain is ensembled averaged into a single 'bout' for further data processing.
 }
 \examples{
+\dontrun{
 ## get file path from example data
 path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 
@@ -47,4 +48,5 @@ df \%>\%
 df \%>\%
  interpolate() \%>\%
  perform_average(type = "rolling", rolling_window = 30)
+}
 }

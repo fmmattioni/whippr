@@ -176,6 +176,7 @@ TODO
 }
 
 \examples{
+\dontrun{
 ## get file path from example data
 path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 
@@ -199,6 +200,7 @@ results_kinetics <- vo2_kinetics(
   fit_transition_length = 240,
   verbose = TRUE
 )
+}
 }
 \references{
 Bell, C., Paterson, D. H., Kowalchuk, J. M., Padilla, J., & Cunningham, D. A. (2001). A comparison of modelling techniques used to characterise oxygen uptake kinetics during the on-transient of exercise. Experimental Physiology, 86(5), 667-676.

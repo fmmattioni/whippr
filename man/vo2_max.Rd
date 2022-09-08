@@ -64,6 +64,7 @@ and maximal values calculation (VO2, PO, HR, RER) (\code{perform_max()}).
 TODO
 }
 \examples{
+\dontrun{
 ## get file path from example data
 path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
 
@@ -104,5 +105,6 @@ perform_max(
  plot = TRUE,
  verbose = FALSE
 )
+}
 
 }

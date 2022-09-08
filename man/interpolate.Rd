@@ -17,6 +17,7 @@ This function interpolates the data based on the time column. It takes the breat
 and transforms it into second-by-second.
 }
 \examples{
+\dontrun{
 ## get file path from example data
 path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 
@@ -25,4 +26,5 @@ df <- read_data(path = path_example, metabolic_cart = "cosmed")
 
 df \%>\%
  interpolate()
+}
 }

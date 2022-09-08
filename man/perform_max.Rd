@@ -42,7 +42,7 @@ a tibble
 It performs the calculation of VO2max, HRmax, and maximal RER. Additionally, it detects whether a plateau can be identified from your data.
 }
 \examples{
-
+\dontrun{
 ## get file path from example data
 path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
 
@@ -83,4 +83,5 @@ perform_max(
  plot = TRUE,
  verbose = FALSE
 )
+}
 }

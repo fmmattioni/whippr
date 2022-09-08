@@ -53,6 +53,7 @@ It detects outliers based on prediction bands for the given level of confidence 
 TODO
 }
 \examples{
+\dontrun{
 ## get file path from example data
 path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 
@@ -99,4 +100,5 @@ data_ramp_outliers <- detect_outliers(
   method_incremental = "linear",
   verbose = TRUE
  )
+}
 }

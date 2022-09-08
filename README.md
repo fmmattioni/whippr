@@ -248,13 +248,13 @@ vo2_max(
 
 ## Metabolic carts currently supported
 
--   [CardioCoach](https://korr.com/cardiocoach/)
 -   [COSMED](https://www.cosmed.com/en/)
 -   [CORTEX](https://cortex-medical.com/EN)
 -   [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
 -   Parvo Medics
 -   [Geratherm
     Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
+-   [CardioCoach](https://korr.com/go/cardiocoach)
 
 ## Online app
 

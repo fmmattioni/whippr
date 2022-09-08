@@ -143,6 +143,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' ## get file path from example data
 #' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 #'
@@ -166,6 +167,7 @@
 #'   fit_transition_length = 240,
 #'   verbose = TRUE
 #' )
+#' }
 vo2_kinetics <- function(
   .data,
   intensity_domain = c("moderate", "heavy", "severe"),

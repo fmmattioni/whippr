@@ -16,6 +16,7 @@
 #' the moderate/heavy/severe intensity-domain is ensembled averaged into a single 'bout' for further data processing.
 #'
 #' @examples
+#' \dontrun{
 #' ## get file path from example data
 #' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 #'
@@ -31,6 +32,7 @@
 #' df %>%
 #'  interpolate() %>%
 #'  perform_average(type = "rolling", rolling_window = 30)
+#' }
 perform_average <- function(.data, type = c("bin", "rolling", "ensemble"), bins = 30, rolling_window = 30) {
   if(missing(type))
     stop("You must specify the type of average you would like to perform.", call. = FALSE)

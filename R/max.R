@@ -33,6 +33,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' ## get file path from example data
 #' path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
 #'
@@ -73,6 +74,7 @@
 #'  plot = TRUE,
 #'  verbose = FALSE
 #' )
+#' }
 #'
 vo2_max <- function(
   .data,
@@ -145,7 +147,7 @@ vo2_max <- function(
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' ## get file path from example data
 #' path_example <- system.file("ramp_cosmed.xlsx", package = "whippr")
 #'
@@ -186,6 +188,7 @@ vo2_max <- function(
 #'  plot = TRUE,
 #'  verbose = FALSE
 #' )
+#' }
 perform_max <- function(
   .data,
   vo2_column = "VO2",

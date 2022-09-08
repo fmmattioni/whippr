@@ -23,6 +23,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' ## get file path from example data
 #' path_example <- system.file("example_cosmed.xlsx", package = "whippr")
 #'
@@ -69,6 +70,7 @@
 #'   method_incremental = "linear",
 #'   verbose = TRUE
 #'  )
+#' }
 detect_outliers <- function(
   .data,
   test_type = c("incremental", "kinetics"),
