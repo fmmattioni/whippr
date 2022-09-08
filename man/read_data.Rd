@@ -6,7 +6,8 @@
 \usage{
 read_data(
   path,
-  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm", "cardiocoach"),
+  metabolic_cart = c("cosmed", "cortex", "nspire", "parvo", "geratherm", "cardiocoach",
+    "custom"),
   time_column = "t",
   work_rate_column = NULL
 )
@@ -14,7 +15,7 @@ read_data(
 \arguments{
 \item{path}{Path to read the file from.}
 
-\item{metabolic_cart}{Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', 'parvo', 'geratherm', and 'cardiocoach' are supported.}
+\item{metabolic_cart}{Metabolic cart that was used for data collection. Currently, 'cosmed', 'cortex', 'nspire', 'parvo', 'geratherm', and 'cardiocoach' are supported. Additionaly, there is an option called 'custom' that supports files that do not have a metabolic cart-specific format.}
 
 \item{time_column}{The name (quoted) of the column containing the time. Depending on the language of your system, this column might not be "t". Therefore, you may specify it here.  Default to "t".}
 
