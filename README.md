@@ -39,7 +39,6 @@ remotes::install_github("fmmattioni/whippr")
 
 ``` r
 library(whippr)
-#> Warning: package 'whippr' was built under R version 4.0.5
 
 ## example file that comes with the package for demonstration purposes
 path_example <- system.file("example_cosmed.xlsx", package = "whippr")
@@ -253,7 +252,7 @@ vo2_max(
 -   [COSMED](https://www.cosmed.com/en/)
 -   [CORTEX](https://cortex-medical.com/EN)
 -   [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
--   [Parvo Medics](https://www.parvo.com/)
+-   Parvo Medics
 -   [Geratherm
     Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
 
