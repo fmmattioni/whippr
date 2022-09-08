@@ -1,3 +1,7 @@
+# whippr 0.1.2
+
+* Fixed a bug in `read_data.cosmed()` that made the time column to return `NA` values when the test was longer than one hour.
+
 # whippr 0.1.1
 
 * Updated docs with `roxygen 7.2.1`.

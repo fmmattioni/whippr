@@ -1,6 +1,6 @@
 Package: whippr
 Title: Tools for Manipulating Gas Exchange Data
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     person(given = "Felipe",
            family = "Mattioni Maturana",

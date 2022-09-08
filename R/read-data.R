@@ -74,9 +74,10 @@ read_data.cosmed <- function(
 
     ## this will make sure that different versions of the cosmed will work with this function
     ## newer versions will display differnt time formats (00:00 instead of 00:00:00)
-    if(all(nchar(data_raw2[[1]]) == 5)){
-      data_raw2[[1]] <- paste0("00:", data_raw2[[1]])
-    }
+    data_raw2 <- data_raw2 %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate_at(1, function(x) ifelse(nchar(x) == 5, paste0("00:", x), x)) %>%
+      dplyr::ungroup()
 
     out <- data_raw2 %>%
       dplyr::mutate_at(1, function(x) stringr::str_replace_all(x, ",", ".") %>%
