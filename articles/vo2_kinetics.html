@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="VO2 Kinetics Analysis">
@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">whippr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +116,7 @@
 
 <script src="vo2_kinetics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="vo2_kinetics_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="vo2_kinetics_files/d3-4.10.2/d3.min.js"></script><link href="vo2_kinetics_files/collapsibleTree-0.1.6/collapsibleTree.css" rel="stylesheet">
 <script src="vo2_kinetics_files/collapsibleTree-binding-0.1.7/collapsibleTree.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>VO2 Kinetics Analysis</h1>
             
       
@@ -138,52 +138,52 @@ Functions for analysis in the heavy- and severe-intensity domains will be added 
 </p>
 </div>
 <p>For making everyone’s life easier, the general function <code><a href="../reference/vo2_kinetics.html">vo2_kinetics()</a></code> was created. This function calls smaller separate functions that <strong>fully</strong> automate the VO2 kinetics data analysis. The following interactive tree diagram shows how each function is called:</p>
-<div id="htmlwidget-538905f41dfd819a22e5" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
-<script type="application/json" data-for="htmlwidget-538905f41dfd819a22e5">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div class="section level2">
+<div id="htmlwidget-653be8d2ba32888ca73c" style="width:800px;height:300px;" class="collapsibleTree html-widget"></div>
+<script type="application/json" data-for="htmlwidget-653be8d2ba32888ca73c">{"x":{"data":{"name":"VO2 kinetics analysis","children":[{"name":"vo2_kinetics()","children":[{"name":"detect_outliers()","children":[{"name":"normalize_transitions()","children":[{"name":"normalize_first_breath()"}]},{"name":"predict_bands()","children":[{"name":"predict_bands_baseline()"},{"name":"predict_bands_transition()"}]}]},{"name":"plot_outliers()"},{"name":"process_data()","children":[{"name":"interpolate()"},{"name":"perform_average()"},{"name":"normalize_time()"}]},{"name":"perform_kinetics()","children":[{"name":"get_residuals()"},{"name":"model_diagnostics()"}]}]}]},"options":{"hierarchy":["a","b","c","d"],"input":null,"attribute":"leafCount","linkLength":null,"fontSize":10,"tooltip":false,"collapsed":true,"zoomable":false,"margin":{"top":20,"bottom":20,"left":130,"right":155},"fill":"lightsteelblue"}},"evals":[],"jsHooks":[]}</script><div class="section level2">
 <h2 id="read-the-data">Read the data<a class="anchor" aria-label="anchor" href="#read-the-data"></a>
 </h2>
 <p>The first step is to read the raw data with the <code><a href="../reference/read_data.html">read_data()</a></code> function. Here we are going to use the example file that comes with <a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a>, which is a file exported from the COSMED metabolic cart.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span>
-
-<span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span>, time_column <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span>
-
-<span class="va">raw_data</span></code></pre></div>
-<pre class="fansi fansi-output"><code><span class="co">#&gt; # Metabolic cart: COSMED </span>
-<span class="co">#&gt; # Data status: raw data</span>
-<span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 754 × 119</span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
-<span class="co">#&gt;  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span>
-<span class="co">#&gt;  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span>
-<span class="co">#&gt;  4    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span>
-<span class="co">#&gt;  5    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span>
-<span class="co">#&gt;  6    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span>
-<span class="co">#&gt;  7    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span>
-<span class="co">#&gt;  8    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span>
-<span class="co">#&gt;  9    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span>
-<span class="co">#&gt; 10    35 14.2  1.68  23.8   973.  794.  257.   79.3     24.5      30.0    11.7 </span>
-<span class="co">#&gt; # … with 744 more rows, and 108 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span>, time_column <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">raw_data</span></span></code></pre></div>
+<pre class="fansi fansi-output"><code><span><span class="co">#&gt; # Metabolic cart: COSMED </span></span>
+<span><span class="co">#&gt; # Data status: raw data</span></span>
+<span><span class="co">#&gt; # Time column: t</span></span>
+<span><span class="co">#&gt; # A tibble: 754 × 119</span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span></span>
+<span><span class="co">#&gt;  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span></span>
+<span><span class="co">#&gt;  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span></span>
+<span><span class="co">#&gt;  4    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span></span>
+<span><span class="co">#&gt;  5    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span></span>
+<span><span class="co">#&gt;  6    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span></span>
+<span><span class="co">#&gt;  7    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span></span>
+<span><span class="co">#&gt;  8    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span></span>
+<span><span class="co">#&gt;  9    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span></span>
+<span><span class="co">#&gt; 10    35 14.2  1.68  23.8   973.  794.  257.   79.3     24.5      30.0    11.7 </span></span>
+<span><span class="co">#&gt; # … with 744 more rows, and 108 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre>
 <p>As you can see in the following graph, this is a protocol where <strong>3 transitions</strong> from a baseline exercise intensity to to an exercise intensity below the gas exchange threshold. Therefore, this is a VO2 kinetics test in the <strong>moderate-intensity domain</strong>. In this specific case, the following was done:</p>
 <ul>
 <li>3 x 6-min baseline periods at 20 W.</li>
 <li>3 x 6-min transition periods at the power output associated with 90% of the gas exchange threshold.</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-
-<span class="va">raw_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">3</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_whippr.html">theme_whippr</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">raw_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">3</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_whippr.html">theme_whippr</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-4-1.png" width="2100" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
@@ -265,47 +265,48 @@ where:
 </ul>
 <p>The analysis is performed like the following:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vo2_kinetics.html">vo2_kinetics</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="va">raw_data</span>,
-  intensity_domain <span class="op">=</span> <span class="st">"moderate"</span>,
-  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-  protocol_n_transitions <span class="op">=</span> <span class="fl">3</span>,
-  protocol_baseline_length <span class="op">=</span> <span class="fl">360</span>,
-  protocol_transition_length <span class="op">=</span> <span class="fl">360</span>,
-  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,
-  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,
-  fit_level <span class="op">=</span> <span class="fl">0.95</span>,
-  fit_bin_average <span class="op">=</span> <span class="fl">5</span>,
-  fit_phase_1_length <span class="op">=</span> <span class="fl">20</span>,
-  fit_baseline_length <span class="op">=</span> <span class="fl">120</span>,
-  fit_transition_length <span class="op">=</span> <span class="fl">240</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
-<pre class="fansi fansi-message"><code><span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────</span></code></pre>
-<pre class="fansi fansi-message"><code><span class="co">#&gt; ✔ Detecting outliers</span>
-<span class="co">#&gt; • 14 outlier(s) found in transition 1</span>
-<span class="co">#&gt; • 15 outlier(s) found in transition 2</span>
-<span class="co">#&gt; • 13 outlier(s) found in transition 3</span>
-<span class="co">#&gt; ✔ Processing data...</span>
-<span class="co">#&gt; ✔       └─ Removing outliers</span>
-<span class="co">#&gt; ✔       └─ Interpolating each transition</span>
-<span class="co">#&gt; ✔       └─ Ensemble-averaging transitions</span>
-<span class="co">#&gt; ✔       └─ Performing 5-s bin averages</span>
-<span class="co">#&gt; ✔ Fitting data...</span>
-<span class="co">#&gt; ✔       └─ Fitting baseline</span>
-<span class="co">#&gt; ✔       └─ Fitting transition</span>
-<span class="co">#&gt; ✔       └─ Calculating residuals</span>
-<span class="co">#&gt; ✔       └─ Preparing plots</span>
-<span class="co">#&gt; ──────────────────────────────────  * DONE *  ──────────────────────────────────</span></code></pre>
+<code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/vo2_kinetics.html">vo2_kinetics</a></span><span class="op">(</span></span>
+<span>  .data <span class="op">=</span> <span class="va">raw_data</span>,</span>
+<span>  intensity_domain <span class="op">=</span> <span class="st">"moderate"</span>,</span>
+<span>  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>  protocol_n_transitions <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  protocol_baseline_length <span class="op">=</span> <span class="fl">360</span>,</span>
+<span>  protocol_transition_length <span class="op">=</span> <span class="fl">360</span>,</span>
+<span>  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,</span>
+<span>  fit_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  fit_bin_average <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  fit_phase_1_length <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  fit_baseline_length <span class="op">=</span> <span class="fl">120</span>,</span>
+<span>  fit_transition_length <span class="op">=</span> <span class="fl">240</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre class="fansi fansi-message"><code><span><span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────</span></span></code></pre>
+<pre class="fansi fansi-message"><code><span><span class="co">#&gt; ✔ Detecting outliers</span></span>
+<span><span class="co">#&gt; • 14 outlier(s) found in transition 1</span></span>
+<span><span class="co">#&gt; • 15 outlier(s) found in transition 2</span></span>
+<span><span class="co">#&gt; • 13 outlier(s) found in transition 3</span></span>
+<span><span class="co">#&gt; ✔ Processing data...</span></span>
+<span><span class="co">#&gt; ✔       └─ Removing outliers</span></span>
+<span><span class="co">#&gt; ✔       └─ Interpolating each transition</span></span>
+<span><span class="co">#&gt; ✔       └─ Ensemble-averaging transitions</span></span>
+<span><span class="co">#&gt; ✔       └─ Performing 5-s bin averages</span></span>
+<span><span class="co">#&gt; ✔ Fitting data...</span></span>
+<span><span class="co">#&gt; ✔       └─ Fitting baseline</span></span>
+<span><span class="co">#&gt; ✔       └─ Fitting transition</span></span>
+<span><span class="co">#&gt; ✔       └─ Calculating residuals</span></span>
+<span><span class="co">#&gt; ✔       └─ Preparing plots</span></span>
+<span><span class="co">#&gt; ──────────────────────────────────  * DONE *  ──────────────────────────────────</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">results</span></code></pre></div>
-<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 1 × 9</span>
-<span class="co">#&gt;   data_outliers plot_outliers data_processed data_fitted model  model_summary   </span>
-<span class="co">#&gt;   &lt;list&gt;        &lt;list&gt;        &lt;list&gt;         &lt;list&gt;      &lt;list&gt; &lt;list&gt;          </span>
-<span class="co">#&gt; 1 &lt;whippr&gt;      &lt;patchwrk&gt;    &lt;whippr&gt;       &lt;tibble&gt;    &lt;nls&gt;  &lt;tibble [4 × 7]&gt;</span>
-<span class="co">#&gt; # … with 3 more variables: model_residuals &lt;list&gt;, plot_model &lt;list&gt;,</span>
-<span class="co">#&gt; #   plot_residuals &lt;list&gt;</span></code></pre>
+<code class="sourceCode R"><span></span>
+<span><span class="va">results</span></span></code></pre></div>
+<pre class="fansi fansi-output"><code><span><span class="co">#&gt; # A tibble: 1 × 9</span></span>
+<span><span class="co">#&gt;   data_outliers plot_outl…¹ data_p…² data_f…³ model model_…⁴ model_…⁵ plot_model</span></span>
+<span><span class="co">#&gt;   &lt;list&gt;        &lt;list&gt;      &lt;list&gt;   &lt;list&gt;   &lt;lis&gt; &lt;list&gt;   &lt;list&gt;   &lt;list&gt;    </span></span>
+<span><span class="co">#&gt; 1 &lt;whippr&gt;      &lt;patchwrk&gt;  &lt;whippr&gt; &lt;tibble&gt; &lt;nls&gt; &lt;tibble&gt; &lt;tibble&gt; &lt;patchwrk&gt;</span></span>
+<span><span class="co">#&gt; # … with 1 more variable: plot_residuals &lt;list&gt;, and abbreviated variable names</span></span>
+<span><span class="co">#&gt; #   ¹​plot_outliers, ²​data_processed, ³​data_fitted, ⁴​model_summary,</span></span>
+<span><span class="co">#&gt; #   ⁵​model_residuals</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -313,23 +314,23 @@ where:
 </h2>
 <p>Fit parameters and confidence intervals may be accessed through the <strong>model_summary</strong> column.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">model_summary</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 4 × 7</span>
-<span class="co">#&gt;   term     estimate std.error statistic  p.value conf.low conf.high</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 baseline   1028.      15.4      66.6  9.49e-29   996.      1060. </span>
-<span class="co">#&gt; 2 Amp        2059.      11.0     188.   4.66e-63  2037.      2081. </span>
-<span class="co">#&gt; 3 TD           11.0      1.11      9.93 1.39e-12     8.76      13.2</span>
-<span class="co">#&gt; 4 tau          22.0      1.29     17.0  2.00e-20    19.3       24.6</span></code></pre>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">model_summary</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
+<pre class="fansi fansi-output"><code><span><span class="co">#&gt; # A tibble: 4 × 7</span></span>
+<span><span class="co">#&gt;   term     estimate std.error statistic  p.value conf.low conf.high</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 baseline   1028.      15.4      66.6  9.49e-29   996.      1060. </span></span>
+<span><span class="co">#&gt; 2 Amp        2059.      11.0     188.   4.66e-63  2037.      2081. </span></span>
+<span><span class="co">#&gt; 3 TD           11.0      1.11      9.93 1.39e-12     8.76      13.2</span></span>
+<span><span class="co">#&gt; 4 tau          22.0      1.29     17.0  2.00e-20    19.3       24.6</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="fit-plot">Fit plot<a class="anchor" aria-label="anchor" href="#fit-plot"></a>
 </h2>
 <p>The fit plot may be accessed through the <strong>plot_model</strong> column.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">plot_model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; Warning: Removed 24 row(s) containing missing values (geom_path).</span>
-<span class="co">#&gt; Removed 24 row(s) containing missing values (geom_path).</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">plot_model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Warning: Removed 24 row(s) containing missing values (geom_path).</span></span>
+<span><span class="co">#&gt; Removed 24 row(s) containing missing values (geom_path).</span></span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-8-1.png" width="2100" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
@@ -337,7 +338,7 @@ where:
 </h2>
 <p>The data cleaning process may be accessed through the <strong>plot_outliers</strong> column.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">plot_outliers</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">plot_outliers</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-9-1.png" width="3600" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
@@ -345,7 +346,7 @@ where:
 </h2>
 <p>Model residuals plot may be accessed through the <strong>plot_residuals</strong> column.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">plot_residuals</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">plot_residuals</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
 <p><img src="vo2_kinetics_files/figure-html/unnamed-chunk-10-1.png" width="3600" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
@@ -356,139 +357,140 @@ where:
 </h3>
 <p>The raw data with additional columns from the data cleaning process may be accessed through the <strong>data_outliers</strong> column.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">data_outliers</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code><span class="co">#&gt; # Metabolic cart: COSMED </span>
-<span class="co">#&gt; # Data status: raw data - outliers detected</span>
-<span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # VO2 column: VO2</span>
-<span class="co">#&gt; # Test type: kinetics</span>
-<span class="co">#&gt; # A tibble: 757 × 131</span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     0  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
-<span class="co">#&gt;  2     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
-<span class="co">#&gt;  3     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span>
-<span class="co">#&gt;  4     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span>
-<span class="co">#&gt;  5    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span>
-<span class="co">#&gt;  6    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span>
-<span class="co">#&gt;  7    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span>
-<span class="co">#&gt;  8    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span>
-<span class="co">#&gt;  9    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span>
-<span class="co">#&gt; 10    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span>
-<span class="co">#&gt; # … with 747 more rows, and 120 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">data_outliers</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
+<pre class="fansi fansi-output"><code><span><span class="co">#&gt; # Metabolic cart: COSMED </span></span>
+<span><span class="co">#&gt; # Data status: raw data - outliers detected</span></span>
+<span><span class="co">#&gt; # Time column: t</span></span>
+<span><span class="co">#&gt; # VO2 column: VO2</span></span>
+<span><span class="co">#&gt; # Test type: kinetics</span></span>
+<span><span class="co">#&gt; # A tibble: 757 × 131</span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     0  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span></span>
+<span><span class="co">#&gt;  2     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span></span>
+<span><span class="co">#&gt;  3     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span></span>
+<span><span class="co">#&gt;  4     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span></span>
+<span><span class="co">#&gt;  5    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span></span>
+<span><span class="co">#&gt;  6    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span></span>
+<span><span class="co">#&gt;  7    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span></span>
+<span><span class="co">#&gt;  8    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span></span>
+<span><span class="co">#&gt;  9    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span></span>
+<span><span class="co">#&gt; 10    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span></span>
+<span><span class="co">#&gt; # … with 747 more rows, and 120 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="processed-data">Processed data<a class="anchor" aria-label="anchor" href="#processed-data"></a>
 </h3>
 <p>The processed data (cleaned, interpolated, time-aligned, ensemble-averaged, and bin-averaged) may be accessed through the <strong>data_processed</strong> column.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">data_processed</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code><span class="co">#&gt; # Metabolic cart: COSMED </span>
-<span class="co">#&gt; # Data status: processed data - 5-s bin averaged</span>
-<span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # VO2 column: VO2</span>
-<span class="co">#&gt; # Test type: kinetics</span>
-<span class="co">#&gt; # A tibble: 145 × 114</span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  -360  27.2  2.80  76.1 3140. 2825.  424.   147.     24.4      27.0     37.8</span>
-<span class="co">#&gt;  2  -355  24.1  2.51  61.3 2452. 2202.  386.   128.     25.0      28.5     29.5</span>
-<span class="co">#&gt;  3  -350  24.9  2.11  53.7 2218. 1922.  323.   107.     24.7      29.0     26.7</span>
-<span class="co">#&gt;  4  -345  23.1  2.09  48.3 2020. 1792.  315.   109.     24.4      28.3     24.3</span>
-<span class="co">#&gt;  5  -340  21.2  2.33  49.3 2027. 1833.  354.   121.     24.6      27.5     24.4</span>
-<span class="co">#&gt;  6  -335  20.2  2.24  44.1 1790. 1624.  342.   116.     24.9      27.7     21.6</span>
-<span class="co">#&gt;  7  -330  18.5  2.50  47.1 1863. 1751.  383.   131.     25.2      27.5     22.4</span>
-<span class="co">#&gt;  8  -325  19.6  2.23  44.8 1689. 1625.  346.   114.     26.2      28.1     20.3</span>
-<span class="co">#&gt;  9  -320  20.0  1.98  40.1 1526. 1457.  306.   102.     25.8      27.7     18.4</span>
-<span class="co">#&gt; 10  -315  20.9  2.06  42.4 1567. 1506.  322.   104.     26.7      28.6     18.9</span>
-<span class="co">#&gt; # … with 135 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">data_processed</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
+<pre class="fansi fansi-output"><code><span><span class="co">#&gt; # Metabolic cart: COSMED </span></span>
+<span><span class="co">#&gt; # Data status: processed data - 5-s bin averaged</span></span>
+<span><span class="co">#&gt; # Time column: t</span></span>
+<span><span class="co">#&gt; # VO2 column: VO2</span></span>
+<span><span class="co">#&gt; # Test type: kinetics</span></span>
+<span><span class="co">#&gt; # A tibble: 145 × 114</span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1  -360  27.2  2.80  76.1 3140. 2825.  424.   147.     24.4      27.0     37.8</span></span>
+<span><span class="co">#&gt;  2  -355  24.1  2.51  61.3 2452. 2202.  386.   128.     25.0      28.5     29.5</span></span>
+<span><span class="co">#&gt;  3  -350  24.9  2.11  53.7 2218. 1922.  323.   107.     24.7      29.0     26.7</span></span>
+<span><span class="co">#&gt;  4  -345  23.1  2.09  48.3 2020. 1792.  315.   109.     24.4      28.3     24.3</span></span>
+<span><span class="co">#&gt;  5  -340  21.2  2.33  49.3 2027. 1833.  354.   121.     24.6      27.5     24.4</span></span>
+<span><span class="co">#&gt;  6  -335  20.2  2.24  44.1 1790. 1624.  342.   116.     24.9      27.7     21.6</span></span>
+<span><span class="co">#&gt;  7  -330  18.5  2.50  47.1 1863. 1751.  383.   131.     25.2      27.5     22.4</span></span>
+<span><span class="co">#&gt;  8  -325  19.6  2.23  44.8 1689. 1625.  346.   114.     26.2      28.1     20.3</span></span>
+<span><span class="co">#&gt;  9  -320  20.0  1.98  40.1 1526. 1457.  306.   102.     25.8      27.7     18.4</span></span>
+<span><span class="co">#&gt; 10  -315  20.9  2.06  42.4 1567. 1506.  322.   104.     26.7      28.6     18.9</span></span>
+<span><span class="co">#&gt; # … with 135 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="fitted-data">Fitted data<a class="anchor" aria-label="anchor" href="#fitted-data"></a>
 </h3>
 <p>The data from the baseline and transition fits may be accessed through the <strong>data_fitted</strong> column.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">data_fitted</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 70 × 8</span>
-<span class="co">#&gt;        t   VO2 .fitted .resid   .hat .sigma    .cooksd .std.resid</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  -120  964.   1028. -64.0  0.0400   77.6 0.0298        -0.846 </span>
-<span class="co">#&gt;  2  -115 1018.   1028. -10.4  0.04     78.8 0.000791      -0.138 </span>
-<span class="co">#&gt;  3  -110 1145.   1028. 116.   0.04     74.8 0.0989         1.54  </span>
-<span class="co">#&gt;  4  -105 1018.   1028. -10.1  0.04     78.8 0.000743      -0.134 </span>
-<span class="co">#&gt;  5  -100 1062.   1028.  34.2  0.04     78.5 0.00852        0.452 </span>
-<span class="co">#&gt;  6   -95 1046.   1028.  18.3  0.04     78.7 0.00244        0.242 </span>
-<span class="co">#&gt;  7   -90 1050.   1028.  22.1  0.04     78.7 0.00354        0.292 </span>
-<span class="co">#&gt;  8   -85 1068.   1028.  39.8  0.04     78.4 0.0115         0.526 </span>
-<span class="co">#&gt;  9   -80 1029.   1028.   1.16 0.04     78.8 0.00000978     0.0153</span>
-<span class="co">#&gt; 10   -75  991.   1028. -37.4  0.04     78.4 0.0102        -0.495 </span>
-<span class="co">#&gt; # … with 60 more rows</span></code></pre>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">data_fitted</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
+<pre class="fansi fansi-output"><code><span><span class="co">#&gt; # A tibble: 70 × 8</span></span>
+<span><span class="co">#&gt;        t   VO2 .fitted .resid   .hat .sigma    .cooksd .std.resid</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1  -120  964.   1028. -64.0  0.0400   77.6 0.0298        -0.846 </span></span>
+<span><span class="co">#&gt;  2  -115 1018.   1028. -10.4  0.04     78.8 0.000791      -0.138 </span></span>
+<span><span class="co">#&gt;  3  -110 1145.   1028. 116.   0.04     74.8 0.0989         1.54  </span></span>
+<span><span class="co">#&gt;  4  -105 1018.   1028. -10.1  0.04     78.8 0.000743      -0.134 </span></span>
+<span><span class="co">#&gt;  5  -100 1062.   1028.  34.2  0.04     78.5 0.00852        0.452 </span></span>
+<span><span class="co">#&gt;  6   -95 1046.   1028.  18.3  0.04     78.7 0.00244        0.242 </span></span>
+<span><span class="co">#&gt;  7   -90 1050.   1028.  22.1  0.04     78.7 0.00354        0.292 </span></span>
+<span><span class="co">#&gt;  8   -85 1068.   1028.  39.8  0.04     78.4 0.0115         0.526 </span></span>
+<span><span class="co">#&gt;  9   -80 1029.   1028.   1.16 0.04     78.8 0.00000978     0.0153</span></span>
+<span><span class="co">#&gt; 10   -75  991.   1028. -37.4  0.04     78.4 0.0102        -0.495 </span></span>
+<span><span class="co">#&gt; # … with 60 more rows</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="model">Model<a class="anchor" aria-label="anchor" href="#model"></a>
 </h3>
 <p>The model used for fitting the mono-exponential model may be accessed through the <strong>model</strong> column.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; Nonlinear regression model</span>
-<span class="co">#&gt;   model: VO2 ~ 1028.0768176047 + Amp * (1 - exp(-(t - TD)/tau))</span>
-<span class="co">#&gt;    data: data_transition</span>
-<span class="co">#&gt;     Amp      TD     tau </span>
-<span class="co">#&gt; 2058.89   11.00   21.96 </span>
-<span class="co">#&gt;  residual sum-of-squares: 138148</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of iterations to convergence: 6 </span>
-<span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula: VO2 ~ 1028.0768176047 + Amp * (1 - exp(-(t - TD)/tau))</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Parameters:</span>
-<span class="co">#&gt;     Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="co">#&gt; Amp 2058.894     10.962 187.818  &lt; 2e-16 ***</span>
-<span class="co">#&gt; TD    11.001      1.108   9.929 1.39e-12 ***</span>
-<span class="co">#&gt; tau   21.958      1.293  16.987  &lt; 2e-16 ***</span>
-<span class="co">#&gt; ---</span>
-<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residual standard error: 57.35 on 42 degrees of freedom</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of iterations to convergence: 6 </span>
-<span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Nonlinear regression model</span></span>
+<span><span class="co">#&gt;   model: VO2 ~ 1028.0768176047 + Amp * (1 - exp(-(t - TD)/tau))</span></span>
+<span><span class="co">#&gt;    data: data_transition</span></span>
+<span><span class="co">#&gt;     Amp      TD     tau </span></span>
+<span><span class="co">#&gt; 2058.89   11.00   21.96 </span></span>
+<span><span class="co">#&gt;  residual sum-of-squares: 138148</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of iterations to convergence: 6 </span></span>
+<span><span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">model</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Formula: VO2 ~ 1028.0768176047 + Amp * (1 - exp(-(t - TD)/tau))</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;     Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; Amp 2058.894     10.962 187.818  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; TD    11.001      1.108   9.929 1.39e-12 ***</span></span>
+<span><span class="co">#&gt; tau   21.958      1.293  16.987  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 57.35 on 42 degrees of freedom</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of iterations to convergence: 6 </span></span>
+<span><span class="co">#&gt; Achieved convergence tolerance: 1.49e-08</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="residuals-data">Residuals data<a class="anchor" aria-label="anchor" href="#residuals-data"></a>
 </h3>
 <p>The model residuals data may be accessed through the <strong>model_residuals</strong> column.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span><span class="op">$</span><span class="va">model_residuals</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
-<pre class="fansi fansi-output"><code><span class="co">#&gt; # A tibble: 45 × 7</span>
-<span class="co">#&gt;        t   VO2 .fitted .resid standardized_resid… sqrt_abs_standa… lag_residuals</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt;  1    20 1799.   1720.  78.5                1.37             1.17          NA   </span>
-<span class="co">#&gt;  2    25 1960.   1999. -38.5               -0.672            0.820         78.5 </span>
-<span class="co">#&gt;  3    30 2127.   2220. -93.3               -1.63             1.28         -38.5 </span>
-<span class="co">#&gt;  4    35 2384.   2397. -12.5               -0.218            0.467        -93.3 </span>
-<span class="co">#&gt;  5    40 2522.   2537. -15.7               -0.274            0.523        -12.5 </span>
-<span class="co">#&gt;  6    45 2659.   2649.   9.61               0.167            0.409        -15.7 </span>
-<span class="co">#&gt;  7    50 2755.   2738.  16.3                0.285            0.534          9.61</span>
-<span class="co">#&gt;  8    55 2851.   2809.  41.6                0.726            0.852         16.3 </span>
-<span class="co">#&gt;  9    60 2936.   2866.  69.7                1.22             1.10          41.6 </span>
-<span class="co">#&gt; 10    65 2885.   2911. -25.5               -0.444            0.667         69.7 </span>
-<span class="co">#&gt; # … with 35 more rows</span></code></pre>
+<code class="sourceCode R"><span><span class="va">results</span><span class="op">$</span><span class="va">model_residuals</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
+<pre class="fansi fansi-output"><code><span><span class="co">#&gt; # A tibble: 45 × 7</span></span>
+<span><span class="co">#&gt;        t   VO2 .fitted .resid standardized_residuals sqrt_abs_standard…¹ lag_r…²</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;                  &lt;dbl&gt;               &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1    20 1799.   1720.  78.5                   1.37                1.17    NA   </span></span>
+<span><span class="co">#&gt;  2    25 1960.   1999. -38.5                  -0.672               0.820   78.5 </span></span>
+<span><span class="co">#&gt;  3    30 2127.   2220. -93.3                  -1.63                1.28   -38.5 </span></span>
+<span><span class="co">#&gt;  4    35 2384.   2397. -12.5                  -0.218               0.467  -93.3 </span></span>
+<span><span class="co">#&gt;  5    40 2522.   2537. -15.7                  -0.274               0.523  -12.5 </span></span>
+<span><span class="co">#&gt;  6    45 2659.   2649.   9.61                  0.167               0.409  -15.7 </span></span>
+<span><span class="co">#&gt;  7    50 2755.   2738.  16.3                   0.285               0.534    9.61</span></span>
+<span><span class="co">#&gt;  8    55 2851.   2809.  41.6                   0.726               0.852   16.3 </span></span>
+<span><span class="co">#&gt;  9    60 2936.   2866.  69.7                   1.22                1.10    41.6 </span></span>
+<span><span class="co">#&gt; 10    65 2885.   2911. -25.5                  -0.444               0.667   69.7 </span></span>
+<span><span class="co">#&gt; # … with 35 more rows, and abbreviated variable names</span></span>
+<span><span class="co">#&gt; #   ¹​sqrt_abs_standardized_residuals, ²​lag_residuals</span></span></code></pre>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -504,7 +506,7 @@ where:
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

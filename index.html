@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Tools for Manipulating Gas Exchange Data">
@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="index.html">whippr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +118,6 @@
 </h1>
 </div>
 <!-- badges: start -->
-
 <p>The goal of <code>whippr</code> is to provide a set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.</p>
 <div class="section level2">
 <h2 id="why-whippr">Why <code>whippr</code>?<a class="anchor" aria-label="anchor" href="#why-whippr"></a>
@@ -130,8 +129,8 @@
 </h2>
 <p>You can install the development version of <code>whippr</code> from <a href="https://github.com/fmmattioni/whippr" class="external-link">Github</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"fmmattioni/whippr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"fmmattioni/whippr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="use">Use<a class="anchor" aria-label="anchor" href="#use"></a>
@@ -140,67 +139,67 @@
 <h3 id="read-data">Read data<a class="anchor" aria-label="anchor" href="#read-data"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span>
-
-<span class="co">## example file that comes with the package for demonstration purposes</span>
-<span class="va">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>
-
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path_example</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span>
-
-<span class="va">df</span>
-<span class="co">#&gt; # Metabolic cart: COSMED </span>
-<span class="co">#&gt; # Data status: raw data</span>
-<span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 754 × 119</span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
-<span class="co">#&gt;  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span>
-<span class="co">#&gt;  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span>
-<span class="co">#&gt;  4    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span>
-<span class="co">#&gt;  5    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span>
-<span class="co">#&gt;  6    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span>
-<span class="co">#&gt;  7    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span>
-<span class="co">#&gt;  8    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span>
-<span class="co">#&gt;  9    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span>
-<span class="co">#&gt; 10    35 14.2  1.68  23.8   973.  794.  257.   79.3     24.5      30.0    11.7 </span>
-<span class="co">#&gt; # … with 744 more rows, and 108 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## example file that comes with the package for demonstration purposes</span></span>
+<span><span class="va">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"example_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path_example</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # Metabolic cart: COSMED </span></span>
+<span><span class="co">#&gt; # Data status: raw data</span></span>
+<span><span class="co">#&gt; # Time column: t</span></span>
+<span><span class="co">#&gt; # A tibble: 754 × 119</span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span></span>
+<span><span class="co">#&gt;  2     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span></span>
+<span><span class="co">#&gt;  3     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span></span>
+<span><span class="co">#&gt;  4    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span></span>
+<span><span class="co">#&gt;  5    14 23.3  0.947 22.1   822.  647.  150.   39.4     26.9      34.1     9.90</span></span>
+<span><span class="co">#&gt;  6    18 14.7  2.28  33.6  1347. 1126.  351.  108.      24.9      29.8    16.2 </span></span>
+<span><span class="co">#&gt;  7    23 11.2  2.32  26.1   980.  848.  364.  107.      26.6      30.7    11.8 </span></span>
+<span><span class="co">#&gt;  8    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 </span></span>
+<span><span class="co">#&gt;  9    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 </span></span>
+<span><span class="co">#&gt; 10    35 14.2  1.68  23.8   973.  794.  257.   79.3     24.5      30.0    11.7 </span></span>
+<span><span class="co">#&gt; # … with 744 more rows, and 108 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="interpolate">Interpolate<a class="anchor" aria-label="anchor" href="#interpolate"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # Metabolic cart: COSMED </span>
-<span class="co">#&gt; # Data status: interpolated data</span>
-<span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 2,159 × 114</span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span>
-<span class="co">#&gt;  2     3 15.6  1.05  15.4   622.  483.  163.   46.8     24.9      31.9     7.50</span>
-<span class="co">#&gt;  3     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span>
-<span class="co">#&gt;  4     5 21.3  1.21  24.1   978.  767.  187.   54.9     24.6      31.6    11.8 </span>
-<span class="co">#&gt;  5     6 19.4  1.51  27.1  1091.  870.  233.   69.0     24.8      31.3    13.1 </span>
-<span class="co">#&gt;  6     7 17.5  1.81  30.0  1204.  973.  279.   83.1     24.9      30.9    14.5 </span>
-<span class="co">#&gt;  7     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span>
-<span class="co">#&gt;  8     9 17.3  1.80  30.1  1176.  955.  279.   81.2     25.7      31.8    14.2 </span>
-<span class="co">#&gt;  9    10 19.0  1.49  27.2  1035.  834.  233.   65.2     26.5      33.0    12.5 </span>
-<span class="co">#&gt; 10    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span>
-<span class="co">#&gt; # … with 2,149 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Metabolic cart: COSMED </span></span>
+<span><span class="co">#&gt; # Data status: interpolated data</span></span>
+<span><span class="co">#&gt; # Time column: t</span></span>
+<span><span class="co">#&gt; # A tibble: 2,159 × 114</span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     2  8.08 1.19   9.60  380.  301.  185.   52.9     25.3      31.9     4.58</span></span>
+<span><span class="co">#&gt;  2     3 15.6  1.05  15.4   622.  483.  163.   46.8     24.9      31.9     7.50</span></span>
+<span><span class="co">#&gt;  3     4 23.2  0.915 21.2   864.  665.  141.   40.8     24.5      31.9    10.4 </span></span>
+<span><span class="co">#&gt;  4     5 21.3  1.21  24.1   978.  767.  187.   54.9     24.6      31.6    11.8 </span></span>
+<span><span class="co">#&gt;  5     6 19.4  1.51  27.1  1091.  870.  233.   69.0     24.8      31.3    13.1 </span></span>
+<span><span class="co">#&gt;  6     7 17.5  1.81  30.0  1204.  973.  279.   83.1     24.9      30.9    14.5 </span></span>
+<span><span class="co">#&gt;  7     8 15.6  2.11  32.9  1317. 1075.  325.   97.2     25.0      30.6    15.9 </span></span>
+<span><span class="co">#&gt;  8     9 17.3  1.80  30.1  1176.  955.  279.   81.2     25.7      31.8    14.2 </span></span>
+<span><span class="co">#&gt;  9    10 19.0  1.49  27.2  1035.  834.  233.   65.2     26.5      33.0    12.5 </span></span>
+<span><span class="co">#&gt; 10    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 </span></span>
+<span><span class="co">#&gt; # … with 2,149 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="perform-averages">Perform averages<a class="anchor" aria-label="anchor" href="#perform-averages"></a>
@@ -209,159 +208,157 @@
 <h4 id="bin-average">Bin-average<a class="anchor" aria-label="anchor" href="#bin-average"></a>
 </h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## example of performing 30-s bin-averages</span>
-<span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"bin"</span>, bins <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt; # Metabolic cart: COSMED </span>
-<span class="co">#&gt; # Data status: averaged data - 30-s bins</span>
-<span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 73 × 114</span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     0  19.0  1.33  24.0  932.  744.  207.   58.9     25.8      32.5     11.2</span>
-<span class="co">#&gt;  2    30  15.3  1.85  27.1 1097.  904.  284.   87.0     24.8      30.1     13.2</span>
-<span class="co">#&gt;  3    60  19.6  1.47  27.1 1133.  892.  223.   69.6     24.1      30.7     13.7</span>
-<span class="co">#&gt;  4    90  13.3  2.29  26.0 1043.  885.  353.  111.      24.9      29.5     12.6</span>
-<span class="co">#&gt;  5   120  20.5  1.43  27.1 1107.  883.  218.   66.9     24.6      31.0     13.3</span>
-<span class="co">#&gt;  6   150  14.4  1.57  22.1  928.  751.  239.   75.5     24.1      29.7     11.2</span>
-<span class="co">#&gt;  7   180  23.0  1.18  26.4 1071.  849.  180.   54.4     24.8      31.3     12.9</span>
-<span class="co">#&gt;  8   210  16.1  2.17  28.7 1070.  941.  342.  101.      27.0      30.6     12.9</span>
-<span class="co">#&gt;  9   240  18.9  1.43  26.1 1058.  880.  219.   68.8     24.7      29.8     12.7</span>
-<span class="co">#&gt; 10   270  15.1  1.65  24.5  987.  847.  253.   81.4     24.8      28.9     11.9</span>
-<span class="co">#&gt; # … with 63 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## example of performing 30-s bin-averages</span></span>
+<span><span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"bin"</span>, bins <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Metabolic cart: COSMED </span></span>
+<span><span class="co">#&gt; # Data status: averaged data - 30-s bins</span></span>
+<span><span class="co">#&gt; # Time column: t</span></span>
+<span><span class="co">#&gt; # A tibble: 73 × 114</span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     0  19.0  1.33  24.0  932.  744.  207.   58.9     25.8      32.5     11.2</span></span>
+<span><span class="co">#&gt;  2    30  15.3  1.85  27.1 1097.  904.  284.   87.0     24.8      30.1     13.2</span></span>
+<span><span class="co">#&gt;  3    60  19.6  1.47  27.1 1133.  892.  223.   69.6     24.1      30.7     13.7</span></span>
+<span><span class="co">#&gt;  4    90  13.3  2.29  26.0 1043.  885.  353.  111.      24.9      29.5     12.6</span></span>
+<span><span class="co">#&gt;  5   120  20.5  1.43  27.1 1107.  883.  218.   66.9     24.6      31.0     13.3</span></span>
+<span><span class="co">#&gt;  6   150  14.4  1.57  22.1  928.  751.  239.   75.5     24.1      29.7     11.2</span></span>
+<span><span class="co">#&gt;  7   180  23.0  1.18  26.4 1071.  849.  180.   54.4     24.8      31.3     12.9</span></span>
+<span><span class="co">#&gt;  8   210  16.1  2.17  28.7 1070.  941.  342.  101.      27.0      30.6     12.9</span></span>
+<span><span class="co">#&gt;  9   240  18.9  1.43  26.1 1058.  880.  219.   68.8     24.7      29.8     12.7</span></span>
+<span><span class="co">#&gt; 10   270  15.1  1.65  24.5  987.  847.  253.   81.4     24.8      28.9     11.9</span></span>
+<span><span class="co">#&gt; # … with 63 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="rolling-average">Rolling-average<a class="anchor" aria-label="anchor" href="#rolling-average"></a>
 </h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## example of performing 30-s rolling-averages</span>
-<span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"rolling"</span>, rolling_window <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
-<span class="co">#&gt; # Metabolic cart: COSMED </span>
-<span class="co">#&gt; # Data status: averaged data - 30-s rolling average</span>
-<span class="co">#&gt; # Time column: t</span>
-<span class="co">#&gt; # A tibble: 2,130 × 114</span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  16.5  16.4  1.75  26.5 1033.  852.  271.   80.1     25.7      31.3     12.4</span>
-<span class="co">#&gt;  2  17.5  16.6  1.76  27.0 1054.  870.  273.   80.7     25.7      31.3     12.7</span>
-<span class="co">#&gt;  3  18.5  16.7  1.78  27.3 1067.  882.  276.   81.6     25.7      31.3     12.9</span>
-<span class="co">#&gt;  4  19.5  16.4  1.80  27.4 1071.  887.  280.   82.8     25.7      31.2     12.9</span>
-<span class="co">#&gt;  5  20.5  16.2  1.82  27.4 1071.  888.  282.   83.6     25.7      31.1     12.9</span>
-<span class="co">#&gt;  6  21.5  16.0  1.82  27.3 1068.  885.  282.   83.8     25.7      31.1     12.9</span>
-<span class="co">#&gt;  7  22.5  16.0  1.81  27.1 1062.  880.  280.   83.4     25.7      31.1     12.8</span>
-<span class="co">#&gt;  8  23.5  16.0  1.78  26.9 1052.  871.  277.   82.4     25.6      31.0     12.7</span>
-<span class="co">#&gt;  9  24.5  16.1  1.77  26.7 1048.  867.  274.   81.8     25.5      31.0     12.6</span>
-<span class="co">#&gt; 10  25.5  16.1  1.76  26.6 1050.  868.  273.   81.9     25.4      30.8     12.6</span>
-<span class="co">#&gt; # … with 2,120 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## example of performing 30-s rolling-averages</span></span>
+<span><span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/interpolate.html">interpolate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/perform_average.html">perform_average</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"rolling"</span>, rolling_window <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # Metabolic cart: COSMED </span></span>
+<span><span class="co">#&gt; # Data status: averaged data - 30-s rolling average</span></span>
+<span><span class="co">#&gt; # Time column: t</span></span>
+<span><span class="co">#&gt; # A tibble: 2,130 × 114</span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1  16.5  16.4  1.75  26.5 1033.  852.  271.   80.1     25.7      31.3     12.4</span></span>
+<span><span class="co">#&gt;  2  17.5  16.6  1.76  27.0 1054.  870.  273.   80.7     25.7      31.3     12.7</span></span>
+<span><span class="co">#&gt;  3  18.5  16.7  1.78  27.3 1067.  882.  276.   81.6     25.7      31.3     12.9</span></span>
+<span><span class="co">#&gt;  4  19.5  16.4  1.80  27.4 1071.  887.  280.   82.8     25.7      31.2     12.9</span></span>
+<span><span class="co">#&gt;  5  20.5  16.2  1.82  27.4 1071.  888.  282.   83.6     25.7      31.1     12.9</span></span>
+<span><span class="co">#&gt;  6  21.5  16.0  1.82  27.3 1068.  885.  282.   83.8     25.7      31.1     12.9</span></span>
+<span><span class="co">#&gt;  7  22.5  16.0  1.81  27.1 1062.  880.  280.   83.4     25.7      31.1     12.8</span></span>
+<span><span class="co">#&gt;  8  23.5  16.0  1.78  26.9 1052.  871.  277.   82.4     25.6      31.0     12.7</span></span>
+<span><span class="co">#&gt;  9  24.5  16.1  1.77  26.7 1048.  867.  274.   81.8     25.5      31.0     12.6</span></span>
+<span><span class="co">#&gt; 10  25.5  16.1  1.76  26.6 1050.  868.  273.   81.9     25.4      30.8     12.6</span></span>
+<span><span class="co">#&gt; # … with 2,120 more rows, and 103 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;, FiO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;, IV &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="perform-vo2-kinetics-analysis">Perform VO<sub>2</sub> kinetics analysis<a class="anchor" aria-label="anchor" href="#perform-vo2-kinetics-analysis"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results_kinetics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="va">df</span>,
-  intensity_domain <span class="op">=</span> <span class="st">"moderate"</span>,
-  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-  protocol_n_transitions <span class="op">=</span> <span class="fl">3</span>,
-  protocol_baseline_length <span class="op">=</span> <span class="fl">360</span>,
-  protocol_transition_length <span class="op">=</span> <span class="fl">360</span>,
-  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,
-  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,
-  fit_level <span class="op">=</span> <span class="fl">0.95</span>,
-  fit_bin_average <span class="op">=</span> <span class="fl">5</span>,
-  fit_phase_1_length <span class="op">=</span> <span class="fl">20</span>,
-  fit_baseline_length <span class="op">=</span> <span class="fl">120</span>,
-  fit_transition_length <span class="op">=</span> <span class="fl">240</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────</span>
-<span class="co">#&gt; ✓ Detecting outliers</span>
-<span class="co">#&gt; ✓ fitting transition</span>
-<span class="co">#&gt; ✓ fitting transition</span>
-<span class="co">#&gt; • 14 outlier(s) found in transition 1</span>
-<span class="co">#&gt; • 15 outlier(s) found in transition 2</span>
-<span class="co">#&gt; • 13 outlier(s) found in transition 3</span>
-<span class="co">#&gt; ✓ Processing data...</span>
-<span class="co">#&gt; ✓       └─ Removing outliers</span>
-<span class="co">#&gt; ✓       └─ Interpolating each transition</span>
-<span class="co">#&gt; ✓       └─ Ensemble-averaging transitions</span>
-<span class="co">#&gt; ✓       └─ Performing 5-s bin averages</span>
-<span class="co">#&gt; ✓ Fitting data...</span>
-<span class="co">#&gt; ✓       └─ Fitting baseline</span>
-<span class="co">#&gt; ✓       └─ Fitting transition</span>
-<span class="co">#&gt; ✓       └─ Calculating residuals</span>
-<span class="co">#&gt; ✓       └─ Preparing plots</span>
-<span class="co">#&gt; ──────────────────────────────────  * DONE *  ──────────────────────────────────</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results_kinetics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/vo2_kinetics.html">vo2_kinetics</a></span><span class="op">(</span></span>
+<span>  .data <span class="op">=</span> <span class="va">df</span>,</span>
+<span>  intensity_domain <span class="op">=</span> <span class="st">"moderate"</span>,</span>
+<span>  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>  protocol_n_transitions <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  protocol_baseline_length <span class="op">=</span> <span class="fl">360</span>,</span>
+<span>  protocol_transition_length <span class="op">=</span> <span class="fl">360</span>,</span>
+<span>  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  cleaning_baseline_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"linear"</span>, <span class="st">"exponential"</span>, <span class="st">"exponential"</span><span class="op">)</span>,</span>
+<span>  fit_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  fit_bin_average <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  fit_phase_1_length <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  fit_baseline_length <span class="op">=</span> <span class="fl">120</span>,</span>
+<span>  fit_transition_length <span class="op">=</span> <span class="fl">240</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────</span></span>
+<span><span class="co">#&gt; ✔ Detecting outliers</span></span>
+<span><span class="co">#&gt; • 14 outlier(s) found in transition 1</span></span>
+<span><span class="co">#&gt; • 15 outlier(s) found in transition 2</span></span>
+<span><span class="co">#&gt; • 13 outlier(s) found in transition 3</span></span>
+<span><span class="co">#&gt; ✔ Processing data...</span></span>
+<span><span class="co">#&gt; ✔       └─ Removing outliers</span></span>
+<span><span class="co">#&gt; ✔       └─ Interpolating each transition</span></span>
+<span><span class="co">#&gt; ✔       └─ Ensemble-averaging transitions</span></span>
+<span><span class="co">#&gt; ✔       └─ Performing 5-s bin averages</span></span>
+<span><span class="co">#&gt; ✔ Fitting data...</span></span>
+<span><span class="co">#&gt; ✔       └─ Fitting baseline</span></span>
+<span><span class="co">#&gt; ✔       └─ Fitting transition</span></span>
+<span><span class="co">#&gt; ✔       └─ Calculating residuals</span></span>
+<span><span class="co">#&gt; ✔       └─ Preparing plots</span></span>
+<span><span class="co">#&gt; ──────────────────────────────────  * DONE *  ──────────────────────────────────</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="perform-vo2max-analysis">Perform VO<sub>2max</sub> analysis<a class="anchor" aria-label="anchor" href="#perform-vo2max-analysis"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_incremental</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ramp_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/vo2_max.html">vo2_max</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="va">df_incremental</span>, <span class="co">## data from `read_data()`</span>
-  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-  vo2_relative_column <span class="op">=</span> <span class="st">"VO2/Kg"</span>,
-  heart_rate_column <span class="op">=</span> <span class="st">"HR"</span>,
-  rer_column <span class="op">=</span> <span class="st">"R"</span>,
-  detect_outliers <span class="op">=</span> <span class="cn">TRUE</span>,
-  average_method <span class="op">=</span> <span class="st">"bin"</span>,
-  average_length <span class="op">=</span> <span class="fl">30</span>,
-  plot <span class="op">=</span> <span class="cn">TRUE</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="co">## arguments for `incremental_normalize()`</span>
-  incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,
-  has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,
-  baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span>
-  work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co">## produce a work rate column</span>
-  baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span>
-  ramp_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## 25 W/min ramp</span>
-  <span class="co">## arguments for `detect_outliers()`</span>
-  test_type <span class="op">=</span> <span class="st">"incremental"</span>,
-  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>, 
-  method_incremental <span class="op">=</span> <span class="st">"linear"</span>
-<span class="op">)</span>
-<span class="co">#&gt; ────────────────────────────  * V̇O₂ max analysis *  ────────────────────────────</span>
-<span class="co">#&gt; ✓ Normalizing incremental data...</span>
-<span class="co">#&gt; ✓ Detecting outliers</span>
-<span class="co">#&gt; • 2 outlier(s) found in baseline</span>
-<span class="co">#&gt; • 15 outlier(s) found in ramp</span>
-<span class="co">#&gt; ✓ Filtering out outliers...</span>
-<span class="co">#&gt; ✓ Interpolating from breath-by-breath into second-by-second...</span>
-<span class="co">#&gt; ✓ Performing averages...</span>
-<span class="co">#&gt; # A tibble: 1 × 6</span>
-<span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span>
-<span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;list&gt;</span>
-<span class="co">#&gt; 1           3524.            46.0    303   193   1.13 &lt;gg&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df_incremental</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ramp_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/vo2_max.html">vo2_max</a></span><span class="op">(</span></span>
+<span>  .data <span class="op">=</span> <span class="va">df_incremental</span>, <span class="co">## data from `read_data()`</span></span>
+<span>  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>  vo2_relative_column <span class="op">=</span> <span class="st">"VO2/Kg"</span>,</span>
+<span>  heart_rate_column <span class="op">=</span> <span class="st">"HR"</span>,</span>
+<span>  rer_column <span class="op">=</span> <span class="st">"R"</span>,</span>
+<span>  detect_outliers <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  average_method <span class="op">=</span> <span class="st">"bin"</span>,</span>
+<span>  average_length <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="co">## arguments for `incremental_normalize()`</span></span>
+<span>  incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,</span>
+<span>  has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span></span>
+<span>  work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co">## produce a work rate column</span></span>
+<span>  baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span></span>
+<span>  ramp_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## 25 W/min ramp</span></span>
+<span>  <span class="co">## arguments for `detect_outliers()`</span></span>
+<span>  test_type <span class="op">=</span> <span class="st">"incremental"</span>,</span>
+<span>  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>, </span>
+<span>  method_incremental <span class="op">=</span> <span class="st">"linear"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; ────────────────────────────  * V̇O₂ max analysis *  ────────────────────────────</span></span>
+<span><span class="co">#&gt; ✔ Normalizing incremental data...</span></span>
+<span><span class="co">#&gt; ✔ Detecting outliers</span></span>
+<span><span class="co">#&gt; • 2 outlier(s) found in baseline</span></span>
+<span><span class="co">#&gt; • 15 outlier(s) found in ramp</span></span>
+<span><span class="co">#&gt; ✔ Filtering out outliers...</span></span>
+<span><span class="co">#&gt; ✔ Interpolating from breath-by-breath into second-by-second...</span></span>
+<span><span class="co">#&gt; ✔ Performing averages...</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span><span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span></span>
+<span><span class="co">#&gt;             &lt;dbl&gt;           &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;list&gt;</span></span>
+<span><span class="co">#&gt; 1           3524.            46.0    303   193   1.13 &lt;gg&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="metabolic-carts-currently-supported">Metabolic carts currently supported<a class="anchor" aria-label="anchor" href="#metabolic-carts-currently-supported"></a>
 </h2>
 <ul>
-<li><a href="https://korr.com/cardiocoach/" class="external-link">CardioCoach</a></li>
 <li><a href="https://www.cosmed.com/en/" class="external-link">COSMED</a></li>
 <li><a href="https://cortex-medical.com/EN" class="external-link">CORTEX</a></li>
 <li><a href="https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555" class="external-link">NSpire</a></li>
-<li><a href="https://www.parvo.com/" class="external-link">Parvo Medics</a></li>
+<li>Parvo Medics</li>
 <li><a href="https://www.geratherm-respiratory.com/product-groups/cpet/" class="external-link">Geratherm Respiratory</a></li>
+<li><a href="https://korr.com/go/cardiocoach/" class="external-link">CardioCoach</a></li>
 </ul>
 </div>
 <div class="section level2">
@@ -373,9 +370,7 @@
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
 <p>Please note that this project is released with a <a href="https://www.contributor-covenant.org/version/1/0/0/code-of-conduct.html" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
-<div>
-<p>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik" class="external-link">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon" class="external-link">www.flaticon.com</a></p>
-</div>
+<div><p>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik" class="external-link">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon" class="external-link">www.flaticon.com</a></p></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -431,7 +426,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

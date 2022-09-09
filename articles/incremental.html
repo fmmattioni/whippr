@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Incremental test analyses">
@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">whippr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@
 
 
 <script src="incremental_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Incremental test analyses</h1>
             
       
@@ -143,51 +143,51 @@
 <li>ramp increase of 25 W/min.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-
-<span class="va">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ramp_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>
-
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path_example</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span>
-
-<span class="va">df</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 119</span></span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     0 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     6  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    10 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    15 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    19 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>    24 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>    28 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    33 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    38 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    43 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows, and 108 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fmmattioni/whippr" class="external-link">whippr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="va">path_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ramp_cosmed.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path_example</span>, metabolic_cart <span class="op">=</span> <span class="st">"cosmed"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 119</span></span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     0 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     6  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    10 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    15 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    19 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>    24 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>    28 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    33 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    38 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    43 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows, and 108 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">4</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_whippr.html">theme_whippr</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">4</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_whippr.html">theme_whippr</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-2-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>A few things to note:</p>
 <ul>
@@ -196,229 +196,231 @@
 </ul>
 <p>All of the above will be fixed with the <code><a href="../reference/incremental_normalize.html">incremental_normalize()</a></code> function. Since we do not have a work rate column, we will set the argument <code>work_rate_magic = TRUE</code>. This argument will allow us to calculate the work rates throughout the test.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ramp_normalized</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
- <span class="fu"><a href="../reference/incremental_normalize.html">incremental_normalize</a></span><span class="op">(</span>
-   .data <span class="op">=</span> <span class="va">.</span>,
-   incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,
-   has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,
-   baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span>
-   work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>,
-   baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span>
-   ramp_increase <span class="op">=</span> <span class="fl">25</span> <span class="co">## 25 W/min ramp</span>
- <span class="op">)</span>
-
-<span class="va">ramp_normalized</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 121</span></span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span> 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span> 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span> 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span> 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span> 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span> 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span> 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span> 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span> 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows, and 110 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ramp_normalized</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="../reference/incremental_normalize.html">incremental_normalize</a></span><span class="op">(</span></span>
+<span>   .data <span class="op">=</span> <span class="va">.</span>,</span>
+<span>   incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,</span>
+<span>   has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>   baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span></span>
+<span>   work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>   baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span></span>
+<span>   ramp_increase <span class="op">=</span> <span class="fl">25</span> <span class="co">## 25 W/min ramp</span></span>
+<span> <span class="op">)</span></span>
+<span></span>
+<span><span class="va">ramp_normalized</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 121</span></span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span> 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span> 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span> 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span> 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span> 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span> 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span> 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span> 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span> 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows, and 110 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></span></code></pre></div>
 <p>We can see that now our data is aware of the two different phases in the test: baseline and ramp period:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">protocol_phase</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 2 × 1</span></span>
-<span class="co">#&gt;   protocol_phase</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> baseline      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ramp</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">protocol_phase</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 2 × 1</span></span></span>
+<span><span class="co">#&gt;   protocol_phase</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> baseline      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ramp</span></span></code></pre></div>
 <p>Additionally, a new column was created: <code>work_rate</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">work_rate</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 2</span></span>
-<span class="co">#&gt;        t work_rate</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span>        20</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span>        20</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">work_rate</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 2</span></span></span>
+<span><span class="co">#&gt;        t work_rate</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span>        20</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows</span></span></span></code></pre></div>
 <p>And we can also plot it to check what was done. Note that there is a constant-load during baseline (20 W), and then a constant increase in power output (25 W/min) during the ramp phase:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/plot_incremental.html">plot_incremental</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/plot_incremental.html">plot_incremental</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>We can therefore quickly analyze our peak power output as:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 1 × 1</span></span>
-<span class="co">#&gt;   work_rate</span>
-<span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      303.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ramp_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - ramp normalized</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 1 × 1</span></span></span>
+<span><span class="co">#&gt;   work_rate</span></span>
+<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      303.</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="step-test">Step test<a class="anchor" aria-label="anchor" href="#step-test"></a>
 </h3>
 <p>But what if we had a step-incremental test? How does the work rate transformation work? In a step test is important to have both the actual power output from each step, and also a linearization of the power output. To illustrate what I mean, let’s take a look at an example:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## get file path from example data</span>
-<span class="va">path_example_step</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"step_cortex.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span>
-
-<span class="co">## read data from step test</span>
-<span class="va">df_step</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path_example_step</span>, metabolic_cart <span class="op">=</span> <span class="st">"cortex"</span><span class="op">)</span>
-
-<span class="va">df_step</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 792 × 29</span></span>
-<span class="co">#&gt;        t    VT    AF `V'E (BTPS)` `V'max (BTPS)` FEetO2 FEetCO2 PetO2 PetCO2</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>   4.8  0.72  18.5         13.3           0.42   15.9    4.6   106.   30.8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>   7.9  0.76  19.4         14.7           0.46   16.0    4.63  107.   31  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  10.9  0.77  19.9         15.3           0.47   16.0    4.74  107.   31.7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  13.9  0.76  20           15.1           0.47   16.2    4.65  109.   31.1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  17.5  0.95  16.7         15.8           0.49   16.1    4.76  108.   31.8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  20.9  0.83  17.5         14.6           0.56   16.5    4.54  110.   30.4</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  24.3  0.75  17.8         13.3           0.45   16.5    4.54  110.   30.4</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  28.2  0.8   15.3         12.3           0.42   16.3    4.69  109.   31.4</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  31.9  0.8   16.5         13.1           0.48   16.4    4.56  110.   30.5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  35.7  0.72  15.8         11.5           0.43   16.2    4.7   109.   31.4</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 782 more rows, and 20 more variables: `V'O2 (STPD)` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `V'CO2` &lt;dbl&gt;, R &lt;dbl&gt;, `V'O2/kg` &lt;dbl&gt;, METS &lt;dbl&gt;, `V'E/V'O2` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `V'E/V'CO2` &lt;dbl&gt;, `VD/VT (est)` &lt;dbl&gt;, HF &lt;dbl&gt;, La &lt;chr&gt;, W &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   EU &lt;dbl&gt;, `EU/kg` &lt;dbl&gt;, CHO &lt;dbl&gt;, FETT &lt;dbl&gt;, EFF &lt;chr&gt;, `%AR` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `V'O2/kg_Lean` &lt;dbl&gt;, `EE/kg_Lean` &lt;dbl&gt;, AR &lt;dbl&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## get file path from example data</span></span>
+<span><span class="va">path_example_step</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"step_cortex.xlsx"</span>, package <span class="op">=</span> <span class="st">"whippr"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## read data from step test</span></span>
+<span><span class="va">df_step</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data.html">read_data</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path_example_step</span>, metabolic_cart <span class="op">=</span> <span class="st">"cortex"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df_step</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 792 × 29</span></span></span>
+<span><span class="co">#&gt;        t    VT    AF V'E (…¹ V'max…² FEetO2 FEetCO2 PetO2 PetCO2 V'O2 …³ `V'CO2`</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>   4.8  0.72  18.5    13.3    0.42   15.9    4.6   106.   30.8   0.298   0.248</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>   7.9  0.76  19.4    14.7    0.46   16.0    4.63  107.   31     0.362   0.314</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  10.9  0.77  19.9    15.3    0.47   16.0    4.74  107.   31.7   0.34    0.33 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  13.9  0.76  20      15.1    0.47   16.2    4.65  109.   31.1   0.33    0.325</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  17.5  0.95  16.7    15.8    0.49   16.1    4.76  108.   31.8   0.371   0.37 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  20.9  0.83  17.5    14.6    0.56   16.5    4.54  110.   30.4   0.337   0.338</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  24.3  0.75  17.8    13.3    0.45   16.5    4.54  110.   30.4   0.271   0.276</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  28.2  0.8   15.3    12.3    0.42   16.3    4.69  109.   31.4   0.27    0.271</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  31.9  0.8   16.5    13.1    0.48   16.4    4.56  110.   30.5   0.284   0.288</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  35.7  0.72  15.8    11.5    0.43   16.2    4.7   109.   31.4   0.235   0.242</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 782 more rows, 18 more variables: R &lt;dbl&gt;, `V'O2/kg` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   METS &lt;dbl&gt;, `V'E/V'O2` &lt;dbl&gt;, `V'E/V'CO2` &lt;dbl&gt;, `VD/VT (est)` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   HF &lt;dbl&gt;, La &lt;chr&gt;, W &lt;dbl&gt;, EU &lt;dbl&gt;, `EU/kg` &lt;dbl&gt;, CHO &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FETT &lt;dbl&gt;, EFF &lt;chr&gt;, `%AR` &lt;dbl&gt;, `V'O2/kg_Lean` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `EE/kg_Lean` &lt;dbl&gt;, AR &lt;dbl&gt;, and abbreviated variable names ¹​`V'E (BTPS)`,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ²​`V'max (BTPS)`, ³​`V'O2 (STPD)`</span></span></span></code></pre></div>
 <p>Note that our data contains weird column names. So, for simplicity, let’s rename the VO2 column.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_step_renamed</span> <span class="op">&lt;-</span> <span class="va">df_step</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>VO2 <span class="op">=</span> <span class="va">`V'O2 (STPD)`</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df_step_renamed</span> <span class="op">&lt;-</span> <span class="va">df_step</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>VO2 <span class="op">=</span> <span class="va">`V'O2 (STPD)`</span><span class="op">)</span></span></code></pre></div>
 <p>That is a test that had the following protocol:</p>
 <ul>
 <li>resting period (i.e, 0 W) for 2 minutes;</li>
 <li>step protocol starting at 50 W and increasing 25 W every 3 minutes.</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_step_renamed</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">4</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/theme_whippr.html">theme_whippr</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df_step_renamed</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">VO2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, size <span class="op">=</span> <span class="fl">4</span>, fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_whippr.html">theme_whippr</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-10-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>So, let’s first normalize our data:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">step_normalized</span> <span class="op">&lt;-</span> <span class="va">df_step</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
- <span class="fu"><a href="../reference/incremental_normalize.html">incremental_normalize</a></span><span class="op">(</span>
-   .data <span class="op">=</span> <span class="va">.</span>,
-   incremental_type <span class="op">=</span> <span class="st">"step"</span>,
-   has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,
-   baseline_length <span class="op">=</span> <span class="fl">120</span>, <span class="co">## 2 min baseline</span>
-   work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, 
-   baseline_intensity <span class="op">=</span> <span class="fl">0</span>, <span class="co">## baseline was resting on the bike, so intensity is 0 W</span>
-   step_start <span class="op">=</span> <span class="fl">50</span>, <span class="co">## step protocol started at 50 W</span>
-   step_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## step increase was 25 W</span>
-   step_length <span class="op">=</span> <span class="fl">180</span> <span class="co">## the intensity increased every 3 minutes</span>
- <span class="op">)</span>
-
-<span class="va">step_normalized</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - step normalized</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 120-s baseline at 0 W and 180-s steps of 25 W starting at 50 W</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 792 × 33</span></span>
-<span class="co">#&gt;         t    VT    AF `V'E (BTPS)` `V'max (BTPS)` FEetO2 FEetCO2 PetO2 PetCO2</span>
-<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">115.</span>   0.72  18.5         13.3           0.42   15.9    4.6   106.   30.8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">112.</span>   0.76  19.4         14.7           0.46   16.0    4.63  107.   31  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">109.</span>   0.77  19.9         15.3           0.47   16.0    4.74  107.   31.7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">106.</span>   0.76  20           15.1           0.47   16.2    4.65  109.   31.1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">102.</span>   0.95  16.7         15.8           0.49   16.1    4.76  108.   31.8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">99.1</span>  0.83  17.5         14.6           0.56   16.5    4.54  110.   30.4</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">95.7</span>  0.75  17.8         13.3           0.45   16.5    4.54  110.   30.4</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">91.8</span>  0.8   15.3         12.3           0.42   16.3    4.69  109.   31.4</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">88.1</span>  0.8   16.5         13.1           0.48   16.4    4.56  110.   30.5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">84.3</span>  0.72  15.8         11.5           0.43   16.2    4.7   109.   31.4</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 782 more rows, and 24 more variables: `V'O2 (STPD)` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `V'CO2` &lt;dbl&gt;, R &lt;dbl&gt;, `V'O2/kg` &lt;dbl&gt;, METS &lt;dbl&gt;, `V'E/V'O2` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `V'E/V'CO2` &lt;dbl&gt;, `VD/VT (est)` &lt;dbl&gt;, HF &lt;dbl&gt;, La &lt;chr&gt;, W &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   EU &lt;dbl&gt;, `EU/kg` &lt;dbl&gt;, CHO &lt;dbl&gt;, FETT &lt;dbl&gt;, EFF &lt;chr&gt;, `%AR` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `V'O2/kg_Lean` &lt;dbl&gt;, `EE/kg_Lean` &lt;dbl&gt;, AR &lt;dbl&gt;, protocol_phase &lt;chr&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   work_rate &lt;dbl&gt;, step_work_rate &lt;dbl&gt;, step &lt;fct&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">step_normalized</span> <span class="op">&lt;-</span> <span class="va">df_step</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="../reference/incremental_normalize.html">incremental_normalize</a></span><span class="op">(</span></span>
+<span>   .data <span class="op">=</span> <span class="va">.</span>,</span>
+<span>   incremental_type <span class="op">=</span> <span class="st">"step"</span>,</span>
+<span>   has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>   baseline_length <span class="op">=</span> <span class="fl">120</span>, <span class="co">## 2 min baseline</span></span>
+<span>   work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>   baseline_intensity <span class="op">=</span> <span class="fl">0</span>, <span class="co">## baseline was resting on the bike, so intensity is 0 W</span></span>
+<span>   step_start <span class="op">=</span> <span class="fl">50</span>, <span class="co">## step protocol started at 50 W</span></span>
+<span>   step_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## step increase was 25 W</span></span>
+<span>   step_length <span class="op">=</span> <span class="fl">180</span> <span class="co">## the intensity increased every 3 minutes</span></span>
+<span> <span class="op">)</span></span>
+<span></span>
+<span><span class="va">step_normalized</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - step normalized</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 120-s baseline at 0 W and 180-s steps of 25 W starting at 50 W</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 792 × 33</span></span></span>
+<span><span class="co">#&gt;         t    VT    AF `V'E (BTPS)` V'max (…¹ FEetO2 FEetCO2 PetO2 PetCO2 V'O2 …²</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">115.</span>   0.72  18.5         13.3      0.42   15.9    4.6   106.   30.8   0.298</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">112.</span>   0.76  19.4         14.7      0.46   16.0    4.63  107.   31     0.362</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">109.</span>   0.77  19.9         15.3      0.47   16.0    4.74  107.   31.7   0.34 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">106.</span>   0.76  20           15.1      0.47   16.2    4.65  109.   31.1   0.33 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">102.</span>   0.95  16.7         15.8      0.49   16.1    4.76  108.   31.8   0.371</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">99.1</span>  0.83  17.5         14.6      0.56   16.5    4.54  110.   30.4   0.337</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">95.7</span>  0.75  17.8         13.3      0.45   16.5    4.54  110.   30.4   0.271</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">91.8</span>  0.8   15.3         12.3      0.42   16.3    4.69  109.   31.4   0.27 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">88.1</span>  0.8   16.5         13.1      0.48   16.4    4.56  110.   30.5   0.284</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">84.3</span>  0.72  15.8         11.5      0.43   16.2    4.7   109.   31.4   0.235</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 782 more rows, 23 more variables: `V'CO2` &lt;dbl&gt;, R &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `V'O2/kg` &lt;dbl&gt;, METS &lt;dbl&gt;, `V'E/V'O2` &lt;dbl&gt;, `V'E/V'CO2` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `VD/VT (est)` &lt;dbl&gt;, HF &lt;dbl&gt;, La &lt;chr&gt;, W &lt;dbl&gt;, EU &lt;dbl&gt;, `EU/kg` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   CHO &lt;dbl&gt;, FETT &lt;dbl&gt;, EFF &lt;chr&gt;, `%AR` &lt;dbl&gt;, `V'O2/kg_Lean` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `EE/kg_Lean` &lt;dbl&gt;, AR &lt;dbl&gt;, protocol_phase &lt;chr&gt;, work_rate &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   step_work_rate &lt;dbl&gt;, step &lt;fct&gt;, and abbreviated variable names</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ¹​`V'max (BTPS)`, ²​`V'O2 (STPD)`</span></span></span></code></pre></div>
 <p>And then we can visualize what was done with the work rate with the <code><a href="../reference/plot_incremental.html">plot_incremental()</a></code> function:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">step_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/plot_incremental.html">plot_incremental</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">step_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/plot_incremental.html">plot_incremental</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-12-1.png" width="960" style="display: block; margin: auto;"></p>
 <p>As you can note, two working rates were created: one with the actual power output, and another one with the linearization of the power output.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">step_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">protocol_phase</span><span class="op">:</span><span class="va">step</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - step normalized</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 120-s baseline at 0 W and 180-s steps of 25 W starting at 50 W</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 792 × 5</span></span>
-<span class="co">#&gt;         t protocol_phase work_rate step_work_rate step  </span>
-<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">115.</span>  baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">112.</span>  baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">109.</span>  baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">106.</span>  baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">102.</span>  baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">99.1</span> baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">95.7</span> baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">91.8</span> baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">88.1</span> baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">84.3</span> baseline               0              0 step_0</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 782 more rows</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">step_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">protocol_phase</span><span class="op">:</span><span class="va">step</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - step normalized</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 120-s baseline at 0 W and 180-s steps of 25 W starting at 50 W</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 792 × 5</span></span></span>
+<span><span class="co">#&gt;         t protocol_phase work_rate step_work_rate step  </span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">115.</span>  baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">112.</span>  baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">109.</span>  baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">106.</span>  baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">102.</span>  baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">99.1</span> baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">95.7</span> baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">91.8</span> baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">88.1</span> baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">84.3</span> baseline               0              0 step_0</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 782 more rows</span></span></span></code></pre></div>
 <p>This is useful, for example, to calculate the peak power output:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">step_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - step normalized</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 120-s baseline at 0 W and 180-s steps of 25 W starting at 50 W</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 1 × 1</span></span>
-<span class="co">#&gt;   work_rate</span>
-<span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      252.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">step_normalized</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">work_rate</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: CORTEX </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - step normalized</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 120-s baseline at 0 W and 180-s steps of 25 W starting at 50 W</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 1 × 1</span></span></span>
+<span><span class="co">#&gt;   work_rate</span></span>
+<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      252.</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -430,93 +432,93 @@
 <h3 id="linear">Linear<a class="anchor" aria-label="anchor" href="#linear"></a>
 </h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## detect ramp outliers</span>
-<span class="va">data_ramp_outliers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="va">ramp_normalized</span>,
-  test_type <span class="op">=</span> <span class="st">"incremental"</span>,
-  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,
-  method_incremental <span class="op">=</span> <span class="st">"linear"</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
- <span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span>
-<span class="co">#&gt; <span style="color: #BB0000;">•</span> 2 outlier(s) found in baseline</span>
-<span class="co">#&gt; <span style="color: #BB0000;">•</span> 15 outlier(s) found in ramp</span>
-
-<span class="va">data_ramp_outliers</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - outliers detected</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # VO2 column: VO2</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 134</span></span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span> 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span> 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span> 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span> 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span> 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span> 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span> 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span> 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span> 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows, and 123 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## detect ramp outliers</span></span>
+<span><span class="va">data_ramp_outliers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span></span>
+<span>  .data <span class="op">=</span> <span class="va">ramp_normalized</span>,</span>
+<span>  test_type <span class="op">=</span> <span class="st">"incremental"</span>,</span>
+<span>  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  method_incremental <span class="op">=</span> <span class="st">"linear"</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span> <span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">•</span> 2 outlier(s) found in baseline</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">•</span> 15 outlier(s) found in ramp</span></span>
+<span></span>
+<span><span class="va">data_ramp_outliers</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - outliers detected</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # VO2 column: VO2</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 390 × 134</span></span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span> 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span> 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span> 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span> 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span> 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span> 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span> 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span> 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span> 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 380 more rows, and 123 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data_ramp_outliers</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">data_ramp_outliers</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-16-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>Thereafter, you can easily remove the detected outliers like this:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data_ramp_outliers</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">outlier</span> <span class="op">==</span> <span class="st">"no"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - outliers detected</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # VO2 column: VO2</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span>
-<span class="co"><span style="color: #949494;">#&gt; # A tibble: 373 × 134</span></span>
-<span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span> 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span> 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span> 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span> 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span> 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span> 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span> 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span> 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span> 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 363 more rows, and 123 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">data_ramp_outliers</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">outlier</span> <span class="op">==</span> <span class="st">"no"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Metabolic cart: COSMED </span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Data status: raw data - outliers detected</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Time column: t</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # VO2 column: VO2</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Test type: incremental</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # Protocol: 240-s baseline at 20 W and a 25-W/min ramp</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # A tibble: 373 × 134</span></span></span>
+<span><span class="co">#&gt;        t    Rf    VT    VE   VO2  VCO2 O2exp CO2exp `VE/VO2` `VE/VCO2` `VO2/Kg`</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">240</span> 23.3  0.808  18.8  654.  579.  131.   34.6     28.7      32.4     8.53</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">234</span>  9.45 3.09   29.2 <span style="text-decoration: underline;">1</span>111. <span style="text-decoration: underline;">1</span>038.  488.  152.      26.3      28.1    14.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  -<span style="color: #BB0000;">230</span> 14.3  1.87   26.8 <span style="text-decoration: underline;">1</span>064.  963.  291.   93.4     25.2      27.8    13.9 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  -<span style="color: #BB0000;">225</span> 14.2  2.05   29.1 <span style="text-decoration: underline;">1</span>136. <span style="text-decoration: underline;">1</span>032.  321.  101.      25.6      28.2    14.8 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  -<span style="color: #BB0000;">221</span> 13.4  2.05   27.5 <span style="text-decoration: underline;">1</span>083.  999.  319.  103.      25.4      27.5    14.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">216</span> 13.3  2.08   27.7 <span style="text-decoration: underline;">1</span>104. <span style="text-decoration: underline;">1</span>021.  323.  106.      25.1      27.2    14.4 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  -<span style="color: #BB0000;">212</span> 14.0  1.78   25.0 <span style="text-decoration: underline;">1</span>017.  948.  274.   93.8     24.6      26.3    13.3 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  -<span style="color: #BB0000;">207</span> 11.4  2.11   24.2  971.  919.  326.  111.      24.9      26.3    12.7 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">202</span> 13.2  2.00   26.5 <span style="text-decoration: underline;">1</span>008.  973.  315.  102.      26.3      27.2    13.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">197</span> 11.5  2.09   23.9  921.  904.  326.  109.      25.9      26.4    12.0 </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 363 more rows, and 123 more variables: R &lt;dbl&gt;, FeO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FeCO2 &lt;dbl&gt;, HR &lt;dbl&gt;, `VO2/HR` &lt;dbl&gt;, Load1 &lt;dbl&gt;, Load2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Load3 &lt;dbl&gt;, Phase &lt;dbl&gt;, Marker &lt;lgl&gt;, FetO2 &lt;dbl&gt;, FetCO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   FiO2 &lt;dbl&gt;, FiCO2 &lt;dbl&gt;, Ti &lt;dbl&gt;, Te &lt;dbl&gt;, Ttot &lt;dbl&gt;, `Ti/Ttot` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   IV &lt;dbl&gt;, PetO2 &lt;dbl&gt;, PetCO2 &lt;dbl&gt;, `P(a-et)CO2` &lt;dbl&gt;, SpO2 &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `VD(phys)` &lt;dbl&gt;, `VD/VT` &lt;dbl&gt;, `Env. Temp.` &lt;dbl&gt;, `Analyz. Temp.` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `Analyz. Press.` &lt;dbl&gt;, `Env. Press.` &lt;dbl&gt;, Batteries &lt;dbl&gt;, …</span></span></span></code></pre></div>
 <p>Note that we set <strong>95%</strong> of confidence level when detecting the outliers. You can easily change that, for example, to <strong>99%</strong>:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="va">ramp_normalized</span>,
-  test_type <span class="op">=</span> <span class="st">"incremental"</span>,
-  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-  cleaning_level <span class="op">=</span> <span class="fl">0.99</span>, <span class="co">## changed to 99%</span>
-  method_incremental <span class="op">=</span> <span class="st">"linear"</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
- <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span>
-<span class="co">#&gt; <span style="color: #BB0000;">•</span> 8 outlier(s) found in ramp</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span></span>
+<span>  .data <span class="op">=</span> <span class="va">ramp_normalized</span>,</span>
+<span>  test_type <span class="op">=</span> <span class="st">"incremental"</span>,</span>
+<span>  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>  cleaning_level <span class="op">=</span> <span class="fl">0.99</span>, <span class="co">## changed to 99%</span></span>
+<span>  method_incremental <span class="op">=</span> <span class="st">"linear"</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span> <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">•</span> 8 outlier(s) found in ramp</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-18-1.png" width="768" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
@@ -524,21 +526,21 @@
 </h3>
 <p>Now let’s see how the anomaly detection performs:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="va">ramp_normalized</span>,
-  test_type <span class="op">=</span> <span class="st">"incremental"</span>,
-  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,
-  method_incremental <span class="op">=</span> <span class="st">"anomaly"</span>, <span class="co">## changed to anomaly detection</span>
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>
- <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span>
-<span class="co">#&gt; Registered S3 method overwritten by 'quantmod':</span>
-<span class="co">#&gt;   method            from</span>
-<span class="co">#&gt;   as.zoo.data.frame zoo </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; <span style="color: #BB0000;">•</span> 6 outlier(s) found in ramp</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/detect_outliers.html">detect_outliers</a></span><span class="op">(</span></span>
+<span>  .data <span class="op">=</span> <span class="va">ramp_normalized</span>,</span>
+<span>  test_type <span class="op">=</span> <span class="st">"incremental"</span>,</span>
+<span>  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  method_incremental <span class="op">=</span> <span class="st">"anomaly"</span>, <span class="co">## changed to anomaly detection</span></span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span> <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span></span>
+<span><span class="co">#&gt; Registered S3 method overwritten by 'quantmod':</span></span>
+<span><span class="co">#&gt;   method            from</span></span>
+<span><span class="co">#&gt;   as.zoo.data.frame zoo </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">•</span> 6 outlier(s) found in ramp</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-19-1.png" width="768" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -575,26 +577,26 @@
 <code>perform_max()</code><a class="anchor" aria-label="anchor" href="#perform_max"></a>
 </h3>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results_vo2max</span> <span class="op">&lt;-</span> <span class="va">data_ramp_outliers</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="co">## data was already normalized and outliers were detected</span>
-  <span class="fu"><a href="../reference/perform_max.html">perform_max</a></span><span class="op">(</span>
-    .data <span class="op">=</span> <span class="va">.</span>,
-    vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-    vo2_relative_column <span class="op">=</span> <span class="st">"VO2/Kg"</span>,
-    heart_rate_column <span class="op">=</span> <span class="st">"HR"</span>,
-    rer_column <span class="op">=</span> <span class="st">"R"</span>,
-    average_method <span class="op">=</span> <span class="st">"bin"</span>,
-    average_length <span class="op">=</span> <span class="fl">30</span>,
-    plot <span class="op">=</span> <span class="cn">TRUE</span>,
-    verbose <span class="op">=</span> <span class="cn">FALSE</span>
-  <span class="op">)</span>
-
-<span class="va">results_vo2max</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 6</span></span>
-<span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span>
-<span class="co">#&gt;             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           <span style="text-decoration: underline;">3</span>524.            46.0    303   193   1.13 <span style="color: #949494;">&lt;gg&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results_vo2max</span> <span class="op">&lt;-</span> <span class="va">data_ramp_outliers</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="co">## data was already normalized and outliers were detected</span></span>
+<span>  <span class="fu"><a href="../reference/perform_max.html">perform_max</a></span><span class="op">(</span></span>
+<span>    .data <span class="op">=</span> <span class="va">.</span>,</span>
+<span>    vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>    vo2_relative_column <span class="op">=</span> <span class="st">"VO2/Kg"</span>,</span>
+<span>    heart_rate_column <span class="op">=</span> <span class="st">"HR"</span>,</span>
+<span>    rer_column <span class="op">=</span> <span class="st">"R"</span>,</span>
+<span>    average_method <span class="op">=</span> <span class="st">"bin"</span>,</span>
+<span>    average_length <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>    plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">results_vo2max</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 6</span></span></span>
+<span><span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span></span>
+<span><span class="co">#&gt;             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           <span style="text-decoration: underline;">3</span>524.            46.0    303   193   1.13 <span style="color: #949494;">&lt;gg&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results_vo2max</span><span class="op">$</span><span class="va">plot</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">results_vo2max</span><span class="op">$</span><span class="va">plot</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div>
 <p><img src="incremental_files/figure-html/unnamed-chunk-21-1.png" width="768" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
@@ -602,41 +604,41 @@
 <code>vo2_max()</code><a class="anchor" aria-label="anchor" href="#vo2_max"></a>
 </h3>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/vo2_max.html">vo2_max</a></span><span class="op">(</span>
-  .data <span class="op">=</span> <span class="va">df</span>, <span class="co">## data from `read_data()`</span>
-  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,
-  vo2_relative_column <span class="op">=</span> <span class="st">"VO2/Kg"</span>,
-  heart_rate_column <span class="op">=</span> <span class="st">"HR"</span>,
-  rer_column <span class="op">=</span> <span class="st">"R"</span>,
-  detect_outliers <span class="op">=</span> <span class="cn">TRUE</span>,
-  average_method <span class="op">=</span> <span class="st">"bin"</span>,
-  average_length <span class="op">=</span> <span class="fl">30</span>,
-  plot <span class="op">=</span> <span class="cn">TRUE</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="co">## arguments for `incremental_normalize()`</span>
-  incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,
-  has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,
-  baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span>
-  work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co">## produce a work rate column</span>
-  baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span>
-  ramp_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## 25 W/min ramp</span>
-  <span class="co">## arguments for `detect_outliers()`</span>
-  test_type <span class="op">=</span> <span class="st">"incremental"</span>,
-  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>, 
-  method_incremental <span class="op">=</span> <span class="st">"linear"</span>
-<span class="op">)</span>
-<span class="co">#&gt; ──────────────────────────── <span style="color: #BB0000;"> * V̇O₂ max analysis * </span> ────────────────────────────</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Normalizing incremental data...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span>
-<span class="co">#&gt; <span style="color: #BB0000;">•</span> 2 outlier(s) found in baseline</span>
-<span class="co">#&gt; <span style="color: #BB0000;">•</span> 15 outlier(s) found in ramp</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Filtering out outliers...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Interpolating from breath-by-breath into second-by-second...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Performing averages...</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 6</span></span>
-<span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span>
-<span class="co">#&gt;             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           <span style="text-decoration: underline;">3</span>524.            46.0    303   193   1.13 <span style="color: #949494;">&lt;gg&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/vo2_max.html">vo2_max</a></span><span class="op">(</span></span>
+<span>  .data <span class="op">=</span> <span class="va">df</span>, <span class="co">## data from `read_data()`</span></span>
+<span>  vo2_column <span class="op">=</span> <span class="st">"VO2"</span>,</span>
+<span>  vo2_relative_column <span class="op">=</span> <span class="st">"VO2/Kg"</span>,</span>
+<span>  heart_rate_column <span class="op">=</span> <span class="st">"HR"</span>,</span>
+<span>  rer_column <span class="op">=</span> <span class="st">"R"</span>,</span>
+<span>  detect_outliers <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  average_method <span class="op">=</span> <span class="st">"bin"</span>,</span>
+<span>  average_length <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="co">## arguments for `incremental_normalize()`</span></span>
+<span>  incremental_type <span class="op">=</span> <span class="st">"ramp"</span>,</span>
+<span>  has_baseline <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  baseline_length <span class="op">=</span> <span class="fl">240</span>, <span class="co">## 4-min baseline</span></span>
+<span>  work_rate_magic <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co">## produce a work rate column</span></span>
+<span>  baseline_intensity <span class="op">=</span> <span class="fl">20</span>, <span class="co">## baseline was performed at 20 W</span></span>
+<span>  ramp_increase <span class="op">=</span> <span class="fl">25</span>, <span class="co">## 25 W/min ramp</span></span>
+<span>  <span class="co">## arguments for `detect_outliers()`</span></span>
+<span>  test_type <span class="op">=</span> <span class="st">"incremental"</span>,</span>
+<span>  cleaning_level <span class="op">=</span> <span class="fl">0.95</span>, </span>
+<span>  method_incremental <span class="op">=</span> <span class="st">"linear"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; ──────────────────────────── <span style="color: #BB0000;"> * V̇O₂ max analysis * </span> ────────────────────────────</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Normalizing incremental data...</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Detecting outliers</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">•</span> 2 outlier(s) found in baseline</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">•</span> 15 outlier(s) found in ramp</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Filtering out outliers...</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Interpolating from breath-by-breath into second-by-second...</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Performing averages...</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 6</span></span></span>
+<span><span class="co">#&gt;   VO2max_absolute VO2max_relative POpeak HRmax RERmax plot  </span></span>
+<span><span class="co">#&gt;             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>           <span style="text-decoration: underline;">3</span>524.            46.0    303   193   1.13 <span style="color: #949494;">&lt;gg&gt;</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -659,7 +661,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>
