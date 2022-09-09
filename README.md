@@ -254,7 +254,7 @@ vo2_max(
 -   Parvo Medics
 -   [Geratherm
     Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
--   [CardioCoach](https://korr.com/go/cardiocoach)
+-   [CardioCoach](https://korr.com/go/cardiocoach/)
 
 ## Online app
 
