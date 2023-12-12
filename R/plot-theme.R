@@ -13,7 +13,7 @@ theme_whippr <- function(base_size = 14, base_family = "sans") {
     theme(
       panel.background = element_rect(fill = "#fefeda"),
       axis.line = element_line(color = "black"),
-      axis.ticks = element_line(color = "black", size = 1),
+      axis.ticks = element_line(color = "black", linewidth = 1),
       axis.text = element_text(color = "black", face = "bold"),
       axis.title = element_text(face = "bold"),
       plot.title = element_text(face = "bold"),

@@ -57,7 +57,7 @@ model_diagnostics <- function(.residuals_tbl) {
   p2 <- .residuals_tbl %>%
     ggplot2::ggplot(ggplot2::aes(sample = standardized_residuals)) +
     ggplot2::stat_qq(shape = 21, size = 4, fill = "skyblue") +
-    ggplot2::stat_qq_line(color = "darkred", size = 1) +
+    ggplot2::stat_qq_line(color = "darkred", linewidth = 1) +
     ggplot2::labs(
       title = "Non-normality of Residuals and Outliers",
       subtitle = "Dots should be plotted along the line",
@@ -70,7 +70,7 @@ model_diagnostics <- function(.residuals_tbl) {
   p3 <- .residuals_tbl %>%
     ggplot2::ggplot(ggplot2::aes(.fitted, .resid)) +
     ggplot2::geom_point(shape = 21, size = 4, fill = "skyblue") +
-    ggplot2::geom_hline(yintercept = 0, lty = "dashed", color = "darkred", size = 1) +
+    ggplot2::geom_hline(yintercept = 0, lty = "dashed", color = "darkred", linewidth = 1) +
     ggplot2::labs(
       title = "Homoscedasticity",
       subtitle = "Dots should be similar above and below the dashed line",
@@ -83,7 +83,7 @@ model_diagnostics <- function(.residuals_tbl) {
     tidyr::drop_na(lag_residuals) %>%
     ggplot2::ggplot(ggplot2::aes(.resid, lag_residuals)) +
     ggplot2::geom_point(shape = 21, size = 4, fill = "skyblue") +
-    ggplot2::geom_hline(yintercept = 0, lty = "dashed", color = "darkred", size = 1) +
+    ggplot2::geom_hline(yintercept = 0, lty = "dashed", color = "darkred", linewidth = 1) +
     ggplot2::labs(
       title = "Autocorrelation",
       subtitle = "Dots should be plotted randomly",
