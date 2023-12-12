@@ -438,8 +438,7 @@ perform_kinetics.moderate <- function(
 
   ## model augmented
   aug_baseline <- broom::augment(model_bsln) %>%
-    dplyr::mutate(t = data_bsln[[ {{time_column}} ]]) %>%
-    dplyr::select(t, dplyr::everything()) %>%
+    dplyr::mutate(t = data_bsln[[ {{time_column}} ]], .before = 0) %>%
     dplyr::rename_at(1, ~ {{time_column}})
 
   aug_transition <- broom::augment(model_transition)
