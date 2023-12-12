@@ -99,9 +99,8 @@ outliers_anomaly <- function(
   cleaning_level
 ) {
   ## check if anomalize is installed
-  if(length(find.package(package = "anomalize", quiet = TRUE)) == 0) {
-    stop("You need to install the anomalize package to use this function.", call. = FALSE)
-  }
+  rlang::check_installed("anomalize")
+
   ## set alpha
   alpha <- 1 - cleaning_level
 

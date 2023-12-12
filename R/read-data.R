@@ -347,9 +347,7 @@ read_data.cardiocoach <- function(
   work_rate_column = NULL
 ) {
   ## check if readr is installed
-  if(length(find.package(package = "readr", quiet = TRUE)) == 0) {
-    stop("You need to install the readr package to use this function.", call. = FALSE)
-  }
+  rlang::check_installed("readr")
   ## retrieve column names
   names_file <- suppressMessages(readr::read_tsv(file = path, n_max = 2, col_names = FALSE))
   ## retrieve data

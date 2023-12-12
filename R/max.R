@@ -273,9 +273,7 @@ perform_max <- function(
 
   if(plot) {
     ## check if ggforce and ggtext are installed
-    if(length(find.package(package = c("ggforce", "ggtext"), quiet = TRUE)) == 0) {
-      stop("You need to install the ggforce and ggtext packages to use this function.", call. = FALSE)
-    }
+    rlang::check_installed(c("ggforce", "ggtext"))
     label_graph <- out %>%
       tidyr::pivot_longer(cols = dplyr::everything()) %>%
       tidyr::drop_na() %>%
