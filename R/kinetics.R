@@ -228,11 +228,17 @@ vo2_kinetics <- function(
   outliers_plot <- plot_outliers(.data = data_outliers)
 
   if(verbose) {
-    usethis::ui_done("Processing data...")
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Removing outliers"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Interpolating each transition"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Ensemble-averaging transitions"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Performing {fit_bin_average}-s bin averages"))
+    cli::cli_alert_success("Processing data...")
+    bullets <- c(
+      "      \u2514\u2500 Removing outliers",
+      "      \u2514\u2500 Interpolating each transition",
+      "      \u2514\u2500 Ensemble-averaging transitions",
+      "      \u2514\u2500 Performing {fit_bin_average}-s bin averages"
+    )
+    bullets <- cli::col_green(bullets)
+    for (i in seq_along(bullets)) {
+      cli::cli_alert_success(bullets[i])
+    }
   }
   # process data ------------------------------------------------------------
   data_processed <- process_data(
@@ -243,11 +249,15 @@ vo2_kinetics <- function(
 
 
   if(verbose) {
-    usethis::ui_done("Fitting data...")
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Fitting baseline"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Fitting transition"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Calculating residuals"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Preparing plots"))
+    cli::cli_alert_success("Fitting data...")
+    bullets <- c(
+      "      \u2514\u2500 Fitting baseline",
+      "      \u2514\u2500 Fitting transition",
+      "      \u2514\u2500 Calculating residuals",
+      "      \u2514\u2500 Preparing plots"
+    )
+    bullets <- cli::col_green(bullets)
+    purrr::walk(bullets, cli::cli_alert_success)
   }
   # perform vo2 kinetics fit ------------------------------------------------
   data_kinetics <- perform_kinetics(

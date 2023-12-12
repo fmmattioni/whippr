@@ -98,7 +98,7 @@ vo2_max <- function(
     cli::cli_rule(center = cli::col_red(" * V\u0307O\u2082 max analysis * "))
 
   if(verbose)
-    usethis::ui_done("Normalizing incremental data...")
+    cli::cli_alert_success("Normalizing incremental data...")
 
   ## normalize incremental test
   data_normalized <- incremental_normalize(.data = .data, ...)
@@ -239,14 +239,14 @@ perform_max <- function(
   if(attr(data_normalized, "outliers_detected")) {
 
     if(verbose)
-      usethis::ui_done("Filtering out outliers...")
+      cli::cli_alert_success("Filtering out outliers...")
 
     data_normalized_filtered <- dplyr::filter(data_normalized, outlier == "no")
   }
 
   if(verbose) {
-    usethis::ui_done("Interpolating from breath-by-breath into second-by-second...")
-    usethis::ui_done("Performing averages...")
+    cli::cli_alert_success("Interpolating from breath-by-breath into second-by-second...")
+    cli::cli_alert_success("Performing averages...")
   }
 
   ## interpolate and average data
