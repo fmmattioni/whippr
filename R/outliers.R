@@ -258,7 +258,7 @@ detect_outliers.incremental <- function(
       dplyr::filter(outlier == "yes")
 
     if(nrow(verbose_vector) == 0) {
-      cli::cli_alert_success(x = "No outliers found.")
+      cli::cli_alert_success("No outliers found.")
     } else {
       verbose_vector <- verbose_vector %>%
         dplyr::mutate(verbose = purrr::map2_chr(.x = n, .y = protocol_phase, .f = ~ glue::glue("{.x} outlier(s) found in {.y}"))) %>%
