@@ -1,3 +1,10 @@
+# whippr 0.1.3
+
+* Removed `usethis` dependency.
+* Fixed typos.
+* Fixed `ggplot2`, `tidyselect`, and `tibble` warnings.
+* Adjusted documentation as requested by CRAN.
+
 # whippr 0.1.2
 
 * Fixed a bug in `read_data.cosmed()` that made the time column to return `NA` values when the test was longer than one hour.

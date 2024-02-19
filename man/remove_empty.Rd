@@ -15,9 +15,6 @@ columns, declaring the behavior with a printed message.}
 
 \item{cutoff}{What fraction (>0 to <=1) of rows or columns must be empty to
 be removed?}
-
-\item{quiet}{Should messages be suppressed (\code{TRUE}) or printed
-(\code{FALSE}) indicating the summary of empty columns or rows removed?}
 }
 \value{
 Returns the object without its missing rows or columns.

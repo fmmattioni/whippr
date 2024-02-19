@@ -18,22 +18,6 @@ data sets.}
 \item{value_debounce_rate}{Debounce rate in milliseconds for the \code{value}
 reactive expression. To avoid saving spurious changes in \code{value}, the
 expression is debounced. See \code{\link[shiny:debounce]{shiny::debounce()}} for more information.}
-
-\item{class}{The class applied to the parent button group container that
-holds the undo/redo buttons.}
-
-\item{btn_class}{The classes applied to the buttons. Use a single character
-vector to apply the same class to both buttons, or a character vector of
-length 2 to apply individual classes to each button, (undo/redo
-respectively).}
-
-\item{back_text, fwd_text}{The button text}
-
-\item{back_title, fwd_title}{The button title (shown on hover)}
-
-\item{back_icon, fwd_icon}{The icons used for the buttons, passed to
-\code{\link[shiny:icon]{shiny::icon()}}. Set to \code{NULL} for no icon. You can also add arbitrary HTML
-to \code{back_text} and \code{fwd_text} as the inner HTML of the \verb{<button>} element.}
 }
 \value{
 The \code{undoHistory()} module returns the currently selected history

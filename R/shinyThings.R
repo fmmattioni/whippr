@@ -14,17 +14,6 @@
 #' and UI elements.
 #'
 #' @param id The module id
-#' @param class The class applied to the parent button group container that
-#'   holds the undo/redo buttons.
-#' @param btn_class The classes applied to the buttons. Use a single character
-#'   vector to apply the same class to both buttons, or a character vector of
-#'   length 2 to apply individual classes to each button, (undo/redo
-#'   respectively).
-#' @param back_text,fwd_text The button text
-#' @param back_title,fwd_title The button title (shown on hover)
-#' @param back_icon,fwd_icon The icons used for the buttons, passed to
-#'   [shiny::icon()]. Set to `NULL` for no icon. You can also add arbitrary HTML
-#'   to `back_text` and `fwd_text` as the inner HTML of the `<button>` element.
 #' @param value The reactive expression with the values should be saved for the
 #'   user's history. This expression can contain arbitrary data and be of any
 #'   structure as long as it returns a single value (or list). Each change in

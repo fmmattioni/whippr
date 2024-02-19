@@ -11,8 +11,6 @@
 #'   columns, declaring the behavior with a printed message.
 #' @param cutoff What fraction (>0 to <=1) of rows or columns must be empty to
 #'   be removed?
-#' @param quiet Should messages be suppressed (\code{TRUE}) or printed
-#'   (\code{FALSE}) indicating the summary of empty columns or rows removed?
 #' @return Returns the object without its missing rows or columns.
 #' @keywords internal
 remove_empty <- function(dat, which = c("rows", "cols"), cutoff=1) {
