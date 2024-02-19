@@ -16,7 +16,7 @@ perform_kinetics(
 )
 }
 \arguments{
-\item{.data_processed}{The data retrived from \code{process_data()}.}
+\item{.data_processed}{The data retrieved from \code{process_data()}.}
 
 \item{intensity_domain}{The exercise-intensity domain that the test was performed. Either \emph{moderate}, \emph{heavy}, or \emph{severe}.}
 
@@ -30,13 +30,13 @@ perform_kinetics(
 
 \item{verbose}{A boolean indicating whether messages should be printed in the console. Default to \code{TRUE}.}
 
-\item{...}{Additional arguments when fiting VO2 kinetics in the heavy- or severe-intensity domains. Arguments may be the following:
+\item{...}{Additional arguments when fitting VO2 kinetics in the heavy- or severe-intensity domains. Arguments may be the following:
 \describe{
 \item{\code{TODO}}{}
 }}
 }
 \value{
-a \link[tibble:tibble-package]{tibble} containing one row and the nested columns:
+a \code{\link[tibble:tibble-package]{tibble}} containing one row and the nested columns:
 \item{data_fitted}{The data containing the time and VO2 columns, as well as the fitted data and its residuals for each data point.}
 \item{model}{A \code{nls} object. The model used in the VO2 kinetics fitting.}
 \item{model_summary}{The tidied summary of the \code{model}.}

@@ -60,7 +60,7 @@ read_data.cosmed <- function(
     skip = 1,
     col_types = c(rep("guess", num_cols_pre), "date", rep("guess", num_cols_post))
   ))) %>%
-    dplyr::select(start_col:ncol(.)) %>%
+    dplyr::select(dplyr::all_of(start_col):dplyr::last_col()) %>%
     dplyr::rename_all(~ names_file) %>%
     remove_empty(which = "rows")
 
@@ -68,7 +68,7 @@ read_data.cosmed <- function(
   if(all(is.na(data_raw2[[1]]))) {
     ## read data again, select only columns with data and apply column names
     data_raw2 <- suppressMessages(readxl::read_excel(path = path, skip = 1)) %>%
-      dplyr::select(start_col:ncol(.)) %>%
+      dplyr::select(dplyr::all_of(start_col):dplyr::last_col()) %>%
       dplyr::rename_all(~ names_file) %>%
       remove_empty(which = "rows")
 
@@ -198,7 +198,7 @@ read_data.nspire <- function(
   out <- suppressWarnings(suppressMessages(readxl::read_excel(
     path = path,
     skip = 1))) %>%
-    dplyr::select(start_col:ncol(.)) %>%
+    dplyr::select(dplyr::all_of(start_col):dplyr::last_col()) %>%
     dplyr::rename_all(~ names_file) %>%
     remove_empty(which = "rows")
 
@@ -243,7 +243,8 @@ read_data.parvo <- function(
   names_file <- data_raw[cells_parvo[1]:(cells_parvo[1] + 1),] %>%
     unlist(use.names = FALSE) %>%
     matrix(., nrow = length(.) / 2, byrow = TRUE) %>%
-    dplyr::as_tibble() %>%
+    as.data.frame() %>%
+    purrr::set_names(c("V1", "V2"))
     dplyr::mutate(V1 = ifelse(V2 %in% c(NA, "STPD", "BTPS"), V1, paste0(V1, V2))) %>%
     .$V1
 
@@ -347,9 +348,7 @@ read_data.cardiocoach <- function(
   work_rate_column = NULL
 ) {
   ## check if readr is installed
-  if(length(find.package(package = "readr", quiet = TRUE)) == 0) {
-    stop("You need to install the readr package to use this function.", call. = FALSE)
-  }
+  rlang::check_installed("readr")
   ## retrieve column names
   names_file <- suppressMessages(readr::read_tsv(file = path, n_max = 2, col_names = FALSE))
   ## retrieve data

@@ -9,11 +9,11 @@ Authors@R:
            comment = c(ORCID = "0000-0002-4221-6104"))
 Description: Set of tools for manipulating gas exchange data from cardiopulmonary exercise testing.
 License: MIT + file LICENSE
-URL: https://github.com/fmmattioni/whippr
+URL: https://fmmattioni.github.io/whippr/, https://github.com/fmmattioni/whippr
 BugReports: https://github.com/fmmattioni/whippr/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Imports: 
+Imports:
     readxl (>= 1.3.1),
     dplyr (>= 1.0.1),
     stringr (>= 1.4.0),
@@ -25,16 +25,15 @@ Imports:
     tidyr (>= 1.1.1),
     broom (>= 0.7.0),
     cli,
-    ggplot2 (>= 3.3.2),
+    ggplot2 (>= 3.4.0),
     glue,
     minpack.lm,
     patchwork (>= 1.0.1),
     rlang,
-    usethis,
     nlstools,
     pillar
-RoxygenNote: 7.2.1
-Suggests: 
+RoxygenNote: 7.2.3
+Suggests:
     knitr,
     rmarkdown,
     fansi,
@@ -49,5 +48,4 @@ Suggests:
     anomalize,
     ggforce,
     ggtext,
-    forcats,
-    covr
+    forcats

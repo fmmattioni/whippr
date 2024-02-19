@@ -140,7 +140,7 @@ detect_outliers.kinetics <- function(
     )
 
   if(verbose)
-    usethis::ui_done("Detecting outliers")
+    cli::cli_alert_success("Detecting outliers")
 
   ## check if data passed to the function contains more data points than it should
   max_length <- protocol_n_transitions * (protocol_baseline_length + protocol_transition_length)
@@ -185,13 +185,14 @@ detect_outliers.kinetics <- function(
       dplyr::filter(outlier == "yes")
 
     if(nrow(verbose_vector) == 0) {
-      usethis::ui_done(x = "No outliers found.")
+      cli::cli_alert_success("No outliers found.")
     } else {
-      verbose_vector <- verbose_vector %>%
-        dplyr::mutate(verbose = purrr::map2_chr(.x = n, .y = transition, .f = ~ glue::glue("{.x} outlier(s) found in {.y}"))) %>%
-        dplyr::pull(verbose)
-
-      purrr::walk(.x = verbose_vector, .f = usethis::ui_todo)
+       list <- dplyr::pull(verbose_vector, n, name = transition)
+       purrr::iwalk(list, function(n, transition) {
+         # display n outliers found in transition x
+         # Using cli pluralization (means the s won't show if n_outliers = 1)
+         cli::cli_ul("{n} outlier{?s} found in {transition}")
+       })
     }
   }
 
@@ -232,7 +233,7 @@ detect_outliers.incremental <- function(
   time_column <- attributes(.data)$time_column
 
   if(verbose)
-    usethis::ui_done("Detecting outliers")
+    cli::cli_alert_success("Detecting outliers")
 
   out <- switch (method_incremental,
                  "linear" = outliers_linear(
@@ -257,13 +258,13 @@ detect_outliers.incremental <- function(
       dplyr::filter(outlier == "yes")
 
     if(nrow(verbose_vector) == 0) {
-      usethis::ui_done(x = "No outliers found.")
+      cli::cli_alert_success("No outliers found.")
     } else {
       verbose_vector <- verbose_vector %>%
         dplyr::mutate(verbose = purrr::map2_chr(.x = n, .y = protocol_phase, .f = ~ glue::glue("{.x} outlier(s) found in {.y}"))) %>%
         dplyr::pull(verbose)
 
-      purrr::walk(.x = verbose_vector, .f = usethis::ui_todo)
+      purrr::walk(.x = verbose_vector, .f = cli::cli_ul)
     }
   }
 

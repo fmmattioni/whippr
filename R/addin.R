@@ -15,15 +15,7 @@
 run_manual_cleaner <- function(.data, width = 1200, height = 900) {
 
   # check additional needed packages
-  if(!check_addin_deps())
-    stop(
-      "
-      It looks like you don't have all the packages needed for this function to run. Either install all of them with:
-      install.packages(c('miniUI', 'shiny', 'rstudioapi', 'datapasta', 'htmltools'))
-      or install the ones you know you do not have.
-      ",
-      call. = FALSE
-    )
+  rlang::check_installed(c("miniUI", "shiny", "rstudioapi", "datapasta", "htmltools"))
 
   ## check data
   if(missing(.data))
@@ -168,18 +160,4 @@ run_manual_cleaner <- function(.data, width = 1200, height = 900) {
   }
 
   shiny::runGadget(app = ui, server = server, viewer = shiny::dialogViewer(dialogName = "Manual cleaner", width = width, height = height), stopOnCancel = FALSE)
-}
-
-#' Check if needed packages are installed
-#'
-#' @return a boolean
-#' @keywords internal
-check_addin_deps <- function() {
-  extra_packages <- c("miniUI", "shiny", "rstudioapi", "datapasta", "htmltools")
-  length(
-    find.package(
-      package = extra_packages,
-      quiet = TRUE
-    )
-  ) == length(extra_packages)
 }

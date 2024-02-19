@@ -228,11 +228,17 @@ vo2_kinetics <- function(
   outliers_plot <- plot_outliers(.data = data_outliers)
 
   if(verbose) {
-    usethis::ui_done("Processing data...")
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Removing outliers"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Interpolating each transition"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Ensemble-averaging transitions"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Performing {fit_bin_average}-s bin averages"))
+    cli::cli_alert_success("Processing data...")
+    bullets <- c(
+      "      \u2514\u2500 Removing outliers",
+      "      \u2514\u2500 Interpolating each transition",
+      "      \u2514\u2500 Ensemble-averaging transitions",
+      "      \u2514\u2500 Performing {fit_bin_average}-s bin averages"
+    )
+    bullets <- cli::col_green(bullets)
+    for (i in seq_along(bullets)) {
+      cli::cli_alert_success(bullets[i])
+    }
   }
   # process data ------------------------------------------------------------
   data_processed <- process_data(
@@ -243,11 +249,15 @@ vo2_kinetics <- function(
 
 
   if(verbose) {
-    usethis::ui_done("Fitting data...")
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Fitting baseline"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Fitting transition"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Calculating residuals"))
-    usethis::ui_done(usethis::ui_field("      \u2514\u2500 Preparing plots"))
+    cli::cli_alert_success("Fitting data...")
+    bullets <- c(
+      "      \u2514\u2500 Fitting baseline",
+      "      \u2514\u2500 Fitting transition",
+      "      \u2514\u2500 Calculating residuals",
+      "      \u2514\u2500 Preparing plots"
+    )
+    bullets <- cli::col_green(bullets)
+    purrr::walk(bullets, cli::cli_alert_success)
   }
   # perform vo2 kinetics fit ------------------------------------------------
   data_kinetics <- perform_kinetics(
@@ -279,14 +289,14 @@ vo2_kinetics <- function(
 #' Performs the fitting process for the VO2 kinetics analysis. At this point, the data should already have been cleaned (outliers removed) and processed
 #' (interpolated, time-aligned, ensembled-averaged, and bin-averaged).
 #'
-#' @param .data_processed The data retrived from `process_data()`.
+#' @param .data_processed The data retrieved from `process_data()`.
 #' @param intensity_domain The exercise-intensity domain that the test was performed. Either *moderate*, *heavy*, or *severe*.
 #' @param fit_level A numeric scalar between 0 and 1 giving the confidence level for the parameter estimates in the final VO2 kinetics fit. Default to `0.95`.
 #' @param fit_phase_1_length The length of the phase I that you wish to exclude from the final exponential fit, in seconds. See  `VO2 kinetics` section in `?vo2_kinetics` for more details.
 #' @param fit_baseline_length The length the baseline to perform the final linear fit, in seconds. See `VO2 kinetics` section `?vo2_kinetics` for more details.
 #' @param fit_transition_length The length of the transition to perform the final exponential fit, in seconds. See `VO2 kinetics` section `?vo2_kinetics` for more details.
 #' @param verbose A boolean indicating whether messages should be printed in the console. Default to `TRUE`.
-#' @param ... Additional arguments when fiting VO2 kinetics in the heavy- or severe-intensity domains. Arguments may be the following:
+#' @param ... Additional arguments when fitting VO2 kinetics in the heavy- or severe-intensity domains. Arguments may be the following:
 #' \describe{
 #'  \item{\code{TODO}}{}
 #' }
@@ -294,7 +304,7 @@ vo2_kinetics <- function(
 #' @details
 #' See `?vo2_kinetics` for details.
 #'
-#' @return a [tibble][tibble::tibble-package] containing one row and the nested columns:
+#' @return a [`tibble`][`tibble::tibble-package`] containing one row and the nested columns:
 #' \item{data_fitted}{The data containing the time and VO2 columns, as well as the fitted data and its residuals for each data point.}
 #' \item{model}{A `nls` object. The model used in the VO2 kinetics fitting.}
 #' \item{model_summary}{The tidied summary of the `model`.}
@@ -428,8 +438,7 @@ perform_kinetics.moderate <- function(
 
   ## model augmented
   aug_baseline <- broom::augment(model_bsln) %>%
-    dplyr::mutate(t = data_bsln[[ {{time_column}} ]]) %>%
-    dplyr::select(t, dplyr::everything()) %>%
+    dplyr::mutate(t = data_bsln[[ {{time_column}} ]], .before = 0) %>%
     dplyr::rename_at(1, ~ {{time_column}})
 
   aug_transition <- broom::augment(model_transition)

@@ -11,7 +11,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 status](https://www.r-pkg.org/badges/version/whippr)](https://CRAN.R-project.org/package=whippr)
 [![Codecov test
 coverage](https://codecov.io/gh/fmmattioni/whippr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/fmmattioni/whippr?branch=master)
-[![R-CMD-check](https://github.com/fmmattioni/whippr/workflows/R-CMD-check/badge.svg)](https://github.com/fmmattioni/whippr/actions)
+[![R-CMD-check](https://github.com/fmmattioni/whippr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fmmattioni/whippr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of `whippr` is to provide a set of tools for manipulating gas
@@ -62,13 +62,13 @@ df
 #>  8    28 13.2  2.18  28.8  1147.  981.  336.  105.      25.2      29.4    13.8 
 #>  9    31 17.7  1.51  26.7  1048.  860.  234.   68.8     25.5      31.0    12.6 
 #> 10    35 14.2  1.68  23.8   973.  794.  257.   79.3     24.5      30.0    11.7 
-#> # … with 744 more rows, and 108 more variables: R <dbl>, FeO2 <dbl>,
-#> #   FeCO2 <dbl>, HR <dbl>, `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>,
-#> #   Load3 <dbl>, Phase <dbl>, Marker <lgl>, FetO2 <dbl>, FetCO2 <dbl>,
-#> #   FiO2 <dbl>, FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>,
-#> #   IV <dbl>, PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
-#> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
+#> # ℹ 744 more rows
+#> # ℹ 108 more variables: R <dbl>, FeO2 <dbl>, FeCO2 <dbl>, HR <dbl>,
+#> #   `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>, Load3 <dbl>, Phase <dbl>,
+#> #   Marker <lgl>, FetO2 <dbl>, FetCO2 <dbl>, FiO2 <dbl>, FiCO2 <dbl>, Ti <dbl>,
+#> #   Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>, PetO2 <dbl>, PetCO2 <dbl>,
+#> #   `P(a-et)CO2` <dbl>, SpO2 <dbl>, `VD(phys)` <dbl>, `VD/VT` <dbl>,
+#> #   `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>, `Analyz. Press.` <dbl>, …
 ```
 
 ### Interpolate
@@ -92,13 +92,13 @@ df %>%
 #>  8     9 17.3  1.80  30.1  1176.  955.  279.   81.2     25.7      31.8    14.2 
 #>  9    10 19.0  1.49  27.2  1035.  834.  233.   65.2     26.5      33.0    12.5 
 #> 10    11 20.6  1.18  24.4   894.  714.  188.   49.2     27.3      34.1    10.8 
-#> # … with 2,149 more rows, and 103 more variables: R <dbl>, FeO2 <dbl>,
-#> #   FeCO2 <dbl>, HR <dbl>, `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>,
-#> #   Load3 <dbl>, Phase <dbl>, FetO2 <dbl>, FetCO2 <dbl>, FiO2 <dbl>,
-#> #   FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>,
-#> #   PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
-#> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
+#> # ℹ 2,149 more rows
+#> # ℹ 103 more variables: R <dbl>, FeO2 <dbl>, FeCO2 <dbl>, HR <dbl>,
+#> #   `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>, Load3 <dbl>, Phase <dbl>,
+#> #   FetO2 <dbl>, FetCO2 <dbl>, FiO2 <dbl>, FiCO2 <dbl>, Ti <dbl>, Te <dbl>,
+#> #   Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>, PetO2 <dbl>, PetCO2 <dbl>,
+#> #   `P(a-et)CO2` <dbl>, SpO2 <dbl>, `VD(phys)` <dbl>, `VD/VT` <dbl>,
+#> #   `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>, `Analyz. Press.` <dbl>, …
 ```
 
 ### Perform averages
@@ -126,13 +126,13 @@ df %>%
 #>  8   210  16.1  2.17  28.7 1070.  941.  342.  101.      27.0      30.6     12.9
 #>  9   240  18.9  1.43  26.1 1058.  880.  219.   68.8     24.7      29.8     12.7
 #> 10   270  15.1  1.65  24.5  987.  847.  253.   81.4     24.8      28.9     11.9
-#> # … with 63 more rows, and 103 more variables: R <dbl>, FeO2 <dbl>,
-#> #   FeCO2 <dbl>, HR <dbl>, `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>,
-#> #   Load3 <dbl>, Phase <dbl>, FetO2 <dbl>, FetCO2 <dbl>, FiO2 <dbl>,
-#> #   FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>,
-#> #   PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
-#> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
+#> # ℹ 63 more rows
+#> # ℹ 103 more variables: R <dbl>, FeO2 <dbl>, FeCO2 <dbl>, HR <dbl>,
+#> #   `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>, Load3 <dbl>, Phase <dbl>,
+#> #   FetO2 <dbl>, FetCO2 <dbl>, FiO2 <dbl>, FiCO2 <dbl>, Ti <dbl>, Te <dbl>,
+#> #   Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>, PetO2 <dbl>, PetCO2 <dbl>,
+#> #   `P(a-et)CO2` <dbl>, SpO2 <dbl>, `VD(phys)` <dbl>, `VD/VT` <dbl>,
+#> #   `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>, `Analyz. Press.` <dbl>, …
 ```
 
 #### Rolling-average
@@ -158,13 +158,13 @@ df %>%
 #>  8  23.5  16.0  1.78  26.9 1052.  871.  277.   82.4     25.6      31.0     12.7
 #>  9  24.5  16.1  1.77  26.7 1048.  867.  274.   81.8     25.5      31.0     12.6
 #> 10  25.5  16.1  1.76  26.6 1050.  868.  273.   81.9     25.4      30.8     12.6
-#> # … with 2,120 more rows, and 103 more variables: R <dbl>, FeO2 <dbl>,
-#> #   FeCO2 <dbl>, HR <dbl>, `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>,
-#> #   Load3 <dbl>, Phase <dbl>, FetO2 <dbl>, FetCO2 <dbl>, FiO2 <dbl>,
-#> #   FiCO2 <dbl>, Ti <dbl>, Te <dbl>, Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>,
-#> #   PetO2 <dbl>, PetCO2 <dbl>, `P(a-et)CO2` <dbl>, SpO2 <dbl>,
-#> #   `VD(phys)` <dbl>, `VD/VT` <dbl>, `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>,
-#> #   `Analyz. Press.` <dbl>, `Env. Press.` <dbl>, Batteries <dbl>, …
+#> # ℹ 2,120 more rows
+#> # ℹ 103 more variables: R <dbl>, FeO2 <dbl>, FeCO2 <dbl>, HR <dbl>,
+#> #   `VO2/HR` <dbl>, Load1 <dbl>, Load2 <dbl>, Load3 <dbl>, Phase <dbl>,
+#> #   FetO2 <dbl>, FetCO2 <dbl>, FiO2 <dbl>, FiCO2 <dbl>, Ti <dbl>, Te <dbl>,
+#> #   Ttot <dbl>, `Ti/Ttot` <dbl>, IV <dbl>, PetO2 <dbl>, PetCO2 <dbl>,
+#> #   `P(a-et)CO2` <dbl>, SpO2 <dbl>, `VD(phys)` <dbl>, `VD/VT` <dbl>,
+#> #   `Env. Temp.` <dbl>, `Analyz. Temp.` <dbl>, `Analyz. Press.` <dbl>, …
 ```
 
 ### Perform VO<sub>2</sub> kinetics analysis
@@ -188,9 +188,9 @@ results_kinetics <- vo2_kinetics(
 )
 #> ──────────────────────────  * V̇O₂ kinetics analysis *  ─────────────────────────
 #> ✔ Detecting outliers
-#> • 14 outlier(s) found in transition 1
-#> • 15 outlier(s) found in transition 2
-#> • 13 outlier(s) found in transition 3
+#> • 14 outliers found in transition 1
+#> • 15 outliers found in transition 2
+#> • 13 outliers found in transition 3
 #> ✔ Processing data...
 #> ✔       └─ Removing outliers
 #> ✔       └─ Interpolating each transition
@@ -248,13 +248,13 @@ vo2_max(
 
 ## Metabolic carts currently supported
 
--   [COSMED](https://www.cosmed.com/en/)
--   [CORTEX](https://cortex-medical.com/EN)
--   [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
--   Parvo Medics
--   [Geratherm
-    Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
--   [CardioCoach](https://korr.com/go/cardiocoach/)
+- [COSMED](https://www.cosmed.com/en/)
+- [CORTEX](https://cortex-medical.com/EN)
+- [NSpire](https://www.pressebox.de/pressemitteilung/nspire-health-gmbh/ZAN-100-Diagnostische-Spirometrie/boxid/745555)
+- Parvo Medics
+- [Geratherm
+  Respiratory](https://www.geratherm-respiratory.com/product-groups/cpet/)
+- [CardioCoach](https://korr.com/go/cardiocoach/)
 
 ## Online app
 

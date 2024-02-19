@@ -13,6 +13,7 @@ Set of tools for manipulating gas exchange data from cardiopulmonary exercise te
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://fmmattioni.github.io/whippr/}
   \item \url{https://github.com/fmmattioni/whippr}
   \item Report bugs at \url{https://github.com/fmmattioni/whippr/issues}
 }
