@@ -1,3 +1,7 @@
+# whippr 0.1.4
+
+* Fixed an issue with the `perform_max()` function that the `aaverage_length` argument was not being correctly considered (#15).
+
 # whippr 0.1.3
 
 * Removed `usethis` dependency.
