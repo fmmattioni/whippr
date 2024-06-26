@@ -254,7 +254,7 @@ perform_max <- function(
     ## interpolate data from breath-by-breath to second-by-second
     interpolate() %>%
     ## perform the chosen average method
-    perform_average(type = "bin", bins = 30)
+    perform_average(type = "bin", bins = average_length)
 
   ## plateau detection
   ## TODO
