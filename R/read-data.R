@@ -244,7 +244,7 @@ read_data.parvo <- function(
     unlist(use.names = FALSE) %>%
     matrix(., nrow = length(.) / 2, byrow = TRUE) %>%
     as.data.frame() %>%
-    purrr::set_names(c("V1", "V2"))
+    purrr::set_names(c("V1", "V2")) %>%
     dplyr::mutate(V1 = ifelse(V2 %in% c(NA, "STPD", "BTPS"), V1, paste0(V1, V2))) %>%
     .$V1
 
@@ -253,8 +253,8 @@ read_data.parvo <- function(
     dplyr::rename_all(~ names_file) %>%
     ## this is a trick to drop NAs based on the last column
     ## the reason is that Parvo sometimes export additional info after the exported data at the end of the spreadsheet
-    tidyr::drop_na(ncol(.)) %>%
     dplyr::mutate_all(as.numeric) %>%
+    tidyr::drop_na(ncol(.)) %>%
     dplyr::mutate_at(1, function(x) x * 60)
 
   ## the following will try to coerce the work rate column to numeric
