@@ -2,6 +2,7 @@
 
 * Fixed an issue with the `perform_max()` function that the `aaverage_length` argument was not being correctly considered (#15).
 * Fixed issue with reading data from Parvo metabolic cart (#14).
+* Modified default bin average method from `round` to `ceiling`.
 
 # whippr 0.1.3
 
